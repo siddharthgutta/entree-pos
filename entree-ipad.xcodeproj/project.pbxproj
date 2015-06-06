@@ -146,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
-				32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */,
 				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
 			);
 			name = Views;
@@ -185,6 +184,7 @@
 			children = (
 				32C4B5F21B238E5B0062B854 /* Main.storyboard */,
 				32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */,
+				32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
