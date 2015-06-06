@@ -36,6 +36,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     override func queryForCollection() -> PFQuery {
         let query = Employee.query()!
         
+        query.orderByAscending("name")
+        
         if segmentedControl.selectedSegmentIndex == 0 {
             query.whereKey("role", equalTo: "Server")
         } else {
@@ -120,11 +122,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let employee = objectAtIndexPath(indexPath) as! Employee
+        selectedEmployee = objectAtIndexPath(indexPath) as! Employee
         
-        selectedEmployee = employee
-        
-        if employee.currentShift != nil {
+        if selectedEmployee.currentShift != nil {
             presentPinViewControllerFromCollectionViewCell(collectionView.cellForItemAtIndexPath(indexPath)!)
         } else {
             let alertController = UIAlertController(title: "You must clock-in", message: "Please clock-in before accessing your tables", preferredStyle: .Alert)
@@ -148,17 +148,21 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     }
     
     func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
-        if selectedEmployee.currentShift == nil {
+        if selectedEmployee.currentShift != nil {
+            performSegueWithIdentifier("ServerMap", sender: nil)
+        } else {
             let shift = Shift()
             shift.employee = selectedEmployee
             shift.startedAt = NSDate()
-            shift.saveEventually(nil)
             
             selectedEmployee.currentShift = shift
-            selectedEmployee.saveEventually(nil)
+            
+            PFObject.saveAll([shift, selectedEmployee])
+            
+            loadObjects()
         }
         
-        performSegueWithIdentifier("ServerMap", sender: nil)
+        
     }
     
     func userCanRetryInPinViewController(pinViewController: THPinViewController!) -> Bool {
