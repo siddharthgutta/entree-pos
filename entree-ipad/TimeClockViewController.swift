@@ -161,8 +161,6 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             
             loadObjects()
         }
-        
-        
     }
     
     func userCanRetryInPinViewController(pinViewController: THPinViewController!) -> Bool {
