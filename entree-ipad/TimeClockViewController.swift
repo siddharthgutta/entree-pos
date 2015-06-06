@@ -7,7 +7,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     
     var avatarCache = [String: UIImage]()
     var employees = [Employee]()
-    var selectedEmployee: Employee?
+    var selectedEmployee: Employee!
     
     // MARK: - TimeClockViewController
     
@@ -130,21 +130,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             let alertController = UIAlertController(title: "You must clock-in", message: "Please clock-in before accessing your tables", preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
             alertController.addAction(UIAlertAction(title: "Clock-in", style: .Default) { (action: UIAlertAction!) in
-                let shift = Shift()
-                shift.employee = employee
-                shift.startedAt = NSDate()
-                shift.saveEventually(nil)
-                
-                employee.currentShift = shift
-                employee.saveEventually(nil)
-                
-                self.loadObjects()
-                
                 self.presentPinViewControllerFromCollectionViewCell(collectionView.cellForItemAtIndexPath(indexPath)!)
             })
 
-            alertController.modalPresentationStyle = .Popover
-            
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
@@ -156,10 +144,20 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     }
     
     func pinViewController(pinViewController: THPinViewController!, isPinValid pin: String!) -> Bool {
-        return selectedEmployee?.pinCode == pin
+        return selectedEmployee.pinCode == pin
     }
     
     func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
+        if selectedEmployee.currentShift == nil {
+            let shift = Shift()
+            shift.employee = selectedEmployee
+            shift.startedAt = NSDate()
+            shift.saveEventually(nil)
+            
+            selectedEmployee.currentShift = shift
+            selectedEmployee.saveEventually(nil)
+        }
+        
         performSegueWithIdentifier("ServerMap", sender: nil)
     }
     
