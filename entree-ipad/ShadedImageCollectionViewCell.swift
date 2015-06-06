@@ -1,18 +1,20 @@
 
 import UIKit
 
-class ShadedImageCollectionViewCell: UICollectionViewCell {
+class ShadedImageCollectionViewCell: PFCollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var textLabel: UILabel!
+    @IBOutlet var shadedImageView: UIImageView!
+    @IBOutlet var shadeView: UIView!
+    @IBOutlet var primaryTextLabel: UILabel!
     @IBOutlet var detailTextLabel: UILabel!
     @IBOutlet var badgeLabel: BadgeLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        shadedImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        shadeView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        primaryTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         detailTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         badgeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
     }

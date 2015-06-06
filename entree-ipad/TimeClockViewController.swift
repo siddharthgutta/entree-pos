@@ -1,19 +1,15 @@
 
 import UIKit
 
-class TimeClockViewController: UICollectionViewController, THPinViewControllerDelegate {
+class TimeClockViewController: PFQueryCollectionViewController, THPinViewControllerDelegate {
 
     @IBOutlet var segmentedControl: UISegmentedControl!
-
+    
     var avatarCache = [String: UIImage]()
     var employees = [Employee]()
     var selectedEmployee: Employee?
     
     // MARK: - TimeClockViewController
-    
-    private func employeeForIndexPath(indexPath: NSIndexPath) -> Employee {
-        return employees[indexPath.row]
-    }
     
     private func presentPinViewControllerFromCollectionViewCell(cell: UICollectionViewCell) {
         let pinViewController = THPinViewController(delegate: self)
@@ -35,7 +31,9 @@ class TimeClockViewController: UICollectionViewController, THPinViewControllerDe
         popover.sourceView = cell.contentView
     }
     
-    func reloadData() {
+    // MARK: - PFQueryCollectionViewController
+    
+    override func queryForCollection() -> PFQuery {
         let query = Employee.query()!
         
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -44,18 +42,53 @@ class TimeClockViewController: UICollectionViewController, THPinViewControllerDe
             query.whereKey("role", notEqualTo: "Server")
         }
         
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
-            if let employees = objects as? [Employee] {
-                self.employees = employees
-                
-                self.collectionView!.reloadData()
-            } else {
-                println(error)
-            }
-        }
+        return query
     }
     
-    // TODO: Write method for complex avatar cache-checking and fetching
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as? ShadedImageCollectionViewCell {
+            let employee = objectAtIndexPath(indexPath)! as! Employee
+            
+            cell.shadedImageView.image = nil
+            
+            if let avatar = avatarCache[employee.objectId!] {
+                cell.shadedImageView.image = avatar
+            }
+            
+            if let avatarFile = employee.avatarFile {
+                avatarFile.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) in
+                    if let imageData: NSData = data, let avatar = UIImage(data: imageData) {
+                        self.avatarCache[employee.objectId!] = avatar
+                        
+                        cell.shadedImageView.image = avatar
+                        
+                        cell.setNeedsDisplay()
+                    } else {
+                        println(error)
+                        
+                        cell.shadedImageView.backgroundColor = UIColor.darkGrayColor()
+                    }
+                }
+            } else {
+                cell.shadedImageView.backgroundColor = UIColor.darkGrayColor()
+            }
+            
+            cell.primaryTextLabel.text = employee.name
+            cell.detailTextLabel.text = employee.role
+            
+            if employee.currentShift != nil {
+                cell.badgeLabel.text = "In"
+                cell.badgeLabel.badgeColor = UIColor.entreeGreenColor()
+            } else {
+                cell.badgeLabel.text = "Out"
+                cell.badgeLabel.badgeColor = UIColor.entreeRedColor()
+            }
+            
+            return cell
+        }
+        
+        return nil
+    }
     
     // MARK: - UIViewController
     
@@ -73,70 +106,21 @@ class TimeClockViewController: UICollectionViewController, THPinViewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView!.registerNib(UINib(nibName: "ShadedImageCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
-    
-        segmentedControl.addTarget(self, action: Selector("reloadData"), forControlEvents: .ValueChanged)
+        collectionView?.registerNib(UINib(nibName: "ShadedImageCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
+ 
+        segmentedControl.addTarget(self, action: Selector("loadObjects"), forControlEvents: .ValueChanged)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        reloadData()
+        loadObjects()
     }
     
-    // MARK: UICollectionViewDataSource
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return employees.count
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ShadedImageCollectionViewCell
-        
-        let employee = employeeForIndexPath(indexPath)
-        
-        // Avatar
-        
-        cell.imageView.image = nil
-        
-        if let avatar = avatarCache[employee.objectId!] {
-            cell.imageView.image = avatar
-        }
-        
-        if let avatarFile = employee.avatarFile {
-            avatarFile.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) in
-                if let imageData: NSData = data, let avatar = UIImage(data: imageData) {
-                    self.avatarCache[employee.objectId!] = avatar
-                    
-                    cell.imageView.image = avatar
-                    
-                    cell.setNeedsDisplay()
-                } else {
-                    println(error)
-                }
-            }
-        } else {
-            cell.imageView.backgroundColor = UIColor.darkGrayColor()
-        }
-        
-        cell.textLabel.text = employee.name
-        cell.detailTextLabel.text = employee.role
-        
-        if employee.currentShift != nil {
-            cell.badgeLabel.text = "In"
-            cell.badgeLabel.badgeColor = UIColor.entreeGreenColor()
-        } else {
-            cell.badgeLabel.text = "Out"
-            cell.badgeLabel.badgeColor = UIColor.entreeRedColor()
-        }
-        
-        return cell
-    }
-
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let employee = employeeForIndexPath(indexPath)
+        let employee = objectAtIndexPath(indexPath) as! Employee
         
         selectedEmployee = employee
         
@@ -154,7 +138,7 @@ class TimeClockViewController: UICollectionViewController, THPinViewControllerDe
                 employee.currentShift = shift
                 employee.saveEventually(nil)
                 
-                self.reloadData()
+                self.loadObjects()
                 
                 self.presentPinViewControllerFromCollectionViewCell(collectionView.cellForItemAtIndexPath(indexPath)!)
             })
@@ -172,11 +156,7 @@ class TimeClockViewController: UICollectionViewController, THPinViewControllerDe
     }
     
     func pinViewController(pinViewController: THPinViewController!, isPinValid pin: String!) -> Bool {
-        if let code = selectedEmployee?.pinCode {
-            return code == pin
-        }
-        
-        return false
+        return selectedEmployee?.pinCode == pin
     }
     
     func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {

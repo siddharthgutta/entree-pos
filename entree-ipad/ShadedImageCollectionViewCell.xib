@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Jessica Jones" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-ze-Ss1">
-                        <rect key="frame" x="8" y="45" width="136" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jessica Jones" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-ze-Ss1">
+                        <rect key="frame" x="8" y="44" width="136" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -66,8 +66,9 @@
             <connections>
                 <outlet property="badgeLabel" destination="AQl-cR-627" id="wLk-WX-5Fn"/>
                 <outlet property="detailTextLabel" destination="ejg-NV-2NI" id="CKs-2C-oYf"/>
-                <outlet property="imageView" destination="Ppw-AA-yLf" id="T0R-fQ-zUB"/>
-                <outlet property="textLabel" destination="b8z-ze-Ss1" id="jdE-6X-SIq"/>
+                <outlet property="primaryTextLabel" destination="b8z-ze-Ss1" id="tlB-lT-hdo"/>
+                <outlet property="shadeView" destination="LQy-3G-DjA" id="xBY-lI-vbL"/>
+                <outlet property="shadedImageView" destination="Ppw-AA-yLf" id="MhR-uW-WNh"/>
             </connections>
             <point key="canvasLocation" x="674" y="365"/>
         </collectionViewCell>

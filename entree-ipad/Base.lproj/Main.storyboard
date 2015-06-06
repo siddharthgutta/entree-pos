@@ -44,7 +44,7 @@
                     <navigationItem key="navigationItem" id="cJp-T3-1xl">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fHl-9J-QL5">
-                            <rect key="frame" x="99.5" y="7" width="401" height="30"/>
+                            <rect key="frame" x="100" y="7" width="401" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Servers" width="200"/>

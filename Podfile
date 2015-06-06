@@ -4,6 +4,7 @@
 target 'entree-ipad' do
 
 pod 'Parse'
+pod 'ParseUI'
 pod 'THPinViewController'
 
 end
