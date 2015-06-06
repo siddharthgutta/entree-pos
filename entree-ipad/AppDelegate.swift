@@ -1,21 +1,35 @@
-//
-//  AppDelegate.swift
-//  entree-ipad
-//
-//  Created by Jesse Tipton on 6/6/15.
-//  Copyright (c) 2015 Jesse Tipton. All rights reserved.
-//
 
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Parse
+        Parse.setApplicationId("siTMH1dC5Qk84JvfZ3U5xfRfKwqb5jQv4CnCQGZn", clientKey: "rKr1TeMyRNFNhx4zI4guhzk39Uap7MoHYfxdHvQo")
+        PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions) { (succeeded: Bool, error: NSError?) in
+            if succeeded {
+                println("Analytics: 👍")
+            } else {
+                println("Analytics: 👎")
+            }
+        }
+        
+        Employee.registerSubclass()
+        Menu.registerSubclass()
+        MenuCategory.registerSubclass()
+        MenuItem.registerSubclass()
+        MenuItemModifier.registerSubclass()
+        Order.registerSubclass()
+        Party.registerSubclass()
+        Restaurant.registerSubclass()
+        Shift.registerSubclass()
+        Table.registerSubclass()
+        Ticket.registerSubclass()
+        
         return true
     }
 
