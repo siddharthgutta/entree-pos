@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Table.registerSubclass()
         Ticket.registerSubclass()
         
+        // UIAppearance
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+        
         return true
     }
 
