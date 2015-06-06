@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */; };
-		32C4B5F11B238E5B0062B854 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B5F01B238E5B0062B854 /* ViewController.swift */; };
 		32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F21B238E5B0062B854 /* Main.storyboard */; };
 		32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F51B238E5B0062B854 /* Images.xcassets */; };
 		32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */; };
@@ -23,6 +22,13 @@
 		32C4B6291B2399480062B854 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6281B2399480062B854 /* Party.swift */; };
 		32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B62A1B239A3E0062B854 /* Shift.swift */; };
 		32C4B62D1B239AA30062B854 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B62C1B239AA30062B854 /* Table.swift */; };
+		32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */; };
+		32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */; };
+		32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */; };
+		32C4B6351B239E530062B854 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6341B239E530062B854 /* Extensions.swift */; };
+		32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */; };
+		32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */; };
+		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +37,6 @@
 		32C4B5E91B238E5B0062B854 /* entree-ipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-ipad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C4B5ED1B238E5B0062B854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32C4B5F01B238E5B0062B854 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32C4B5F31B238E5B0062B854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32C4B5F51B238E5B0062B854 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32C4B5F81B238E5B0062B854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -47,6 +52,13 @@
 		32C4B6281B2399480062B854 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		32C4B62A1B239A3E0062B854 /* Shift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		32C4B62C1B239AA30062B854 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeClockViewController.swift; sourceTree = "<group>"; };
+		32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerMapViewController.swift; sourceTree = "<group>"; };
+		32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockViewController.swift; sourceTree = "<group>"; };
+		32C4B6341B239E530062B854 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShadedImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		75D0BE66DB08D81459735D35 /* Pods-entree-ipad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.debug.xcconfig"; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,7 +135,9 @@
 		32C4B60F1B238EC50062B854 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				32C4B5F01B238E5B0062B854 /* ViewController.swift */,
+				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
+				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
+				32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -131,6 +145,9 @@
 		32C4B6101B238EC60062B854 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
+				32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */,
+				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -157,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */,
+				32C4B6341B239E530062B854 /* Extensions.swift */,
 				32C4B6171B23927F0062B854 /* entree-ipad-Bridging-Header.h */,
 			);
 			name = Application;
@@ -249,6 +267,7 @@
 				32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */,
 				32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */,
 				32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */,
+				32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,17 +311,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
 				32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */,
+				32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */,
 				32C4B6291B2399480062B854 /* Party.swift in Sources */,
-				32C4B5F11B238E5B0062B854 /* ViewController.swift in Sources */,
 				32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */,
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
+				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
+				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
 				32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */,
+				32C4B6351B239E530062B854 /* Extensions.swift in Sources */,
 				32C4B62D1B239AA30062B854 /* Table.swift in Sources */,
 				32C4B6271B23973D0062B854 /* Ticket.swift in Sources */,
+				32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */,
 				32C4B61D1B2394DB0062B854 /* Menu.swift in Sources */,
 			);

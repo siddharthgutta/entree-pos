@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShadedImageCollectionViewCell" customModule="entree_ipad" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jessica" translatesAutoresizingMaskIntoConstraints="NO" id="Ppw-AA-yLf">
+                        <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+                    </imageView>
+                    <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-3G-DjA">
+                        <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Jessica Jones" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-ze-Ss1">
+                        <rect key="frame" x="8" y="45" width="136" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Active Tables" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-NV-2NI">
+                        <rect key="frame" x="8" y="65" width="136" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQl-cR-627" customClass="BadgeLabel" customModule="entree_ipad" customModuleProvider="target">
+                        <rect key="frame" x="69" y="94" width="14" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="badgeColor">
+                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ejg-NV-2NI" secondAttribute="trailing" constant="8" id="29U-EO-DCr"/>
+                <constraint firstAttribute="bottom" secondItem="Ppw-AA-yLf" secondAttribute="bottom" id="2Iv-Z5-aof"/>
+                <constraint firstAttribute="trailing" secondItem="LQy-3G-DjA" secondAttribute="trailing" id="5X7-iX-1BN"/>
+                <constraint firstAttribute="centerY" secondItem="ejg-NV-2NI" secondAttribute="centerY" id="Bct-HC-ZBc"/>
+                <constraint firstAttribute="centerX" secondItem="AQl-cR-627" secondAttribute="centerX" id="IkO-hJ-Hwq"/>
+                <constraint firstAttribute="bottom" secondItem="LQy-3G-DjA" secondAttribute="bottom" id="PTy-g1-UfE"/>
+                <constraint firstAttribute="trailing" secondItem="Ppw-AA-yLf" secondAttribute="trailing" id="QOW-TF-cJn"/>
+                <constraint firstItem="ejg-NV-2NI" firstAttribute="top" secondItem="b8z-ze-Ss1" secondAttribute="bottom" id="Vec-tj-qm4"/>
+                <constraint firstItem="ejg-NV-2NI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Wdr-NT-dgV"/>
+                <constraint firstItem="b8z-ze-Ss1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="XYt-Pl-bUz"/>
+                <constraint firstAttribute="trailing" secondItem="b8z-ze-Ss1" secondAttribute="trailing" constant="8" id="YOQ-3y-o9s"/>
+                <constraint firstItem="Ppw-AA-yLf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="abZ-yI-kwE"/>
+                <constraint firstItem="AQl-cR-627" firstAttribute="top" secondItem="ejg-NV-2NI" secondAttribute="bottom" constant="8" id="bjQ-e6-cco"/>
+                <constraint firstItem="Ppw-AA-yLf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="f8f-6g-dgb"/>
+                <constraint firstItem="LQy-3G-DjA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pq0-pW-fez"/>
+                <constraint firstItem="LQy-3G-DjA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zFf-DD-dzb"/>
+            </constraints>
+            <connections>
+                <outlet property="badgeLabel" destination="AQl-cR-627" id="wLk-WX-5Fn"/>
+                <outlet property="detailTextLabel" destination="ejg-NV-2NI" id="CKs-2C-oYf"/>
+                <outlet property="imageView" destination="Ppw-AA-yLf" id="T0R-fQ-zUB"/>
+                <outlet property="textLabel" destination="b8z-ze-Ss1" id="jdE-6X-SIq"/>
+            </connections>
+            <point key="canvasLocation" x="674" y="365"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Jessica" width="493" height="493"/>
+    </resources>
+</document>
