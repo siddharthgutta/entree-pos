@@ -26,7 +26,7 @@ class EmployeeClockViewController: UIViewController {
 
     var timer: NSTimer?
     
-    // MARK: - MeViewController
+    // MARK: - EmployeeClockViewController
     
     func updateView() {
         let startedAt = employee.currentShift!.startedAt
