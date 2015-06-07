@@ -3,27 +3,30 @@ import UIKit
 
 class EmployeeClockViewController: UIViewController {
 
-    var employee: Employee!
-    
     @IBAction func clockOut(sender: UIButton) {
         let shift = employee.currentShift!
         shift.endedAt = NSDate()
-        shift.saveEventually(nil)
         
         employee.currentShift = nil
-        employee.saveEventually(nil)
         
-        switchServers(sender)
+        PFObject.saveAllInBackground([shift, employee]) { (succeeded: Bool, error: NSError?) in
+            if succeeded {
+                self.switchServers(sender)
+            } else {
+                fatalError(error!.localizedDescription)
+            }
+        }
     }
     
     @IBAction func switchServers(sender: UIButton) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController!.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBOutlet var naturalLanguageTimerLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
 
+    var employee: Employee!
     var timer: NSTimer?
     
     // MARK: - EmployeeClockViewController
