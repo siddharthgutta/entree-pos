@@ -11,6 +11,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HS4-Rz-CP0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.078431372549019607" green="0.47450980392156861" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
@@ -43,6 +44,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="cJp-T3-1xl">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="2ux-6m-Qbq"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fHl-9J-QL5">
                             <rect key="frame" x="100" y="7" width="401" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -159,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="3651" y="-211"/>
         </scene>
-        <!--John Appleseed – 2 Active Tables-->
+        <!--John Appleseed – 2 active tables-->
         <scene sceneID="ovx-G1-8GL">
             <objects>
                 <viewController id="PqT-TU-alo" customClass="ServerMapViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
@@ -170,10 +172,21 @@
                     <view key="view" contentMode="scaleToFill" id="RdO-TB-Fsx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l51-Yp-rlz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R1E-ad-uch" firstAttribute="top" secondItem="l51-Yp-rlz" secondAttribute="bottom" id="Sgn-uj-pac"/>
+                            <constraint firstItem="l51-Yp-rlz" firstAttribute="leading" secondItem="RdO-TB-Fsx" secondAttribute="leading" id="WAv-ZJ-veI"/>
+                            <constraint firstItem="l51-Yp-rlz" firstAttribute="top" secondItem="RdO-TB-Fsx" secondAttribute="top" id="hQJ-0e-cc9"/>
+                            <constraint firstAttribute="trailing" secondItem="l51-Yp-rlz" secondAttribute="trailing" id="iX8-08-PlD"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="John Appleseed – 2 Active Tables" id="YFv-ev-1Og">
-                        <barButtonItem key="leftBarButtonItem" title="Me" id="Mrc-se-qI4">
+                    <navigationItem key="navigationItem" title="John Appleseed – 2 active tables" id="YFv-ev-1Og">
+                        <barButtonItem key="leftBarButtonItem" title="Employee" id="Mrc-se-qI4">
                             <connections>
                                 <segue destination="xkW-c9-KQX" kind="popoverPresentation" identifier="EmployeeClock" popoverAnchorBarButtonItem="Mrc-se-qI4" id="hl9-ko-tZh">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
@@ -182,6 +195,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Date" id="HMV-ya-CQP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="l51-Yp-rlz" id="hle-6e-LpN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGj-cl-aOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
