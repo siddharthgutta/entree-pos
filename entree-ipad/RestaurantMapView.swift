@@ -10,7 +10,7 @@ protocol RestaurantMapViewDataSource {
 
 protocol RestaurantMapViewDelegate {
     
-    func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex: Int)
+    func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex index: Int)
     
 }
 
@@ -27,8 +27,9 @@ class RestaurantMapView: UIView {
         if let numberOfTables = dataSource?.numberOfTablesForRestaurantMapView(self) {
             for index in 0..<numberOfTables {
                 if let table = dataSource?.restaurantMapView(self, tableAtIndex: index) {
-                    let imageView = UIImageView()
-                    
+                    let imageView = UIImageView(frame: CGRectMake(CGFloat(table.x), CGFloat(table.y), 64, 64))
+                    imageView.backgroundColor = UIColor.blackColor()
+                    addSubview(imageView)
                 }
             }
         }
