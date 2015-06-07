@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EFD311B23CB34002437A7 /* RestaurantMapView.swift */; };
 		32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */; };
 		32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F21B238E5B0062B854 /* Main.storyboard */; };
 		32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F51B238E5B0062B854 /* Images.xcassets */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		300B06ED202C70114359DB32 /* libPods-entree-ipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-ipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		323EFD311B23CB34002437A7 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		32C4B5E91B238E5B0062B854 /* entree-ipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-ipad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C4B5ED1B238E5B0062B854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
+				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
 				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
 			);
 			name = Views;
@@ -318,6 +321,7 @@
 				32C4B6291B2399480062B854 /* Party.swift in Sources */,
 				32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */,
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
+				323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
