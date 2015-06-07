@@ -44,6 +44,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             query.whereKey("role", notEqualTo: "Server")
         }
         
+        query.whereKey("restaurant", equalTo: Restaurant.sharedRestaurant())
+        
         return query
     }
     
