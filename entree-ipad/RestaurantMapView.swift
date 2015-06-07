@@ -27,10 +27,16 @@ class RestaurantMapView: UIView {
         if let numberOfTables = dataSource?.numberOfTablesForRestaurantMapView(self) {
             for index in 0..<numberOfTables {
                 if let table = dataSource?.restaurantMapView(self, tableAtIndex: index) {
-                    let imageView = UIImageView(frame: CGRectMake(CGFloat(table.x), CGFloat(table.y), 64, 64))
-                    imageView.backgroundColor = table.occupied ? UIColor.entreeBlueColor() : UIColor.entreeGreenColor()
+                    let status = table.occupied ? "Occupied" : "Available"
+                    
+                    let image = UIImage(named: "Table-\(table.type)-\(status)")!
+                    
+                    let imageView = UIImageView(frame: CGRectMake(CGFloat(table.x), CGFloat(table.y), image.size.width, image.size.height))
+                    imageView.image = image
                     imageView.userInteractionEnabled = true
+                    
                     imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("subviewTapped:")))
+                    
                     addSubview(imageView)
                 }
             }
