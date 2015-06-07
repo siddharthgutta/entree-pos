@@ -36,6 +36,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     override func queryForCollection() -> PFQuery {
         let query = Employee.query()!
         
+        query.includeKey("currentShift")
+        
         query.orderByAscending("name")
         
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -160,9 +162,13 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             
             selectedEmployee.currentShift = shift
             
-            PFObject.saveAll([shift, selectedEmployee])
-            
-            loadObjects()
+            PFObject.saveAllInBackground([shift, selectedEmployee]) { (succeeded: Bool, error: NSError?) in
+                if succeeded {
+                    self.loadObjects()
+                } else {
+                    fatalError(error!.description)
+                }
+            }
         }
     }
     
