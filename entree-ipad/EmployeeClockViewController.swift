@@ -4,12 +4,12 @@ import UIKit
 class EmployeeClockViewController: UIViewController {
 
     @IBAction func clockOut(sender: UIButton) {
-        let shift = employee.currentShift!
+        let shift = employee!.currentShift!
         shift.endedAt = NSDate()
         
-        employee.currentShift = nil
+        employee!.currentShift = nil
         
-        PFObject.saveAllInBackground([shift, employee]) { (succeeded: Bool, error: NSError?) in
+        PFObject.saveAllInBackground([shift, employee!]) { (succeeded: Bool, error: NSError?) in
             if succeeded {
                 self.switchServers(sender)
             } else {
@@ -26,24 +26,24 @@ class EmployeeClockViewController: UIViewController {
     @IBOutlet var naturalLanguageTimerLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
 
-    var employee: Employee!
+    var employee: Employee?
     var timer: NSTimer?
     
     // MARK: - EmployeeClockViewController
     
-    func updateView() {
-        let startedAt = employee.currentShift!.startedAt
-        
-        let unitFlags = NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
-        let components = NSCalendar.currentCalendar().components(unitFlags, fromDate: startedAt, toDate: NSDate(), options: nil)
-        
-        let dateComponentsFormatter = NSDateComponentsFormatter()
-        dateComponentsFormatter.unitsStyle = .Full
-        
-        naturalLanguageTimerLabel.text = "You have been clocked-in for " + dateComponentsFormatter.stringFromDateComponents(components)!
-        
-        dateComponentsFormatter.unitsStyle = .Positional
-        timerLabel.text = dateComponentsFormatter.stringFromDateComponents(components)!
+    func update() {
+        if let shift = employee?.currentShift {
+            let timeInterval = NSDate().timeIntervalSinceDate(shift.startedAt)
+            
+            let dateComponentsFormatter = NSDateComponentsFormatter()
+            dateComponentsFormatter.unitsStyle = .Full
+            
+            naturalLanguageTimerLabel.text = "You have been clocked-in for " + dateComponentsFormatter.stringFromTimeInterval(timeInterval)!
+            
+            dateComponentsFormatter.unitsStyle = .Positional
+            
+            timerLabel.text = dateComponentsFormatter.stringFromTimeInterval(timeInterval)!
+        }
     }
     
     // MARK: - UIViewController
@@ -51,11 +51,13 @@ class EmployeeClockViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        timer = NSTimer(timeInterval: 1, target: self, selector: Selector("updateView"), userInfo: nil, repeats: true)
+        update()
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
     }
     
     override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(true)
+        super.viewDidDisappear(animated)
         
         timer = nil
     }
