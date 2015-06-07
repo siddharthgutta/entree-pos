@@ -2,6 +2,7 @@
 class Ticket: PFObject, PFSubclassing {
     
     @NSManaged var cardFlightChargeToken: String
+    @NSManaged var cardLastFour: String
     @NSManaged var paid: Bool
     @NSManaged var party: Party
     @NSManaged var paymentType: String
