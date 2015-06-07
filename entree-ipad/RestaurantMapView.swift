@@ -28,11 +28,18 @@ class RestaurantMapView: UIView {
             for index in 0..<numberOfTables {
                 if let table = dataSource?.restaurantMapView(self, tableAtIndex: index) {
                     let imageView = UIImageView(frame: CGRectMake(CGFloat(table.x), CGFloat(table.y), 64, 64))
-                    imageView.backgroundColor = UIColor.blackColor()
+                    imageView.backgroundColor = table.occupied ? UIColor.entreeBlueColor() : UIColor.entreeGreenColor()
+                    imageView.userInteractionEnabled = true
+                    imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("subviewTapped:")))
                     addSubview(imageView)
                 }
             }
         }
+    }
+    
+    func subviewTapped(gestureRecognizer: UIGestureRecognizer) {
+        let index = find(subviews as! [UIView], gestureRecognizer.view!)!
+        delegate?.restaurantMapView(self, tappedTableAtIndex: index)
     }
     
 }
