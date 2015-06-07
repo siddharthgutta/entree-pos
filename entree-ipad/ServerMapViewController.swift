@@ -65,7 +65,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         
         restaurantMapView.dataSource = self
         restaurantMapView.delegate = self
-        restaurantMapView.bounds.size = CGSizeMake(3000, 3000)
+        restaurantMapView.bounds.size = CGSizeMake(600, 600)
         
         scrollView.addSubview(restaurantMapView)
         
