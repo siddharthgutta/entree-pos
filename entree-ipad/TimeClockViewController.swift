@@ -110,6 +110,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // TODO: Figure out if this should be unwrapped or not by convention
         collectionView?.registerNib(UINib(nibName: "ShadedImageCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
  
         segmentedControl.addTarget(self, action: Selector("loadObjects"), forControlEvents: .ValueChanged)
