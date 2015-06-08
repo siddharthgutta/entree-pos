@@ -27,6 +27,8 @@
 		32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */; };
 		32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */; };
 		32C4B6351B239E530062B854 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6341B239E530062B854 /* Extensions.swift */; };
+		32C541371B2516BB002465C4 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C541361B2516BB002465C4 /* PartyViewController.swift */; };
+		32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C5413A1B25192F002465C4 /* TicketHeaderView.swift */; };
 		32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */; };
 		32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */; };
 		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
@@ -58,6 +60,8 @@
 		32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerMapViewController.swift; sourceTree = "<group>"; };
 		32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockViewController.swift; sourceTree = "<group>"; };
 		32C4B6341B239E530062B854 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		32C541361B2516BB002465C4 /* PartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
+		32C5413A1B25192F002465C4 /* TicketHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketHeaderView.swift; sourceTree = "<group>"; };
 		32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShadedImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
+				32C541361B2516BB002465C4 /* PartyViewController.swift */,
 				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
 				32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */,
 			);
@@ -150,6 +155,7 @@
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
 				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
 				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
+				32C5413A1B25192F002465C4 /* TicketHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -323,6 +329,7 @@
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
 				323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
+				32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
@@ -333,6 +340,7 @@
 				32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */,
 				32C4B61D1B2394DB0062B854 /* Menu.swift in Sources */,
+				32C541371B2516BB002465C4 /* PartyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -161,6 +161,72 @@
             </objects>
             <point key="canvasLocation" x="3651" y="-211"/>
         </scene>
+        <!--Party View Controller-->
+        <scene sceneID="HS1-XS-Jiw">
+            <objects>
+                <tableViewController id="3kM-AR-eQb" customClass="PartyViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ykV-P8-7i0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="kHw-Fw-ISD">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seated for 23 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-h5-BZe">
+                                    <rect key="frame" x="193" y="64" width="215" height="20"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 1 – Appleseed party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4H-Gn-sVd">
+                                    <rect key="frame" x="172" y="36" width="256" height="20"/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="j3a-h5-BZe" firstAttribute="top" secondItem="y4H-Gn-sVd" secondAttribute="bottom" constant="8" id="0Tg-im-D3n"/>
+                                <constraint firstAttribute="bottom" secondItem="j3a-h5-BZe" secondAttribute="bottom" constant="16" id="MMv-wT-Pet"/>
+                                <constraint firstAttribute="centerX" secondItem="y4H-Gn-sVd" secondAttribute="centerX" id="PRE-UN-gtN"/>
+                                <constraint firstItem="y4H-Gn-sVd" firstAttribute="top" secondItem="kHw-Fw-ISD" secondAttribute="top" constant="36" id="YvG-NC-uhf"/>
+                                <constraint firstAttribute="centerX" secondItem="j3a-h5-BZe" secondAttribute="centerX" id="lPM-qS-MSW"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="Cell" textLabel="aYI-Bg-ejZ" detailTextLabel="Fmd-AE-c3P" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="Xud-0y-yIb">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xud-0y-yIb" id="OGR-hZ-7qM">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Roasted Mary's Chicken [$16.00]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aYI-Bg-ejZ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Seat 1 – Extra mushrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmd-AE-c3P">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3kM-AR-eQb" id="zFP-gC-JEt"/>
+                            <outlet property="delegate" destination="3kM-AR-eQb" id="EBt-Gm-hum"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yJk-Py-8uc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3708" y="514"/>
+        </scene>
         <!--John Appleseed – 2 active tables-->
         <scene sceneID="ovx-G1-8GL">
             <objects>
@@ -200,6 +266,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="l51-Yp-rlz" id="hle-6e-LpN"/>
+                        <segue destination="3kM-AR-eQb" kind="presentation" identifier="Party" modalPresentationStyle="pageSheet" id="dd0-XN-Ojq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGj-cl-aOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
