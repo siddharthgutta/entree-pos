@@ -96,6 +96,24 @@ class PartyViewController: UITableViewController {
         return ordersForTicket(tickets[section]).count
     }
     
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let ticket = tickets[section]
+        
+        let ticketHeaderView = TicketHeaderView()
+        
+        ticketHeaderView.textLabel.text = "Ticket \(ticket.objectId!)"
+        
+        let subtotal = ordersForTicket(ticket).map { $0.menuItem.price }.reduce(0, combine: +)
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = .CurrencyStyle
+        let subtotalString = numberFormatter.stringFromNumber(NSNumber(double: subtotal))
+        ticketHeaderView.detailLabel.text = "Subtotal: $\(subtotalString)"
+        
+        // TODO: Give the payButton a title
+        
+        return ticketHeaderView
+    }
+    
     // MARK: - UITableViewDelegate
 
 }
