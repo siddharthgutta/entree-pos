@@ -108,7 +108,11 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     // MARK: - RestaurantMapViewDelegate
     
     func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex index: Int) {
-        performSegueWithIdentifier("Party", sender: tables[index].currentParty)
+        if let party = tables[index].currentParty {
+            performSegueWithIdentifier("Party", sender: party)
+        } else {
+            // TODO: Add handling for when a table is not occupied (Currently always :P)
+        }
     }
     
     // MARK: - UIScrollViewDelegate
