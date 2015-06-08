@@ -1,15 +1,9 @@
 
 class Ticket: PFObject, PFSubclassing {
     
-    @NSManaged var cardFlightChargeToken: String
-    @NSManaged var cardLastFour: String
-    @NSManaged var paid: Bool
     @NSManaged var party: Party
-    @NSManaged var paymentType: String
-    @NSManaged var restaurant: Restaurant
-    @NSManaged var tax: Double
-    @NSManaged var total: Double
-    
+    @NSManaged var payment: Payment
+
     static func parseClassName() -> String {
         return "Ticket"
     }

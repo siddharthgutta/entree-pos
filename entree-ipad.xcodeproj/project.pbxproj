@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EFD311B23CB34002437A7 /* RestaurantMapView.swift */; };
+		3265AE791B25571C0000D6B1 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265AE781B25571C0000D6B1 /* Payment.swift */; };
 		32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */; };
 		32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F21B238E5B0062B854 /* Main.storyboard */; };
 		32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F51B238E5B0062B854 /* Images.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		300B06ED202C70114359DB32 /* libPods-entree-ipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-ipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		323EFD311B23CB34002437A7 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
+		3265AE781B25571C0000D6B1 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		32C4B5E91B238E5B0062B854 /* entree-ipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-ipad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C4B5ED1B238E5B0062B854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				32C4B6221B23967D0062B854 /* MenuItemModifier.swift */,
 				32C4B6241B2396B30062B854 /* Order.swift */,
 				32C4B6281B2399480062B854 /* Party.swift */,
+				3265AE781B25571C0000D6B1 /* Payment.swift */,
 				32C4B61A1B2393650062B854 /* Restaurant.swift */,
 				32C4B62A1B239A3E0062B854 /* Shift.swift */,
 				32C4B62C1B239AA30062B854 /* Table.swift */,
@@ -334,6 +337,7 @@
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
 				32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */,
+				3265AE791B25571C0000D6B1 /* Payment.swift in Sources */,
 				32C4B6351B239E530062B854 /* Extensions.swift in Sources */,
 				32C4B62D1B239AA30062B854 /* Table.swift in Sources */,
 				32C4B6271B23973D0062B854 /* Ticket.swift in Sources */,
