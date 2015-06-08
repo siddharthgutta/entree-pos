@@ -39,6 +39,9 @@ class PartyViewController: UITableViewController {
                         return true
                     }
                 }
+                self.tickets.sort { (first: Ticket, second: Ticket) -> Bool in
+                    return first.createdAt!.timeIntervalSince1970 < second.createdAt!.timeIntervalSince1970
+                }
                 
                 self.tableView.reloadData()
             } else {
