@@ -5,6 +5,7 @@ target 'entree-ipad' do
 
 pod 'Parse'
 pod 'ParseUI'
+pod 'CardFlight'
 pod 'THPinViewController'
 
 end

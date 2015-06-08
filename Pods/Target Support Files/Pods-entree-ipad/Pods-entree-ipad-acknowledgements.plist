@@ -51,6 +51,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2015 Cardflight, Inc. All rights reserved.</string>
+			<key>Title</key>
+			<string>CardFlight</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>See https://www.parse.com/about/terms</string>
 			<key>Title</key>
 			<string>Parse</string>
