@@ -55,6 +55,10 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             if let employeeClockViewController = segue.destinationViewController as? EmployeeClockViewController {
                 employeeClockViewController.employee = employee
             }
+        case "Party":
+            if let partyViewController = segue.destinationViewController as? PartyViewController {
+                partyViewController.party = sender as! Party
+            }
         default:
             fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
         }
@@ -104,8 +108,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     // MARK: - RestaurantMapViewDelegate
     
     func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex index: Int) {
-        let table = tables[index]
-        println(table)
+        performSegueWithIdentifier("Party", sender: tables[index].currentParty)
     }
     
     // MARK: - UIScrollViewDelegate
