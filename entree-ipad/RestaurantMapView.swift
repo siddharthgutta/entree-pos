@@ -27,7 +27,7 @@ class RestaurantMapView: UIView {
         if let numberOfTables = dataSource?.numberOfTablesForRestaurantMapView(self) {
             for index in 0..<numberOfTables {
                 if let table = dataSource?.restaurantMapView(self, tableAtIndex: index) {
-                    let status = table.occupied ? "Occupied" : "Available"
+                    let status = table.currentParty != nil ? "Occupied" : "Available"
                     
                     let image = UIImage(named: "Table-\(table.type)-\(status)")!
                     
