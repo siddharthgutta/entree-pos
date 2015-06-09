@@ -5,6 +5,8 @@ class PartyViewController: UITableViewController {
     
     var orders = [Order]()
     var party: Party!
+
+    /*
     var tickets = [Ticket]()
 
     // MARK: - PartyViewController
@@ -115,5 +117,5 @@ class PartyViewController: UITableViewController {
     }
     
     // MARK: - UITableViewDelegate
-
+    */
 }
