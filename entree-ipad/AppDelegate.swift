@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restaurant.registerSubclass()
         Shift.registerSubclass()
         Table.registerSubclass()
-        Ticket.registerSubclass()
         
         // UIAppearance
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
