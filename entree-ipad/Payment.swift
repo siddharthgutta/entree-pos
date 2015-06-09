@@ -4,6 +4,7 @@ class Payment: PFObject, PFSubclassing {
     @NSManaged var cardFlightChargeToken: String
     @NSManaged var cardLastFour: String
     @NSManaged var cardName: String
+    @NSManaged var orders: PFRelation
     @NSManaged var subtotal: Double
     @NSManaged var tax: Double
     @NSManaged var tip: Double
