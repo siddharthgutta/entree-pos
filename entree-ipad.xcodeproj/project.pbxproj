@@ -15,7 +15,6 @@
 		32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */; };
 		32C4B6161B2392490062B854 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6151B2392490062B854 /* Employee.swift */; };
 		32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B61A1B2393650062B854 /* Restaurant.swift */; };
-		32C4B61D1B2394DB0062B854 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B61C1B2394DB0062B854 /* Menu.swift */; };
 		32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B61E1B23953F0062B854 /* MenuCategory.swift */; };
 		32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6201B2395A30062B854 /* MenuItem.swift */; };
 		32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6221B23967D0062B854 /* MenuItemModifier.swift */; };
@@ -48,7 +47,6 @@
 		32C4B6151B2392490062B854 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		32C4B6171B23927F0062B854 /* entree-ipad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "entree-ipad-Bridging-Header.h"; sourceTree = "<group>"; };
 		32C4B61A1B2393650062B854 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		32C4B61C1B2394DB0062B854 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		32C4B61E1B23953F0062B854 /* MenuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
 		32C4B6201B2395A30062B854 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		32C4B6221B23967D0062B854 /* MenuItemModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifier.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				32C4B6151B2392490062B854 /* Employee.swift */,
-				32C4B61C1B2394DB0062B854 /* Menu.swift */,
 				32C4B61E1B23953F0062B854 /* MenuCategory.swift */,
 				32C4B6201B2395A30062B854 /* MenuItem.swift */,
 				32C4B6221B23967D0062B854 /* MenuItemModifier.swift */,
@@ -339,7 +336,6 @@
 				32C4B62D1B239AA30062B854 /* Table.swift in Sources */,
 				32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */,
-				32C4B61D1B2394DB0062B854 /* Menu.swift in Sources */,
 				32C541371B2516BB002465C4 /* PartyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
