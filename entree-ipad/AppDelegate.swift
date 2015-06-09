@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MenuItemModifier.registerSubclass()
         Order.registerSubclass()
         Party.registerSubclass()
+        Payment.registerSubclass()
         Restaurant.registerSubclass()
         Shift.registerSubclass()
         Table.registerSubclass()
