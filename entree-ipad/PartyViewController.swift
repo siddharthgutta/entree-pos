@@ -30,7 +30,7 @@ class PartyViewController: PFQueryTableViewController {
         
         super.init(coder: aDecoder)
         
-        let ordersFooterView = OrdersFooterView()
+        let ordersFooterView = PartyFooterView()
         
         // tableView.tableFooterView =  OrdersFooterView()
     }
