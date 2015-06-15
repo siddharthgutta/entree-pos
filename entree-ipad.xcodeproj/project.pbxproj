@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		320279431B2C89E200867554 /* OrdersFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320279421B2C89E200867554 /* OrdersFooterView.swift */; };
+		320279431B2C89E200867554 /* PartyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320279421B2C89E200867554 /* PartyFooterView.swift */; };
 		320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */; };
 		323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EFD311B23CB34002437A7 /* RestaurantMapView.swift */; };
 		3265AE791B25571C0000D6B1 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265AE781B25571C0000D6B1 /* Payment.swift */; };
@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		300B06ED202C70114359DB32 /* libPods-entree-ipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-ipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		320279421B2C89E200867554 /* OrdersFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersFooterView.swift; sourceTree = "<group>"; };
+		320279421B2C89E200867554 /* PartyFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyFooterView.swift; sourceTree = "<group>"; };
 		320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoriesViewController.swift; sourceTree = "<group>"; };
 		323EFD311B23CB34002437A7 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		3265AE781B25571C0000D6B1 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
-				320279421B2C89E200867554 /* OrdersFooterView.swift */,
+				320279421B2C89E200867554 /* PartyFooterView.swift */,
 				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
 				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
 				32C5413A1B25192F002465C4 /* TicketHeaderView.swift */,
@@ -343,7 +343,7 @@
 				32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */,
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
 				323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */,
-				320279431B2C89E200867554 /* OrdersFooterView.swift in Sources */,
+				320279431B2C89E200867554 /* PartyFooterView.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
 				32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
