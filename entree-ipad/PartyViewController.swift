@@ -1,65 +1,61 @@
 
 import UIKit
 
-class PartyViewController: UITableViewController {
+class PartyViewController: PFQueryTableViewController {
     
-    var orders = [Order]()
+    @IBAction func dismiss(sender: UIBarButtonItem) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    var numberOfSeats: Int {
+        var greatest = 0
+        for order in orders {
+            if order.seat > greatest {
+                greatest = order.seat
+            }
+        }
+        return greatest + 1
+    }
+    var orders: [Order] {
+        return self.objects! as! [Order]
+    }
     var party: Party!
+    
+    let numberFormatter = NSNumberFormatter()
 
-    /*
-    var tickets = [Ticket]()
-
+    // MARK: - Initializer
+    
+    required init(coder aDecoder: NSCoder) {
+        numberFormatter.numberStyle = .CurrencyStyle
+        
+        super.init(coder: aDecoder)
+        
+        let ordersFooterView = OrdersFooterView()
+        
+        // tableView.tableFooterView =  OrdersFooterView()
+    }
+    
     // MARK: - PartyViewController
     
-    private func loadOrders() {
+    func ordersForSection(section: Int) -> [Order] {
+        return orders.filter { (order: Order) -> Bool in
+            return order.seat == section
+        }
+    }
+    
+    // MARK: - PFQueryTableViewController
+    
+    override func queryForTable() -> PFQuery {
         let query = Order.query()!
         query.limit = 1000
         
         query.includeKey("menuItem")
-        query.includeKey("ticket")
+
+        query.orderByAscending("createdAt")
         
-        let innerQuery = Ticket.query()!
-        innerQuery.whereKey("party", equalTo: party)
-        innerQuery.whereKey("restaurant", equalTo: Restaurant.sharedRestaurant())
+        query.whereKey("party", equalTo: party)
         
-        query.whereKey("ticket", matchesQuery: innerQuery)
-        
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
-            if let orders = objects as? [Order] {
-                self.orders = orders
-                
-                self.tickets.removeAll(keepCapacity: false)
-                for order in orders {
-                    self.tickets.append(order.ticket)
-                }
-                var ticketObjectIdToExistsMap = [String: Bool]()
-                self.tickets = self.tickets.filter { (ticket: Ticket) -> Bool in
-                    if ticketObjectIdToExistsMap[ticket.objectId!] == true {
-                        return false
-                    } else {
-                        ticketObjectIdToExistsMap[ticket.objectId!] = true
-                        return true
-                    }
-                }
-                self.tickets.sort { (first: Ticket, second: Ticket) -> Bool in
-                    return first.createdAt!.timeIntervalSince1970 < second.createdAt!.timeIntervalSince1970
-                }
-                
-                self.tableView.reloadData()
-            } else {
-                fatalError(error!.localizedDescription)
-            }
-        }
-    }
-    
-    private func orderAtIndexPath(indexPath: NSIndexPath) -> Order {
-        return ordersForTicket(tickets[indexPath.section])[indexPath.row]
-    }
-    
-    private func ordersForTicket(ticket: Ticket) -> [Order] {
-        return orders.filter { (order: Order) -> Bool in
-            return order.ticket.objectId! == ticket.objectId!
-        }
+        return query
     }
     
     // MARK: - UIViewController
@@ -67,55 +63,33 @@ class PartyViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadOrders()
+        navigationItem.title = party.table.name
     }
     
     // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return tickets.count
+        return numberOfSeats
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        let order = orderAtIndexPath(indexPath)
+        let order = objectAtIndexPath(indexPath)! as! Order
         
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = .CurrencyStyle
-        let price = numberFormatter.stringFromNumber(NSNumber(double: order.menuItem.price))
-        cell.textLabel!.text = "\(order.menuItem.name) [$\(price)]"
-        if order.seat == 0 {
-            cell.detailTextLabel!.text = order.notes
-        } else {
-            cell.detailTextLabel!.text = "Seat \(order.seat) – \(order.notes)"
-        }
+        let price = numberFormatter.stringFromNumber(NSNumber(double: order.menuItem.price))!
+        cell.textLabel!.text = "\(order.menuItem.name) [\(price)]"
+        cell.detailTextLabel!.text = order.notes
         
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ordersForTicket(tickets[section]).count
+        return ordersForSection(section).count
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let ticket = tickets[section]
-        
-        let ticketHeaderView = TicketHeaderView()
-        
-        ticketHeaderView.textLabel.text = "Ticket \(ticket.objectId!)"
-        
-        let subtotal = ordersForTicket(ticket).map { $0.menuItem.price }.reduce(0, combine: +)
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = .CurrencyStyle
-        let subtotalString = numberFormatter.stringFromNumber(NSNumber(double: subtotal))
-        ticketHeaderView.detailLabel.text = "Subtotal: $\(subtotalString)"
-        
-        // TODO: Give the payButton a title
-        
-        return ticketHeaderView
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? nil : "Seat \(section)"
     }
     
-    // MARK: - UITableViewDelegate
-    */
 }
