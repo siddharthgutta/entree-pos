@@ -114,7 +114,26 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         if let party = tables[index].currentParty {
             performSegueWithIdentifier("Party", sender: party)
         } else {
-            // TODO: Add handling for when a table is not occupied (Currently always :P)
+            let createPartyAlertController = UIAlertController(title: "Create Party?", message: nil, preferredStyle: .Alert)
+            
+            createPartyAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            createPartyAlertController.addAction(UIAlertAction(title: "Create", style: .Default) { (action: UIAlertAction!) in
+                let party = Party()
+                party.arrivedAt = NSDate()
+                party.name = ""
+                party.restaurant = Restaurant.sharedRestaurant()
+                party.seatedAt = NSDate()
+                party.server = self.employee
+                party.table = self.tables[index]
+                
+                self.tables[index].currentParty = party
+                
+                PFObject.saveAllInBackground([party, self.tables[index]]) { (succeeded: Bool, error: NSError?) in
+                    self.loadTables()
+                }
+            })
+            
+            presentViewController(createPartyAlertController, animated: true, completion: nil)
         }
     }
     
