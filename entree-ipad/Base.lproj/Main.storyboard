@@ -46,7 +46,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="2ux-6m-Qbq"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fHl-9J-QL5">
-                            <rect key="frame" x="100" y="7" width="401" height="30"/>
+                            <rect key="frame" x="99.5" y="7" width="401" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Servers" width="200"/>
@@ -161,71 +161,223 @@
             </objects>
             <point key="canvasLocation" x="3651" y="-211"/>
         </scene>
-        <!--Party View Controller-->
-        <scene sceneID="HS1-XS-Jiw">
+        <!--Table-->
+        <scene sceneID="Zq5-2a-ebK">
             <objects>
-                <tableViewController id="3kM-AR-eQb" customClass="PartyViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ykV-P8-7i0">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="4u7-jc-HMs" customClass="PartyViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="mTX-qA-VYJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="kHw-Fw-ISD">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seated for 23 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-h5-BZe">
-                                    <rect key="frame" x="193" y="64" width="215" height="20"/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 1 – Appleseed party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4H-Gn-sVd">
-                                    <rect key="frame" x="172" y="36" width="256" height="20"/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="j3a-h5-BZe" firstAttribute="top" secondItem="y4H-Gn-sVd" secondAttribute="bottom" constant="8" id="0Tg-im-D3n"/>
-                                <constraint firstAttribute="bottom" secondItem="j3a-h5-BZe" secondAttribute="bottom" constant="16" id="MMv-wT-Pet"/>
-                                <constraint firstAttribute="centerX" secondItem="y4H-Gn-sVd" secondAttribute="centerX" id="PRE-UN-gtN"/>
-                                <constraint firstItem="y4H-Gn-sVd" firstAttribute="top" secondItem="kHw-Fw-ISD" secondAttribute="top" constant="36" id="YvG-NC-uhf"/>
-                                <constraint firstAttribute="centerX" secondItem="j3a-h5-BZe" secondAttribute="centerX" id="lPM-qS-MSW"/>
-                            </constraints>
-                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="Cell" textLabel="aYI-Bg-ejZ" detailTextLabel="Fmd-AE-c3P" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="Xud-0y-yIb">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="Cell" textLabel="olH-OA-Xci" detailTextLabel="7eZ-ZZ-jbU" rowHeight="62" style="IBUITableViewCellStyleSubtitle" id="rz2-Pv-mhJ">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xud-0y-yIb" id="OGR-hZ-7qM">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rz2-Pv-mhJ" id="9Gn-qT-HKl">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Roasted Mary's Chicken [$16.00]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aYI-Bg-ejZ">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Roasted Mary's Chicken [$14.00]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="olH-OA-Xci">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Seat 1 – Extra mushrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fmd-AE-c3P">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Extra mushrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7eZ-ZZ-jbU">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.078431372550000003" green="0.47450980390000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="3kM-AR-eQb" id="zFP-gC-JEt"/>
-                            <outlet property="delegate" destination="3kM-AR-eQb" id="EBt-Gm-hum"/>
+                            <outlet property="dataSource" destination="4u7-jc-HMs" id="Arh-h2-YiE"/>
+                            <outlet property="delegate" destination="4u7-jc-HMs" id="bGI-st-Nh6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Table" id="FN0-6t-Ac9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LUa-Aa-sDn">
+                            <connections>
+                                <action selector="dismiss:" destination="4u7-jc-HMs" id="wIH-cD-cv6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yJk-Py-8uc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okO-hp-F8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3708" y="514"/>
+            <point key="canvasLocation" x="5441" y="191"/>
+        </scene>
+        <!--Menus-->
+        <scene sceneID="TSW-xh-znl">
+            <objects>
+                <collectionViewController id="xLt-ZT-Su3" customClass="MenusViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="PLM-t7-PIp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ow5-hb-iUA">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="yeb-PI-Nkb" customClass="PFCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="xLt-ZT-Su3" id="u3x-h8-hU5"/>
+                            <outlet property="delegate" destination="xLt-ZT-Su3" id="Rmu-1D-pBz"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Menus" id="L5N-qM-5fA"/>
+                    <connections>
+                        <segue destination="NSU-Eb-k4H" kind="show" identifier="MenuCategories" id="Tc7-bK-IJz"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vYS-qK-Vji" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5441" y="862"/>
+        </scene>
+        <!--Dinner-->
+        <scene sceneID="5EI-DP-7FK">
+            <objects>
+                <collectionViewController id="NSU-Eb-k4H" customClass="MenuCategoriesViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l2w-2v-CRD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mNk-dA-ekv">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="riO-Cl-4L0" customClass="PFCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="NSU-Eb-k4H" id="sV8-2z-8IE"/>
+                            <outlet property="delegate" destination="NSU-Eb-k4H" id="xsz-gK-CCJ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Dinner" id="ZEW-7i-NdT"/>
+                    <connections>
+                        <segue destination="0gj-Zx-sWM" kind="show" identifier="MenuItems" id="8my-NG-E9o"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ApR-o1-hox" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6232" y="862"/>
+        </scene>
+        <!--Entrées-->
+        <scene sceneID="JXX-Hq-dae">
+            <objects>
+                <collectionViewController id="0gj-Zx-sWM" customClass="MenuItemsViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JHM-A8-AfA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CEY-bv-4ce">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Nen-NO-u3n" customClass="PFCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="0gj-Zx-sWM" id="NFu-wS-XgA"/>
+                            <outlet property="delegate" destination="0gj-Zx-sWM" id="OKC-fn-sep"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Entrées" id="u10-Tv-qaj"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YX0-A4-YXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7024" y="862"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xay-JJ-G8t">
+            <objects>
+                <navigationController id="VpU-XK-9HV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zs2-94-KI3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.47450980390000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4u7-jc-HMs" kind="relationship" relationship="rootViewController" id="K8O-fW-cqn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNM-bK-BD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4621" y="191"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tar-Fw-CU8">
+            <objects>
+                <navigationController id="TOH-dK-aq5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hTn-WZ-A0V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.078431372550000003" green="0.47450980390000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xLt-ZT-Su3" kind="relationship" relationship="rootViewController" id="d1C-Pk-Ugg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Da-56-Ok4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4621" y="862"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Mj8-jA-gYc">
+            <objects>
+                <splitViewController id="tfp-Qe-7WG" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="VpU-XK-9HV" kind="relationship" relationship="masterViewController" id="1d5-HM-BM3"/>
+                        <segue destination="TOH-dK-aq5" kind="relationship" relationship="detailViewController" id="vdc-pP-uVe"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Aj-9S-wT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3801" y="514"/>
         </scene>
         <!--John Appleseed – 2 active tables-->
         <scene sceneID="ovx-G1-8GL">
@@ -262,11 +414,11 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Date" id="HMV-ya-CQP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Overview" id="HMV-ya-CQP"/>
                     </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="l51-Yp-rlz" id="hle-6e-LpN"/>
-                        <segue destination="3kM-AR-eQb" kind="presentation" identifier="Party" modalPresentationStyle="pageSheet" id="dd0-XN-Ojq"/>
+                        <segue destination="tfp-Qe-7WG" kind="presentation" identifier="Party" id="fhg-2l-EK9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGj-cl-aOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
