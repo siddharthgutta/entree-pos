@@ -34,6 +34,9 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     func loadTables() {
         let query = Table.query()!
         
+        query.includeKey("currentParty")
+        query.includeKey("currentParty.table")
+        
         query.whereKey("restaurant", equalTo: Restaurant.sharedRestaurant())
         
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
