@@ -59,7 +59,9 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 employeeClockViewController.employee = employee
             }
         case "Party":
-            if let partyViewController = segue.destinationViewController as? PartyViewController {
+            if let splitViewController = segue.destinationViewController as? UISplitViewController,
+            let navigationController = splitViewController.viewControllers.first as? UINavigationController,
+            let partyViewController = navigationController.viewControllers.first as? PartyViewController {
                 partyViewController.party = sender as! Party
             }
         default:
