@@ -1,6 +1,7 @@
 
 class MenuItem: PFObject, PFSubclassing {
     
+    @NSManaged var colorIndex: Int
     @NSManaged var itemDescription: String
     @NSManaged var menuCategory: MenuCategory
     @NSManaged var name: String
