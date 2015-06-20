@@ -7,6 +7,13 @@ class PartyViewController: PFQueryTableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func checkout(sender: UIButton) {
+        
+    }
+    
+    @IBOutlet var checkoutButton: UIButton!
+    @IBOutlet var timeSeatedLabel: UILabel!
+    
     var numberOfSeats: Int {
         var greatest = 0
         for order in orders {
@@ -21,18 +28,16 @@ class PartyViewController: PFQueryTableViewController {
     }
     var party: Party!
     
+    let dateComponentsFormatter = NSDateComponentsFormatter()
     let numberFormatter = NSNumberFormatter()
 
     // MARK: - Initializer
     
     required init(coder aDecoder: NSCoder) {
+        dateComponentsFormatter.unitsStyle = .Abbreviated
         numberFormatter.numberStyle = .CurrencyStyle
         
         super.init(coder: aDecoder)
-        
-        let ordersFooterView = PartyFooterView()
-        
-        // tableView.tableFooterView =  OrdersFooterView()
     }
     
     // MARK: - PartyViewController
@@ -64,6 +69,10 @@ class PartyViewController: PFQueryTableViewController {
         super.viewWillAppear(animated)
         
         navigationItem.title = party.table.name
+        
+        let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
+        let dateComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: party.seatedAt, toDate: NSDate(), options: nil)
+        timeSeatedLabel.text = "Seated for " + dateComponentsFormatter.stringFromDateComponents(dateComponents)!
     }
     
     // MARK: - UITableViewDataSource
