@@ -15,20 +15,6 @@ class MenuCategoriesViewController: PFQueryCollectionViewController {
         return query
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! PFCollectionViewCell
-        
-        let menuCategory = object! as! MenuCategory
-        
-        cell.backgroundColor = UIColor.entreeColorForIndex(menuCategory.colorIndex)
-        
-        cell.textLabel.text = menuCategory.name
-        cell.textLabel.textAlignment = .Center
-        cell.textLabel.textColor = UIColor.whiteColor()
-        
-        return cell
-    }
-    
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -42,12 +28,38 @@ class MenuCategoriesViewController: PFQueryCollectionViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView!.registerNib(UINib(nibName: "MenuCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
+        
+        objectsPerPage = 1000
+        
+        let sideLength = (703.5 - (16 * 6)) / 5
+        (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: sideLength, height: sideLength)
+        (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset = UIEdgeInsetsMake(16, 16, 16, 16)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationItem.title = menu.name
         
         loadObjects()
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! MenuCollectionViewCell
+        
+        let menuCategory = objectAtIndexPath(indexPath)! as! MenuCategory
+        
+        cell.imageView.image = UIImage(named: "Icon Map")!.tintedGradientImageWithColor(UIColor.entreeColorForIndex(menuCategory.colorIndex))
+        
+        cell.textLabel.text = menuCategory.name
+        
+        return cell
     }
     
     // MARK: - UICollectionViewDelegate
