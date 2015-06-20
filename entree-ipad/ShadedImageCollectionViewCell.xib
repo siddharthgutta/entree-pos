@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -14,26 +14,31 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jessica" translatesAutoresizingMaskIntoConstraints="NO" id="Ppw-AA-yLf">
                         <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+                        <animations/>
                     </imageView>
                     <view alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-3G-DjA">
                         <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jessica Jones" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8z-ze-Ss1">
-                        <rect key="frame" x="8" y="44" width="136" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="43" width="136" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 Active Tables" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejg-NV-2NI">
-                        <rect key="frame" x="8" y="65" width="136" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="65" width="136" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQl-cR-627" customClass="BadgeLabel" customModule="entree_ipad" customModuleProvider="target">
-                        <rect key="frame" x="69" y="94" width="14" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="68" y="95" width="15" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -43,8 +48,10 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
+                <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <animations/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ejg-NV-2NI" secondAttribute="trailing" constant="8" id="29U-EO-DCr"/>
                 <constraint firstAttribute="bottom" secondItem="Ppw-AA-yLf" secondAttribute="bottom" id="2Iv-Z5-aof"/>
@@ -66,9 +73,9 @@
             <connections>
                 <outlet property="badgeLabel" destination="AQl-cR-627" id="wLk-WX-5Fn"/>
                 <outlet property="detailTextLabel" destination="ejg-NV-2NI" id="CKs-2C-oYf"/>
-                <outlet property="primaryTextLabel" destination="b8z-ze-Ss1" id="tlB-lT-hdo"/>
-                <outlet property="shadeView" destination="LQy-3G-DjA" id="xBY-lI-vbL"/>
-                <outlet property="shadedImageView" destination="Ppw-AA-yLf" id="MhR-uW-WNh"/>
+                <outlet property="imageView" destination="Ppw-AA-yLf" id="VV8-Qx-OHT"/>
+                <outlet property="overlayView" destination="LQy-3G-DjA" id="PIg-SE-hIX"/>
+                <outlet property="textLabel" destination="b8z-ze-Ss1" id="Iac-bg-heW"/>
             </connections>
             <point key="canvasLocation" x="674" y="365"/>
         </collectionViewCell>
