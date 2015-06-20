@@ -7,7 +7,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     
     var avatarCache = [String: UIImage]()
     var employees = [Employee]()
-    var selectedEmployee: Employee!
+    var selectedEmployee: Employee?
     
     // MARK: - TimeClockViewController
     
@@ -127,9 +127,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        selectedEmployee = objectAtIndexPath(indexPath) as! Employee
+        selectedEmployee = objectAtIndexPath(indexPath) as? Employee
         
-        if selectedEmployee.currentShift != nil {
+        if selectedEmployee?.currentShift != nil {
             presentPinViewControllerFromCollectionViewCell(collectionView.cellForItemAtIndexPath(indexPath)!)
         } else {
             let alertController = UIAlertController(title: "You must clock-in", message: "Please clock-in before accessing your tables", preferredStyle: .Alert)
@@ -149,20 +149,20 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     }
     
     func pinViewController(pinViewController: THPinViewController!, isPinValid pin: String!) -> Bool {
-        return selectedEmployee.pinCode == pin
+        return selectedEmployee?.pinCode == pin
     }
     
     func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
-        if selectedEmployee.currentShift != nil {
+        if selectedEmployee?.currentShift != nil {
             performSegueWithIdentifier("ServerMap", sender: nil)
         } else {
             let shift = Shift()
-            shift.employee = selectedEmployee
+            shift.employee = selectedEmployee!
             shift.startedAt = NSDate()
             
-            selectedEmployee.currentShift = shift
+            selectedEmployee?.currentShift = shift
             
-            PFObject.saveAllInBackground([shift, selectedEmployee]) { (succeeded: Bool, error: NSError?) in
+            PFObject.saveAllInBackground([shift, selectedEmployee!]) { (succeeded: Bool, error: NSError?) in
                 if succeeded {
                     self.loadObjects()
                 } else {
