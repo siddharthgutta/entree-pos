@@ -51,51 +51,6 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         return query
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFCollectionViewCell? {
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as? ShadedImageCollectionViewCell {
-            let employee = objectAtIndexPath(indexPath)! as! Employee
-            
-            cell.shadedImageView.image = nil
-            
-            if let avatar = avatarCache[employee.objectId!] {
-                cell.shadedImageView.image = avatar
-            }
-            
-            if let avatarFile = employee.avatarFile {
-                avatarFile.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) in
-                    if let imageData: NSData = data, let avatar = UIImage(data: imageData) {
-                        self.avatarCache[employee.objectId!] = avatar
-                        
-                        cell.shadedImageView.image = avatar
-                        
-                        cell.setNeedsDisplay()
-                    } else {
-                        println(error)
-                        
-                        cell.shadedImageView.backgroundColor = UIColor.darkGrayColor()
-                    }
-                }
-            } else {
-                cell.shadedImageView.backgroundColor = UIColor.darkGrayColor()
-            }
-            
-            cell.primaryTextLabel.text = employee.name
-            cell.detailTextLabel.text = employee.role
-            
-            if employee.currentShift != nil {
-                cell.badgeLabel.text = "In"
-                cell.badgeLabel.badgeColor = UIColor.entreeGreenColor()
-            } else {
-                cell.badgeLabel.text = "Out"
-                cell.badgeLabel.badgeColor = UIColor.entreeRedColor()
-            }
-            
-            return cell
-        }
-        
-        return nil
-    }
-    
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -122,6 +77,51 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         super.viewWillAppear(animated)
         
         loadObjects()
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ShadedImageCollectionViewCell
+        
+        let employee = objectAtIndexPath(indexPath)! as! Employee
+        
+        cell.imageView.image = nil
+        
+        if let avatar = avatarCache[employee.objectId!] {
+            cell.imageView.image = avatar
+        }
+        
+        if let avatarFile = employee.avatarFile {
+            avatarFile.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) in
+                if let imageData: NSData = data, let avatar = UIImage(data: imageData) {
+                    self.avatarCache[employee.objectId!] = avatar
+                    
+                    cell.imageView.image = avatar
+                    
+                    cell.setNeedsDisplay()
+                } else {
+                    println(error)
+                    
+                    cell.imageView.backgroundColor = UIColor.darkGrayColor()
+                }
+            }
+        } else {
+            cell.imageView.backgroundColor = UIColor.darkGrayColor()
+        }
+        
+        cell.textLabel.text = employee.name
+        cell.detailTextLabel.text = employee.role
+        
+        if employee.currentShift != nil {
+            cell.badgeLabel.text = "In"
+            cell.badgeLabel.badgeColor = UIColor.entreeGreenColor()
+        } else {
+            cell.badgeLabel.text = "Out"
+            cell.badgeLabel.badgeColor = UIColor.entreeRedColor()
+        }
+        
+        return cell
     }
     
     // MARK: - UICollectionViewDelegate
