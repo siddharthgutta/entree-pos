@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="MenuCollectionViewCell" customModule="entree_ipad" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon Map" translatesAutoresizingMaskIntoConstraints="NO" id="wTC-li-3or">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pasta" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDR-KI-8uc">
+                        <rect key="frame" x="8" y="64" width="134" height="22"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wTC-li-3or" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Fpc-UE-6Ov"/>
+                <constraint firstAttribute="bottom" secondItem="wTC-li-3or" secondAttribute="bottom" id="L0H-7i-7yn"/>
+                <constraint firstItem="wTC-li-3or" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ynm-MG-9XJ"/>
+                <constraint firstAttribute="trailing" secondItem="HDR-KI-8uc" secondAttribute="trailing" constant="8" id="bYb-zK-INW"/>
+                <constraint firstItem="HDR-KI-8uc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="gRI-hL-Md6"/>
+                <constraint firstAttribute="centerY" secondItem="HDR-KI-8uc" secondAttribute="centerY" id="gks-SW-gnq"/>
+                <constraint firstAttribute="trailing" secondItem="wTC-li-3or" secondAttribute="trailing" id="yms-lA-RpZ"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="wTC-li-3or" id="Bue-5b-e2l"/>
+                <outlet property="textLabel" destination="HDR-KI-8uc" id="2LZ-j2-u9Y"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Icon Map" width="256" height="256"/>
+    </resources>
+</document>
