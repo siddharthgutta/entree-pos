@@ -86,3 +86,24 @@ extension UIColor {
     }
     
 }
+
+extension UIImage {
+    
+    func tintedGradientImageWithColor(tintColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        tintColor.setFill()
+        
+        let bounds = CGRectMake(0, 0, size.width, size.height)
+        UIRectFill(bounds)
+        
+        drawInRect(bounds, blendMode: kCGBlendModeOverlay, alpha: 1)
+        drawInRect(bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1)
+
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return tintedImage
+    }
+    
+}
+
