@@ -34,6 +34,7 @@
 		32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C5413A1B25192F002465C4 /* TicketHeaderView.swift */; };
 		32C9F9E31B2FB44300778112 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */; };
 		32C9F9E51B2FB44D00778112 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */; };
+		32D533C61B3766BB008A2369 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D533C51B3766BB008A2369 /* BorderedButton.swift */; };
 		32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */; };
 		32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */; };
 		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
@@ -74,6 +75,7 @@
 		32C5413A1B25192F002465C4 /* TicketHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketHeaderView.swift; sourceTree = "<group>"; };
 		32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		32D533C51B3766BB008A2369 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShadedImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
+				32D533C51B3766BB008A2369 /* BorderedButton.swift */,
 				32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */,
 				320279421B2C89E200867554 /* PartyFooterView.swift */,
 				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
@@ -348,6 +351,7 @@
 				32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */,
 				32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */,
 				32C4B6291B2399480062B854 /* Party.swift in Sources */,
+				32D533C61B3766BB008A2369 /* BorderedButton.swift in Sources */,
 				32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */,
 				32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */,
 				32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */,
