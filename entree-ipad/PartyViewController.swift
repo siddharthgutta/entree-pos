@@ -3,11 +3,15 @@ import UIKit
 
 class PartyViewController: PFQueryTableViewController {
     
+    @IBAction func createPayment(sender: UIButton) {
+        
+    }
+    
     @IBAction func dismiss(sender: UIBarButtonItem) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func checkout(sender: UIButton) {
+    @IBAction func printBill(sender: UIButton) {
         
     }
     
