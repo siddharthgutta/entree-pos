@@ -69,7 +69,10 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
         order.menuItem = objectAtIndexPath(indexPath)! as! MenuItem
         order.menuItemModifiers = []
         order.notes = ""
-        order.restaurant = Restaurant.sharedRestaurant()
+        if let splitViewController = navigationController?.splitViewController,
+        let partyViewController = splitViewController.viewControllers.first as? PartyViewController {
+            order.party = partyViewController.party
+        }
         order.seat = 0
         
         order.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
