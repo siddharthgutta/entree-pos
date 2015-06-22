@@ -42,6 +42,8 @@ class PartyViewController: PFQueryTableViewController {
         numberFormatter.numberStyle = .CurrencyStyle
         
         super.init(coder: aDecoder)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadObjects"), name: LOAD_OBJECTS_NOTIFICATION, object: nil)
     }
     
     // MARK: - PartyViewController
