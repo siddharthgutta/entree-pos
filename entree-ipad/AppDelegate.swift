@@ -1,6 +1,7 @@
 
 import UIKit
 
+let LOAD_OBJECTS_NOTIFICATION = "load_objects"
 let UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE = "😕 Unrecognized segue identifier"
 
 @UIApplicationMain
