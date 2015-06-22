@@ -181,42 +181,97 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="wUm-HS-prt">
-                            <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
-                                    <rect key="frame" x="8" y="19" width="584" height="21"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-bb-nbS" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="269" y="16" width="64" height="34"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="Dismiss">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="dismiss:" destination="4u7-jc-HMs" eventType="touchUpInside" id="6ba-48-EgM"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
+                                    <rect key="frame" x="8" y="95" width="584" height="17"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Table 7 – Wyatt Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-Ef-LP2">
+                                    <rect key="frame" x="186" y="66" width="228" height="21"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
-                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Krb-3C-4Ca" secondAttribute="bottom" constant="16" id="3vr-Wh-eHl"/>
+                                <constraint firstItem="Krb-3C-4Ca" firstAttribute="top" secondItem="9ub-Ef-LP2" secondAttribute="bottom" constant="8" id="BNN-LF-Bez"/>
                                 <constraint firstItem="Krb-3C-4Ca" firstAttribute="leading" secondItem="wUm-HS-prt" secondAttribute="leading" constant="8" id="CXP-iC-RAH"/>
+                                <constraint firstAttribute="centerX" secondItem="9ub-Ef-LP2" secondAttribute="centerX" id="Ci8-XQ-uaF"/>
                                 <constraint firstAttribute="trailing" secondItem="Krb-3C-4Ca" secondAttribute="trailing" constant="8" id="GkN-bC-l7S"/>
+                                <constraint firstItem="nQu-bb-nbS" firstAttribute="top" secondItem="wUm-HS-prt" secondAttribute="top" constant="16" id="YLC-Tp-4P2"/>
                                 <constraint firstAttribute="centerY" secondItem="Krb-3C-4Ca" secondAttribute="centerY" id="dD2-8P-1tN"/>
+                                <constraint firstItem="9ub-Ef-LP2" firstAttribute="top" secondItem="nQu-bb-nbS" secondAttribute="bottom" constant="16" id="jQK-dn-sna"/>
+                                <constraint firstAttribute="centerX" secondItem="nQu-bb-nbS" secondAttribute="centerX" id="wPO-Bt-7Nx"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="dD2-8P-1tN"/>
+                                </mask>
+                            </variation>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="1UQ-gE-fpO">
                             <rect key="frame" x="0.0" y="146" width="600" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a">
-                                    <rect key="frame" x="261" y="13" width="78" height="34"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="20" y="13" width="125" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" title="Checkout">
+                                    <state key="normal" title="Create Payment">
+                                        <color key="titleColor" red="0.14117647058823529" green="0.72549019607843135" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.14117647058823529" green="0.72549019607843135" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-I0-W9W" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="517" y="13" width="63" height="34"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="Print Bill">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                 </button>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="centerX" secondItem="jz1-cz-B3a" secondAttribute="centerX" id="Zch-ls-axS"/>
+                                <constraint firstAttribute="trailing" secondItem="qHP-I0-W9W" secondAttribute="trailing" constant="20" id="UYj-03-ZSk"/>
+                                <constraint firstItem="jz1-cz-B3a" firstAttribute="leading" secondItem="1UQ-gE-fpO" secondAttribute="leading" constant="20" id="ZpO-6J-sdo"/>
+                                <constraint firstAttribute="centerY" secondItem="qHP-I0-W9W" secondAttribute="centerY" id="gGH-kt-YKe"/>
                                 <constraint firstAttribute="centerY" secondItem="jz1-cz-B3a" secondAttribute="centerY" id="rJH-E7-reb"/>
                             </constraints>
                         </view>
@@ -236,7 +291,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Extra mushrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7eZ-ZZ-jbU">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -253,11 +308,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Table" id="FN0-6t-Ac9">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LUa-Aa-sDn">
-                            <connections>
-                                <action selector="dismiss:" destination="4u7-jc-HMs" id="wIH-cD-cv6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LUa-Aa-sDn"/>
                     </navigationItem>
                     <connections>
                         <outlet property="checkoutButton" destination="jz1-cz-B3a" id="7lB-aa-j4O"/>
@@ -266,7 +317,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okO-hp-F8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5441" y="191"/>
+            <point key="canvasLocation" x="4621" y="156"/>
         </scene>
         <!--Menus-->
         <scene sceneID="TSW-xh-znl">
@@ -526,28 +577,6 @@
             <point key="canvasLocation" x="7878" y="862"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="xay-JJ-G8t">
-            <objects>
-                <navigationController id="VpU-XK-9HV" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zs2-94-KI3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.078431372550000003" green="0.47450980390000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="4u7-jc-HMs" kind="relationship" relationship="rootViewController" id="K8O-fW-cqn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NNM-bK-BD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4621" y="191"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="tar-Fw-CU8">
             <objects>
                 <navigationController id="TOH-dK-aq5" sceneMemberID="viewController">
@@ -574,8 +603,8 @@
             <objects>
                 <splitViewController id="tfp-Qe-7WG" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="VpU-XK-9HV" kind="relationship" relationship="masterViewController" id="1d5-HM-BM3"/>
                         <segue destination="TOH-dK-aq5" kind="relationship" relationship="detailViewController" id="vdc-pP-uVe"/>
+                        <segue destination="4u7-jc-HMs" kind="relationship" relationship="masterViewController" id="GYj-XX-GvX"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Aj-9S-wT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
