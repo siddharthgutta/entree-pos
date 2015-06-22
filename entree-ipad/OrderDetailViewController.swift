@@ -4,15 +4,23 @@ import UIKit
 class OrderDetailViewController: UITableViewController {
 
     @IBAction func dismiss(sender: UIBarButtonItem) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        order.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+            if succeeded {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                println(error?.localizedDescription)
+            }
+        }
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
         order.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
             if succeeded {
+                NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+                
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             } else {
-                fatalError(error!.localizedDescription)
+                println(error?.localizedDescription)
             }
         }
     }
