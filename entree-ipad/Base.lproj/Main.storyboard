@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7T1-EK-LNA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7T1-EK-LNA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -184,8 +184,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-bb-nbS" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="16" width="64" height="34.5"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-bb-nbS" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="16" width="64" height="35"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="Dismiss">
@@ -201,20 +201,20 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 7 – Wyatt Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-Ef-LP2">
-                                    <rect key="frame" x="212" y="66" width="175.5" height="21.5"/>
+                                    <rect key="frame" x="212" y="66" width="176" height="22"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
                                     <rect key="frame" x="240" y="96" width="120" height="17"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-Y8-lsw" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-Y8-lsw" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
                                     <rect key="frame" x="489" y="16" width="94" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -254,7 +254,7 @@
                             <rect key="frame" x="0.0" y="146" width="600" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
                                     <rect key="frame" x="20" y="13" width="125" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -268,7 +268,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-I0-W9W" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-I0-W9W" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
                                     <rect key="frame" x="517" y="13" width="63" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
