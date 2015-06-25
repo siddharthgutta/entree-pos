@@ -184,8 +184,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-bb-nbS" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
-                                    <rect key="frame" x="269" y="16" width="64" height="34"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-bb-nbS" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="16" width="64" height="34.5"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="Dismiss">
@@ -200,33 +200,49 @@
                                         <action selector="dismiss:" destination="4u7-jc-HMs" eventType="touchUpInside" id="6ba-48-EgM"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
-                                    <rect key="frame" x="8" y="95" width="584" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table 7 – Wyatt Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-Ef-LP2">
+                                    <rect key="frame" x="212" y="66" width="175.5" height="21.5"/>
                                     <animations/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
-                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Table 7 – Wyatt Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-Ef-LP2">
-                                    <rect key="frame" x="186" y="66" width="228" height="21"/>
-                                    <animations/>
-                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seated for 1h 10m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krb-3C-4Ca">
+                                    <rect key="frame" x="240" y="96" width="120" height="17"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-Y8-lsw" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                    <rect key="frame" x="489" y="16" width="94" height="34"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="Close Table">
+                                        <color key="titleColor" red="0.9882352941176471" green="0.22745098039215686" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.98823529409999999" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Krb-3C-4Ca" secondAttribute="bottom" constant="16" id="3vr-Wh-eHl"/>
+                                <constraint firstItem="0Eh-Y8-lsw" firstAttribute="top" secondItem="wUm-HS-prt" secondAttribute="top" constant="16" id="50l-st-97c"/>
                                 <constraint firstItem="Krb-3C-4Ca" firstAttribute="top" secondItem="9ub-Ef-LP2" secondAttribute="bottom" constant="8" id="BNN-LF-Bez"/>
                                 <constraint firstItem="Krb-3C-4Ca" firstAttribute="leading" secondItem="wUm-HS-prt" secondAttribute="leading" constant="8" id="CXP-iC-RAH"/>
                                 <constraint firstAttribute="centerX" secondItem="9ub-Ef-LP2" secondAttribute="centerX" id="Ci8-XQ-uaF"/>
+                                <constraint firstItem="nQu-bb-nbS" firstAttribute="leading" secondItem="wUm-HS-prt" secondAttribute="leading" constant="16" id="GSN-IL-OSF"/>
                                 <constraint firstAttribute="trailing" secondItem="Krb-3C-4Ca" secondAttribute="trailing" constant="8" id="GkN-bC-l7S"/>
+                                <constraint firstAttribute="trailing" secondItem="0Eh-Y8-lsw" secondAttribute="trailing" constant="16" id="Ldg-3j-G3N"/>
                                 <constraint firstItem="nQu-bb-nbS" firstAttribute="top" secondItem="wUm-HS-prt" secondAttribute="top" constant="16" id="YLC-Tp-4P2"/>
                                 <constraint firstAttribute="centerY" secondItem="Krb-3C-4Ca" secondAttribute="centerY" id="dD2-8P-1tN"/>
                                 <constraint firstItem="9ub-Ef-LP2" firstAttribute="top" secondItem="nQu-bb-nbS" secondAttribute="bottom" constant="16" id="jQK-dn-sna"/>
-                                <constraint firstAttribute="centerX" secondItem="nQu-bb-nbS" secondAttribute="centerX" id="wPO-Bt-7Nx"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -238,12 +254,12 @@
                             <rect key="frame" x="0.0" y="146" width="600" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-cz-B3a" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
                                     <rect key="frame" x="20" y="13" width="125" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="Create Payment">
-                                        <color key="titleColor" red="0.14117647058823529" green="0.72549019607843135" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" red="0.14117647059999999" green="0.72549019609999998" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -252,7 +268,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-I0-W9W" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHP-I0-W9W" customClass="BorderedButton" customModule="entree_ipad" customModuleProvider="target">
                                     <rect key="frame" x="517" y="13" width="63" height="34"/>
                                     <animations/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -284,14 +300,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Roasted Mary's Chicken [$14.00]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="olH-OA-Xci">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Extra mushrooms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7eZ-ZZ-jbU">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
