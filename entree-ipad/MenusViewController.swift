@@ -51,7 +51,7 @@ class MenusViewController: PFQueryCollectionViewController {
         
         let menu = objectAtIndexPath(indexPath)! as! Menu
         
-        cell.imageView.image = UIImage(named: "Icon Map")!.tintedGradientImageWithColor(UIColor.entreeColorForIndex(menu.colorIndex))
+        cell.imageView.image = UIImage(named: "IconMap-\(menu.colorIndex)")!
         
         cell.textLabel.text = menu.name
         
