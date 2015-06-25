@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		320279431B2C89E200867554 /* PartyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320279421B2C89E200867554 /* PartyFooterView.swift */; };
 		320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */; };
 		323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323EFD311B23CB34002437A7 /* RestaurantMapView.swift */; };
 		3265AE791B25571C0000D6B1 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3265AE781B25571C0000D6B1 /* Payment.swift */; };
@@ -31,7 +30,6 @@
 		32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */; };
 		32C4B6351B239E530062B854 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C4B6341B239E530062B854 /* Extensions.swift */; };
 		32C541371B2516BB002465C4 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C541361B2516BB002465C4 /* PartyViewController.swift */; };
-		32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C5413A1B25192F002465C4 /* TicketHeaderView.swift */; };
 		32C9F9E31B2FB44300778112 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */; };
 		32C9F9E51B2FB44D00778112 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */; };
 		32D533C61B3766BB008A2369 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D533C51B3766BB008A2369 /* BorderedButton.swift */; };
@@ -45,7 +43,6 @@
 
 /* Begin PBXFileReference section */
 		300B06ED202C70114359DB32 /* libPods-entree-ipad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-ipad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		320279421B2C89E200867554 /* PartyFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyFooterView.swift; sourceTree = "<group>"; };
 		320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoriesViewController.swift; sourceTree = "<group>"; };
 		323EFD311B23CB34002437A7 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		3265AE781B25571C0000D6B1 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -57,7 +54,7 @@
 		32C4B5F51B238E5B0062B854 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32C4B5F81B238E5B0062B854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32C4B6151B2392490062B854 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
-		32C4B6171B23927F0062B854 /* entree-ipad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "entree-ipad-Bridging-Header.h"; sourceTree = "<group>"; };
+		32C4B6171B23927F0062B854 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		32C4B61A1B2393650062B854 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		32C4B61C1B2394DB0062B854 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		32C4B61E1B23953F0062B854 /* MenuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
@@ -72,7 +69,6 @@
 		32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockViewController.swift; sourceTree = "<group>"; };
 		32C4B6341B239E530062B854 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		32C541361B2516BB002465C4 /* PartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
-		32C5413A1B25192F002465C4 /* TicketHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketHeaderView.swift; sourceTree = "<group>"; };
 		32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		32D533C51B3766BB008A2369 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
@@ -104,6 +100,35 @@
 				E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		327E11C51B3B8918009F71CC /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */,
+				32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */,
+				32EE48D71B2E972E00A7D061 /* MenusViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		327E11C61B3B8932009F71CC /* Time Clock */ = {
+			isa = PBXGroup;
+			children = (
+				32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */,
+			);
+			name = "Time Clock";
+			sourceTree = "<group>";
+		};
+		327E11C71B3B893C009F71CC /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
+				32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */,
+				32C541361B2516BB002465C4 /* PartyViewController.swift */,
+				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 		32C4B5E01B238E5B0062B854 = {
@@ -157,14 +182,9 @@
 		32C4B60F1B238EC50062B854 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
-				320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */,
-				32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */,
-				32EE48D71B2E972E00A7D061 /* MenusViewController.swift */,
-				32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */,
-				32C541361B2516BB002465C4 /* PartyViewController.swift */,
-				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
-				32C4B6301B239DFC0062B854 /* TimeClockViewController.swift */,
+				327E11C51B3B8918009F71CC /* Menu */,
+				327E11C71B3B893C009F71CC /* Server */,
+				327E11C61B3B8932009F71CC /* Time Clock */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -175,10 +195,8 @@
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
 				32D533C51B3766BB008A2369 /* BorderedButton.swift */,
 				32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */,
-				320279421B2C89E200867554 /* PartyFooterView.swift */,
 				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
 				32D8F2D71B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift */,
-				32C5413A1B25192F002465C4 /* TicketHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -206,7 +224,7 @@
 			children = (
 				32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */,
 				32C4B6341B239E530062B854 /* Extensions.swift */,
-				32C4B6171B23927F0062B854 /* entree-ipad-Bridging-Header.h */,
+				32C4B6171B23927F0062B854 /* BridgingHeader.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -214,9 +232,9 @@
 		32C4B6131B238EEA0062B854 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */,
 				32C4B5F21B238E5B0062B854 /* Main.storyboard */,
 				32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */,
-				32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */,
 				32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */,
 			);
 			name = Interfaces;
@@ -271,6 +289,7 @@
 				TargetAttributes = {
 					32C4B5E81B238E5B0062B854 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = EDLTE65NWH;
 					};
 				};
 			};
@@ -358,9 +377,7 @@
 				32AEAAA71B30F70800DE030A /* OrderDetailViewController.swift in Sources */,
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
 				323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */,
-				320279431B2C89E200867554 /* PartyFooterView.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
-				32C5413B1B25192F002465C4 /* TicketHeaderView.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
@@ -487,10 +504,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/entree-ipad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -501,10 +519,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/entree-ipad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/BridgingHeader.h";
 			};
 			name = Release;
 		};
