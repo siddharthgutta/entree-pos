@@ -18,17 +18,8 @@ class PartyViewController: PFQueryTableViewController {
     @IBOutlet var checkoutButton: UIButton!
     @IBOutlet var timeSeatedLabel: UILabel!
     
-    var numberOfSeats: Int {
-        var greatest = 0
-        for order in orders {
-            if order.seat > greatest {
-                greatest = order.seat
-            }
-        }
-        return greatest + 1
-    }
     var orders: [Order] {
-        return self.objects! as! [Order]
+        return objects! as! [Order]
     }
     var party: Party!
     
@@ -48,10 +39,8 @@ class PartyViewController: PFQueryTableViewController {
     
     // MARK: - PartyViewController
     
-    func ordersForSection(section: Int) -> [Order] {
-        return orders.filter { (order: Order) -> Bool in
-            return order.seat == section
-        }
+    private func orderAtIndexPath(indexPath: NSIndexPath) -> Order? {
+        return orders.filter { (order: Order) -> Bool in return order.seat == indexPath.section }[indexPath.row]
     }
     
     // MARK: - PFQueryTableViewController
@@ -84,13 +73,15 @@ class PartyViewController: PFQueryTableViewController {
     // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return numberOfSeats
+        var seatSeen = [Int: Bool]()
+        for order in orders { seatSeen[order.seat] = true }
+        return seatSeen.keys.array.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        let order = objectAtIndexPath(indexPath)! as! Order
+        let order = orderAtIndexPath(indexPath)!
         
         let price = numberFormatter.stringFromNumber(NSNumber(double: order.menuItem.price))!
         cell.textLabel!.text = "\(order.menuItem.name) [\(price)]"
@@ -100,11 +91,11 @@ class PartyViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ordersForSection(section).count
+        return orders.filter { (order: Order) -> Bool in return order.seat == section }.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? nil : "Seat \(section)"
+        return section == 0 ? "Table" : "Seat \(section)"
     }
     
 }
