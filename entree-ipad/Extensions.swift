@@ -37,3 +37,11 @@ extension UIImage {
     
 }
 
+extension PFObject {
+    
+    func same(object: PFObject) -> Bool {
+        return self.objectId! == object.objectId!
+    }
+    
+}
+
