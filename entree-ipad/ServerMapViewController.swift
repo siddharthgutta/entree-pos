@@ -60,7 +60,8 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             }
         case "Party":
             if let splitViewController = segue.destinationViewController as? UISplitViewController,
-            let partyViewController = splitViewController.viewControllers.first as? PartyViewController {
+            let navigationController = splitViewController.viewControllers.first as? UINavigationController,
+            let partyViewController = navigationController.viewControllers.first as? PartyViewController {
                 partyViewController.party = sender as! Party
             }
         default:
@@ -94,7 +95,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = employee.name + " – \(employee.activePartyCount) active tables"
+        navigationItem.title = "\(employee.name) – \(employee.activePartyCount) Active Tables"
         
         loadTables()
     }
@@ -103,6 +104,29 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     
     func numberOfTablesForRestaurantMapView(restaurantMapView: RestaurantMapView) -> Int {
         return tables.count
+    }
+    
+    func restaurantMapView(restaurantMapView: RestaurantMapView, imageViewForTableAtIndex index: Int) -> UIImageView {
+        let table = tables[index]
+        
+        let imageTintColor: UIColor
+        if table.currentParty == nil {
+            imageTintColor = UIColor.entreeGreenColor()
+        } else if table.currentParty!.server.same(employee) {
+            imageTintColor = UIColor.entreeBlueColor()
+        } else {
+            imageTintColor = UIColor(red:1, green:0.84, blue:0.26, alpha:1)
+        }
+        
+        let image = UIImage(named: "Table-\(table.type)")!.tintedGradientImageWithColor(imageTintColor)
+        
+        let imageView = UIImageView(frame: CGRectMake(table.x, table.y, image.size.width, image.size.height))
+        imageView.image = image
+        imageView.userInteractionEnabled = true
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: restaurantMapView, action: Selector("subviewTapped:")))
+        
+        return imageView
     }
     
     func restaurantMapView(restaurantMapView: RestaurantMapView, tableAtIndex index: Int) -> Table {
