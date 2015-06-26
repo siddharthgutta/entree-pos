@@ -29,7 +29,7 @@ class RestaurantMapView: UIView {
                 if let table = dataSource?.restaurantMapView(self, tableAtIndex: index) {
                     let status = table.currentParty != nil ? "Occupied" : "Available"
                     
-                    let image = UIImage(named: "Table-\(table.type)-\(status)")!
+                    let image = UIImage(named: "Table-\(table.type)")!
                     
                     let imageView = UIImageView(frame: CGRectMake(CGFloat(table.x), CGFloat(table.y), image.size.width, image.size.height))
                     imageView.image = image
