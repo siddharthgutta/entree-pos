@@ -3,7 +3,11 @@ import UIKit
 
 class PartyViewController: PFQueryTableViewController {
     
-    @IBAction func createPayment(sender: UIButton) {
+    @IBAction func closeTable(sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func createPayment(sender: UIBarButtonItem) {
         
     }
     
@@ -11,11 +15,11 @@ class PartyViewController: PFQueryTableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func printBill(sender: UIButton) {
+    @IBAction func printBill(sender: UIBarButtonItem) {
         
     }
     
-    @IBOutlet var checkoutButton: UIButton!
+    @IBOutlet var createPaymentButton: UIButton!
     @IBOutlet var timeSeatedLabel: UILabel!
     
     var orders: [Order] {
@@ -29,7 +33,7 @@ class PartyViewController: PFQueryTableViewController {
     // MARK: - Initializer
     
     required init(coder aDecoder: NSCoder) {
-        dateComponentsFormatter.unitsStyle = .Abbreviated
+        dateComponentsFormatter.unitsStyle = .Full
         numberFormatter.numberStyle = .CurrencyStyle
         
         super.init(coder: aDecoder)
@@ -63,7 +67,11 @@ class PartyViewController: PFQueryTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = party.table.name
+        var title = party.table.name
+        if !party.name.isEmpty {
+            title += " – \(party.name)"
+        }
+        navigationItem.title = title
         
         let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
         let dateComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: party.seatedAt, toDate: NSDate(), options: nil)
