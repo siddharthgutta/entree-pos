@@ -3,8 +3,8 @@ PODS:
   - CardFlight (2.0.6):
     - CardFlight/AudioJack (= 2.0.6)
   - CardFlight/AudioJack (2.0.6)
-  - Parse (1.7.4):
-    - Bolts/Tasks (>= 1.1.5)
+  - Parse (1.7.5):
+    - Bolts/Tasks (>= 1.2.0)
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
   - THPinViewController (1.2.4)
@@ -18,7 +18,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   CardFlight: eae95b7f9bbbf190f7de64cd5b29f95e1f515e83
-  Parse: 6ca512c6e860b66739c95151b2f76ac4712b7842
+  Parse: 7c0f115eff3e0cea3fac08d50bda47154edb8832
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
   THPinViewController: 6ea25443b2205bdfaaf5a6db8b05403dfbe0bdec
 
