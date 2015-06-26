@@ -1,9 +1,12 @@
 
 import UIKit
 
-class MenuCategoriesViewController: PFQueryCollectionViewController {
+class MenuCategoriesViewController: PFQueryCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var menu: Menu!
+    
+    let numberOfCellsPerRow: CGFloat = 4
+    let sectionEdgeInsets: CGFloat = 16
     
     // MARK: - PFQueryCollectionViewController
     
@@ -35,7 +38,7 @@ class MenuCategoriesViewController: PFQueryCollectionViewController {
         
         objectsPerPage = 1000
         
-        let sideLength = (703.5 - (16 * 6)) / 5
+        let sideLength = (649 - (16 * 6)) / 5
         (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: sideLength, height: sideLength)
         (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset = UIEdgeInsetsMake(16, 16, 16, 16)
     }
@@ -66,6 +69,17 @@ class MenuCategoriesViewController: PFQueryCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("MenuItems", sender: objectAtIndexPath(indexPath))
+    }
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: sectionEdgeInsets, left: sectionEdgeInsets, bottom: sectionEdgeInsets, right: sectionEdgeInsets)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let sideLength = (collectionView.bounds.width - ((numberOfCellsPerRow + 1) * sectionEdgeInsets)) / numberOfCellsPerRow
+        return CGSize(width: sideLength, height: sideLength)
     }
     
 }

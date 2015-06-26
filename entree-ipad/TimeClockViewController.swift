@@ -5,6 +5,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
 
     @IBOutlet var segmentedControl: UISegmentedControl!
     
+    let numberOfCellsPerRow: CGFloat = 5
+    let sectionEdgeInsets: CGFloat = 16
+    
     var avatarCache = [String: UIImage]()
     var employees = [Employee]()
     var selectedEmployee: Employee?
@@ -78,6 +81,40 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         loadObjects()
     }
     
+    // MARK: - THPinViewControllerDelegate
+    
+    func pinLengthForPinViewController(pinViewController: THPinViewController!) -> UInt {
+        return 4
+    }
+    
+    func pinViewController(pinViewController: THPinViewController!, isPinValid pin: String!) -> Bool {
+        return selectedEmployee?.pinCode == pin
+    }
+    
+    func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
+        if selectedEmployee?.currentShift != nil {
+            performSegueWithIdentifier("ServerMap", sender: nil)
+        } else {
+            let shift = Shift()
+            shift.employee = selectedEmployee!
+            shift.startedAt = NSDate()
+            
+            selectedEmployee?.currentShift = shift
+            
+            PFObject.saveAllInBackground([shift, selectedEmployee!]) { (succeeded: Bool, error: NSError?) in
+                if succeeded {
+                    self.loadObjects()
+                } else {
+                    fatalError(error!.description)
+                }
+            }
+        }
+    }
+    
+    func userCanRetryInPinViewController(pinViewController: THPinViewController!) -> Bool {
+        return true
+    }
+    
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -141,38 +178,17 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         }
     }
     
-    // MARK: - THPinViewControllerDelegate
+    // MARK: - UICollectionViewDelegateFlowLayout
     
-    func pinLengthForPinViewController(pinViewController: THPinViewController!) -> UInt {
-        return 4
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: sectionEdgeInsets, left: sectionEdgeInsets, bottom: sectionEdgeInsets, right: sectionEdgeInsets)
     }
     
-    func pinViewController(pinViewController: THPinViewController!, isPinValid pin: String!) -> Bool {
-        return selectedEmployee?.pinCode == pin
+    override func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let sideLength = (collectionView.bounds.width - ((numberOfCellsPerRow + 1) * sectionEdgeInsets)) / numberOfCellsPerRow
+        return CGSize(width: sideLength, height: sideLength)
     }
     
-    func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
-        if selectedEmployee?.currentShift != nil {
-            performSegueWithIdentifier("ServerMap", sender: nil)
-        } else {
-            let shift = Shift()
-            shift.employee = selectedEmployee!
-            shift.startedAt = NSDate()
-            
-            selectedEmployee?.currentShift = shift
-            
-            PFObject.saveAllInBackground([shift, selectedEmployee!]) { (succeeded: Bool, error: NSError?) in
-                if succeeded {
-                    self.loadObjects()
-                } else {
-                    fatalError(error!.description)
-                }
-            }
-        }
-    }
-    
-    func userCanRetryInPinViewController(pinViewController: THPinViewController!) -> Bool {
-        return true
-    }
+
 
 }

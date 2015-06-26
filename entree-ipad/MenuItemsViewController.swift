@@ -5,13 +5,15 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
 
     var menuCategory: MenuCategory!
     
-    let numberOfCellsPerRow: CGFloat = 5
+    let numberOfCellsPerRow: CGFloat = 4
     let sectionEdgeInsets: CGFloat = 16
     
     // MARK: - PFQueryCollectionViewController
     
     override func queryForCollection() -> PFQuery {
         let query = MenuItem.query()!
+        
+        query.includeKey("menuCategory.menu")
         
         query.whereKey("menuCategory", equalTo: menuCategory)
         
