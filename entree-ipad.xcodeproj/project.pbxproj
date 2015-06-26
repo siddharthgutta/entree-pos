@@ -38,6 +38,7 @@
 		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
 		32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D71B2E972E00A7D061 /* MenusViewController.swift */; };
 		32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */; };
+		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		32EE48D71B2E972E00A7D061 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenusViewController.swift; sourceTree = "<group>"; };
 		32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsViewController.swift; sourceTree = "<group>"; };
 		75D0BE66DB08D81459735D35 /* Pods-entree-ipad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.debug.xcconfig"; sourceTree = "<group>"; };
+		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 			children = (
 				320279441B2C9FAA00867554 /* MenuCategoriesViewController.swift */,
 				32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */,
+				8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */,
 				32EE48D71B2E972E00A7D061 /* MenusViewController.swift */,
 			);
 			name = Menu;
@@ -382,6 +385,7 @@
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
 				32C9F9E31B2FB44300778112 /* MenuCollectionViewCell.swift in Sources */,
+				8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */,
 				32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */,
 				3265AE791B25571C0000D6B1 /* Payment.swift in Sources */,
 				32C4B6351B239E530062B854 /* Extensions.swift in Sources */,
