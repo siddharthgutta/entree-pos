@@ -25,28 +25,68 @@ class OrderDetailViewController: UITableViewController {
         }
     }
     
+    let numberFormatter = NSNumberFormatter()
     var order: Order!
     
     // MARK: - OrderDetailViewController
     
+    func reloadData() {
+        var stash: String?
+        
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)),
+        let notesTextView = cell.viewWithTag(100) as? UITextView {
+            stash = notesTextView.text
+        }
+        
+        tableView.reloadData()
+        
+        if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)),
+        let notesTextView = cell.viewWithTag(100) as? UITextView {
+                notesTextView.text = stash
+        }
+    }
+    
     func updateSeatNumber(sender: UIStepper) {
         order.seat = Int(sender.value)
         
-        tableView.reloadData()
+        reloadData()
     }
     
     // MARK: - UIViewController
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "MenuItemModifier":
+            if let menuItemModifierListViewController = segue.destinationViewController as? MenuItemModifierListViewController {
+                menuItemModifierListViewController.order = order
+            }
+        default:
+            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        numberFormatter.numberStyle = .CurrencyStyle
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadData"), name: LOAD_OBJECTS_NOTIFICATION, object: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        reloadData()
     }
     
     // MARK: - UITableViewDataSource
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return indexPath.section == 1 && indexPath.row != order.menuItemModifiers.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -56,7 +96,7 @@ class OrderDetailViewController: UITableViewController {
         case 0:
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("MenuItemCell", forIndexPath: indexPath) as! UITableViewCell
-                cell.textLabel!.text = order.menuItem.name
+                cell.textLabel?.text = order.menuItem.name
             } else {
                 cell = tableView.dequeueReusableCellWithIdentifier("SeatNumberCell", forIndexPath: indexPath) as! UITableViewCell
                 if let seatNumberLabel = cell.viewWithTag(100) as? UILabel {
@@ -70,11 +110,12 @@ class OrderDetailViewController: UITableViewController {
         case 1:
             if indexPath.row == order.menuItemModifiers.count {
                 cell = tableView.dequeueReusableCellWithIdentifier("AddModifierCell", forIndexPath: indexPath) as! UITableViewCell
-                cell.textLabel!.text = "Add Modifier"
-                cell.textLabel!.textColor = UIColor.entreeBlueColor()
+                cell.textLabel?.text = "Add Modifier"
+                cell.textLabel?.textColor = UIColor.entreeBlueColor()
             } else {
                 cell = tableView.dequeueReusableCellWithIdentifier("MenuItemModifierCell", forIndexPath: indexPath) as! UITableViewCell
-                cell.textLabel!.text = order.menuItemModifiers[indexPath.row].name
+                cell.textLabel?.text = order.menuItemModifiers[indexPath.row].name
+                cell.detailTextLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order.menuItemModifiers[indexPath.row].price))
             }
         case 2:
             cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! UITableViewCell
@@ -86,6 +127,20 @@ class OrderDetailViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            order.menuItemModifiers.removeAtIndex(indexPath.row)
+            
+            order.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+                if succeeded {
+                    self.reloadData()
+                } else {
+                    println(error?.localizedDescription)
+                }
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,16 +156,14 @@ class OrderDetailViewController: UITableViewController {
         }
     }
     
-    // MARK: - UITableViewDelegate
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return indexPath.section == 2 ? 200 : 50
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+        return "Remove"
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return nil
+            return "\(order.menuItem.menuCategory.menu.name) – \(order.menuItem.menuCategory.name)"
         case 1:
             return "MODIFIERS"
         case 2:
@@ -118,6 +171,19 @@ class OrderDetailViewController: UITableViewController {
         default:
             return nil
         }
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 && indexPath.row == order.menuItemModifiers.count {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            performSegueWithIdentifier("MenuItemModifier", sender: tableView.cellForRowAtIndexPath(indexPath))
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return indexPath.section == 2 ? 200 : 50
     }
     
 }
