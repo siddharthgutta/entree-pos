@@ -36,6 +36,12 @@
 #define COCOAPODS_VERSION_MINOR_ParseUI 1
 #define COCOAPODS_VERSION_PATCH_ParseUI 4
 
+// StarPrinting
+#define COCOAPODS_POD_AVAILABLE_StarPrinting
+#define COCOAPODS_VERSION_MAJOR_StarPrinting 0
+#define COCOAPODS_VERSION_MINOR_StarPrinting 1
+#define COCOAPODS_VERSION_PATCH_StarPrinting 1
+
 // THPinViewController
 #define COCOAPODS_POD_AVAILABLE_THPinViewController
 #define COCOAPODS_VERSION_MAJOR_THPinViewController 1

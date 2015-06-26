@@ -7,12 +7,14 @@ PODS:
     - Bolts/Tasks (>= 1.2.0)
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
+  - StarPrinting (0.1.1)
   - THPinViewController (1.2.4)
 
 DEPENDENCIES:
   - CardFlight
   - Parse
   - ParseUI
+  - StarPrinting
   - THPinViewController
 
 SPEC CHECKSUMS:
@@ -20,6 +22,7 @@ SPEC CHECKSUMS:
   CardFlight: eae95b7f9bbbf190f7de64cd5b29f95e1f515e83
   Parse: 7c0f115eff3e0cea3fac08d50bda47154edb8832
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  StarPrinting: c25ea4b3e4314c7cc647a7a8bff260fe755e69f3
   THPinViewController: 6ea25443b2205bdfaaf5a6db8b05403dfbe0bdec
 
 COCOAPODS: 0.37.2
