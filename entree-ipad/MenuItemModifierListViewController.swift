@@ -3,6 +3,10 @@ import UIKit
 
 class MenuItemModifierListViewController: PFQueryTableViewController {
 
+    @IBAction func dismiss(sender: UIBarButtonItem) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     var order: Order?
     
     let numberFormatter = NSNumberFormatter()
