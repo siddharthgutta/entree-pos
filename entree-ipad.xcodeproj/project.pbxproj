@@ -38,6 +38,8 @@
 		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
 		32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D71B2E972E00A7D061 /* MenusViewController.swift */; };
 		32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */; };
+		8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */; };
+		8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */; };
 		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
@@ -79,6 +81,8 @@
 		32EE48D71B2E972E00A7D061 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenusViewController.swift; sourceTree = "<group>"; };
 		32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsViewController.swift; sourceTree = "<group>"; };
 		75D0BE66DB08D81459735D35 /* Pods-entree-ipad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.debug.xcconfig"; sourceTree = "<group>"; };
+		8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOverviewViewController.swift; sourceTree = "<group>"; };
+		8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyPaymentsViewController.swift; sourceTree = "<group>"; };
 		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +133,9 @@
 				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
 				32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */,
 				32C541361B2516BB002465C4 /* PartyViewController.swift */,
+				8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */,
 				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
+				8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			files = (
 				32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
+				8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */,
 				320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */,
 				32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */,
 				32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */,
@@ -381,6 +388,7 @@
 				32C4B6251B2396B30062B854 /* Order.swift in Sources */,
 				323EFD321B23CB34002437A7 /* RestaurantMapView.swift in Sources */,
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
+				8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
