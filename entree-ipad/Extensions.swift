@@ -1,6 +1,15 @@
 
 import UIKit
 
+extension NSCalendar {
+    
+    func endOfDayForDate(date: NSDate) -> NSDate {
+        let nextDay = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: 1, toDate: date, options: nil)!
+        return NSCalendar.currentCalendar().startOfDayForDate(nextDay)
+    }
+    
+}
+
 extension UIColor {
     
     static func entreeBlueColor() -> UIColor {
