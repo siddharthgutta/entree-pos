@@ -57,7 +57,8 @@ class OrderDetailViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case "MenuItemModifier":
-            if let menuItemModifierListViewController = segue.destinationViewController as? MenuItemModifierListViewController {
+            if let navigationController = segue.destinationViewController as? UINavigationController,
+            let menuItemModifierListViewController = navigationController.viewControllers.first as? MenuItemModifierListViewController {
                 menuItemModifierListViewController.order = order
             }
         default:
