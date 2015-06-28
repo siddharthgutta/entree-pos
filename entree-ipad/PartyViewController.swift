@@ -4,11 +4,29 @@ import UIKit
 class PartyViewController: PFQueryTableViewController {
     
     @IBAction func closeTable(sender: UIBarButtonItem) {
+        let confirmationAlertController = UIAlertController(title: "Close Table?", message: "You will no longer be able to access this party's orders or payment methods (This final checkout process will take place on the Overview panel).", preferredStyle: .Alert)
         
+        confirmationAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        confirmationAlertController.addAction(UIAlertAction(title: "Close Table?", style: .Destructive) { (action: UIAlertAction!) in
+            self.party.leftAt = NSDate()
+            self.party.table.currentParty = nil
+            
+            PFObject.saveAllInBackground([self.party, self.party.table]) { (succeeded: Bool, error: NSError?) in
+                if succeeded {
+                    self.dismiss(sender)
+                } else {
+                    println(error?.localizedDescription)
+                }
+            }
+        })
+        
+        presentViewController(confirmationAlertController, animated: true, completion: nil)
     }
     
     @IBAction func createPayment(sender: UIBarButtonItem) {
-        
+        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
@@ -16,7 +34,9 @@ class PartyViewController: PFQueryTableViewController {
     }
     
     @IBAction func printBill(sender: UIBarButtonItem) {
-        
+        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBOutlet var createPaymentButton: UIButton!
@@ -92,7 +112,7 @@ class PartyViewController: PFQueryTableViewController {
         let order = orderAtIndexPath(indexPath)!
         
         let price = numberFormatter.stringFromNumber(NSNumber(double: order.menuItem.price))!
-        cell.textLabel!.text = "\(order.menuItem.name) [\(price)]"
+        cell.textLabel?.text = "\(order.menuItem.name) [\(price)]"
         cell.detailTextLabel!.text = order.notes
         
         return cell

@@ -3,6 +3,22 @@ import UIKit
 
 class TimeClockViewController: PFQueryCollectionViewController, THPinViewControllerDelegate {
 
+    @IBAction func settings(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func test() {
+        Printer.search { (printers: [AnyObject]!) in
+            for printer in printers {
+                
+                println(printer)
+            }
+            
+        }
+    }
+    
     @IBOutlet var segmentedControl: UISegmentedControl!
     
     let numberOfCellsPerRow: CGFloat = 5
@@ -49,7 +65,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             query.whereKey("role", notEqualTo: "Server")
         }
         
-        query.whereKey("restaurant", equalTo: Restaurant.sharedRestaurant())
+        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurant()!)
         
         return query
     }

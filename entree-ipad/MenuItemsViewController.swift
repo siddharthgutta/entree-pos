@@ -71,17 +71,19 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
         order.menuItem = objectAtIndexPath(indexPath)! as! MenuItem
         order.menuItemModifiers = []
         order.notes = ""
-        if let splitViewController = navigationController?.splitViewController,
-        let partyViewController = splitViewController.viewControllers.first as? PartyViewController {
+        println()
+        if let nc = splitViewController?.viewControllers.first as? UINavigationController,
+        let partyViewController = nc.viewControllers.first as? PartyViewController {
             order.party = partyViewController.party
         }
         order.seat = 0
         
         order.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
             if succeeded {
+                println(order)
                 self.performSegueWithIdentifier("OrderDetail", sender: order)
             } else {
-                fatalError(error!.localizedDescription)
+                println(error?.localizedDescription)
             }
         }
     }

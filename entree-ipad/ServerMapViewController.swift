@@ -37,7 +37,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         query.includeKey("currentParty")
         query.includeKey("currentParty.table")
         
-        query.whereKey("restaurant", equalTo: Restaurant.sharedRestaurant())
+        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurant()!)
         
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
             if let tables = objects as? [Table] {
@@ -45,7 +45,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 
                 self.restaurantMapView.reloadData()
             } else {
-                fatalError(error!.localizedDescription)
+                println(error?.localizedDescription)
             }
         }
     }
@@ -58,6 +58,11 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             if let employeeClockViewController = segue.destinationViewController as? EmployeeClockViewController {
                 employeeClockViewController.employee = employee
             }
+        case "Overview":
+            if let navigationController = segue.destinationViewController as? UINavigationController,
+            let serverOverviewViewController = navigationController.viewControllers.first as? ServerOverviewViewController {
+                serverOverviewViewController.server = employee
+            }
         case "Party":
             if let splitViewController = segue.destinationViewController as? UISplitViewController,
             let navigationController = splitViewController.viewControllers.first as? UINavigationController,
@@ -65,7 +70,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 partyViewController.party = sender as! Party
             }
         default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+            println(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
         }
     }
     
@@ -111,11 +116,11 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         
         let imageTintColor: UIColor
         if table.currentParty == nil {
-            imageTintColor = UIColor.entreeGreenColor()
+            imageTintColor = UIColor.lightGrayColor()
         } else if table.currentParty!.server.same(employee) {
             imageTintColor = UIColor.entreeBlueColor()
         } else {
-            imageTintColor = UIColor(red:1, green:0.84, blue:0.26, alpha:1)
+            imageTintColor = UIColor.darkGrayColor()
         }
         
         let image = UIImage(named: "Table-\(table.type)")!.tintedGradientImageWithColor(imageTintColor)
@@ -137,16 +142,27 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     
     func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex index: Int) {
         if let party = tables[index].currentParty {
-            performSegueWithIdentifier("Party", sender: party)
+            if party.server.same(employee) {
+                performSegueWithIdentifier("Party", sender: party)
+            } else {
+                let alertController = UIAlertController(title: "Oops!", message: "Sorry, you do not have access to this table.", preferredStyle: .Alert)
+                
+                alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+                
+                presentViewController(alertController, animated: true, completion: nil)
+            }
         } else {
-            let createPartyAlertController = UIAlertController(title: "Create Party?", message: nil, preferredStyle: .Alert)
+            let addPartyAlertController = UIAlertController(title: "Add Party", message: nil, preferredStyle: .Alert)
+            addPartyAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
+                textField.placeholder = "Name (Optional)"
+            }
             
-            createPartyAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            createPartyAlertController.addAction(UIAlertAction(title: "Create", style: .Default) { (action: UIAlertAction!) in
+            addPartyAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+            addPartyAlertController.addAction(UIAlertAction(title: "Add", style: .Default) { (action: UIAlertAction!) in
                 let party = Party()
                 party.arrivedAt = NSDate()
-                party.name = ""
-                party.restaurant = Restaurant.sharedRestaurant()
+                party.name = (addPartyAlertController.textFields?.first as! UITextField).text
+                party.restaurant = Restaurant.defaultRestaurant()!
                 party.seatedAt = NSDate()
                 party.server = self.employee
                 party.table = self.tables[index]
@@ -158,7 +174,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 }
             })
             
-            presentViewController(createPartyAlertController, animated: true, completion: nil)
+            presentViewController(addPartyAlertController, animated: true, completion: nil)
         }
     }
     

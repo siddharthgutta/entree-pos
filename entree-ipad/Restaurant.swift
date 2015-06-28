@@ -6,8 +6,8 @@ class Restaurant: PFObject, PFSubclassing {
     @NSManaged var name: String
     @NSManaged var user: PFUser
     
-    static func sharedRestaurant() -> Restaurant {
-        return Restaurant(withoutDataWithObjectId: NSUserDefaults.standardUserDefaults().objectForKey("shared_restaurant_object_id") as? String)
+    static func defaultRestaurant() -> Restaurant? {
+        return Restaurant(withoutDataWithObjectId: NSUserDefaults.standardUserDefaults().objectForKey("default_restaurant") as? String)
     }
     
     static func parseClassName() -> String {
