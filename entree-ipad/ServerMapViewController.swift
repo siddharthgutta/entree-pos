@@ -13,25 +13,25 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     // MARK: - ServerMapViewController
     
     private func centerScrollViewContents() {
-        let boundsSize = scrollView.bounds.size
-        var contentsFrame = restaurantMapView.frame
+        let scrollViewBoundsSize = scrollView.bounds.size
+        var mapViewFrame = restaurantMapView.frame
         
-        if contentsFrame.size.width < boundsSize.width {
-            contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
+        if mapViewFrame.size.width < scrollViewBoundsSize.width {
+            mapViewFrame.origin.x = (scrollViewBoundsSize.width - mapViewFrame.size.width) / 2.0
         } else {
-            contentsFrame.origin.x = 0.0
+            mapViewFrame.origin.x = 0
         }
         
-        if contentsFrame.size.height < boundsSize.height {
-            contentsFrame.origin.y = ((boundsSize.height - 64.0) - contentsFrame.size.height) / 2.0
+        if mapViewFrame.size.height < scrollViewBoundsSize.height {
+            mapViewFrame.origin.y = ((scrollViewBoundsSize.height - 64.0) - mapViewFrame.size.height) / 2.0
         } else {
-            contentsFrame.origin.y = 0.0
+            mapViewFrame.origin.y = 0
         }
-
-        restaurantMapView.frame = contentsFrame
+        
+        restaurantMapView.frame = mapViewFrame
     }
     
-    func loadTables() {
+    func loadTablesWithCompletion(completion: ((Void) -> (Void))?) {
         let query = Table.query()!
         
         query.includeKey("currentParty")
@@ -44,6 +44,8 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 self.tables = tables
                 
                 self.restaurantMapView.reloadData()
+                
+                completion?()
             } else {
                 println(error?.localizedDescription)
             }
@@ -76,10 +78,10 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         restaurantMapView.dataSource = self
         restaurantMapView.delegate = self
-        restaurantMapView.bounds.size = CGSizeMake(600, 600)
+        restaurantMapView.bounds.size = view.bounds.size
         
         scrollView.addSubview(restaurantMapView)
         
@@ -89,7 +91,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
         let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
         let minScale = min(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = minScale;
+        scrollView.minimumZoomScale = minScale
         
         scrollView.maximumZoomScale = 1.0
         scrollView.zoomScale = minScale
@@ -102,7 +104,9 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         
         navigationItem.title = "\(employee.name) – \(employee.activePartyCount) Active Tables"
         
-        loadTables()
+        loadTablesWithCompletion {
+            self.centerScrollViewContents()
+        }
     }
     
     // MARK: - RestaurantMapViewDataSource
@@ -129,7 +133,9 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         imageView.image = image
         imageView.userInteractionEnabled = true
         
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: restaurantMapView, action: Selector("subviewTapped:")))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: restaurantMapView, action: Selector("subviewTapped:"))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         return imageView
     }
@@ -170,7 +176,11 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 self.tables[index].currentParty = party
                 
                 PFObject.saveAllInBackground([party, self.tables[index]]) { (succeeded: Bool, error: NSError?) in
-                    self.loadTables()
+                    if succeeded {
+                        self.loadTablesWithCompletion(nil)
+                    } else {
+                        println(error?.localizedDescription)
+                    }
                 }
             })
             
