@@ -31,10 +31,6 @@ class MenusViewController: PFQueryCollectionViewController, UICollectionViewDele
         collectionView!.registerNib(UINib(nibName: "MenuCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "Cell")
         
         objectsPerPage = 1000
-        
-        let sideLength = (649 - (16 * 6)) / 5
-        (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: sideLength, height: sideLength)
-        (collectionView?.collectionViewLayout as! UICollectionViewFlowLayout).sectionInset = UIEdgeInsetsMake(16, 16, 16, 16)
     }
     
     override func viewWillAppear(animated: Bool) {
