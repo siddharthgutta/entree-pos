@@ -5,7 +5,10 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
 
     @IBAction func settings(sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+        
+        let okayAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alertController.addAction(okayAlertAction)
+        
         presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -41,7 +44,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         pinViewController.modalPresentationStyle = .Popover
         pinViewController.preferredContentSize = CGSizeMake(400, 600)
         
-        self.presentViewController(pinViewController, animated: true, completion: nil)
+        presentViewController(pinViewController, animated: true, completion: nil)
         
         let popover = pinViewController.popoverPresentationController!
         popover.backgroundColor = UIColor.entreeBlueColor()
@@ -205,6 +208,4 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         return CGSize(width: sideLength, height: sideLength)
     }
     
-
-
 }
