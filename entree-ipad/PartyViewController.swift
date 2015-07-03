@@ -111,6 +111,20 @@ class PartyViewController: PFQueryTableViewController {
         
         let order = orderAtIndexPath(indexPath)!
         
+        if let menuItemNameLabel = cell.viewWithTag(100) as? UILabel {
+            menuItemNameLabel.text = order.menuItem.name
+        }
+        
+        if let orderNotesLabel = cell.viewWithTag(200) as? UILabel {
+            orderNotesLabel.text = order.notes
+        }
+        
+        if let menuItemPriceLabel = cell.viewWithTag(300) as? UILabel {
+            menuItemPriceLabel.text = numberFormatter.stringFromNumber(NSNumber(double: order.totalPrice))
+        }
+        
+        
+        
         let price = numberFormatter.stringFromNumber(NSNumber(double: order.menuItem.price))!
         cell.textLabel?.text = "\(order.menuItem.name) [\(price)]"
         cell.detailTextLabel!.text = order.notes
