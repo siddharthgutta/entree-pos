@@ -41,6 +41,10 @@
 		8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */; };
 		8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */; };
 		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
+		887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874E81B4A09D300E6E036 /* PrintJob.swift */; };
+		887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */; };
+		88C3A3A91B4871C90029595C /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* PrinterManager.swift */; };
+		88C3A3AB1B4873D50029595C /* OrdersTemplate.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +88,10 @@
 		8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOverviewViewController.swift; sourceTree = "<group>"; };
 		8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyPaymentsViewController.swift; sourceTree = "<group>"; };
 		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
+		887874E81B4A09D300E6E036 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
+		887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPrinter.swift; sourceTree = "<group>"; };
+		88C3A3A81B4871C90029595C /* PrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterManager.swift; sourceTree = "<group>"; };
+		88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OrdersTemplate.xml; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B5ED1B238E5B0062B854 /* Info.plist */,
+				88C3A3AC1B4873DB0029595C /* Printer Templates */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -221,8 +230,10 @@
 				32C4B6241B2396B30062B854 /* Order.swift */,
 				32C4B6281B2399480062B854 /* Party.swift */,
 				3265AE781B25571C0000D6B1 /* Payment.swift */,
+				887874E81B4A09D300E6E036 /* PrintJob.swift */,
 				32C4B61A1B2393650062B854 /* Restaurant.swift */,
 				32C4B62A1B239A3E0062B854 /* Shift.swift */,
+				887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */,
 				32C4B62C1B239AA30062B854 /* Table.swift */,
 			);
 			name = Models;
@@ -232,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */,
+				88C3A3A81B4871C90029595C /* PrinterManager.swift */,
 				32C4B6341B239E530062B854 /* Extensions.swift */,
 				32C4B6171B23927F0062B854 /* BridgingHeader.h */,
 			);
@@ -255,6 +267,14 @@
 				32C4B5F51B238E5B0062B854 /* Images.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		88C3A3AC1B4873DB0029595C /* Printer Templates */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */,
+			);
+			name = "Printer Templates";
 			sourceTree = "<group>";
 		};
 		EC2CF849EDDFD7B9C8DCD960 /* Frameworks */ = {
@@ -327,6 +347,7 @@
 			files = (
 				32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */,
 				32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */,
+				88C3A3AB1B4873D50029595C /* OrdersTemplate.xml in Resources */,
 				32C9F9E51B2FB44D00778112 /* MenuCollectionViewCell.xib in Resources */,
 				32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */,
 				32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */,
@@ -374,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */,
+				88C3A3A91B4871C90029595C /* PrinterManager.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
 				8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */,
 				320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */,
@@ -382,6 +404,7 @@
 				32C4B6291B2399480062B854 /* Party.swift in Sources */,
 				32D533C61B3766BB008A2369 /* BorderedButton.swift in Sources */,
 				32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */,
+				887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */,
 				32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */,
 				32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */,
 				32AEAAA71B30F70800DE030A /* OrderDetailViewController.swift in Sources */,
@@ -390,6 +413,7 @@
 				32C4B6161B2392490062B854 /* Employee.swift in Sources */,
 				8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */,
 				32C4B6331B239DFC0062B854 /* TimeClockViewController.swift in Sources */,
+				887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */,
 				32C4B6311B239DFC0062B854 /* EmployeeClockViewController.swift in Sources */,
 				32C4B6231B23967D0062B854 /* MenuItemModifier.swift in Sources */,
 				32C9F9E31B2FB44300778112 /* MenuCollectionViewCell.swift in Sources */,
