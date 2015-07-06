@@ -23,7 +23,6 @@ class EmployeeClockViewController: UIViewController {
         presentingViewController!.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBOutlet var naturalLanguageTimerLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
 
     var employee: Employee?
@@ -36,10 +35,6 @@ class EmployeeClockViewController: UIViewController {
             let timeInterval = NSDate().timeIntervalSinceDate(shift.startedAt)
             
             let dateComponentsFormatter = NSDateComponentsFormatter()
-            dateComponentsFormatter.unitsStyle = .Full
-            
-            naturalLanguageTimerLabel.text = "You have been clocked-in for " + dateComponentsFormatter.stringFromTimeInterval(timeInterval)!
-            
             dateComponentsFormatter.unitsStyle = .Positional
             
             timerLabel.text = dateComponentsFormatter.stringFromTimeInterval(timeInterval)!
