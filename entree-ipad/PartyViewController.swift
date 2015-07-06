@@ -69,6 +69,11 @@ class PartyViewController: PFQueryTableViewController {
     
     // MARK: - PartyViewController
     
+    private func presentNoOrdersSelectedAlertController() {
+        let noOrdersSelectedAlertController = UIAlertController(title: "No Orders Selected", message: nil, preferredStyle: .Alert)
+        noOrdersSelectedAlertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+    }
+    
     private func orderAtIndexPath(indexPath: NSIndexPath) -> Order? {
         return orders.filter { (order: Order) -> Bool in return order.seat == indexPath.section }[indexPath.row]
     }
