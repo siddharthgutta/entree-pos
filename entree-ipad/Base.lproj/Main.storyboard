@@ -53,7 +53,7 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fHl-9J-QL5">
-                            <rect key="frame" x="99.5" y="7" width="401" height="30"/>
+                            <rect key="frame" x="100" y="7" width="401" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
@@ -103,34 +103,29 @@
                         <viewControllerLayoutGuide type="bottom" id="mkO-8p-8GV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4tW-ia-JhW">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="266"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="204"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have been clocked-in for 3 hours, 26 minutes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="UKx-1k-ci3">
-                                <rect key="frame" x="16" y="36" width="268" height="41"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:26:51" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lah-Zn-gja">
-                                <rect key="frame" x="68" y="85" width="164" height="40"/>
+                                <rect key="frame" x="63" y="28" width="174" height="42"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="34"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switching servers will not clock you out or affect your tables" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="Kp3-cC-e2q">
-                                <rect key="frame" x="16" y="133" width="268" height="41"/>
+                                <rect key="frame" x="16" y="78" width="268" height="34"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omw-vm-NJa">
-                                <rect key="frame" x="99" y="182" width="103" height="30"/>
+                                <rect key="frame" x="90" y="120" width="121" height="34"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Switch Servers">
+                                    <color key="titleColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -138,8 +133,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUt-ag-UcU">
-                                <rect key="frame" x="116" y="220" width="69" height="30"/>
+                                <rect key="frame" x="110" y="162" width="81" height="34"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Clock Out">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,22 +149,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ZUt-ag-UcU" secondAttribute="centerX" id="2mg-FA-a1T"/>
+                            <constraint firstItem="lah-Zn-gja" firstAttribute="top" secondItem="AAa-qU-NNR" secondAttribute="bottom" constant="8" id="Qfk-v0-3zJ"/>
                             <constraint firstItem="ZUt-ag-UcU" firstAttribute="top" secondItem="omw-vm-NJa" secondAttribute="bottom" constant="8" id="S19-z3-uBL"/>
-                            <constraint firstItem="UKx-1k-ci3" firstAttribute="leading" secondItem="4tW-ia-JhW" secondAttribute="leading" constant="16" id="UY9-5F-SSH"/>
                             <constraint firstAttribute="centerX" secondItem="omw-vm-NJa" secondAttribute="centerX" id="V4z-bX-bzn"/>
                             <constraint firstAttribute="trailing" secondItem="Kp3-cC-e2q" secondAttribute="trailing" constant="16" id="aHC-8T-kEW"/>
                             <constraint firstItem="Kp3-cC-e2q" firstAttribute="leading" secondItem="4tW-ia-JhW" secondAttribute="leading" constant="16" id="aeJ-He-bUU"/>
                             <constraint firstAttribute="centerX" secondItem="lah-Zn-gja" secondAttribute="centerX" id="c08-NW-AzQ"/>
-                            <constraint firstItem="UKx-1k-ci3" firstAttribute="top" secondItem="AAa-qU-NNR" secondAttribute="bottom" constant="16" id="c9G-hp-jb9"/>
                             <constraint firstItem="omw-vm-NJa" firstAttribute="top" secondItem="Kp3-cC-e2q" secondAttribute="bottom" constant="8" id="gsN-HQ-9Iy"/>
-                            <constraint firstAttribute="trailing" secondItem="UKx-1k-ci3" secondAttribute="trailing" constant="16" id="pLM-3N-SIQ"/>
-                            <constraint firstItem="lah-Zn-gja" firstAttribute="top" secondItem="UKx-1k-ci3" secondAttribute="bottom" constant="8" id="w7h-kG-j7K"/>
                             <constraint firstItem="Kp3-cC-e2q" firstAttribute="top" secondItem="lah-Zn-gja" secondAttribute="bottom" constant="8" id="zAx-fS-NG6"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="266"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="204"/>
                     <connections>
-                        <outlet property="naturalLanguageTimerLabel" destination="UKx-1k-ci3" id="vz8-sF-JqO"/>
                         <outlet property="timerLabel" destination="lah-Zn-gja" id="lEK-XH-qlA"/>
                     </connections>
                 </viewController>
@@ -180,7 +172,7 @@
         <scene sceneID="Zq5-2a-ebK">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="4u7-jc-HMs" customClass="PartyViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="mTX-qA-VYJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" id="mTX-qA-VYJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
@@ -223,20 +215,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="300" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$12.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRx-dg-DJb">
-                                            <rect key="frame" x="524" y="8" width="55.5" height="21.5"/>
+                                            <rect key="frame" x="524" y="8" width="56" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra rosemary, hold the mayonaise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux8-CW-H4c">
-                                            <rect key="frame" x="20" y="29" width="560" height="18.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Extra rosemary, hold the mayonaise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux8-CW-H4c">
+                                            <rect key="frame" x="20" y="29" width="560" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rosemary Chicken Plate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yX7-sE-oc0">
-                                            <rect key="frame" x="20" y="8" width="496.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rosemary Chicken Plate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yX7-sE-oc0">
+                                            <rect key="frame" x="20" y="8" width="497" height="22"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -274,13 +266,10 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Cpe-5m-PgI"/>
                         <barButtonItem title="Checkout" id="X5e-Ub-VMG">
                             <color key="tintColor" red="0.14117647059999999" green="0.72549019609999998" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="createPayment:" destination="4u7-jc-HMs" id="Ttw-aq-Ovl"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Print" id="f4x-e0-qGf">
                             <connections>
-                                <action selector="printBill:" destination="4u7-jc-HMs" id="NCr-ir-XJ7"/>
+                                <action selector="printBill:" destination="4u7-jc-HMs" id="hUR-ej-D6T"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
