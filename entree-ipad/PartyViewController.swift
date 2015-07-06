@@ -33,10 +33,18 @@ class PartyViewController: PFQueryTableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func printBill(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
+    @IBAction func printOrders(sender: UIBarButtonItem) {
+        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+            let orders = indexPaths.map { (indexPath: NSIndexPath) -> Order in return self.orderAtIndexPath(indexPath)! }
+            
+            if orders.isEmpty {
+                presentNoOrdersSelectedAlertController()
+            } else {
+                PrintManager.sharedManager().printOrders(orders)
+            }
+        } else {
+            presentNoOrdersSelectedAlertController()
+        }
     }
     
     @IBOutlet var createPaymentButton: UIButton!
