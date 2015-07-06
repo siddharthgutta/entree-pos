@@ -50,9 +50,7 @@ class PartyViewController: PFQueryTableViewController {
     @IBOutlet var createPaymentButton: UIButton!
     @IBOutlet var timeSeatedLabel: UILabel!
     
-    var orders: [Order] {
-        return objects! as! [Order]
-    }
+    var orders: [Order] { return objects! as! [Order] }
     var party: Party!
     
     let dateComponentsFormatter = NSDateComponentsFormatter()
