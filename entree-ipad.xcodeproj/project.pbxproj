@@ -38,13 +38,15 @@
 		32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */; };
 		32EE48D81B2E972E00A7D061 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D71B2E972E00A7D061 /* MenusViewController.swift */; };
 		32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */; };
+		880771E71B4AB37000A0ACEC /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880771E61B4AB37000A0ACEC /* OrderTableViewCell.swift */; };
+		880771E91B4ABAF100A0ACEC /* CardPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880771E81B4ABAF100A0ACEC /* CardPaymentViewController.swift */; };
 		8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */; };
 		8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */; };
 		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
 		887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874E81B4A09D300E6E036 /* PrintJob.swift */; };
 		887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */; };
-		88C3A3A91B4871C90029595C /* PrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* PrinterManager.swift */; };
-		88C3A3AB1B4873D50029595C /* OrdersTemplate.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */; };
+		88C3A3A91B4871C90029595C /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* PrintManager.swift */; };
+		88C3A3AB1B4873D50029595C /* order_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A3AA1B4873D50029595C /* order_template.xml */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
 
@@ -85,13 +87,15 @@
 		32EE48D71B2E972E00A7D061 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenusViewController.swift; sourceTree = "<group>"; };
 		32EE48D91B2EA03C00A7D061 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemsViewController.swift; sourceTree = "<group>"; };
 		75D0BE66DB08D81459735D35 /* Pods-entree-ipad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.debug.xcconfig"; sourceTree = "<group>"; };
+		880771E61B4AB37000A0ACEC /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		880771E81B4ABAF100A0ACEC /* CardPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentViewController.swift; sourceTree = "<group>"; };
 		8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOverviewViewController.swift; sourceTree = "<group>"; };
 		8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyPaymentsViewController.swift; sourceTree = "<group>"; };
 		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
 		887874E81B4A09D300E6E036 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
 		887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPrinter.swift; sourceTree = "<group>"; };
-		88C3A3A81B4871C90029595C /* PrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinterManager.swift; sourceTree = "<group>"; };
-		88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OrdersTemplate.xml; sourceTree = "<group>"; };
+		88C3A3A81B4871C90029595C /* PrintManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintManager.swift; sourceTree = "<group>"; };
+		88C3A3AA1B4873D50029595C /* order_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = order_template.xml; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +142,7 @@
 		327E11C71B3B893C009F71CC /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				880771E81B4ABAF100A0ACEC /* CardPaymentViewController.swift */,
 				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
 				32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */,
 				32C541361B2516BB002465C4 /* PartyViewController.swift */,
@@ -211,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				32EC1E7F1B23A02B007F9B68 /* BadgeLabel.swift */,
+				880771E61B4AB37000A0ACEC /* OrderTableViewCell.swift */,
 				32D533C51B3766BB008A2369 /* BorderedButton.swift */,
 				32C9F9E21B2FB44300778112 /* MenuCollectionViewCell.swift */,
 				323EFD311B23CB34002437A7 /* RestaurantMapView.swift */,
@@ -243,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */,
-				88C3A3A81B4871C90029595C /* PrinterManager.swift */,
+				88C3A3A81B4871C90029595C /* PrintManager.swift */,
 				32C4B6341B239E530062B854 /* Extensions.swift */,
 				32C4B6171B23927F0062B854 /* BridgingHeader.h */,
 			);
@@ -272,7 +278,7 @@
 		88C3A3AC1B4873DB0029595C /* Printer Templates */ = {
 			isa = PBXGroup;
 			children = (
-				88C3A3AA1B4873D50029595C /* OrdersTemplate.xml */,
+				88C3A3AA1B4873D50029595C /* order_template.xml */,
 			);
 			name = "Printer Templates";
 			sourceTree = "<group>";
@@ -347,7 +353,7 @@
 			files = (
 				32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */,
 				32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */,
-				88C3A3AB1B4873D50029595C /* OrdersTemplate.xml in Resources */,
+				88C3A3AB1B4873D50029595C /* order_template.xml in Resources */,
 				32C9F9E51B2FB44D00778112 /* MenuCollectionViewCell.xib in Resources */,
 				32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */,
 				32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */,
@@ -395,7 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */,
-				88C3A3A91B4871C90029595C /* PrinterManager.swift in Sources */,
+				88C3A3A91B4871C90029595C /* PrintManager.swift in Sources */,
+				880771E91B4ABAF100A0ACEC /* CardPaymentViewController.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
 				8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */,
 				320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */,
@@ -421,6 +428,7 @@
 				32C4B5EF1B238E5B0062B854 /* AppDelegate.swift in Sources */,
 				3265AE791B25571C0000D6B1 /* Payment.swift in Sources */,
 				32C4B6351B239E530062B854 /* Extensions.swift in Sources */,
+				880771E71B4AB37000A0ACEC /* OrderTableViewCell.swift in Sources */,
 				32C4B62D1B239AA30062B854 /* Table.swift in Sources */,
 				32D8F2D81B239FE000EB31F5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */,
