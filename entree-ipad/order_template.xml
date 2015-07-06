@@ -1,0 +1,8 @@
+<print>
+
+<large>New Order</large>
+<text>{{ menu_item }}</text>
+<tab /><text>MOD: {{ mods }}</text>
+<tab /><text>NOTES: {{ notes }}</text>
+
+</print>
