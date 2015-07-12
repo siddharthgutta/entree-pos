@@ -45,6 +45,9 @@
 		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
 		887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874E81B4A09D300E6E036 /* PrintJob.swift */; };
 		887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */; };
+		888E38E11B4C088F0072A6A5 /* PartyOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E38E01B4C088F0072A6A5 /* PartyOverviewViewController.swift */; };
+		888FAED71B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FAED61B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift */; };
+		888FAED91B4F5C6600DE8AFC /* CashPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FAED81B4F5C6600DE8AFC /* CashPaymentViewController.swift */; };
 		88C3A3A91B4871C90029595C /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* PrintManager.swift */; };
 		88C3A3AB1B4873D50029595C /* order_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A3AA1B4873D50029595C /* order_template.xml */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
@@ -94,6 +97,9 @@
 		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
 		887874E81B4A09D300E6E036 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
 		887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPrinter.swift; sourceTree = "<group>"; };
+		888E38E01B4C088F0072A6A5 /* PartyOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyOverviewViewController.swift; sourceTree = "<group>"; };
+		888FAED61B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPaymentTypeViewController.swift; sourceTree = "<group>"; };
+		888FAED81B4F5C6600DE8AFC /* CashPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashPaymentViewController.swift; sourceTree = "<group>"; };
 		88C3A3A81B4871C90029595C /* PrintManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintManager.swift; sourceTree = "<group>"; };
 		88C3A3AA1B4873D50029595C /* order_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = order_template.xml; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,13 +148,13 @@
 		327E11C71B3B893C009F71CC /* Server */ = {
 			isa = PBXGroup;
 			children = (
-				880771E81B4ABAF100A0ACEC /* CardPaymentViewController.swift */,
+				888FAED51B4F5C3F00DE8AFC /* Payment */,
 				32C4B62E1B239DFC0062B854 /* EmployeeClockViewController.swift */,
 				32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */,
 				32C541361B2516BB002465C4 /* PartyViewController.swift */,
 				8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */,
 				32C4B62F1B239DFC0062B854 /* ServerMapViewController.swift */,
-				8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */,
+				888E38E21B4C08960072A6A5 /* Overview */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -174,7 +180,6 @@
 		32C4B5EB1B238E5B0062B854 /* entree-ipad */ = {
 			isa = PBXGroup;
 			children = (
-				32C4B6141B238EFB0062B854 /* Assets */,
 				32C4B60E1B238EBA0062B854 /* Classes */,
 				32C4B6131B238EEA0062B854 /* Interfaces */,
 				32C4B5EC1B238E5B0062B854 /* Supporting Files */,
@@ -185,6 +190,7 @@
 		32C4B5EC1B238E5B0062B854 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32C4B5F51B238E5B0062B854 /* Images.xcassets */,
 				32C4B5ED1B238E5B0062B854 /* Info.plist */,
 				88C3A3AC1B4873DB0029595C /* Printer Templates */,
 			);
@@ -267,12 +273,23 @@
 			name = Interfaces;
 			sourceTree = "<group>";
 		};
-		32C4B6141B238EFB0062B854 /* Assets */ = {
+		888E38E21B4C08960072A6A5 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
-				32C4B5F51B238E5B0062B854 /* Images.xcassets */,
+				8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */,
+				888E38E01B4C088F0072A6A5 /* PartyOverviewViewController.swift */,
 			);
-			name = Assets;
+			name = Overview;
+			sourceTree = "<group>";
+		};
+		888FAED51B4F5C3F00DE8AFC /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				880771E81B4ABAF100A0ACEC /* CardPaymentViewController.swift */,
+				888FAED81B4F5C6600DE8AFC /* CashPaymentViewController.swift */,
+				888FAED61B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift */,
+			);
+			name = Payment;
 			sourceTree = "<group>";
 		};
 		88C3A3AC1B4873DB0029595C /* Printer Templates */ = {
@@ -405,11 +422,14 @@
 				880771E91B4ABAF100A0ACEC /* CardPaymentViewController.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
 				8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */,
+				888FAED91B4F5C6600DE8AFC /* CashPaymentViewController.swift in Sources */,
 				320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */,
 				32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */,
+				888E38E11B4C088F0072A6A5 /* PartyOverviewViewController.swift in Sources */,
 				32C4B6321B239DFC0062B854 /* ServerMapViewController.swift in Sources */,
 				32C4B6291B2399480062B854 /* Party.swift in Sources */,
 				32D533C61B3766BB008A2369 /* BorderedButton.swift in Sources */,
+				888FAED71B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift in Sources */,
 				32C4B62B1B239A3E0062B854 /* Shift.swift in Sources */,
 				887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */,
 				32EE48DA1B2EA03C00A7D061 /* MenuItemsViewController.swift in Sources */,
