@@ -8,11 +8,11 @@ class ServerOverviewViewController: PFQueryTableViewController {
     }
     
     @IBAction func nextDate(sender: UIButton) {
-        changeDateWithValue(1)
+        changeDayByAddingValue(1)
     }
     
     @IBAction func previousDate(sender: UIButton) {
-        changeDateWithValue(-1)
+        changeDayByAddingValue(-1)
     }
     
     @IBOutlet var dateLabel: UILabel!
@@ -32,7 +32,7 @@ class ServerOverviewViewController: PFQueryTableViewController {
     
     // MARK: - ServerOverviewViewController
     
-    func changeDateWithValue(value: Int) {
+    func changeDayByAddingValue(value: Int) {
         date = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: value, toDate: date, options: nil)!
         
         dateFormatter.dateStyle = .FullStyle
