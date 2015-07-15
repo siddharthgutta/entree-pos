@@ -7,7 +7,7 @@ class Order: PFObject, PFSubclassing {
     @NSManaged var party: Party
     @NSManaged var seat: Int
     
-    func totalPrice() -> Double {
+    func price() -> Double {
         return menuItemModifiers.reduce(menuItem.price) { (price: Double, modifier: MenuItemModifier) -> Double in
             return price + modifier.price
         }
