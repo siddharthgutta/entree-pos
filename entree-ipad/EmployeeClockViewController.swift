@@ -1,60 +1,81 @@
 
 import UIKit
 
-class EmployeeClockViewController: UIViewController {
+class EmployeeClockViewController: UITableViewController {
+    
+    @IBOutlet var currentShiftTimerLabel: UILabel!
 
-    @IBAction func clockOut(sender: UIButton) {
-        let shift = employee!.currentShift!
-        shift.endedAt = NSDate()
+    var employee: Employee?
+    var timer: NSTimer?
+
+    let dateComponentsFormatter = NSDateComponentsFormatter()
+    
+    var switchServersTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 1)
+    var clockOutTableViewCellIndexPath = NSIndexPath(forRow: 1, inSection: 1)
+    
+    required init!(coder aDecoder: NSCoder!) {
         
-        employee!.currentShift = nil
         
-        PFObject.saveAllInBackground([shift, employee!]) { (succeeded: Bool, error: NSError?) in
-            if succeeded {
-                self.switchServers(sender)
-            } else {
-                fatalError(error!.localizedDescription)
+        super.init(coder: aDecoder)
+    }
+    
+    // MARK: - EmployeeClockViewController
+    
+    private func clockOut() {
+        if let currentShift = employee?.currentShift {
+            currentShift.endedAt = NSDate()
+            
+            employee?.currentShift = nil
+            
+            PFObject.saveAllInBackground([currentShift, employee!]) { (succeeded: Bool, error: NSError?) in
+                if succeeded {
+                    self.switchServers()
+                } else {
+                    println(error)
+                }
             }
         }
     }
     
-    @IBAction func switchServers(sender: UIButton) {
-        presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
-        presentingViewController!.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    private func switchServers() {
+        presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBOutlet var timerLabel: UILabel!
-
-    var employee: Employee?
-    var timer: NSTimer?
-    
-    // MARK: - EmployeeClockViewController
-    
-    func update() {
-        if let shift = employee?.currentShift {
-            let timeInterval = NSDate().timeIntervalSinceDate(shift.startedAt)
+    func updateTimerLabel() {
+        if let currentShift = employee?.currentShift {
+            let timeInterval = NSDate().timeIntervalSinceDate(currentShift.startedAt)
             
-            let dateComponentsFormatter = NSDateComponentsFormatter()
-            dateComponentsFormatter.unitsStyle = .Positional
             
-            timerLabel.text = dateComponentsFormatter.stringFromTimeInterval(timeInterval)!
+            dateComponentsFormatter.unitsStyle = .Abbreviated
+            
+            currentShiftTimerLabel.text = dateComponentsFormatter.stringFromTimeInterval(timeInterval)
         }
     }
     
     // MARK: - UIViewController
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        update()
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-    }
-    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
         timer = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateTimerLabel()
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("updateTimerLabel"), userInfo: nil, repeats: true)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            switchServers()
+        } else if indexPath.row == 1 {
+            clockOut()
+        }
     }
     
 }
