@@ -1,8 +1,13 @@
 <print>
 
 <large>New Order</large>
-<text>{{ menu_item }}</text>
-<tab /><text>MOD: {{ mods }}</text>
-<tab /><text>NOTES: {{ notes }}</text>
+<newline />
+<bold>menu_item</bold>
+<newline />
+<tab /><text>+ seat</text>
+<newline />
+<tab /><text>+ mods</text>
+<newline />
+<tab /><text>+ notes</text>
 
 </print>
