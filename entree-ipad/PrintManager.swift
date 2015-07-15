@@ -5,7 +5,9 @@ let _PrintManagerSharedInstance = PrintManager()
 
 class PrintManager: NSObject, PrinterDelegate {
    
-    private var availablePrinters = [Printer]()
+    private var macAddressToPrinterMap = [String: Printer]()
+    
+    var start = NSDate()
     
     // MARK: - Static methods
     
@@ -16,38 +18,55 @@ class PrintManager: NSObject, PrinterDelegate {
     // MARK: - Instance methods
     
     private func executePrintJobsForOrder(order: Order) {
-        let filePath = NSBundle.mainBundle().pathForResource("order_template", ofType: "xml")
+        let orderTemplateFilePath = NSBundle.mainBundle().pathForResource("order_template", ofType: "xml")
         
         for printJob in order.menuItem.printJobs {
             let dictionary = [
-                "menu_item": printJob.text,
-                "mods": order.menuItemModifiers.reduce("\(order.menuItemModifiers.first?.printText)") { (prev: String, modifier: MenuItemModifier) -> String in return "\(prev), \(modifier.printText)" },
-                "notes": order.notes]
-            let printData = PrintData(dictionary: dictionary, atFilePath: filePath)
+                "menu_item": printJob.text.isEmpty ? order.menuItem.name : printJob.text,
+                "seat": order.seat == 0 ? "SEAT: NOT SET" : "SEAT: \(order.seat)",
+                "mods": order.menuItemModifiers.isEmpty ? "NO MODIFIERS" : ", ".join(order.menuItemModifiers.map { (modifier: MenuItemModifier) -> String in return modifier.printText }),
+                "notes": order.notes.isEmpty ? "NO NOTES" : order.notes]
+            let printData = PrintData(dictionary: dictionary, atFilePath: orderTemplateFilePath)
             
-            if let printer = printerForStarPrinter(printJob.printer) {
-                printer.print(printData)
-            }
+            printPrintData(printData, toStarPrinter: printJob.printer)
         }
     }
     
-    private func printerForStarPrinter(starPrinter: StarPrinter) -> Printer? {
-        return availablePrinters.filter { (printer: Printer) -> Bool in return printer.macAddress == starPrinter.mac }.first
+    private func printPrintData(printData: PrintData, toStarPrinter starPrinter: StarPrinter) {
+        if let printer = macAddressToPrinterMap[starPrinter.mac] {
+            if printer.status.value == PrinterStatusConnected.value {
+                printer.print(printData)
+                println("PRINT COMPLETE AFTER \(-1 * self.start.timeIntervalSinceNow)")
+            } else {
+                printer.connect { (success: Bool) -> Void in
+                    if success {
+                        printer.print(printData)
+                        println("PRINT COMPLETE AFTER \(-1 * self.start.timeIntervalSinceNow)")
+                    } else {
+                        println("COULD NOT CONNECT TO PRINTER: \(printer.macAddress)")
+                    }
+                }
+            }
+        } else {
+            println("PRINTER NOT FOUND. REFRESHING AVAILABLE PRINTERS...")
+            
+            refreshAvailablePrintersWithCompletion { () in self.printPrintData(printData, toStarPrinter: starPrinter) }
+        }
     }
     
     func printOrders(orders: [Order]) {
-        refreshAvailablePrintersWithCompletion() {
-            for order in orders { self.executePrintJobsForOrder(order) }
-        }
+        start = NSDate()
+        for order in orders { self.executePrintJobsForOrder(order) }
     }
     
     private func refreshAvailablePrintersWithCompletion(completion: Void -> Void) {
         Printer.search { (results: [AnyObject]!) in
             let printers = results as! [Printer]
             
-            for printer in printers { printer.delegate = self }
-            
-            self.availablePrinters = printers
+            for printer in printers {
+                printer.delegate = self
+                self.macAddressToPrinterMap[printer.macAddress] = printer
+            }
             
             completion()
         }
@@ -56,7 +75,7 @@ class PrintManager: NSObject, PrinterDelegate {
     // MARK: - PrinterDelegate
     
     func printer(printer: Printer!, didChangeStatus status: PrinterStatus) {
-        println("Printer: \(printer.name) did change status: \(status)")
+       //  println("PRINTER: \(printer.macAddress) DID CHANGE STATUS: \(status.value)")
     }
     
 }
