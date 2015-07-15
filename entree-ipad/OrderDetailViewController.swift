@@ -1,7 +1,7 @@
 
 import UIKit
 
-class OrderDetailViewController: UITableViewController {
+class OrderDetailViewController: UITableViewController, UITextViewDelegate {
 
     @IBAction func dismiss(sender: UIBarButtonItem) {
         order.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
@@ -42,7 +42,7 @@ class OrderDetailViewController: UITableViewController {
         
         if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2)),
         let notesTextView = cell.viewWithTag(100) as? UITextView {
-                notesTextView.text = stash
+            notesTextView.text = stash
         }
     }
     
@@ -122,6 +122,7 @@ class OrderDetailViewController: UITableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! UITableViewCell
             if let notesTextView = cell.viewWithTag(100) as? UITextView {
                 notesTextView.text = order.notes
+                notesTextView.delegate = self
             }
         default:
             cell = UITableViewCell()
@@ -185,6 +186,12 @@ class OrderDetailViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return indexPath.section == 2 ? 200 : 50
+    }
+    
+    // MARK: - UITextViewDelegate
+    
+    func textViewDidChange(textView: UITextView) {
+        order.notes = textView.text
     }
     
 }
