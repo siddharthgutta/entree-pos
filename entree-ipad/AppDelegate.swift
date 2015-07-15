@@ -29,8 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Order.registerSubclass()
         Party.registerSubclass()
         Payment.registerSubclass()
+        PrintJob.registerSubclass()
         Restaurant.registerSubclass()
         Shift.registerSubclass()
+        StarPrinter.registerSubclass()
         Table.registerSubclass()
         
         // UIAppearance
