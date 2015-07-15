@@ -1,6 +1,7 @@
 
 class MenuItem: PFObject, PFSubclassing {
     
+    @NSManaged var alcoholic: Bool
     @NSManaged var colorIndex: Int
     @NSManaged var itemDescription: String
     @NSManaged var menuCategory: MenuCategory
