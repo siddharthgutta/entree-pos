@@ -91,7 +91,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
         let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
         let minScale = min(scaleWidth, scaleHeight)
-        scrollView.minimumZoomScale = minScale
+        scrollView.minimumZoomScale = 0.9 // minScale
         
         scrollView.maximumZoomScale = 1.0
         scrollView.zoomScale = minScale
