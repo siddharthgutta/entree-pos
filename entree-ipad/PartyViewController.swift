@@ -120,11 +120,11 @@ class PartyViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! OrderTableViewCell
         
-        let order = orderAtIndexPath(indexPath)
-        
-        cell.menuItemNameLabel?.text = order?.menuItem.name
-        cell.notesLabel?.text = order?.notes
-        cell.priceLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order!.totalPrice()))
+        if let order = orderAtIndexPath(indexPath) {
+            cell.menuItemNameLabel?.text = order.menuItem.name
+            cell.notesLabel?.text = order.notes
+            cell.priceLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order.price()))
+        }
         
         return cell
     }
