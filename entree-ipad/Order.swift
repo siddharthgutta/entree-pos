@@ -13,6 +13,24 @@ class Order: PFObject, PFSubclassing {
         }
     }
     
+    func tax() -> Double {
+        var orderTax: Double = 0
+        
+        if menuItem.alcoholic {
+            let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate")! as! Double
+            orderTax *= (1 + alcoholTaxRate)
+        }
+        
+        let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate")! as! Double
+        orderTax *= (1 + salesTaxRate)
+        
+        return orderTax
+    }
+    
+    func total() -> Double {
+        return price() + tax()
+    }
+    
     static func parseClassName() -> String {
         return "Order"
     }
