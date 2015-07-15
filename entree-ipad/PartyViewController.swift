@@ -85,6 +85,9 @@ class PartyViewController: PFQueryTableViewController {
         query.limit = 1000
         
         query.includeKey("menuItem")
+        query.includeKey("menuItem.printJobs")
+        query.includeKey("menuItem.printJobs.printer")
+        query.includeKey("menuItemModifiers")
 
         query.orderByAscending("createdAt")
         
