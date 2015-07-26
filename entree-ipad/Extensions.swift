@@ -10,6 +10,14 @@ extension NSCalendar {
     
 }
 
+extension Printer {
+    
+    var isConnected: Bool {
+        return self.status.value == PrinterStatusConnected.value
+    }
+    
+}
+
 extension UIColor {
     
     static func entreeBlueColor() -> UIColor {
