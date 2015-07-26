@@ -1,7 +1,0 @@
-#include "Pods-entree-ipad-StarPrinting.xcconfig"
-FRAMEWORK_SEARCH_PATHS = ${PODS_ENTREE_IPAD_STARPRINTING_FRAMEWORK_SEARCH_PATHS}
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/StarPrinting" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bolts" "${PODS_ROOT}/Headers/Public/CardFlight" "${PODS_ROOT}/Headers/Public/Parse" "${PODS_ROOT}/Headers/Public/ParseUI" "${PODS_ROOT}/Headers/Public/StarPrinting" "${PODS_ROOT}/Headers/Public/THPinViewController"
-OTHER_LDFLAGS = ${PODS_ENTREE_IPAD_STARPRINTING_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}
-SKIP_INSTALL = YES
