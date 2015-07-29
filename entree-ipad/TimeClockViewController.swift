@@ -75,7 +75,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if let user = PFUser.currentUser() {
             
         } else {
