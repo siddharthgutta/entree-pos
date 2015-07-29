@@ -43,12 +43,18 @@
 		8808AF731B3FDFBE0019772E /* ServerOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */; };
 		8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */; };
 		8827E16E1B3D0D1400F4704A /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */; };
+		885EC4851B68C121001C8267 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885EC4831B68C121001C8267 /* SignIn.storyboard */; };
+		885EC4871B68C34F001C8267 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EC4861B68C34F001C8267 /* SignInViewController.swift */; };
+		885EC48A1B68C632001C8267 /* SelectRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EC4891B68C632001C8267 /* SelectRestaurantViewController.swift */; };
 		887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874E81B4A09D300E6E036 /* PrintJob.swift */; };
 		887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */; };
+		88820D3F1B6723A4005EF2CC /* receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88820D3E1B6723A4005EF2CC /* receipt_template.xml */; };
+		88820D411B67262E005EF2CC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88820D401B67262E005EF2CC /* SettingsViewController.swift */; };
+		88820D441B6727F6005EF2CC /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88820D421B6727F6005EF2CC /* Settings.storyboard */; };
 		888E38E11B4C088F0072A6A5 /* PartyOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E38E01B4C088F0072A6A5 /* PartyOverviewViewController.swift */; };
 		888FAED71B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FAED61B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift */; };
 		888FAED91B4F5C6600DE8AFC /* CashPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888FAED81B4F5C6600DE8AFC /* CashPaymentViewController.swift */; };
-		88C3A3A91B4871C90029595C /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* PrintManager.swift */; };
+		88C3A3A91B4871C90029595C /* ReceiptPrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A3A81B4871C90029595C /* ReceiptPrinterManager.swift */; };
 		88C3A3AB1B4873D50029595C /* order_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A3AA1B4873D50029595C /* order_template.xml */; };
 		FECCA6FF03EC948308B628F6 /* libPods-entree-ipad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 300B06ED202C70114359DB32 /* libPods-entree-ipad.a */; };
 /* End PBXBuildFile section */
@@ -95,12 +101,18 @@
 		8808AF721B3FDFBE0019772E /* ServerOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOverviewViewController.swift; sourceTree = "<group>"; };
 		8808AF741B3FE50D0019772E /* PartyPaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyPaymentsViewController.swift; sourceTree = "<group>"; };
 		8827E16D1B3D0D1400F4704A /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemModifierListViewController.swift; sourceTree = "<group>"; };
+		885EC4841B68C121001C8267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignIn.storyboard; sourceTree = "<group>"; };
+		885EC4861B68C34F001C8267 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		885EC4891B68C632001C8267 /* SelectRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRestaurantViewController.swift; sourceTree = "<group>"; };
 		887874E81B4A09D300E6E036 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
 		887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPrinter.swift; sourceTree = "<group>"; };
+		88820D3E1B6723A4005EF2CC /* receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = receipt_template.xml; sourceTree = "<group>"; };
+		88820D401B67262E005EF2CC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		88820D431B6727F6005EF2CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		888E38E01B4C088F0072A6A5 /* PartyOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyOverviewViewController.swift; sourceTree = "<group>"; };
 		888FAED61B4F5C5700DE8AFC /* SelectPaymentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPaymentTypeViewController.swift; sourceTree = "<group>"; };
 		888FAED81B4F5C6600DE8AFC /* CashPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashPaymentViewController.swift; sourceTree = "<group>"; };
-		88C3A3A81B4871C90029595C /* PrintManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintManager.swift; sourceTree = "<group>"; };
+		88C3A3A81B4871C90029595C /* ReceiptPrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptPrinterManager.swift; sourceTree = "<group>"; };
 		88C3A3AA1B4873D50029595C /* order_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = order_template.xml; sourceTree = "<group>"; };
 		E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-ipad.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-ipad/Pods-entree-ipad.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +223,8 @@
 		32C4B60F1B238EC50062B854 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				885EC4881B68C615001C8267 /* Sign In */,
+				88820D401B67262E005EF2CC /* SettingsViewController.swift */,
 				327E11C51B3B8918009F71CC /* Menu */,
 				327E11C71B3B893C009F71CC /* Server */,
 				327E11C61B3B8932009F71CC /* Time Clock */,
@@ -255,7 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */,
-				88C3A3A81B4871C90029595C /* PrintManager.swift */,
+				88C3A3A81B4871C90029595C /* ReceiptPrinterManager.swift */,
 				32C4B6341B239E530062B854 /* Extensions.swift */,
 				32C4B6171B23927F0062B854 /* BridgingHeader.h */,
 			);
@@ -268,9 +282,20 @@
 				32C4B5F71B238E5B0062B854 /* LaunchScreen.xib */,
 				32C4B5F21B238E5B0062B854 /* Main.storyboard */,
 				32C9F9E41B2FB44D00778112 /* MenuCollectionViewCell.xib */,
+				88820D421B6727F6005EF2CC /* Settings.storyboard */,
 				32D8F2D91B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib */,
+				885EC4831B68C121001C8267 /* SignIn.storyboard */,
 			);
 			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		885EC4881B68C615001C8267 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				885EC4891B68C632001C8267 /* SelectRestaurantViewController.swift */,
+				885EC4861B68C34F001C8267 /* SignInViewController.swift */,
+			);
+			name = "Sign In";
 			sourceTree = "<group>";
 		};
 		888E38E21B4C08960072A6A5 /* Overview */ = {
@@ -296,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				88C3A3AA1B4873D50029595C /* order_template.xml */,
+				88820D3E1B6723A4005EF2CC /* receipt_template.xml */,
 			);
 			name = "Printer Templates";
 			sourceTree = "<group>";
@@ -336,6 +362,7 @@
 		32C4B5E11B238E5B0062B854 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Jesse Tipton";
 				TargetAttributes = {
@@ -371,8 +398,11 @@
 				32C4B5F41B238E5B0062B854 /* Main.storyboard in Resources */,
 				32C4B5F91B238E5B0062B854 /* LaunchScreen.xib in Resources */,
 				88C3A3AB1B4873D50029595C /* order_template.xml in Resources */,
+				88820D441B6727F6005EF2CC /* Settings.storyboard in Resources */,
+				885EC4851B68C121001C8267 /* SignIn.storyboard in Resources */,
 				32C9F9E51B2FB44D00778112 /* MenuCollectionViewCell.xib in Resources */,
 				32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */,
+				88820D3F1B6723A4005EF2CC /* receipt_template.xml in Resources */,
 				32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,10 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32EC1E801B23A02B007F9B68 /* BadgeLabel.swift in Sources */,
-				88C3A3A91B4871C90029595C /* PrintManager.swift in Sources */,
+				88C3A3A91B4871C90029595C /* ReceiptPrinterManager.swift in Sources */,
 				880771E91B4ABAF100A0ACEC /* CardPaymentViewController.swift in Sources */,
 				32C4B6211B2395A30062B854 /* MenuItem.swift in Sources */,
 				8808AF751B3FE50D0019772E /* PartyPaymentsViewController.swift in Sources */,
+				885EC4871B68C34F001C8267 /* SignInViewController.swift in Sources */,
+				88820D411B67262E005EF2CC /* SettingsViewController.swift in Sources */,
 				888FAED91B4F5C6600DE8AFC /* CashPaymentViewController.swift in Sources */,
 				320279451B2C9FAA00867554 /* MenuCategoriesViewController.swift in Sources */,
 				32C4B61B1B2393650062B854 /* Restaurant.swift in Sources */,
@@ -454,6 +486,7 @@
 				32C4B61F1B23953F0062B854 /* MenuCategory.swift in Sources */,
 				32C4B61D1B2394DB0062B854 /* Menu.swift in Sources */,
 				32C541371B2516BB002465C4 /* PartyViewController.swift in Sources */,
+				885EC48A1B68C632001C8267 /* SelectRestaurantViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +507,22 @@
 				32C4B5F81B238E5B0062B854 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		885EC4831B68C121001C8267 /* SignIn.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				885EC4841B68C121001C8267 /* Base */,
+			);
+			name = SignIn.storyboard;
+			sourceTree = "<group>";
+		};
+		88820D421B6727F6005EF2CC /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88820D431B6727F6005EF2CC /* Base */,
+			);
+			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -515,7 +564,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -554,7 +603,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -567,10 +616,12 @@
 			baseConfigurationReference = 75D0BE66DB08D81459735D35 /* Pods-entree-ipad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -584,10 +635,12 @@
 			baseConfigurationReference = E3E1589C85B6FDF122D7A8BD /* Pods-entree-ipad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
