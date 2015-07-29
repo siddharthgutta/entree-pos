@@ -67,11 +67,9 @@ class SettingsViewController: UITableViewController {
     
     private func logOut() {
         PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
-            if error != nil {
-                // Clear current restaurant
-                NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "shared_restaurant_object_id")
-                
-                // TODO: get to base of nav stack
+            if error == nil {
+                let signInViewController = UIStoryboard(name: "SignIn", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! SignInViewController
+                self.presentViewController(signInViewController, animated: true, completion: nil)
             } else {
                 self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
             }
