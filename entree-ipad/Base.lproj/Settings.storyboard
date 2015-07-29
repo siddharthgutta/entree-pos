@@ -122,7 +122,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jbN-8U-OfW">
             <objects>
-                <navigationController id="rg0-aD-fEt" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="formSheet" id="rg0-aD-fEt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pth-Uf-t8k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
