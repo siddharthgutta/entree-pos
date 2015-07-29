@@ -103,6 +103,8 @@ class SettingsViewController: UITableViewController {
         default:
             println()
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }
