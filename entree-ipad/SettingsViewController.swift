@@ -70,6 +70,8 @@ class SettingsViewController: UITableViewController {
             let rate = textField.text.doubleValue
 
             NSUserDefaults.standardUserDefaults().setObject(rate, forKey: "\(type.rawValue.lowercaseString)_tax_rate")
+            
+            self.configureView()
         }
         alertController.addAction(saveAlertAction)
         
