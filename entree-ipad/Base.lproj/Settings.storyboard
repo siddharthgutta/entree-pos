@@ -102,7 +102,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Iu0-fh-lMd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="jxR-1B-CXp"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="jxR-1B-CXp">
+                            <connections>
+                                <action selector="dismiss" destination="2iY-hA-wMz" id="5Ik-8g-iuy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="alcoholTaxRateLabel" destination="Xte-Bu-ruP" id="P1x-Pv-z1X"/>

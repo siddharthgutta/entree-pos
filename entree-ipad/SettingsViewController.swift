@@ -7,6 +7,10 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    @IBAction func dismiss() {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restaurantLocationLabel: UILabel!
     
