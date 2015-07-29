@@ -59,7 +59,7 @@ class SettingsViewController: UITableViewController {
     }
     
     private func editTaxRateForType(type: TaxRateType) {
-        let alertController = UIAlertController(title: "Edit \(type.rawValue) Rate", message: nil, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Edit \(type.rawValue) Tax Rate", message: nil, preferredStyle: .Alert)
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
             textField.keyboardType = .NumberPad
