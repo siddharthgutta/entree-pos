@@ -104,6 +104,12 @@
                     <navigationItem key="navigationItem" title="Settings" id="Iu0-fh-lMd">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="jxR-1B-CXp"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="alcoholTaxRateLabel" destination="Xte-Bu-ruP" id="P1x-Pv-z1X"/>
+                        <outlet property="restaurantLocationLabel" destination="smd-Pa-KbB" id="B4A-ct-D5u"/>
+                        <outlet property="restaurantNameLabel" destination="k9C-iw-rbw" id="kWC-Tt-iPd"/>
+                        <outlet property="salesTaxRateLabel" destination="Ndp-OS-dgI" id="SWt-tH-npt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cZ-wP-Xnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

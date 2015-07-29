@@ -7,6 +7,12 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
+    @IBOutlet var restaurantNameLabel: UILabel!
+    @IBOutlet var restaurantLocationLabel: UILabel!
+    
+    @IBOutlet var salesTaxRateLabel: UILabel!
+    @IBOutlet var alcoholTaxRateLabel: UILabel!
+    
     enum TaxRateType: String {
         case Sales = "Sales"
         case Alcohol = "Alcohol"

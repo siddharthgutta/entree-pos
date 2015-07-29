@@ -223,8 +223,8 @@
 		32C4B60F1B238EC50062B854 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				885EC4881B68C615001C8267 /* Sign In */,
 				88820D401B67262E005EF2CC /* SettingsViewController.swift */,
+				885EC4881B68C615001C8267 /* Sign In */,
 				327E11C51B3B8918009F71CC /* Menu */,
 				327E11C71B3B893C009F71CC /* Server */,
 				327E11C61B3B8932009F71CC /* Time Clock */,
