@@ -18,6 +18,16 @@ extension Printer {
     
 }
 
+extension UIAlertController {
+    
+    static func alertControllerForError(error: NSError) -> UIAlertController {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+        return alertController
+    }
+    
+}
+
 extension UIColor {
     
     static func entreeBlueColor() -> UIColor {
