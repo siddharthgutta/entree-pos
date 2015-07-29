@@ -79,20 +79,26 @@ class SettingsViewController: UITableViewController {
     }
     
     private func editReceiptPrinter() {
-        let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
+        let searchingAlertController = UIAlertController(title: "Searching...", message: nil, preferredStyle: .Alert)
         
-        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAlertAction)
-        
-        ReceiptPrinterManager.sharedManager().search { (printers: [Printer]) in
-            for printer in printers {
-                let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
-                    ReceiptPrinterManager.sharedManager().setReceiptPrinterMacAddress(printer.macAddress)
+        presentViewController(searchingAlertController, animated: true) { () in
+            ReceiptPrinterManager.sharedManager().search { (printers: [Printer]) in
+                let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                for printer in printers {
+                    let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
+                        ReceiptPrinterManager.sharedManager().setReceiptPrinterMacAddress(printer.macAddress)
+                    }
+                    alertController.addAction(printerAlertAction)
                 }
-                alertController.addAction(printerAlertAction)
+                
+                self.dismissViewControllerAnimated(true) { () in
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
             }
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
