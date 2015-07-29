@@ -24,6 +24,7 @@ class SettingsViewController: UITableViewController {
     let signOutTableViewCellIndexPath        = NSIndexPath(forRow: 1, inSection: 0)
     let salesTaxRateTableViewCellIndexPath   = NSIndexPath(forRow: 0, inSection: 1)
     let alcoholTaxRateTableViewCellIndexPath = NSIndexPath(forRow: 1, inSection: 1)
+    let receiptPrinterTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 2)
     
     // MARK: - SettingsViewController
     
@@ -77,6 +78,24 @@ class SettingsViewController: UITableViewController {
         }
     }
     
+    private func editReceiptPrinter() {
+        let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
+        
+        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAlertAction)
+        
+        ReceiptPrinterManager.sharedManager().search { (printers: [Printer]) in
+            for printer in printers {
+                let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
+                    ReceiptPrinterManager.sharedManager().setReceiptPrinterMacAddress(printer.macAddress)
+                }
+                alertController.addAction(printerAlertAction)
+            }
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
     private func editTaxRateForType(type: TaxRateType) {
         let alertController = UIAlertController(title: "Edit \(type.rawValue) Tax Rate", message: nil, preferredStyle: .Alert)
         
@@ -119,6 +138,8 @@ class SettingsViewController: UITableViewController {
             editTaxRateForType(.Sales)
         case alcoholTaxRateTableViewCellIndexPath:
             editTaxRateForType(.Alcohol)
+        case receiptPrinterTableViewCellIndexPath:
+            editReceiptPrinter()
         default:
             println()
         }
