@@ -42,6 +42,16 @@ class ReceiptPrinterManager {
         }
     }
     
+    func findPrinterWithMACAddress(address: String, completion: Printer? -> Void) {
+        if let cachedPrinter = macAddressToPrinterCache[address] {
+            completion(cachedPrinter)
+        } else {
+            refreshAvailablePrintersWithCompletion { () in
+                self.findPrinterWithMACAddress(address, completion: completion)
+            }
+        }
+    }
+    
     private func sendPrintData(printData: PrintData, toPrinterWithMACAddress address: String, completion: (Bool, NSError?) -> Void) {
         findPrinterWithMacAddress(address, attempt: 1) { (success: Bool, printer: Printer?) in
             if success {
