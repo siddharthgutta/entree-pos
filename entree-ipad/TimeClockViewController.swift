@@ -12,16 +12,6 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func test() {
-        Printer.search { (printers: [AnyObject]!) in
-            for printer in printers {
-                
-                println(printer)
-            }
-            
-        }
-    }
-    
     @IBOutlet var segmentedControl: UISegmentedControl!
     
     let numberOfCellsPerRow: CGFloat = 5
