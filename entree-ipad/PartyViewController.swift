@@ -24,9 +24,17 @@ class PartyViewController: PFQueryTableViewController {
     }
     
     @IBAction func createPayment(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
+        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+            let orders = indexPaths.map { (indexPath: NSIndexPath) -> Order in return self.orderAtIndexPath(indexPath)! }
+            
+            if orders.isEmpty {
+                presentNoOrdersSelectedAlertController()
+            } else {
+                
+            }
+        } else {
+            presentNoOrdersSelectedAlertController()
+        }
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
