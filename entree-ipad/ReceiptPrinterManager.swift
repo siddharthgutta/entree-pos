@@ -52,6 +52,12 @@ class ReceiptPrinterManager {
         }
     }
     
+    func search(completion: [Printer] -> Void) {
+        Printer.search { (printers: [AnyObject]!) in
+            completion(printers as! [Printer])
+        }
+    }
+    
     private func sendPrintData(printData: PrintData, toPrinterWithMACAddress address: String, completion: (Bool, NSError?) -> Void) {
         findPrinterWithMacAddress(address, attempt: 1) { (success: Bool, printer: Printer?) in
             if success {
