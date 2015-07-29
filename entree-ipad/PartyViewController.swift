@@ -48,7 +48,7 @@ class PartyViewController: PFQueryTableViewController {
             if orders.isEmpty {
                 presentNoOrdersSelectedAlertController()
             } else {
-                PrintManager.sharedManager().printOrders(orders)
+                ReceiptPrinterManager.sharedManager().printOrders(orders)
             }
         } else {
             presentNoOrdersSelectedAlertController()
