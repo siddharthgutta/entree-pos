@@ -6,7 +6,7 @@ let _ReceiptPrinterManagerSharedInstance = ReceiptPrinterManager()
 class ReceiptPrinterManager {
    
     private var macAddressToPrinterCache = [String: Printer]()
-    private var receiptPrinterMacAddress: String? {
+    var receiptPrinterMacAddress: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey("receipt_printer_mac_address") as? String
     }
     
