@@ -1,10 +1,6 @@
 
 import UIKit
 
-/* TODO: See if there are any third party tools for controlling a
-   static table view. https://github.com/venmo/Static looks cool,
-   but it's Swift 2 only. */
-
 class SettingsViewController: UITableViewController {
     
     @IBAction func dismiss() {
