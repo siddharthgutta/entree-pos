@@ -38,11 +38,21 @@ class SettingsViewController: UITableViewController {
             self.restaurantLocationLabel.text = restaurant?["location"] as? String
         }
         
-        let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate") as! Double
-        salesTaxRateLabel.text = "\(salesTaxRate)"
+        if let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate") as? Double {
+            salesTaxRateLabel.text = "\(salesTaxRate)"
+        } else {
+            NSUserDefaults.standardUserDefaults().setObject(Double(0), forKey: "sales_tax_rate")
+            
+            salesTaxRateLabel.text = "0"
+        }
         
-        let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate") as! Double
-        alcoholTaxRateLabel.text = "\(alcoholTaxRate)"
+        if let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate") as? Double {
+            alcoholTaxRateLabel.text = "\(alcoholTaxRate)"
+        } else {
+            NSUserDefaults.standardUserDefaults().setObject(Double(0), forKey: "alcohol_tax_rate")
+            
+            alcoholTaxRateLabel.text = "0"
+        }
     }
     
     private func logOut() {
