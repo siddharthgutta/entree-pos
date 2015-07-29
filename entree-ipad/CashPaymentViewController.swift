@@ -4,8 +4,7 @@ import UIKit
 class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func openCashDrawer() {
-        // TODO: Open the cash drawer by sending the proper signal to the printer
-        // In testing, this has not worked out great
+        ReceiptPrinterManager.sharedManager().openCashDrawer()
     }
     
     @IBAction func printReceipt() {
