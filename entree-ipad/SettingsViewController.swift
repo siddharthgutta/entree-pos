@@ -13,6 +13,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet var salesTaxRateLabel: UILabel!
     @IBOutlet var alcoholTaxRateLabel: UILabel!
     
+    @IBOutlet var receiptPrinterNameLabel: UILabel!
+    @IBOutlet var receiptPrinterMACAddressLabel: UILabel!
+    
     enum TaxRateType: String {
         case Sales = "Sales"
         case Alcohol = "Alcohol"
@@ -48,6 +51,16 @@ class SettingsViewController: UITableViewController {
             NSUserDefaults.standardUserDefaults().setObject(Double(0), forKey: "alcohol_tax_rate")
             
             alcoholTaxRateLabel.text = "0"
+        }
+        
+        if let address = ReceiptPrinterManager.sharedManager().receiptPrinterMacAddress {
+            ReceiptPrinterManager.sharedManager().findPrinterWithMACAddress(address) { (printer: Printer?) in
+                self.receiptPrinterNameLabel.text = printer?.name
+                self.receiptPrinterMACAddressLabel.text = printer?.macAddress
+            }
+        } else {
+            receiptPrinterNameLabel.text = "Not set"
+            receiptPrinterMACAddressLabel.text = ""
         }
     }
     
