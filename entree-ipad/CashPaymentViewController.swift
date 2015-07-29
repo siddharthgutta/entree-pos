@@ -8,7 +8,9 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func printReceipt() {
-        // TODO: Print the customer receipt
+        ReceiptPrinterManager.sharedManager().printReceiptForPayment(payment!) { (sent: Bool, error: NSError?) in
+            println("Sent: \(sent), Error: \(error)")
+        }
     }
     
     @IBOutlet var amountDueLabel: UILabel!
