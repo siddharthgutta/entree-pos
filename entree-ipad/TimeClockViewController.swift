@@ -4,12 +4,9 @@ import UIKit
 class TimeClockViewController: PFQueryCollectionViewController, THPinViewControllerDelegate {
 
     @IBAction func settings(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
+        let settingsViewController = UIStoryboard(name: "Settings", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UINavigationController
         
-        let okayAlertAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
-        alertController.addAction(okayAlertAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
+        presentViewController(settingsViewController, animated: true, completion: nil)
     }
     
     @IBOutlet var segmentedControl: UISegmentedControl!
