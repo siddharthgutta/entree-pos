@@ -18,6 +18,14 @@ extension Printer {
     
 }
 
+extension String {
+    
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
+    }
+    
+}
+
 extension UIAlertController {
     
     static func alertControllerForError(error: NSError) -> UIAlertController {
