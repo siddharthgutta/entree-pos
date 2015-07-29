@@ -76,6 +76,17 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let user = PFUser.currentUser() {
+            
+        } else {
+            let signInViewController = UIStoryboard(name: "SignIn", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! SignInViewController
+            presentViewController(signInViewController, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
