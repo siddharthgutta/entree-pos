@@ -24,6 +24,23 @@ class SettingsViewController: UITableViewController {
     
     // MARK: - SettingsViewController
     
+    private func configureView() {
+        let restaurantObjectID = NSUserDefaults.standardUserDefaults().objectForKey("default_restaurant") as! String
+        
+        PFObject(withoutDataWithClassName: Restaurant.parseClassName(), objectId: restaurantObjectID).fetchInBackgroundWithBlock {
+            (restaurant: PFObject?, error: NSError?) in
+            
+            self.restaurantNameLabel.text = restaurant?["name"] as? String
+            self.restaurantLocationLabel.text = restaurant?["location"] as? String
+        }
+        
+        let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate") as! Double
+        salesTaxRateLabel.text = "\(salesTaxRate)"
+        
+        let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate") as! Double
+        alcoholTaxRateLabel.text = "\(alcoholTaxRate)"
+    }
+    
     private func logOut() {
         PFUser.logOutInBackgroundWithBlock { (error: NSError?) in
             if error != nil {
@@ -57,6 +74,14 @@ class SettingsViewController: UITableViewController {
         alertController.addAction(saveAlertAction)
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - UIViewController
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        configureView()
     }
     
     // MARK: - UITableViewDelegate
