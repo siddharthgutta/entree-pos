@@ -52,6 +52,17 @@ class ReceiptPrinterManager {
         }
     }
     
+    func openCashDrawer() {
+        if let address = receiptPrinterMACAddress {
+            let filePath = NSBundle.mainBundle().pathForResource("open_cash_drawer", ofType: "xml")
+            let printData = PrintData(dictionary: nil, atFilePath: filePath)
+            
+            sendPrintData(printData, toPrinterWithMACAddress: address) { (sent: Bool, error: NSError?) in
+                println("Sent: \(sent), Error: \(error)")
+            }
+        }
+    }
+    
     func search(completion: [Printer] -> Void) {
         Printer.search { (printers: [AnyObject]!) in
             completion(printers as! [Printer])
