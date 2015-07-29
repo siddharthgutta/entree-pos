@@ -46,6 +46,7 @@
 		885EC4851B68C121001C8267 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885EC4831B68C121001C8267 /* SignIn.storyboard */; };
 		885EC4871B68C34F001C8267 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EC4861B68C34F001C8267 /* SignInViewController.swift */; };
 		885EC48A1B68C632001C8267 /* SelectRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885EC4891B68C632001C8267 /* SelectRestaurantViewController.swift */; };
+		885EC48C1B68DF77001C8267 /* open_cash_drawer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 885EC48B1B68DF77001C8267 /* open_cash_drawer.xml */; };
 		887874E91B4A09D300E6E036 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874E81B4A09D300E6E036 /* PrintJob.swift */; };
 		887874EB1B4A0A0E00E6E036 /* StarPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */; };
 		88820D3F1B6723A4005EF2CC /* receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 88820D3E1B6723A4005EF2CC /* receipt_template.xml */; };
@@ -104,6 +105,7 @@
 		885EC4841B68C121001C8267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignIn.storyboard; sourceTree = "<group>"; };
 		885EC4861B68C34F001C8267 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		885EC4891B68C632001C8267 /* SelectRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRestaurantViewController.swift; sourceTree = "<group>"; };
+		885EC48B1B68DF77001C8267 /* open_cash_drawer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = open_cash_drawer.xml; sourceTree = "<group>"; };
 		887874E81B4A09D300E6E036 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintJob.swift; sourceTree = "<group>"; };
 		887874EA1B4A0A0E00E6E036 /* StarPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarPrinter.swift; sourceTree = "<group>"; };
 		88820D3E1B6723A4005EF2CC /* receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = receipt_template.xml; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		88C3A3AC1B4873DB0029595C /* Printer Templates */ = {
 			isa = PBXGroup;
 			children = (
+				885EC48B1B68DF77001C8267 /* open_cash_drawer.xml */,
 				88C3A3AA1B4873D50029595C /* order_template.xml */,
 				88820D3E1B6723A4005EF2CC /* receipt_template.xml */,
 			);
@@ -404,6 +407,7 @@
 				32C4B5F61B238E5B0062B854 /* Images.xcassets in Resources */,
 				88820D3F1B6723A4005EF2CC /* receipt_template.xml in Resources */,
 				32D8F2DA1B239FF300EB31F5 /* ShadedImageCollectionViewCell.xib in Resources */,
+				885EC48C1B68DF77001C8267 /* open_cash_drawer.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
