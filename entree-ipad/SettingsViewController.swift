@@ -53,7 +53,7 @@ class SettingsViewController: UITableViewController {
             alcoholTaxRateLabel.text = "0"
         }
         
-        if let address = ReceiptPrinterManager.sharedManager().receiptPrinterMacAddress {
+        if let address = ReceiptPrinterManager.sharedManager().receiptPrinterMACAddress {
             ReceiptPrinterManager.sharedManager().findPrinterWithMACAddress(address) { (printer: Printer?) in
                 self.receiptPrinterNameLabel.text = printer?.name
                 self.receiptPrinterMACAddressLabel.text = printer?.macAddress

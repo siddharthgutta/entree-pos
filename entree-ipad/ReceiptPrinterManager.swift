@@ -6,7 +6,7 @@ let _ReceiptPrinterManagerSharedInstance = ReceiptPrinterManager()
 class ReceiptPrinterManager {
    
     private var macAddressToPrinterCache = [String: Printer]()
-    var receiptPrinterMacAddress: String? {
+    var receiptPrinterMACAddress: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey("receipt_printer_mac_address") as? String
     }
     
@@ -77,7 +77,7 @@ class ReceiptPrinterManager {
     }
     
     func printReceiptForPayment(payment: Payment, completion: (Bool, NSError?) -> Void) {
-        if let address = receiptPrinterMacAddress {
+        if let address = receiptPrinterMACAddress {
             let dictionary = [
                 "restaurant": ""
             ]
