@@ -134,6 +134,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="alcoholTaxRateLabel" destination="Xte-Bu-ruP" id="P1x-Pv-z1X"/>
+                        <outlet property="receiptPrinterMACAddressLabel" destination="ED6-M1-qvt" id="8Uk-PT-Aia"/>
+                        <outlet property="receiptPrinterNameLabel" destination="hKj-Yd-1jh" id="XWL-QC-VGa"/>
                         <outlet property="restaurantLocationLabel" destination="smd-Pa-KbB" id="B4A-ct-D5u"/>
                         <outlet property="restaurantNameLabel" destination="k9C-iw-rbw" id="kWC-Tt-iPd"/>
                         <outlet property="salesTaxRateLabel" destination="Ndp-OS-dgI" id="SWt-tH-npt"/>
