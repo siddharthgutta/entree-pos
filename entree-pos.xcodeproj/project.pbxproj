@@ -66,7 +66,7 @@
 		323EFD311B23CB34002437A7 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		3265AE781B25571C0000D6B1 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		32AEAAA61B30F70800DE030A /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
-		32C4B5E91B238E5B0062B854 /* entree-ipad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-ipad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32C4B5E91B238E5B0062B854 /* entree-pos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-pos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C4B5ED1B238E5B0062B854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C4B5EE1B238E5B0062B854 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32C4B5F31B238E5B0062B854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		32C4B5E01B238E5B0062B854 = {
 			isa = PBXGroup;
 			children = (
-				32C4B5EB1B238E5B0062B854 /* entree-ipad */,
+				32C4B5EB1B238E5B0062B854 /* entree-pos */,
 				32C4B5EA1B238E5B0062B854 /* Products */,
 				24232AD0F5E3053EEA1C9450 /* Pods */,
 				EC2CF849EDDFD7B9C8DCD960 /* Frameworks */,
@@ -186,18 +186,19 @@
 		32C4B5EA1B238E5B0062B854 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32C4B5E91B238E5B0062B854 /* entree-ipad.app */,
+				32C4B5E91B238E5B0062B854 /* entree-pos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		32C4B5EB1B238E5B0062B854 /* entree-ipad */ = {
+		32C4B5EB1B238E5B0062B854 /* entree-pos */ = {
 			isa = PBXGroup;
 			children = (
 				32C4B60E1B238EBA0062B854 /* Classes */,
 				32C4B6131B238EEA0062B854 /* Interfaces */,
 				32C4B5EC1B238E5B0062B854 /* Supporting Files */,
 			);
+			name = "entree-pos";
 			path = "entree-ipad";
 			sourceTree = "<group>";
 		};
@@ -340,9 +341,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		32C4B5E81B238E5B0062B854 /* entree-ipad */ = {
+		32C4B5E81B238E5B0062B854 /* entree-pos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32C4B6081B238E5B0062B854 /* Build configuration list for PBXNativeTarget "entree-ipad" */;
+			buildConfigurationList = 32C4B6081B238E5B0062B854 /* Build configuration list for PBXNativeTarget "entree-pos" */;
 			buildPhases = (
 				D8C6817BEF43A27E55C6E21A /* Check Pods Manifest.lock */,
 				32C4B5E51B238E5B0062B854 /* Sources */,
@@ -354,9 +355,9 @@
 			);
 			dependencies = (
 			);
-			name = "entree-ipad";
+			name = "entree-pos";
 			productName = "entree-ipad";
-			productReference = 32C4B5E91B238E5B0062B854 /* entree-ipad.app */;
+			productReference = 32C4B5E91B238E5B0062B854 /* entree-pos.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -375,7 +376,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 32C4B5E41B238E5B0062B854 /* Build configuration list for PBXProject "entree-ipad" */;
+			buildConfigurationList = 32C4B5E41B238E5B0062B854 /* Build configuration list for PBXProject "entree-pos" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -388,7 +389,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32C4B5E81B238E5B0062B854 /* entree-ipad */,
+				32C4B5E81B238E5B0062B854 /* entree-pos */,
 			);
 		};
 /* End PBXProject section */
@@ -625,9 +626,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -644,9 +645,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "entree-ipad/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-ipad/BridgingHeader.h";
 			};
@@ -655,7 +656,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		32C4B5E41B238E5B0062B854 /* Build configuration list for PBXProject "entree-ipad" */ = {
+		32C4B5E41B238E5B0062B854 /* Build configuration list for PBXProject "entree-pos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C4B6061B238E5B0062B854 /* Debug */,
@@ -664,7 +665,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32C4B6081B238E5B0062B854 /* Build configuration list for PBXNativeTarget "entree-ipad" */ = {
+		32C4B6081B238E5B0062B854 /* Build configuration list for PBXNativeTarget "entree-pos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32C4B6091B238E5B0062B854 /* Debug */,
