@@ -1,7 +1,7 @@
 
 import UIKit
 
-class PartyViewController: PFQueryTableViewController {
+class OrderItemsViewController: PFQueryTableViewController {
     
     @IBAction func closeTable(sender: UIBarButtonItem) {
         let confirmationAlertController = UIAlertController(title: "Close Table?", message: "You will no longer be able to access this party's orders or payment methods (This final checkout process will take place on the Overview panel).", preferredStyle: .Alert)
@@ -25,9 +25,9 @@ class PartyViewController: PFQueryTableViewController {
     
     @IBAction func createPayment(sender: UIBarButtonItem) {
         if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
-            let orders = indexPaths.map { (indexPath: NSIndexPath) -> Order in return self.orderAtIndexPath(indexPath)! }
+            let orderItems = indexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
             
-            if orders.isEmpty {
+            if orderItems.isEmpty {
                 presentNoOrdersSelectedAlertController()
             } else {
                 
@@ -43,12 +43,12 @@ class PartyViewController: PFQueryTableViewController {
     
     @IBAction func printOrders(sender: UIBarButtonItem) {
         if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
-            let orders = indexPaths.map { (indexPath: NSIndexPath) -> Order in return self.orderAtIndexPath(indexPath)! }
+            let orderItems = indexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
             
-            if orders.isEmpty {
+            if orderItems.isEmpty {
                 presentNoOrdersSelectedAlertController()
             } else {
-                ReceiptPrinterManager.sharedManager().printOrders(orders)
+                ReceiptPrinterManager.sharedManager().printOrderItems(orderItems)
             }
         } else {
             presentNoOrdersSelectedAlertController()
@@ -58,7 +58,7 @@ class PartyViewController: PFQueryTableViewController {
     @IBOutlet var createPaymentButton: UIButton!
     @IBOutlet var timeSeatedLabel: UILabel!
     
-    var orders: [Order] { return objects! as! [Order] }
+    var orderItems: [OrderItem] { return objects! as! [OrderItem] }
     var party: Party!
     
     let dateComponentsFormatter = NSDateComponentsFormatter()
@@ -82,14 +82,14 @@ class PartyViewController: PFQueryTableViewController {
         noOrdersSelectedAlertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
     }
     
-    private func orderAtIndexPath(indexPath: NSIndexPath) -> Order? {
-        return orders.filter { (order: Order) -> Bool in return order.seat == indexPath.section }[indexPath.row]
+    private func orderItemAtIndexPath(indexPath: NSIndexPath) -> OrderItem? {
+        return orderItems.filter { (orderItem: OrderItem) -> Bool in return orderItem.seatNumber == indexPath.section }[indexPath.row]
     }
     
     // MARK: - PFQueryTableViewController
     
     override func queryForTable() -> PFQuery {
-        let query = Order.query()!
+        let query = OrderItem.query()!
         query.limit = 1000
         
         query.includeKey("menuItem")
@@ -124,24 +124,26 @@ class PartyViewController: PFQueryTableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         var seatSeen = [Int: Bool]()
-        for order in orders { seatSeen[order.seat] = true }
+        for orderItem in orderItems {
+            seatSeen[orderItem.seatNumber] = true
+        }
         return seatSeen.keys.array.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! OrderTableViewCell
         
-        if let order = orderAtIndexPath(indexPath) {
-            cell.menuItemNameLabel?.text = order.menuItem.name
-            cell.notesLabel?.text = order.notes
-            cell.priceLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order.price()))
+        if let orderItem = orderItemAtIndexPath(indexPath) {
+            cell.menuItemNameLabel?.text = orderItem.menuItem.name
+            cell.notesLabel?.text = orderItem.notes
+            cell.priceLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: orderItem.totalCost()))
         }
         
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orders.filter { (order: Order) -> Bool in return order.seat == section }.count
+        return orderItems.filter { (orderItem: OrderItem) -> Bool in return orderItem.seatNumber == section }.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

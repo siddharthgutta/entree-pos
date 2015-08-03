@@ -7,7 +7,7 @@ class MenuItemModifierListViewController: PFQueryTableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    var order: Order?
+    var orderItem: OrderItem?
     
     let numberFormatter = NSNumberFormatter()
     
@@ -18,8 +18,8 @@ class MenuItemModifierListViewController: PFQueryTableViewController {
         
         query.orderByAscending("name")
         
-        query.whereKey("menuItems", equalTo: order!.menuItem)
-        query.whereKey("objectId", notContainedIn: order!.menuItemModifiers.map { (menuItemModifier: MenuItemModifier) -> String in return menuItemModifier.objectId! })
+        query.whereKey("menuItems", equalTo: orderItem!.menuItem)
+        query.whereKey("objectId", notContainedIn: orderItem!.menuItemModifiers.map { (menuItemModifier: MenuItemModifier) -> String in return menuItemModifier.objectId! })
         
         return query
     }
@@ -47,9 +47,9 @@ class MenuItemModifierListViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let menuItemModifier = objectAtIndexPath(indexPath)! as! MenuItemModifier
-        order?.menuItemModifiers.append(menuItemModifier)
+        orderItem?.menuItemModifiers.append(menuItemModifier)
         
-        order?.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+        orderItem?.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
             if succeeded {
                 NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 

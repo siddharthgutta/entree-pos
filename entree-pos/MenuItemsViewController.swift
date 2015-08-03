@@ -27,7 +27,7 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
         case "OrderDetail":
             if let navigationController = segue.destinationViewController as? UINavigationController,
             let orderDetailViewController = navigationController.viewControllers.first as? OrderDetailViewController {
-                orderDetailViewController.order = sender as! Order
+                orderDetailViewController.orderItem = sender as! OrderItem
             }
         default:
             fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
@@ -67,21 +67,20 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let order = Order()
-        order.menuItem = objectAtIndexPath(indexPath)! as! MenuItem
-        order.menuItemModifiers = []
-        order.notes = ""
-        println()
+        let orderItem = OrderItem()
+        orderItem.menuItem = objectAtIndexPath(indexPath)! as! MenuItem
+        orderItem.menuItemModifiers = []
+        orderItem.notes = ""
+
         if let nc = splitViewController?.viewControllers.first as? UINavigationController,
-        let partyViewController = nc.viewControllers.first as? PartyViewController {
-            order.party = partyViewController.party
+        let orderItemsViewController = nc.viewControllers.first as? OrderItemsViewController {
+            orderItem.party = orderItemsViewController.party
         }
-        order.seat = 0
+        orderItem.seatNumber = 0
         
-        order.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+        orderItem.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                println(order)
-                self.performSegueWithIdentifier("OrderDetail", sender: order)
+                self.performSegueWithIdentifier("OrderDetail", sender: orderItem)
             } else {
                 println(error?.localizedDescription)
             }

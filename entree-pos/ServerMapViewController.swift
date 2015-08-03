@@ -68,8 +68,8 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         case "Party":
             if let splitViewController = segue.destinationViewController as? UISplitViewController,
             let navigationController = splitViewController.viewControllers.first as? UINavigationController,
-            let partyViewController = navigationController.viewControllers.first as? PartyViewController {
-                partyViewController.party = sender as! Party
+            let orderItemsViewController = navigationController.viewControllers.first as? OrderItemsViewController {
+                orderItemsViewController.party = sender as! Party
             }
         default:
             println(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)

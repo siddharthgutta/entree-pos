@@ -114,15 +114,15 @@ class ReceiptPrinterManager {
     
     // MARK: - Kitchen printing
     
-    private func executePrintJobsForOrder(order: Order) {
+    private func executePrintJobsForOrderItem(orderItem: OrderItem) {
         let orderTemplateFilePath = NSBundle.mainBundle().pathForResource("order_template", ofType: "xml")
         
-        for printJob in order.menuItem.printJobs {
+        for printJob in orderItem.menuItem.printJobs {
             let dictionary = [
-                "menu_item": printJob.text.isEmpty ? order.menuItem.name : printJob.text,
-                "seat": order.seat == 0 ? "SEAT: NOT SET" : "SEAT: \(order.seat)",
-                "mods": order.menuItemModifiers.isEmpty ? "NO MODIFIERS" : ", ".join(order.menuItemModifiers.map { (modifier: MenuItemModifier) -> String in return modifier.printText }),
-                "notes": order.notes.isEmpty ? "NO NOTES" : order.notes]
+                "menu_item": printJob.text.isEmpty ? orderItem.menuItem.name : printJob.text,
+                "seat": orderItem.seatNumber == 0 ? "SEAT: NOT SET" : "SEAT: \(orderItem.seatNumber)",
+                "mods": orderItem.menuItemModifiers.isEmpty ? "NO MODIFIERS" : ", ".join(orderItem.menuItemModifiers.map { (modifier: MenuItemModifier) -> String in return modifier.printText }),
+                "notes": orderItem.notes.isEmpty ? "NO NOTES" : orderItem.notes]
             let printData = PrintData(dictionary: dictionary, atFilePath: orderTemplateFilePath)
             
             sendPrintData(printData, toPrinterWithMACAddress: printJob.printer.mac) { (sent: Bool, error: NSError?) in
@@ -131,9 +131,9 @@ class ReceiptPrinterManager {
         }
     }
     
-    func printOrders(orders: [Order]) {
-        for order in orders {
-            self.executePrintJobsForOrder(order)
+    func printOrderItems(orderItems: [OrderItem]) {
+        for orderItem in orderItems {
+            self.executePrintJobsForOrderItem(orderItem)
         }
     }
     
