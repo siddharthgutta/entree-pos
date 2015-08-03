@@ -7,6 +7,7 @@ class SignInViewController: UIViewController {
         let alertController = UIAlertController(title: "Sign In", message: nil, preferredStyle: .Alert)
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
+            textField.keyboardType = .EmailAddress
             textField.placeholder = "Email"
         }
         
