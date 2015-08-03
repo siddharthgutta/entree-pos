@@ -3,7 +3,7 @@ import UIKit
 
 class TimeClockViewController: PFQueryCollectionViewController, THPinViewControllerDelegate {
 
-    @IBAction func settings(sender: UIBarButtonItem) {
+    @IBAction func settings() {
         let settingsViewController = UIStoryboard(name: "Settings", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UINavigationController
         
         presentViewController(settingsViewController, animated: true, completion: nil)
