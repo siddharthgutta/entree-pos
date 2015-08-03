@@ -215,7 +215,6 @@
 		888BA1E51B6C3E7500D6C8D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */,
 				888BA1871B6C3E5300D6C8D5 /* Employee.swift */,
 				888BA18C1B6C3E5300D6C8D5 /* Menu.swift */,
 				888BA18E1B6C3E5300D6C8D5 /* MenuCategory.swift */,
@@ -225,6 +224,7 @@
 				888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */,
 				888BA19C1B6C3E5300D6C8D5 /* Party.swift */,
 				888BA1A01B6C3E5300D6C8D5 /* Payment.swift */,
+				888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */,
 				888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */,
 				888BA1AD1B6C3E5300D6C8D5 /* Shift.swift */,
 				888BA1AF1B6C3E5300D6C8D5 /* StarPrinter.swift */,
