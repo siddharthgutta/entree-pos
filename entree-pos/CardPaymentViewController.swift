@@ -3,25 +3,11 @@ import UIKit
 
 class CardPaymentViewController: UITableViewController {
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let alertController = UIAlertController(title: "Payment Disabled", message: "Payment has been disabled in this demo for security purposes.", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    /*
-    
-    @IBOutlet var authorizeChargeTableViewCell: UITableViewCell!
+    @IBOutlet var amountDueTableViewCell: UITableViewCell!
     @IBOutlet var cardReaderStatusTableViewCell: UITableViewCell!
-    
-    @IBAction func authorizeCharge(sender: UIButton) {
-    
-    }
 
-    var enableAuthorizeChargeTableViewCell: Bool = false
-    var payment: Payment?
+    let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
+    var order: Order!
     var reader = CFTReader(reader: 0)
     
     // MARK: - CardPaymentViewController
@@ -29,6 +15,14 @@ class CardPaymentViewController: UITableViewController {
     private func updateCardReaderStatusLabelWithMessage(message: String, textColor: UIColor) {
         cardReaderStatusTableViewCell.textLabel?.text = message
         cardReaderStatusTableViewCell.textLabel?.textColor = textColor
+    }
+    
+    // MARK: - UIViewController
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        amountDueTableViewCell.detailTextLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order.total()))
     }
     
     // MARK: - CFTReaderDelegate
@@ -46,7 +40,34 @@ class CardPaymentViewController: UITableViewController {
     }
     
     func readerCardResponse(card: CFTCard!, withError error: NSError!) {
-        
+        if let card = card {
+            let authorizeDictionary = [
+                "amount": NSDecimalNumber(double: order.total())
+            ]
+            
+            card.authorizeCardWithParameters(authorizeDictionary, success: { (charge: CFTCharge!) in
+                let payment = Payment()
+                payment.type = "Card"
+                
+                payment.cardFlightChargeToken = charge.token
+                payment.cardLastFour = card.last4
+                payment.cardName = card.name
+                
+                payment.order = self.order
+                
+                self.order.payment = payment
+                
+                PFObject.saveAllInBackground([payment, self.order]) { (success: Bool, error: NSError?)  in
+                    if success {
+                        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                }
+                }) { (error: NSError!) in
+                    self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
+            }
+        } else {
+            presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
+        }
     }
     
     func readerIsAttached() {
@@ -81,6 +102,4 @@ class CardPaymentViewController: UITableViewController {
         updateCardReaderStatusLabelWithMessage("Swipe cancelled.", textColor: UIColor.redColor())
     }
 
-*/
-    
 }
