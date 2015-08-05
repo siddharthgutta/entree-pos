@@ -101,6 +101,8 @@ class OrderItemsViewController: PFQueryTableViewController {
         
         query.whereKey("party", equalTo: party)
         
+        query.whereKeyDoesNotExist("order")
+        
         return query
     }
     

@@ -93,7 +93,7 @@ class ReceiptPrinterManager {
         NSUserDefaults.standardUserDefaults().setObject(address, forKey: "receipt_printer_mac_address")
     }
     
-    func printReceiptForPayment(payment: Payment, completion: (Bool, NSError?) -> Void) {
+    func printReceiptForOrder(order: Order, completion: (Bool, NSError?) -> Void) {
         if let address = receiptPrinterMACAddress {
             let dictionary = [
                 "restaurant": ""

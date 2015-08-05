@@ -26,8 +26,8 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
         switch segue.identifier! {
         case "OrderDetail":
             if let navigationController = segue.destinationViewController as? UINavigationController,
-            let orderDetailViewController = navigationController.viewControllers.first as? OrderDetailViewController {
-                orderDetailViewController.orderItem = sender as! OrderItem
+            let orderItemDetailViewController = navigationController.viewControllers.first as? OrderItemDetailViewController {
+                orderItemDetailViewController.orderItem = sender as! OrderItem
             }
         default:
             fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
