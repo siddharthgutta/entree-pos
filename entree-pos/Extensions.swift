@@ -10,6 +10,16 @@ extension NSCalendar {
     
 }
 
+extension NSNumberFormatter {
+    
+    static func numberFormatterWithStyle(style: NSNumberFormatterStyle) -> NSNumberFormatter {
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = style
+        return numberFormatter
+    }
+    
+}
+
 extension Printer {
     
     var isConnected: Bool {
