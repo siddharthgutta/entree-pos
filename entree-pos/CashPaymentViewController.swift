@@ -3,12 +3,28 @@ import UIKit
 
 class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     
+    @IBAction func done() {
+        if let order = order {
+            let payment = Payment()
+            payment.type = "Cash"
+            payment.order = order
+            
+            order.payment = payment
+            
+            PFObject.saveAllInBackground([payment, order]) { (success: Bool, error: NSError?) in
+                if success {
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+        }
+    }
+    
     @IBOutlet var amountDueLabel: UILabel!
     @IBOutlet var amountPaidTextField: UITextField!
     @IBOutlet var changeDueLabel: UILabel!
     
     let numberFormatter = NSNumberFormatter()
-    var payment: Payment?
+    var order: Order?
     
     required init!(coder aDecoder: NSCoder!) {
         numberFormatter.numberStyle = .CurrencyStyle
@@ -23,13 +39,13 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func printReceipt() {
-        ReceiptPrinterManager.sharedManager().printReceiptForPayment(payment!) { (sent: Bool, error: NSError?) in
+        ReceiptPrinterManager.sharedManager().printReceiptForOrder(order!) { (sent: Bool, error: NSError?) in
             println("Sent: \(sent), Error: \(error)")
         }
     }
     
     private func updateChangeDue() {
-        if let amountDue = payment?.total {
+        if let amountDue = order?.total() {
             let amountPaid = (amountPaidTextField.text as NSString).doubleValue
             let changeDue = amountPaid - amountDue
             changeDueLabel.text = numberFormatter.stringFromNumber(NSNumber(double: changeDue))
