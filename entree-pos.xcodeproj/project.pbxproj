@@ -29,7 +29,7 @@
 		888BA1C71B6C3E5300D6C8D5 /* open_cash_drawer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */; };
 		888BA1C81B6C3E5300D6C8D5 /* order_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1971B6C3E5300D6C8D5 /* order_template.xml */; };
 		888BA1C91B6C3E5300D6C8D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1981B6C3E5300D6C8D5 /* Order.swift */; };
-		888BA1CA1B6C3E5300D6C8D5 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1991B6C3E5300D6C8D5 /* OrderDetailViewController.swift */; };
+		888BA1CA1B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */; };
 		888BA1CB1B6C3E5300D6C8D5 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */; };
 		888BA1CC1B6C3E5300D6C8D5 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19B1B6C3E5300D6C8D5 /* OrderTableViewCell.swift */; };
 		888BA1CD1B6C3E5300D6C8D5 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19C1B6C3E5300D6C8D5 /* Party.swift */; };
@@ -42,7 +42,6 @@
 		888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */; };
 		888BA1D51B6C3E5300D6C8D5 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */; };
 		888BA1D61B6C3E5300D6C8D5 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */; };
-		888BA1D71B6C3E5300D6C8D5 /* SelectPaymentTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A61B6C3E5300D6C8D5 /* SelectPaymentTypeViewController.swift */; };
 		888BA1D81B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */; };
 		888BA1D91B6C3E5300D6C8D5 /* ServerMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A81B6C3E5300D6C8D5 /* ServerMapViewController.swift */; };
 		888BA1DA1B6C3E5300D6C8D5 /* ServerOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A91B6C3E5300D6C8D5 /* ServerOverviewViewController.swift */; };
@@ -59,6 +58,7 @@
 		88C188D51B6FF5A90092D1BE /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C188CF1B6FF5A90092D1BE /* Settings.storyboard */; };
 		88C188D61B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */; };
 		88C188D71B6FF5A90092D1BE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C188D11B6FF5A90092D1BE /* SignIn.storyboard */; };
+		88C188DB1B702CDA0092D1BE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C188DA1B702CD90092D1BE /* OrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,7 +88,7 @@
 		888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = open_cash_drawer.xml; path = "entree-pos/open_cash_drawer.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1971B6C3E5300D6C8D5 /* order_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = order_template.xml; path = "entree-pos/order_template.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1981B6C3E5300D6C8D5 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = "entree-pos/Order.swift"; sourceTree = SOURCE_ROOT; };
-		888BA1991B6C3E5300D6C8D5 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailViewController.swift; path = "entree-pos/OrderDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItemDetailViewController.swift; path = "entree-pos/OrderItemDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItem.swift; path = "entree-pos/OrderItem.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19B1B6C3E5300D6C8D5 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderTableViewCell.swift; path = "entree-pos/OrderTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19C1B6C3E5300D6C8D5 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Party.swift; path = "entree-pos/Party.swift"; sourceTree = SOURCE_ROOT; };
@@ -101,7 +101,6 @@
 		888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptPrinterManager.swift; path = "entree-pos/ReceiptPrinterManager.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = "entree-pos/Restaurant.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantMapView.swift; path = "entree-pos/RestaurantMapView.swift"; sourceTree = SOURCE_ROOT; };
-		888BA1A61B6C3E5300D6C8D5 /* SelectPaymentTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectPaymentTypeViewController.swift; path = "entree-pos/SelectPaymentTypeViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectRestaurantViewController.swift; path = "entree-pos/SelectRestaurantViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A81B6C3E5300D6C8D5 /* ServerMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerMapViewController.swift; path = "entree-pos/ServerMapViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A91B6C3E5300D6C8D5 /* ServerOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerOverviewViewController.swift; path = "entree-pos/ServerOverviewViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -118,6 +117,7 @@
 		88C188CF1B6FF5A90092D1BE /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "entree-pos/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
 		88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShadedImageCollectionViewCell.xib; path = "entree-pos/ShadedImageCollectionViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		88C188D11B6FF5A90092D1BE /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = "entree-pos/SignIn.storyboard"; sourceTree = SOURCE_ROOT; };
+		88C188DA1B702CD90092D1BE /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = "entree-pos/OrderViewController.swift"; sourceTree = SOURCE_ROOT; };
 		8EDA5392F65E7A857F482C4A /* Pods-entree-pos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-pos.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,11 +184,11 @@
 				888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */,
 				888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */,
 				888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */,
-				888BA1991B6C3E5300D6C8D5 /* OrderDetailViewController.swift */,
+				888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */,
 				888BA19F1B6C3E5300D6C8D5 /* OrderItemsViewController.swift */,
+				88C188DA1B702CD90092D1BE /* OrderViewController.swift */,
 				888BA19D1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift */,
 				888BA19E1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift */,
-				888BA1A61B6C3E5300D6C8D5 /* SelectPaymentTypeViewController.swift */,
 				888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */,
 				888BA1A81B6C3E5300D6C8D5 /* ServerMapViewController.swift */,
 				888BA1A91B6C3E5300D6C8D5 /* ServerOverviewViewController.swift */,
@@ -416,16 +416,16 @@
 				888BA1B21B6C3E5300D6C8D5 /* AppDelegate.swift in Sources */,
 				888BA1C31B6C3E5300D6C8D5 /* MenuItemModifier.swift in Sources */,
 				888BA1C41B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift in Sources */,
+				88C188DB1B702CDA0092D1BE /* OrderViewController.swift in Sources */,
 				888BA1DF1B6C3E5300D6C8D5 /* SignInViewController.swift in Sources */,
 				888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */,
 				888BA1DB1B6C3E5300D6C8D5 /* SettingsViewController.swift in Sources */,
 				888BA1CE1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift in Sources */,
-				888BA1D71B6C3E5300D6C8D5 /* SelectPaymentTypeViewController.swift in Sources */,
 				888BA1D91B6C3E5300D6C8D5 /* ServerMapViewController.swift in Sources */,
 				888BA1DC1B6C3E5300D6C8D5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				888BA1CB1B6C3E5300D6C8D5 /* OrderItem.swift in Sources */,
 				888BA1B91B6C3E5300D6C8D5 /* EmployeeClockViewController.swift in Sources */,
-				888BA1CA1B6C3E5300D6C8D5 /* OrderDetailViewController.swift in Sources */,
+				888BA1CA1B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift in Sources */,
 				888BA1B31B6C3E5300D6C8D5 /* BadgeLabel.swift in Sources */,
 				888BA1DE1B6C3E5300D6C8D5 /* Shift.swift in Sources */,
 				888BA1D01B6C3E5300D6C8D5 /* OrderItemsViewController.swift in Sources */,
