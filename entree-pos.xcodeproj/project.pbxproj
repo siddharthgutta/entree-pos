@@ -237,9 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
-				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
 				888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */,
+				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
