@@ -2,8 +2,6 @@
 import UIKit
 
 class OrderViewController: PFQueryTableViewController {
-
-    @IBAction f
     
     var order: Order?
 
