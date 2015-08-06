@@ -23,14 +23,8 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var amountPaidTextField: UITextField!
     @IBOutlet var changeDueLabel: UILabel!
     
-    let numberFormatter = NSNumberFormatter()
+    let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
     var order: Order?
-    
-    required init!(coder aDecoder: NSCoder!) {
-        numberFormatter.numberStyle = .CurrencyStyle
-        
-        super.init(coder: aDecoder)
-    }
     
     // MARK: - CashPaymentViewController
     
