@@ -3,7 +3,7 @@ import UIKit
 
 class OrderViewController: PFQueryTableViewController {
     
-    var order: Order?
+    var order: Order!
 
     let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
     
