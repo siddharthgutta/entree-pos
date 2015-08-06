@@ -5,15 +5,7 @@ class OrderViewController: PFQueryTableViewController {
     
     var order: Order?
 
-    let numberFormatter = NSNumberFormatter()
-    
-    // MARK: - Init
-    
-    required init!(coder aDecoder: NSCoder!) {
-        numberFormatter.numberStyle = .CurrencyStyle
-        
-        super.init(coder: aDecoder)
-    }
+    let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
     
     // MARK: - PFQueryTableViewController
     
