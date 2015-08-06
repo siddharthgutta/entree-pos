@@ -511,8 +511,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Pay" style="done" id="86T-QF-pwV"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="5gV-y9-pfm" kind="show" id="SHK-zO-d0Z"/>
-                        <segue destination="wOl-RF-ilk" kind="show" id="HKa-dS-91v"/>
+                        <segue destination="5gV-y9-pfm" kind="show" identifier="Cash" id="SHK-zO-d0Z"/>
+                        <segue destination="wOl-RF-ilk" kind="show" identifier="Card" id="HKa-dS-91v"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hei-PQ-QSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
