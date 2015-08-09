@@ -55,7 +55,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             query.whereKey("role", notEqualTo: "Server")
         }
         
-        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantWithoutData()!)
+        if let restaurant = Restaurant.defaultRestaurantWithoutData() {
+            query.whereKey("restaurant", equalTo: restaurant)
+        }
         
         return query
     }
