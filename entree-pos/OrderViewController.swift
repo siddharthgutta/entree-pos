@@ -3,6 +3,39 @@ import UIKit
 
 class OrderViewController: PFQueryTableViewController {
     
+    @IBAction func cancel() {
+        for orderItem in order.orderItems {
+            orderItem.order = nil
+        }
+        
+        PFObject.saveAll(order.orderItems)
+        
+        order.deleteInBackgroundWithBlock { (success: Bool, error: NSError?) in
+            if success {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func next() {
+        let alertController = UIAlertController(title: "Payment Type", message: nil, preferredStyle: .Alert)
+        
+        let cashAction = UIAlertAction(title: "Cash", style: .Default) { (action: UIAlertAction!) in
+            self.performSegueWithIdentifier("Cash", sender: nil)
+        }
+        alertController.addAction(cashAction)
+        
+        let cardAction = UIAlertAction(title: "Card", style: .Default) { (action: UIAlertAction!) in
+            self.performSegueWithIdentifier("Card", sender: nil)
+        }
+        alertController.addAction(cardAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     var order: Order!
 
     let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
@@ -17,7 +50,15 @@ class OrderViewController: PFQueryTableViewController {
         
         query.orderByAscending("createdAt")
         
+        query.whereKey("order", equalTo: order)
+        
         return query
+    }
+    
+    // MARK: - UIViewController
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.setValue(order, forKey: "order")
     }
     
     // MARK: - UITableViewDataSource

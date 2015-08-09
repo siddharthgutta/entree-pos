@@ -1,6 +1,9 @@
 
 import UIKit
 
+let CARDFLIGHT_DEVELOPMENT_API_KEY = "4bd62d6719544a30ae6cf5811d1145a8"
+let CARDFLIGHT_PRODUCTION_API_KEY = "d384bbb0da123af65c1c24d6f792a75c"
+
 let LOAD_OBJECTS_NOTIFICATION = "load_objects"
 let UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE = "😕 Unrecognized segue identifier"
 
@@ -13,9 +16,9 @@ let UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE = "😕 Unrecognized segue ident
         Parse.setApplicationId("siTMH1dC5Qk84JvfZ3U5xfRfKwqb5jQv4CnCQGZn", clientKey: "rKr1TeMyRNFNhx4zI4guhzk39Uap7MoHYfxdHvQo")
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions) { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                println("Analytics: 👍")
+                println("Parse Analytics: 👍")
             } else {
-                println("Analytics: 👎")
+                println("Parse Analytics: 👎")
             }
         }
         
@@ -33,6 +36,17 @@ let UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE = "😕 Unrecognized segue ident
         Shift.registerSubclass()
         StarPrinter.registerSubclass()
         Table.registerSubclass()
+        
+        // CardFlight
+        // Logging is enabled for debuging purposes
+        CFTSessionManager.sharedInstance().setLogging(true)
+        
+        if let restaurant = Restaurant.synchronouslyFetchDefaultRestaurant() {
+            CFTSessionManager.sharedInstance().setApiToken(CARDFLIGHT_PRODUCTION_API_KEY, accountToken: restaurant.cardFlightAccountToken)
+            println("CardFlight: 👍")
+        } else {
+            println("CardFlight: 👎")
+        }
         
         // UIAppearance
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)

@@ -174,26 +174,66 @@
 			path = "entree-ipad";
 			sourceTree = "<group>";
 		};
-		888BA1E31B6C3E6A00D6C8D5 /* View Controllers */ = {
+		8849BAAB1B7674AE00DAF72E /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				888BA1851B6C3E5300D6C8D5 /* CardPaymentViewController.swift */,
-				888BA1861B6C3E5300D6C8D5 /* CashPaymentViewController.swift */,
-				888BA1881B6C3E5300D6C8D5 /* EmployeeClockViewController.swift */,
 				888BA18D1B6C3E5300D6C8D5 /* MenuCategoriesViewController.swift */,
 				888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */,
 				888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */,
 				888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		8849BAAC1B7674B300DAF72E /* Server */ = {
+			isa = PBXGroup;
+			children = (
 				888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */,
 				888BA19F1B6C3E5300D6C8D5 /* OrderItemsViewController.swift */,
-				88C188DA1B702CD90092D1BE /* OrderViewController.swift */,
 				888BA19D1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift */,
 				888BA19E1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift */,
-				888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		8849BAAD1B7674B600DAF72E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				888BA1881B6C3E5300D6C8D5 /* EmployeeClockViewController.swift */,
 				888BA1A81B6C3E5300D6C8D5 /* ServerMapViewController.swift */,
 				888BA1A91B6C3E5300D6C8D5 /* ServerOverviewViewController.swift */,
-				888BA1AA1B6C3E5300D6C8D5 /* SettingsViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		8849BAAE1B7674C200DAF72E /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				888BA1851B6C3E5300D6C8D5 /* CardPaymentViewController.swift */,
+				888BA1861B6C3E5300D6C8D5 /* CashPaymentViewController.swift */,
+				88C188DA1B702CD90092D1BE /* OrderViewController.swift */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		8849BAAF1B7674F400DAF72E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */,
 				888BA1AE1B6C3E5300D6C8D5 /* SignInViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		888BA1E31B6C3E6A00D6C8D5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8849BAAD1B7674B600DAF72E /* Map */,
+				8849BAAB1B7674AE00DAF72E /* Menu */,
+				8849BAAE1B7674C200DAF72E /* Payment */,
+				8849BAAC1B7674B300DAF72E /* Server */,
+				8849BAAF1B7674F400DAF72E /* Login */,
+				888BA1AA1B6C3E5300D6C8D5 /* SettingsViewController.swift */,
 				888BA1B11B6C3E5300D6C8D5 /* TimeClockViewController.swift */,
 			);
 			name = "View Controllers";
@@ -237,9 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
+				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
 				888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */,
-				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";

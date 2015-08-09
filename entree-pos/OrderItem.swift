@@ -5,7 +5,7 @@ class OrderItem: PFObject, PFSubclassing {
     @NSManaged var menuItemModifiers: [MenuItemModifier]
     @NSManaged var notes: String
     @NSManaged var onTheHouse: Bool
-    @NSManaged var order: Order
+    @NSManaged var order: Order?
     @NSManaged var party: Party
     @NSManaged var seatNumber: Int
     @NSManaged var timesPrinted: Int
@@ -18,12 +18,10 @@ class OrderItem: PFObject, PFSubclassing {
         var orderTax: Double = 0
         
         if menuItem.alcoholic {
-            let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate")! as! Double
-            orderTax += (totalCost() * alcoholTaxRate)
+            orderTax += (totalCost() * Restaurant.synchronouslyFetchDefaultRestaurant()!.alcoholTaxRate)
         }
         
-        let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate")! as! Double
-        orderTax += (totalCost() * salesTaxRate)
+        orderTax += (totalCost() * Restaurant.synchronouslyFetchDefaultRestaurant()!.salesTaxRate)
         
         return orderTax
     }

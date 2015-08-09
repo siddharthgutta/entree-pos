@@ -9,7 +9,7 @@ class MenusViewController: PFQueryCollectionViewController, UICollectionViewDele
     // MARK: - PFQueryCollectionViewController
     
     override func queryForCollection() -> PFQuery {
-        return Restaurant.defaultRestaurant()!.relationForKey("menus").query()!
+        return Restaurant.defaultRestaurantWithoutData()!.relationForKey("menus").query()!
     }
     
     // MARK: - UIViewController

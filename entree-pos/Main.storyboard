@@ -49,11 +49,11 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="Gear" id="2ux-6m-Qbq">
                             <connections>
-                                <action selector="settings:" destination="qKp-WA-qZF" id="MYy-ws-6qi"/>
+                                <action selector="settings" destination="qKp-WA-qZF" id="ekx-ID-9Ns"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fHl-9J-QL5">
-                            <rect key="frame" x="99.5" y="7" width="401" height="30"/>
+                            <rect key="frame" x="100" y="7" width="401" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <segments>
@@ -287,7 +287,7 @@
                         <barButtonItem title="Pay" id="X5e-Ub-VMG">
                             <color key="tintColor" red="0.14117647059999999" green="0.72549019609999998" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="Y7R-Nz-fb1" kind="presentation" modalPresentationStyle="formSheet" id="aob-CD-h75"/>
+                                <segue destination="Y7R-Nz-fb1" kind="presentation" identifier="Order" modalPresentationStyle="formSheet" id="aob-CD-h75"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ayi-gs-DuQ"/>
@@ -397,7 +397,7 @@
         <!--Order-->
         <scene sceneID="eeD-Er-OxJ">
             <objects>
-                <tableViewController id="Vjv-Vm-tbm" sceneMemberID="viewController">
+                <tableViewController id="Vjv-Vm-tbm" customClass="OrderViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="mqm-d2-hFp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,8 +507,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Order" id="743-oD-eZv">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ndl-as-jEk"/>
-                        <barButtonItem key="rightBarButtonItem" title="Pay" style="done" id="86T-QF-pwV"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ndl-as-jEk">
+                            <connections>
+                                <action selector="cancel" destination="Vjv-Vm-tbm" id="b49-NM-V01"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="86T-QF-pwV">
+                            <connections>
+                                <action selector="next" destination="Vjv-Vm-tbm" id="kL7-EG-ASo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="5gV-y9-pfm" kind="show" identifier="Cash" id="SHK-zO-d0Z"/>
@@ -784,7 +792,7 @@
                         <sections>
                             <tableViewSection id="fd1-Rd-7C6">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="66d-z8-gS7" detailTextLabel="aMd-ON-ImT" style="IBUITableViewCellStyleValue1" id="z4H-K5-96F">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="66d-z8-gS7" detailTextLabel="aMd-ON-ImT" style="IBUITableViewCellStyleValue1" id="z4H-K5-96F">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z4H-K5-96F" id="xFj-hG-nqw">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -876,6 +884,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Card Payment" id="bd0-nz-Tb8"/>
+                    <connections>
+                        <outlet property="amountDueTableViewCell" destination="z4H-K5-96F" id="GPe-hb-sC8"/>
+                        <outlet property="cardReaderStatusTableViewCell" destination="dLo-Il-50m" id="rUe-YV-uSu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="051-OE-dvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1020,7 +1032,13 @@
                             <outlet property="delegate" destination="5gV-y9-pfm" id="7aL-0l-cDp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cash Payment" id="uut-ga-zuS"/>
+                    <navigationItem key="navigationItem" title="Cash Payment" id="uut-ga-zuS">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="rTy-gB-E5M">
+                            <connections>
+                                <action selector="done" destination="5gV-y9-pfm" id="Hog-L9-XqP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountDueLabel" destination="z0M-WF-AUQ" id="lya-ea-jl5"/>
                         <outlet property="amountPaidTextField" destination="SjA-fG-x77" id="WD1-2k-0su"/>
@@ -1277,7 +1295,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="John Appleseed – 2 active tables" id="YFv-ev-1Og">
-                        <barButtonItem key="leftBarButtonItem" title="Employee" id="Mrc-se-qI4">
+                        <barButtonItem key="leftBarButtonItem" title="Switch Server" id="Mrc-se-qI4">
                             <connections>
                                 <segue destination="sRM-Uy-0Jr" kind="popoverPresentation" identifier="EmployeeClock" popoverAnchorBarButtonItem="Mrc-se-qI4" id="tGw-YJ-7u3">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>

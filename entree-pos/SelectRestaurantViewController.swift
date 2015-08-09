@@ -26,9 +26,13 @@ class SelectRestaurantViewController: PFQueryTableViewController {
     // MARK: - UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let restaurant = objectAtIndexPath(indexPath)
+        let restaurant = objectAtIndexPath(indexPath) as! Restaurant
         
-        NSUserDefaults.standardUserDefaults().setObject(restaurant!.objectId!, forKey: "default_restaurant")
+        // Set default restaurant object ID
+        NSUserDefaults.standardUserDefaults().setObject(restaurant.objectId!, forKey: "default_restaurant")
+        
+        // Set CardFlight API token
+        CFTSessionManager.sharedInstance().setApiToken(CARDFLIGHT_PRODUCTION_API_KEY, accountToken: restaurant.cardFlightAccountToken)
         
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)

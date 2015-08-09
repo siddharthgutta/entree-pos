@@ -1,14 +1,24 @@
 
 import UIKit
 
-class CardPaymentViewController: UITableViewController {
+class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     @IBOutlet var amountDueTableViewCell: UITableViewCell!
     @IBOutlet var cardReaderStatusTableViewCell: UITableViewCell!
 
     let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
     var order: Order!
-    var reader = CFTReader(reader: 0)
+    var reader: CFTReader
+    
+    // MARK: - Init
+    
+    required init!(coder aDecoder: NSCoder!) {
+        reader = CFTReader(reader: 0)
+        
+        super.init(coder: aDecoder)
+        
+        reader.delegate = self
+    }
     
     // MARK: - CardPaymentViewController
     
@@ -42,7 +52,7 @@ class CardPaymentViewController: UITableViewController {
     func readerCardResponse(card: CFTCard!, withError error: NSError!) {
         if let card = card {
             let authorizeDictionary = [
-                "amount": NSDecimalNumber(double: order.total())
+                "amount": 0.0 // Disabled for testing. Should normally be `NSDecimalNumber(double: order.total())`.
             ]
             
             card.authorizeCardWithParameters(authorizeDictionary, success: { (charge: CFTCharge!) in
@@ -60,10 +70,14 @@ class CardPaymentViewController: UITableViewController {
                 PFObject.saveAllInBackground([payment, self.order]) { (success: Bool, error: NSError?)  in
                     if success {
                         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+                    } else {
+                        // If this fails, we're kinda screwed...
                     }
                 }
-                }) { (error: NSError!) in
-                    self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
+            }) { (error: NSError!) in
+                self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
             }
         } else {
             presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
@@ -76,9 +90,11 @@ class CardPaymentViewController: UITableViewController {
     
     func readerIsConnected(isConnected: Bool, withError error: NSError!) {
         if isConnected {
-            updateCardReaderStatusLabelWithMessage("Reader is connected. Ready for swipe", textColor: UIColor.greenColor())
+            reader.beginSwipe()
+            
+            updateCardReaderStatusLabelWithMessage("Reader is connected. Ready for swipe!", textColor: UIColor.greenColor())
         } else {
-            println("Reader didn't connect with error: \(error.localizedDescription)")
+            presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
         }
     }
     

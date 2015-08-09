@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8ab-L7-Z2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A244d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8ab-L7-Z2O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="MO3-Yi-nyS">
             <objects>
-                <viewController id="8ab-L7-Z2O" customClass="SignInViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8ab-L7-Z2O" customClass="SignInViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="abj-2z-B0s"/>
                         <viewControllerLayoutGuide type="bottom" id="cRh-8L-xyg"/>
@@ -16,61 +16,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="EsU-sq-5gA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="EsU-sq-5gA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtg-vm-9Wn">
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3r-BA-4uv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vSg-Uc-Ztx">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrée for iPad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpE-5L-2tz">
-                                            <rect key="frame" x="197" y="242" width="207" height="39"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant point-of-sale made smarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-36-7Gw">
-                                            <rect key="frame" x="144" y="289" width="312.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIm-7U-k6m">
-                                            <rect key="frame" x="272" y="319" width="56" height="34"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="Sign In">
-                                                <color key="titleColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="signIn" destination="8ab-L7-Z2O" eventType="touchUpInside" id="c3t-Yl-PWW"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="WHd-36-7Gw" secondAttribute="centerY" id="4J1-ju-9Bv"/>
-                                        <constraint firstAttribute="centerX" secondItem="gIm-7U-k6m" secondAttribute="centerX" id="AK7-zl-Rel"/>
-                                        <constraint firstAttribute="centerX" secondItem="mpE-5L-2tz" secondAttribute="centerX" id="EMX-xJ-0nd"/>
-                                        <constraint firstAttribute="centerX" secondItem="WHd-36-7Gw" secondAttribute="centerX" id="M2k-0D-vIj"/>
-                                        <constraint firstItem="WHd-36-7Gw" firstAttribute="top" secondItem="mpE-5L-2tz" secondAttribute="bottom" constant="8" id="SAU-pG-9Vj"/>
-                                        <constraint firstItem="gIm-7U-k6m" firstAttribute="top" secondItem="WHd-36-7Gw" secondAttribute="bottom" constant="8" id="aJM-dP-rr2"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entrée POS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fba-fu-SIc">
+                                <rect key="frame" x="137" y="200" width="327" height="77"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant point-of-sale made smarter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz0-qz-pZR">
+                                <rect key="frame" x="97" y="285" width="406" height="29"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LE2-zf-dRB">
+                                <rect key="frame" x="271" y="322" width="59" height="41"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.14117647059999999" green="0.72549019609999998" blue="0.1137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signIn" destination="8ab-L7-Z2O" eventType="touchUpInside" id="yD7-1a-nDD"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cRh-8L-xyg" firstAttribute="top" secondItem="EsU-sq-5gA" secondAttribute="bottom" id="48Y-8g-r1q"/>
-                            <constraint firstAttribute="trailing" secondItem="dtg-vm-9Wn" secondAttribute="trailing" id="MFc-7k-oeS"/>
-                            <constraint firstItem="cRh-8L-xyg" firstAttribute="top" secondItem="dtg-vm-9Wn" secondAttribute="bottom" id="QYh-La-arh"/>
+                            <constraint firstItem="E3r-BA-4uv" firstAttribute="top" secondItem="gEt-ZE-kSw" secondAttribute="top" id="8Tm-q8-FN1"/>
+                            <constraint firstAttribute="centerX" secondItem="LE2-zf-dRB" secondAttribute="centerX" id="BvR-na-EJ4"/>
+                            <constraint firstAttribute="centerX" secondItem="Fba-fu-SIc" secondAttribute="centerX" id="Qlg-dQ-PN7"/>
                             <constraint firstItem="EsU-sq-5gA" firstAttribute="leading" secondItem="gEt-ZE-kSw" secondAttribute="leading" id="SZM-hN-x1R"/>
-                            <constraint firstItem="dtg-vm-9Wn" firstAttribute="top" secondItem="gEt-ZE-kSw" secondAttribute="top" id="Yid-Ql-EnA"/>
-                            <constraint firstItem="dtg-vm-9Wn" firstAttribute="leading" secondItem="gEt-ZE-kSw" secondAttribute="leading" id="fMt-VJ-c65"/>
+                            <constraint firstAttribute="centerY" secondItem="rz0-qz-pZR" secondAttribute="centerY" id="UPQ-PX-avv"/>
+                            <constraint firstItem="LE2-zf-dRB" firstAttribute="top" secondItem="rz0-qz-pZR" secondAttribute="bottom" constant="8" id="Xla-yW-jrw"/>
+                            <constraint firstItem="rz0-qz-pZR" firstAttribute="top" secondItem="Fba-fu-SIc" secondAttribute="bottom" constant="8" id="aHb-KQ-tmh"/>
+                            <constraint firstAttribute="centerX" secondItem="rz0-qz-pZR" secondAttribute="centerX" id="d8i-KB-Bdj"/>
+                            <constraint firstItem="E3r-BA-4uv" firstAttribute="leading" secondItem="gEt-ZE-kSw" secondAttribute="leading" id="gUP-Zw-Sy1"/>
+                            <constraint firstAttribute="trailing" secondItem="E3r-BA-4uv" secondAttribute="trailing" id="kEU-he-g0K"/>
                             <constraint firstItem="EsU-sq-5gA" firstAttribute="top" secondItem="gEt-ZE-kSw" secondAttribute="top" id="oDR-ar-trU"/>
                             <constraint firstAttribute="trailing" secondItem="EsU-sq-5gA" secondAttribute="trailing" id="rXg-kT-4fp"/>
+                            <constraint firstItem="cRh-8L-xyg" firstAttribute="top" secondItem="E3r-BA-4uv" secondAttribute="bottom" id="v3V-yj-GaE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -84,10 +82,11 @@
         <!--Select Restaurant-->
         <scene sceneID="gSc-5n-Ur5">
             <objects>
-                <tableViewController id="D6U-nN-j8R" customClass="SelectRestaurantViewController" customModule="entree_ipad" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="D6U-nN-j8R" customClass="SelectRestaurantViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="aiU-TS-nvI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="EM3-Kf-Owc" detailTextLabel="oVD-Zb-gwW" style="IBUITableViewCellStyleValue1" id="LYS-98-fLE" customClass="PFTableViewCell">
@@ -97,18 +96,22 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="RESTAURANT_NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EM3-Kf-Owc">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="RESTAURANT_LOCATION" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oVD-Zb-gwW">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -129,6 +132,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vt6-Fe-9yw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -145,6 +149,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Restaurant" width="1920" height="1280"/>
+        <image name="Restaurant" width="4272" height="2848"/>
     </resources>
 </document>

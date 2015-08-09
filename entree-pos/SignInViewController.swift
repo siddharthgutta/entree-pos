@@ -4,7 +4,7 @@ import UIKit
 class SignInViewController: UIViewController {
 
     @IBAction func signIn() {
-        let alertController = UIAlertController(title: "Sign In", message: nil, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Login", message: nil, preferredStyle: .Alert)
         
         alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
             textField.keyboardType = .EmailAddress
@@ -19,7 +19,7 @@ class SignInViewController: UIViewController {
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAlertAction)
         
-        let signInAlertAction = UIAlertAction(title: "Sign In", style: .Default) { (action: UIAlertAction!) in
+        let signInAlertAction = UIAlertAction(title: "Login", style: .Default) { (action: UIAlertAction!) in
             let textFields = alertController.textFields! as! [UITextField]
             
             let email = textFields.first!.text

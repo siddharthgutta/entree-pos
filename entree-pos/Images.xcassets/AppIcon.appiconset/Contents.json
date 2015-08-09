@@ -86,15 +86,13 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Entree App Icon iPad@1x.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "Entree App Icon iPad@2x.png",
+      "size" : "76x76",
       "scale" : "2x"
     },
     {

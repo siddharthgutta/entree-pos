@@ -26,42 +26,50 @@ class SettingsViewController: UITableViewController {
     let alcoholTaxRateTableViewCellIndexPath = NSIndexPath(forRow: 1, inSection: 1)
     let receiptPrinterTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 2)
     
+    let percentNumberFormatter: NSNumberFormatter
+    
+    // MARK: - Init
+    
+    required init!(coder aDecoder: NSCoder!) {
+        percentNumberFormatter = NSNumberFormatter()
+        percentNumberFormatter.numberStyle = .PercentStyle
+        percentNumberFormatter.maximumFractionDigits = 10
+        
+        super.init(coder: aDecoder)
+    }
+    
     // MARK: - SettingsViewController
     
-    private func configureView() {
-        let restaurantObjectID = NSUserDefaults.standardUserDefaults().objectForKey("default_restaurant") as! String
-        
-        PFObject(withoutDataWithClassName: Restaurant.parseClassName(), objectId: restaurantObjectID).fetchInBackgroundWithBlock {
-            (restaurant: PFObject?, error: NSError?) in
-            
-            self.restaurantNameLabel.text = restaurant?["name"] as? String
-            self.restaurantLocationLabel.text = restaurant?["location"] as? String
-        }
-        
-        if let salesTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("sales_tax_rate") as? Double {
-            salesTaxRateLabel.text = "\(salesTaxRate)"
-        } else {
-            NSUserDefaults.standardUserDefaults().setObject(Double(0), forKey: "sales_tax_rate")
-            
-            salesTaxRateLabel.text = "0"
-        }
-        
-        if let alcoholTaxRate = NSUserDefaults.standardUserDefaults().objectForKey("alcohol_tax_rate") as? Double {
-            alcoholTaxRateLabel.text = "\(alcoholTaxRate)"
-        } else {
-            NSUserDefaults.standardUserDefaults().setObject(Double(0), forKey: "alcohol_tax_rate")
-            
-            alcoholTaxRateLabel.text = "0"
+    private func reloadData() {
+        Restaurant.asynchronouslyFetchDefaultRestaurantWithCompletion { (success: Bool, restaurant: Restaurant?) in
+            if success {
+                
+                self.restaurantNameLabel.text = restaurant?.name
+                self.restaurantLocationLabel.text = restaurant?.location
+                
+                self.salesTaxRateLabel.text = self.percentNumberFormatter.stringFromNumber(NSNumber(double: restaurant!.salesTaxRate))
+                self.alcoholTaxRateLabel.text = self.percentNumberFormatter.stringFromNumber(NSNumber(double: restaurant!.alcoholTaxRate))
+                
+            } else {
+                let signInViewController = UIStoryboard(name: "SignIn", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! SignInViewController
+                self.presentViewController(signInViewController, animated: true, completion: nil)
+            }
         }
         
         if let address = ReceiptPrinterManager.sharedManager().receiptPrinterMACAddress {
+            
             ReceiptPrinterManager.sharedManager().findPrinterWithMACAddress(address) { (printer: Printer?) in
+                
                 self.receiptPrinterNameLabel.text = printer?.name
                 self.receiptPrinterMACAddressLabel.text = printer?.macAddress
+                
             }
+            
         } else {
+            
             receiptPrinterNameLabel.text = "Not set"
             receiptPrinterMACAddressLabel.text = ""
+            
         }
     }
     
@@ -101,27 +109,36 @@ class SettingsViewController: UITableViewController {
     }
     
     private func editTaxRateForType(type: TaxRateType) {
-        let alertController = UIAlertController(title: "Edit \(type.rawValue) Tax Rate", message: nil, preferredStyle: .Alert)
+        let editTaxRateAlertController = UIAlertController(title: "\(type.rawValue) Tax Rate", message: "Use decimal format (i.e. 0.0825 for 8.25%).", preferredStyle: .Alert)
         
-        alertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
+        editTaxRateAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
             textField.keyboardType = .NumberPad
-            textField.placeholder = "Example: 0.0825"
         }
         
-        let cancelAlertAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAlertAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        editTaxRateAlertController.addAction(cancelAction)
         
-        let saveAlertAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) in
-            let textField = alertController.textFields!.first! as! UITextField
-            let rate = textField.text.doubleValue
+        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) in
+            let textField = editTaxRateAlertController.textFields?.first as! UITextField
+            let taxRate = textField.text.doubleValue
 
-            NSUserDefaults.standardUserDefaults().setObject(rate, forKey: "\(type.rawValue.lowercaseString)_tax_rate")
+            let restaurant = Restaurant.defaultRestaurantWithoutData()
             
-            self.configureView()
+            switch type {
+            case .Alcohol:
+                restaurant?.alcoholTaxRate = taxRate
+            case .Sales:
+                restaurant?.salesTaxRate = taxRate
+            }
+            
+            // This call is synchronous so the alert controller will only dismiss after it has been completed.
+            restaurant?.save()
+            
+            self.reloadData()
         }
-        alertController.addAction(saveAlertAction)
+        editTaxRateAlertController.addAction(saveAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        presentViewController(editTaxRateAlertController, animated: true, completion: nil)
     }
     
     // MARK: - UIViewController
@@ -129,7 +146,7 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureView()
+        reloadData()
     }
     
     // MARK: - UITableViewDelegate

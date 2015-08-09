@@ -55,7 +55,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             query.whereKey("role", notEqualTo: "Server")
         }
         
-        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurant()!)
+        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantWithoutData()!)
         
         return query
     }
@@ -65,7 +65,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
             case "ServerMap":
-                if let navigationController = segue.destinationViewController as? UINavigationController, let serverMapViewController = navigationController.viewControllers.first as? ServerMapViewController {
+                if let navigationController = segue.destinationViewController as? UINavigationController,
+                let serverMapViewController = navigationController.viewControllers.first as? ServerMapViewController {
                     serverMapViewController.employee = selectedEmployee
                 }
         default:
@@ -164,7 +165,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         }
         
         cell.textLabel.text = employee.name
-        cell.detailTextLabel.text = employee.role
+        
+        cell.detailTextLabel.text = employee.role == "Server" ? "\(employee.activePartyCount) active tables" : employee.role
         
         if employee.currentShift != nil {
             cell.badgeLabel.text = "In"

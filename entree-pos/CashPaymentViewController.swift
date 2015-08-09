@@ -14,6 +14,8 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
             PFObject.saveAllInBackground([payment, order]) { (success: Bool, error: NSError?) in
                 if success {
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 }
             }
         }
@@ -24,7 +26,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var changeDueLabel: UILabel!
     
     let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
-    var order: Order?
+    var order: Order!
     
     // MARK: - CashPaymentViewController
     
@@ -39,11 +41,16 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func updateChangeDue() {
-        if let amountDue = order?.total() {
-            let amountPaid = (amountPaidTextField.text as NSString).doubleValue
-            let changeDue = amountPaid - amountDue
-            changeDueLabel.text = numberFormatter.stringFromNumber(NSNumber(double: changeDue))
-        }
+        let changeDue = amountPaidTextField.text.doubleValue - order.total()
+        changeDueLabel.text = numberFormatter.stringFromNumber(NSNumber(double: changeDue))
+    }
+    
+    // MARK: - UIViewController
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        amountDueLabel.text = numberFormatter.stringFromNumber(NSNumber(double: order.total()))
     }
     
     // MARK: - UITableViewDelegate

@@ -2,6 +2,7 @@
 class Order: PFObject, PFSubclassing {
     
     @NSManaged var orderItems: [OrderItem]
+    @NSManaged var party: Party?
     @NSManaged var payment: Payment
     
     func subtotal() -> Double {

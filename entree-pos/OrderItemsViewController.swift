@@ -55,11 +55,10 @@ class OrderItemsViewController: PFQueryTableViewController {
         }
     }
     
-    @IBOutlet var createPaymentButton: UIButton!
     @IBOutlet var timeSeatedLabel: UILabel!
     
     var orderItems: [OrderItem] { return objects! as! [OrderItem] }
-    var party: Party!
+    var party: Party! 
     
     let dateComponentsFormatter = NSDateComponentsFormatter()
     let numberFormatter = NSNumberFormatter()
@@ -107,6 +106,32 @@ class OrderItemsViewController: PFQueryTableViewController {
     }
     
     // MARK: - UIViewController
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "Order":
+            if let navigationController = segue.destinationViewController as? UINavigationController,
+            let orderViewController = navigationController.viewControllers.first as? OrderViewController {
+                
+                let selectedIndexPaths = tableView.indexPathsForSelectedRows() as! [NSIndexPath]
+                let selectedOrderItems = selectedIndexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
+                
+                let order = Order()
+                order.orderItems = selectedOrderItems
+                order.party = party
+                
+                for orderItem in selectedOrderItems { orderItem.order = order }
+                
+                let objectsToSave: [AnyObject] = orderItems + [order]
+                PFObject.saveAll(objectsToSave)
+                
+                orderViewController.order = order
+                
+            }
+        default:
+            println()
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

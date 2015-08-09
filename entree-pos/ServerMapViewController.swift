@@ -37,7 +37,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         query.includeKey("currentParty")
         query.includeKey("currentParty.table")
         
-        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurant()!)
+        query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantWithoutData()!)
         
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
             if let tables = objects as? [Table] {
@@ -168,7 +168,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 let party = Party()
                 party.arrivedAt = NSDate()
                 party.name = (addPartyAlertController.textFields?.first as! UITextField).text
-                party.restaurant = Restaurant.defaultRestaurant()!
+                party.restaurant = Restaurant.defaultRestaurantWithoutData()!
                 party.seatedAt = NSDate()
                 party.server = self.employee
                 party.table = self.tables[index]
