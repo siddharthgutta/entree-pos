@@ -293,14 +293,14 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ayi-gs-DuQ"/>
                         <barButtonItem title="Print" id="f4x-e0-qGf">
                             <connections>
-                                <action selector="printOrders:" destination="4u7-jc-HMs" id="NSw-7m-sgJ"/>
+                                <action selector="printOrderItems" destination="4u7-jc-HMs" id="04G-36-uLL"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Table 7 – Wyatt Party" id="FN0-6t-Ac9">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LUa-Aa-sDn">
                             <connections>
-                                <action selector="dismiss:" destination="4u7-jc-HMs" id="itK-nJ-3qQ"/>
+                                <action selector="dismiss" destination="4u7-jc-HMs" id="eJJ-oq-340"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

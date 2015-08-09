@@ -13,7 +13,7 @@ class OrderItemsViewController: PFQueryTableViewController {
             
             PFObject.saveAllInBackground([self.party, self.party.table]) { (succeeded: Bool, error: NSError?) in
                 if succeeded {
-                    self.dismiss(sender)
+                    self.dismiss()
                 } else {
                     println(error?.localizedDescription)
                 }
@@ -23,31 +23,25 @@ class OrderItemsViewController: PFQueryTableViewController {
         presentViewController(confirmationAlertController, animated: true, completion: nil)
     }
     
-    @IBAction func createPayment(sender: UIBarButtonItem) {
-        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
-            let orderItems = indexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
-            
-            if orderItems.isEmpty {
-                presentNoOrdersSelectedAlertController()
-            } else {
-                
-            }
-        } else {
-            presentNoOrdersSelectedAlertController()
-        }
-    }
-    
-    @IBAction func dismiss(sender: UIBarButtonItem) {
+    @IBAction func dismiss() {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func printOrders(sender: UIBarButtonItem) {
+    @IBAction func printOrderItems() {
+        println("0")
+        
         if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+            println("1")
+            
             let orderItems = indexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
             
             if orderItems.isEmpty {
+                println("2")
+                
                 presentNoOrdersSelectedAlertController()
             } else {
+                
+                println("3")
                 ReceiptPrinterManager.sharedManager().printOrderItems(orderItems)
             }
         } else {
