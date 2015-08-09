@@ -37,8 +37,8 @@ typedef enum PrinterBarcodeType
 #define kPrinterCMD_StartUpperline      @"\x1b\x5f\x01"
 #define kPrinterCMD_EndUpperline        @"\x1b\x5f\x00"
 
-#define kPrinterCMD_StartDoubleHW       @"\x1b\x69\x01\x01"
-#define kPrinterCMD_EndDoubleHW         @"\x1b\x69\x00\x00"
+#define kPrinterCMD_StartDoubleHW       @"\x1b\x68\x01\x1b\x57\x01"
+#define kPrinterCMD_EndDoubleHW         @"\x1b\x68\x00\x1b\x57\x00"
 
 #define kPrinterCMD_StartInvertColor    @"\x1b\x34"
 #define kPrinterCMD_EndInvertColor      @"\x1b\x35"
