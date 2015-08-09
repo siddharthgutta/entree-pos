@@ -89,6 +89,9 @@ class OrderItemsViewController: PFQueryTableViewController {
         query.includeKey("menuItem.printJobs")
         query.includeKey("menuItem.printJobs.printer")
         query.includeKey("menuItemModifiers")
+        query.includeKey("party")
+        query.includeKey("party.server")
+        query.includeKey("party.table")
 
         query.orderByAscending("createdAt")
         

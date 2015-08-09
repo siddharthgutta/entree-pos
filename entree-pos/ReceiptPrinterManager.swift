@@ -5,6 +5,13 @@ let _ReceiptPrinterManagerSharedInstance = ReceiptPrinterManager()
 
 class ReceiptPrinterManager {
    
+    private let dateFormatter = NSDateFormatter()
+    
+    init() {
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .ShortStyle
+    }
+
     private var macAddressToPrinterCache = [String: Printer]()
     var receiptPrinterMACAddress: String? {
         return NSUserDefaults.standardUserDefaults().objectForKey("receipt_printer_mac_address") as? String
@@ -115,18 +122,25 @@ class ReceiptPrinterManager {
     // MARK: - Kitchen printing
     
     private func executePrintJobsForOrderItem(orderItem: OrderItem) {
-        let orderTemplateFilePath = NSBundle.mainBundle().pathForResource("order_template", ofType: "xml")
+        let orderTemplateFilePath = NSBundle.mainBundle().pathForResource("order_item_template", ofType: "xml")
         
         for printJob in orderItem.menuItem.printJobs {
             let dictionary = [
-                "menu_item": printJob.text.isEmpty ? orderItem.menuItem.name : printJob.text,
-                "seat": orderItem.seatNumber == 0 ? "SEAT: NOT SET" : "SEAT: \(orderItem.seatNumber)",
-                "mods": orderItem.menuItemModifiers.isEmpty ? "NO MODIFIERS" : ", ".join(orderItem.menuItemModifiers.map { (modifier: MenuItemModifier) -> String in return modifier.printText }),
-                "notes": orderItem.notes.isEmpty ? "NO NOTES" : orderItem.notes]
+                "{{location}}": "Dine-In",
+                "{{time}}": dateFormatter.stringFromDate(NSDate()),
+                "{{table}}": orderItem.party.table.name,
+                "{{guests}}": orderItem.party.size == 0 ? "N/A" : "\(orderItem.party.size)",
+                "{{server}}": orderItem.party.server.name,
+                "{{menu_item}}": orderItem.menuItem.name,
+                "{{seat}}": orderItem.seatNumber == 0 ? "TABLE" : "\(orderItem.seatNumber)",
+                "{{mods}}": orderItem.menuItemModifiers.isEmpty ? "N/A" : orderItem.menuItemModifiers.reduce("") { (previous: String, modifier: MenuItemModifier) -> String in return "\(previous) \(modifier.printText);" },
+                "{{notes}}": orderItem.notes.isEmpty ? "N/A" : orderItem.notes
+            ]
+ 
             let printData = PrintData(dictionary: dictionary, atFilePath: orderTemplateFilePath)
             
             sendPrintData(printData, toPrinterWithMACAddress: printJob.printer.mac) { (sent: Bool, error: NSError?) in
-                // TODO: Maybe move this somehwer else
+                // TODO: Maybe move this somewhere else
             }
         }
     }

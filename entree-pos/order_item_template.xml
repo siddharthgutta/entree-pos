@@ -1,0 +1,28 @@
+<print>
+
+<text><center><large>{{location}}</large></center></text>
+<newline /><newline />
+
+<text><left>SENT: {{time}}</left></text>
+<newline />
+
+<text><left><bold>{{table}} ({{guests}})</bold></left></text>
+<newline />
+<text><left>SERVER: {{server}}</left></text>
+
+<newline />
+<dashednewline />
+<newline/>
+
+<text><left><large>{{menu_item}}</large></left></text>
+<newline />
+
+<tab /><text><large>+ SEAT: {{seat}}</large></text>
+<newline />
+
+<tab /><text><large><ic>+ MODS: {{mods}}</ic></large></text>
+<newline />
+
+<tab /><text><large><ic>+ NOTES: {{notes}}</ic></large></text>
+
+</print>

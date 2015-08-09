@@ -27,7 +27,7 @@
 		888BA1C51B6C3E5300D6C8D5 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */; };
 		888BA1C61B6C3E5300D6C8D5 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */; };
 		888BA1C71B6C3E5300D6C8D5 /* open_cash_drawer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */; };
-		888BA1C81B6C3E5300D6C8D5 /* order_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1971B6C3E5300D6C8D5 /* order_template.xml */; };
+		888BA1C81B6C3E5300D6C8D5 /* order_item_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */; };
 		888BA1C91B6C3E5300D6C8D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1981B6C3E5300D6C8D5 /* Order.swift */; };
 		888BA1CA1B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */; };
 		888BA1CB1B6C3E5300D6C8D5 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */; };
@@ -86,7 +86,7 @@
 		888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemsViewController.swift; path = "entree-pos/MenuItemsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusViewController.swift; path = "entree-pos/MenusViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = open_cash_drawer.xml; path = "entree-pos/open_cash_drawer.xml"; sourceTree = SOURCE_ROOT; };
-		888BA1971B6C3E5300D6C8D5 /* order_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = order_template.xml; path = "entree-pos/order_template.xml"; sourceTree = SOURCE_ROOT; };
+		888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = order_item_template.xml; path = "entree-pos/order_item_template.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1981B6C3E5300D6C8D5 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = "entree-pos/Order.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItemDetailViewController.swift; path = "entree-pos/OrderItemDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItem.swift; path = "entree-pos/OrderItem.swift"; sourceTree = SOURCE_ROOT; };
@@ -311,7 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */,
-				888BA1971B6C3E5300D6C8D5 /* order_template.xml */,
+				888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */,
 				888BA1A21B6C3E5300D6C8D5 /* receipt_template.xml */,
 			);
 			name = "Printer Templates";
@@ -388,7 +388,7 @@
 			files = (
 				88C188D41B6FF5A90092D1BE /* MenuCollectionViewCell.xib in Resources */,
 				88C188D21B6FF5A90092D1BE /* LaunchScreen.xib in Resources */,
-				888BA1C81B6C3E5300D6C8D5 /* order_template.xml in Resources */,
+				888BA1C81B6C3E5300D6C8D5 /* order_item_template.xml in Resources */,
 				88C188D51B6FF5A90092D1BE /* Settings.storyboard in Resources */,
 				888BA1D31B6C3E5300D6C8D5 /* receipt_template.xml in Resources */,
 				88C188D31B6FF5A90092D1BE /* Main.storyboard in Resources */,
