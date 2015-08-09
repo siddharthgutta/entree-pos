@@ -48,7 +48,8 @@
 
 - (void)dashedNewLine
 {
-    [self add:@"\r\n------------------------------------------------\r\n"];
+    [self add:@"\r\n-----------------------------------------\r\n"]; // Removed 7
+}
 }
 
 #pragma mark - Text Formatting
