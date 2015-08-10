@@ -7,8 +7,12 @@ let CARDFLIGHT_PRODUCTION_API_KEY = "d384bbb0da123af65c1c24d6f792a75c"
 let LOAD_OBJECTS_NOTIFICATION = "load_objects"
 let UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE = "😕 Unrecognized segue identifier"
 
-@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
+@UIApplicationMain
 
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    let reader = CFTReader(reader: 0)
+    
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
