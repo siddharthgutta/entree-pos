@@ -42,8 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Table.registerSubclass()
         
         // CardFlight
-        // Logging is enabled for debuging purposes
-        CFTSessionManager.sharedInstance().setLogging(true)
+        
+        // Logging should only be enabled for debugging purposes
+        // CFTSessionManager.sharedInstance().setLogging(true)
         
         if let restaurant = Restaurant.synchronouslyFetchDefaultRestaurant() {
             CFTSessionManager.sharedInstance().setApiToken(CARDFLIGHT_PRODUCTION_API_KEY, accountToken: restaurant.cardFlightAccountToken)
