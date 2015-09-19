@@ -411,7 +411,7 @@ static char const * const ConnectJobTag = "ConnectJobTag";
     NSMutableData *printData = [NSMutableData dataWithData:data];
     [printData appendData:[kPrinterCMD_CutFull dataUsingEncoding:NSASCIIStringEncoding]];
     
-    int commandSize = [printData length];
+    NSUInteger commandSize = [printData length];
     unsigned char *dataToSentToPrinter = (unsigned char *)malloc(commandSize);
     [printData getBytes:dataToSentToPrinter];
     
@@ -420,9 +420,9 @@ static char const * const ConnectJobTag = "ConnectJobTag";
             int totalAmountWritten = 0;
             while (totalAmountWritten < commandSize) {
                 
-                int remaining = commandSize - totalAmountWritten;
+                NSUInteger remaining = commandSize - totalAmountWritten;
                 
-                int blockSize = (remaining > 1024) ? 1024 : remaining;
+                NSUInteger blockSize = (remaining > 1024) ? 1024 : remaining;
                 
                 int amountWritten = [self.port writePort:dataToSentToPrinter :totalAmountWritten :blockSize];
                 totalAmountWritten += amountWritten;

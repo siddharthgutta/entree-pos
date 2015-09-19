@@ -1,0 +1,51 @@
+<print>
+
+    <center>
+        <text><large>{{copy}}</large></text>
+        <newline />
+        <text>{{restaurant}}</text>
+        <newline />
+        <text>{{location}}</text>
+        <newline />
+        <text>{{phone}}</text>
+        <newline />
+        <newline />
+
+    <left>
+        <text>{{time}}</text>
+        <newline />
+        <text>{{server}}</text>
+        <newline />
+
+        <dashednewline />
+        <newline />
+
+        <text>Card: XXXX XXXX XXXX {{last_four}}</text>
+        <newline />
+        <text>Cardholder: {{cardholder}}</text>
+        <newline />
+        <newline />
+
+        <text>Order ID: {{order_id}}</text>
+        <newline />
+        <text>Payment ID: {{payment_id}}</text>
+        <newline />
+        <newline />
+
+        <text>Subtotal: {{subtotal}}</text>
+        <newline />
+        <text>+ Tip: _______________</text>
+        <newline />
+        <text>= Total: _______________</text>
+        <newline />
+        <newline />
+
+        <text>I agree to pay the above total amount     according to the card issuer agreement.</text>
+        <newline />
+        <newline />
+
+        <text>X________________________________________</text>
+        <newline />
+        <newline />
+
+</print>

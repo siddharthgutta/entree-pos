@@ -23,14 +23,11 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "OrderDetail":
+        if segue.identifier == "OrderDetail" {
             if let navigationController = segue.destinationViewController as? UINavigationController,
-            let orderItemDetailViewController = navigationController.viewControllers.first as? OrderItemDetailViewController {
-                orderItemDetailViewController.orderItem = sender as! OrderItem
+                let orderItemDetailViewController = navigationController.viewControllers.first as? OrderItemDetailViewController {
+                    orderItemDetailViewController.orderItem = sender as! OrderItem
             }
-        default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
         }
     }
     
@@ -68,23 +65,46 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let orderItem = OrderItem()
-        orderItem.menuItem = objectAtIndexPath(indexPath)! as! MenuItem
+        orderItem.menuItem = objectAtIndexPath(indexPath) as! MenuItem
         orderItem.menuItemModifiers = []
         orderItem.notes = ""
-
-        if let nc = splitViewController?.viewControllers.first as? UINavigationController,
-        let orderItemsViewController = nc.viewControllers.first as? OrderItemsViewController {
-            orderItem.party = orderItemsViewController.party
-        }
         orderItem.seatNumber = 0
         
-        orderItem.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
-            if succeeded {
-                self.performSegueWithIdentifier("OrderDetail", sender: orderItem)
-            } else {
-                println(error?.localizedDescription)
+        let navigationController = splitViewController?.viewControllers.first as! UINavigationController
+        if let orderItemsViewController = navigationController.viewControllers.first as? OrderItemsViewController {
+            let party =  orderItemsViewController.party
+            orderItem.party = party
+            
+            orderItem.saveInBackgroundWithBlock {
+                (succeeded, error) in
+                
+                if succeeded {
+                    self.performSegueWithIdentifier("OrderDetail", sender: orderItem)
+                } else {
+                    println(error?.localizedDescription)
+                }
+            }
+        } else if let quickServiceOrderViewController = navigationController.viewControllers.first as? QuickServiceOrderViewController {
+            quickServiceOrderViewController.order.orderItems.append(orderItem)
+            orderItem.order = quickServiceOrderViewController.order
+            
+            PFObject.saveAllInBackground([orderItem, quickServiceOrderViewController.order]) {
+                (succeeded, error) in
+                
+                if succeeded {
+                    let navController = UIStoryboard(name: "OrderItemDetail", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UINavigationController
+                    let quickServiceOrderItemDetailViewController = navController.viewControllers.first as! QuickServiceOrderItemDetailViewController
+                    quickServiceOrderItemDetailViewController.orderItem = orderItem
+                    
+                    navController.modalPresentationStyle = .FormSheet
+                    self.presentViewController(navController, animated: true, completion: nil)
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
             }
         }
+        
+
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout

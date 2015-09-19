@@ -1,3 +1,3 @@
-# Entrée for iPad
+# Entrée POS
 
-This app is the primary point-of-sale software created by Entrée.
+A restaurant point-of-sale app for iPad.

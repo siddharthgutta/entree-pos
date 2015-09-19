@@ -3,6 +3,32 @@ import UIKit
 
 class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, RestaurantMapViewDelegate, UIScrollViewDelegate {
     
+    @IBAction func newOrder(sender: UIBarButtonItem) {
+        let order = Order()
+        
+        order.installation = PFInstallation.currentInstallation()
+        order.restaurant = Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!
+        order.type = "Quick Service"
+        
+        order.orderItems = []
+        
+        order.server = employee
+        
+        order.saveInBackgroundWithBlock {
+            (succeeded, error) in
+            
+            if succeeded {
+                let quickServiceRootViewController = UIStoryboard(name: "QuickService", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UISplitViewController
+                let navController = quickServiceRootViewController.viewControllers.first as! UINavigationController
+                let quickServiceOrderViewController = navController.viewControllers.first as! QuickServiceOrderViewController
+                quickServiceOrderViewController.order = order
+                self.presentViewController(quickServiceRootViewController, animated: true, completion: nil)
+            } else {
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBOutlet var scrollView: UIScrollView!
     
     let restaurantMapView = RestaurantMapView()
@@ -71,8 +97,12 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             let orderItemsViewController = navigationController.viewControllers.first as? OrderItemsViewController {
                 orderItemsViewController.party = sender as! Party
             }
+        case "CustomerTabs":
+            let navController = segue.destinationViewController as! UINavigationController
+            let customerTabsViewController = navController.viewControllers.first as! CustomerTabsViewController
+            customerTabsViewController.server = employee
         default:
-            println(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+            println("Unrecognized segue identifier")
         }
     }
     
@@ -121,7 +151,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         let imageTintColor: UIColor
         if table.currentParty == nil {
             imageTintColor = UIColor.lightGrayColor()
-        } else if table.currentParty!.server.same(employee) {
+        } else if table.currentParty!.server.hasSameObjectIDAs(employee) {
             imageTintColor = UIColor.entreeBlueColor()
         } else {
             imageTintColor = UIColor.darkGrayColor()
@@ -148,7 +178,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
     
     func restaurantMapView(restaurantMapView: RestaurantMapView, tappedTableAtIndex index: Int) {
         if let party = tables[index].currentParty {
-            if party.server.same(employee) {
+            if party.server.hasSameObjectIDAs(employee) {
                 performSegueWithIdentifier("Party", sender: party)
             } else {
                 let alertController = UIAlertController(title: "Oops!", message: "Sorry, you do not have access to this table.", preferredStyle: .Alert)
@@ -159,8 +189,14 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             }
         } else {
             let addPartyAlertController = UIAlertController(title: "Add Party", message: nil, preferredStyle: .Alert)
+            
             addPartyAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
                 textField.placeholder = "Name (Optional)"
+            }
+            
+            addPartyAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
+                textField.placeholder = "Size (Optional)"
+                textField.keyboardType = .NumberPad
             }
             
             addPartyAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
@@ -171,11 +207,14 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 party.restaurant = Restaurant.defaultRestaurantWithoutData()!
                 party.seatedAt = NSDate()
                 party.server = self.employee
+                party.size = (addPartyAlertController.textFields?.last as! UITextField).text.intValue
                 party.table = self.tables[index]
                 
                 self.tables[index].currentParty = party
                 
-                PFObject.saveAllInBackground([party, self.tables[index]]) { (succeeded: Bool, error: NSError?) in
+                self.employee.incrementKey("activePartyCount")
+                
+                PFObject.saveAllInBackground([party, self.tables[index], self.employee]) { (succeeded: Bool, error: NSError?) in
                     if succeeded {
                         self.loadTablesWithCompletion(nil)
                     } else {

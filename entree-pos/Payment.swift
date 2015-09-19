@@ -1,16 +1,21 @@
 
 class Payment: PFObject, PFSubclassing {
     
-    @NSManaged var type: String
+    @NSManaged var restaurant: Restaurant
+    @NSManaged var type: String // Either "Card" or "Cash"
+    @NSManaged var order: Order
     
+    // "Card" Type
     @NSManaged var cardFlightChargeToken: String?
     @NSManaged var cardLastFour: String?
     @NSManaged var cardName: String?
+    @NSManaged var cardType: String?
+    @NSManaged var charged: Bool
     
-    @NSManaged var order: Order
-    
-    @NSManaged var tip: Double
-    
+    // "Cash" Type
+    @NSManaged var cashAmountPaid: Double
+    @NSManaged var changeGiven: Double
+
     static func parseClassName() -> String {
         return "Payment"
     }

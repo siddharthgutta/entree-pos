@@ -21,13 +21,10 @@ class MenuCategoriesViewController: PFQueryCollectionViewController, UICollectio
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "MenuItems":
+        if segue.identifier == "MenuItems" {
             if let menuItemsViewController = segue.destinationViewController as? MenuItemsViewController {
                 menuItemsViewController.menuCategory = sender as! MenuCategory
             }
-        default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
         }
     }
     

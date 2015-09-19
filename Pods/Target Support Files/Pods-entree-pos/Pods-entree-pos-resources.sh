@@ -58,10 +58,12 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
   install_resource "THPinViewController/THPinViewController/THPinViewController.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "Parse/Parse/Resources/en.lproj"
   install_resource "ParseUI/ParseUI/Resources/Localization/en.lproj"
   install_resource "THPinViewController/THPinViewController/THPinViewController.bundle"
 fi

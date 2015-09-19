@@ -19,6 +19,8 @@ typedef enum PrinterBarcodeType
     PrinterBarcodeTypeNW7
 } PrinterBarcodeType;
 
+#define kPrinterCMD_OpenDrawer          @"\x1A"
+
 #define kPrinterCMD_Tab                 @"\x09"
 #define kPrinterCMD_Newline             @"\x0A"
 

@@ -7,7 +7,7 @@ class MenuItemModifierListViewController: PFQueryTableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    var orderItem: OrderItem?
+    var orderItem: OrderItem!
     
     let numberFormatter = NSNumberFormatter()
     
@@ -47,15 +47,15 @@ class MenuItemModifierListViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let menuItemModifier = objectAtIndexPath(indexPath)! as! MenuItemModifier
-        orderItem?.menuItemModifiers.append(menuItemModifier)
+        orderItem.menuItemModifiers.append(menuItemModifier)
         
-        orderItem?.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+        orderItem.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
             if succeeded {
                 NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             } else {
-                println(error?.localizedDescription)
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
             }
         }
     }

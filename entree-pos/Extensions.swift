@@ -12,18 +12,16 @@ extension NSCalendar {
 
 extension NSNumberFormatter {
     
-    static func numberFormatterWithStyle(style: NSNumberFormatterStyle) -> NSNumberFormatter {
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = style
-        return numberFormatter
+    func stringFromDouble(double: Double) -> String? {
+        return stringFromNumber(NSNumber(double: double))
     }
     
 }
 
-extension Printer {
+extension PFObject {
     
-    var isConnected: Bool {
-        return self.status.value == PrinterStatusConnected.value
+    func hasSameObjectIDAs(object: PFObject) -> Bool {
+        return self.objectId! == object.objectId!
     }
     
 }
@@ -32,6 +30,10 @@ extension String {
     
     var doubleValue: Double {
         return (self as NSString).doubleValue
+    }
+    
+    var intValue: Int {
+        return (self as NSString).integerValue
     }
     
 }
@@ -81,12 +83,3 @@ extension UIImage {
     }
     
 }
-
-extension PFObject {
-    
-    func same(object: PFObject) -> Bool {
-        return self.objectId! == object.objectId!
-    }
-    
-}
-

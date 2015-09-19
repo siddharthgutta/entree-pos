@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A282a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hqK-86-8tg">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Order-->
+        <scene sceneID="DQv-Qj-lbB">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="0zJ-aF-B9F" customClass="QuickServiceOrderViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="oxO-VE-GHG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="zjR-Go-fxU">
+                            <rect key="frame" x="0.0" y="182" width="600" height="126"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax: $17.38" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfK-0i-5kS">
+                                    <rect key="frame" x="487" y="66" width="93" height="22"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal: $17.38" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zz-VG-FMx">
+                                    <rect key="frame" x="447" y="96" width="133" height="22"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBW-yH-g3b">
+                                    <rect key="frame" x="273" y="8" width="54" height="20"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Due: $17.38" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEx-4E-9zZ">
+                                    <rect key="frame" x="414" y="36" width="166" height="22"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="dfK-0i-5kS" firstAttribute="top" secondItem="TEx-4E-9zZ" secondAttribute="bottom" constant="8" id="B9n-ra-wxI"/>
+                                <constraint firstAttribute="trailing" secondItem="dfK-0i-5kS" secondAttribute="trailing" constant="20" id="EJq-ap-Hab"/>
+                                <constraint firstAttribute="trailing" secondItem="9Zz-VG-FMx" secondAttribute="trailing" constant="20" id="Le6-ic-a86"/>
+                                <constraint firstAttribute="trailing" secondItem="TEx-4E-9zZ" secondAttribute="trailing" constant="20" id="NKK-V5-n5x"/>
+                                <constraint firstItem="9Zz-VG-FMx" firstAttribute="top" secondItem="dfK-0i-5kS" secondAttribute="bottom" constant="8" id="Thu-yA-GQx"/>
+                                <constraint firstAttribute="centerX" secondItem="dBW-yH-g3b" secondAttribute="centerX" id="VoM-4F-gNx"/>
+                                <constraint firstItem="TEx-4E-9zZ" firstAttribute="top" secondItem="zjR-Go-fxU" secondAttribute="top" constant="36" id="jwr-dW-Rg0"/>
+                                <constraint firstItem="dBW-yH-g3b" firstAttribute="top" secondItem="zjR-Go-fxU" secondAttribute="top" constant="8" id="wj6-Pq-AZe"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="OrderItemCell" textLabel="i35-FO-ItN" detailTextLabel="UxZ-2t-6Sl" style="IBUITableViewCellStyleSubtitle" id="yeR-jx-xDf" customClass="PFTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yeR-jx-xDf" id="1BQ-rF-aLQ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rosemary Chicken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i35-FO-ItN">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Extra sauce" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UxZ-2t-6Sl">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <color key="tintColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0zJ-aF-B9F" id="xL4-Ab-bjo"/>
+                            <outlet property="delegate" destination="0zJ-aF-B9F" id="tst-1u-XP0"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dhg-z3-Xaq"/>
+                        <barButtonItem image="Paper Airplane" id="nrB-uL-eyb">
+                            <connections>
+                                <action selector="sendToKitchen:" destination="0zJ-aF-B9F" id="pAT-Uh-jwz"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Order" id="IWd-MV-QRj">
+                        <barButtonItem key="rightBarButtonItem" title="Pay" style="done" id="49r-20-nxM">
+                            <connections>
+                                <action selector="pay:" destination="0zJ-aF-B9F" id="Z65-eE-Du0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="amountDueLabel" destination="TEx-4E-9zZ" id="Wfb-rA-HIy"/>
+                        <outlet property="itemsCountLabel" destination="dBW-yH-g3b" id="ads-dS-T5b"/>
+                        <outlet property="subtotalLabel" destination="9Zz-VG-FMx" id="LYA-uh-bKV"/>
+                        <outlet property="taxLabel" destination="dfK-0i-5kS" id="M25-ca-IlI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nmw-gG-gAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2607" y="-56"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hFA-r0-74h">
+            <objects>
+                <navigationController id="B09-fP-57x" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yoh-Iy-1pC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="L7p-os-wQn" kind="relationship" relationship="rootViewController" id="R2Z-xZ-QqI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fwD-P8-fPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="606"/>
+        </scene>
+        <!--Menus-->
+        <scene sceneID="nfz-N2-QNw">
+            <objects>
+                <collectionViewController id="L7p-os-wQn" customClass="MenusViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="U1c-cw-ecC">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s3H-fD-8dC">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="L7p-os-wQn" id="Q3A-rZ-Qsp"/>
+                            <outlet property="delegate" destination="L7p-os-wQn" id="Emd-Xd-uOf"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Menus" id="LhZ-Uu-dPX"/>
+                    <connections>
+                        <segue destination="2aS-cH-abr" kind="show" identifier="MenuCategories" id="Xd4-AD-Iqd"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ao-hE-s5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2607" y="606"/>
+        </scene>
+        <!--Menu Categories-->
+        <scene sceneID="qIf-Zf-qah">
+            <objects>
+                <collectionViewController id="2aS-cH-abr" customClass="MenuCategoriesViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="GBt-iZ-WxH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u07-DT-dBl">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="2aS-cH-abr" id="N4Z-nk-3Lw"/>
+                            <outlet property="delegate" destination="2aS-cH-abr" id="gqu-HI-rdv"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Menu Categories" id="DIH-JU-qXn"/>
+                    <connections>
+                        <segue destination="4LP-wC-L9U" kind="show" identifier="MenuItems" id="uku-bQ-gQi"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="595-aw-c0R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3427" y="606"/>
+        </scene>
+        <!--Menu Items-->
+        <scene sceneID="8Ca-oy-95o">
+            <objects>
+                <collectionViewController id="4LP-wC-L9U" customClass="MenuItemsViewController" customModule="entree_pos" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nge-tb-FMB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n4b-pR-6rI">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="4LP-wC-L9U" id="rdW-AI-sWK"/>
+                            <outlet property="delegate" destination="4LP-wC-L9U" id="cHB-5V-OD1"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Menu Items" id="QGK-vx-TNb"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60H-wp-fTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4247" y="606"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fnz-yn-uS4">
+            <objects>
+                <navigationController toolbarHidden="NO" id="HxB-6B-Z3N" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0zC-K4-7Gi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.1019607843" green="0.40784313729999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="z4e-j9-k8x">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="0zJ-aF-B9F" kind="relationship" relationship="rootViewController" id="2Q2-W3-u7u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REo-6x-rTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="-56"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="ZTz-Uh-Rpn">
+            <objects>
+                <splitViewController id="hqK-86-8tg" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="HxB-6B-Z3N" kind="relationship" relationship="masterViewController" id="PXn-fs-RQK"/>
+                        <segue destination="B09-fP-57x" kind="relationship" relationship="detailViewController" id="FS3-w2-VOV"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49B-9K-TYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967" y="275"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Paper Airplane" width="22" height="22"/>
+    </resources>
+</document>

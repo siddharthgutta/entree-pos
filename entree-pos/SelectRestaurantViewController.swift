@@ -17,8 +17,8 @@ class SelectRestaurantViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PFTableViewCell
         
-        cell.textLabel?.text = object?["name"] as? String
-        cell.detailTextLabel?.text = object?["location"] as? String
+        cell.textLabel?.text = object?.valueForKey("name") as? String
+        cell.detailTextLabel?.text = object?.valueForKey("location") as? String
         
         return cell
     }

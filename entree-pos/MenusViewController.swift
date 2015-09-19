@@ -15,13 +15,10 @@ class MenusViewController: PFQueryCollectionViewController, UICollectionViewDele
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "MenuCategories":
+        if segue.identifier == "MenuCategories" {
             if let menuCategoriesViewController = segue.destinationViewController as? MenuCategoriesViewController {
                 menuCategoriesViewController.menu = sender as! Menu
             }
-        default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
         }
     }
     

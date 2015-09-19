@@ -3,24 +3,35 @@ import UIKit
 
 class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
 
-    @IBAction func dismiss(sender: UIBarButtonItem) {
-        orderItem.deleteInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
-            if succeeded {
-                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                println(error?.localizedDescription)
-            }
-        }
-    }
-    
-    @IBAction func save(sender: UIBarButtonItem) {
-        orderItem.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) in
+    @IBAction func delete() {
+        orderItem.deleteInBackgroundWithBlock {
+            (succeeded: Bool, error: NSError?) in
+            
             if succeeded {
                 NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             } else {
-                println(error?.localizedDescription)
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func save(sender: UIBarButtonItem) {
+        let seatNumber = orderItem.seatNumber
+        orderItem.seatNumber = seatNumber
+        
+        orderItem.saveInBackgroundWithBlock {
+            (succeeded, error) in
+            
+            if succeeded {
+                self.presentingViewController?.dismissViewControllerAnimated(true) {
+                    () in
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+                }
+            } else {
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
             }
         }
     }
@@ -52,17 +63,18 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
         reloadData()
     }
     
+    func toggleOnTheHouse(sender: UISwitch) {
+        orderItem.onTheHouse = sender.on
+    }
+    
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "MenuItemModifier":
-            if let navigationController = segue.destinationViewController as? UINavigationController,
-            let menuItemModifierListViewController = navigationController.viewControllers.first as? MenuItemModifierListViewController {
-                menuItemModifierListViewController.orderItem = orderItem
-            }
-        default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+        if segue.identifier == "MenuItemModifier" {
+            let navigationController = segue.destinationViewController as? UINavigationController
+            
+            let menuItemModifierListViewController = navigationController?.viewControllers.first as? MenuItemModifierListViewController
+            menuItemModifierListViewController?.orderItem = orderItem
         }
     }
     
@@ -98,7 +110,7 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
             if indexPath.row == 0 {
                 cell = tableView.dequeueReusableCellWithIdentifier("MenuItemCell", forIndexPath: indexPath) as! UITableViewCell
                 cell.textLabel?.text = orderItem.menuItem.name
-            } else {
+            } else if indexPath.row == 1 {
                 cell = tableView.dequeueReusableCellWithIdentifier("SeatNumberCell", forIndexPath: indexPath) as! UITableViewCell
                 if let seatNumberLabel = cell.viewWithTag(100) as? UILabel {
                     seatNumberLabel.text = orderItem.seatNumber == 0 ? "Seat: None" : "Seat: \(orderItem.seatNumber)"
@@ -106,6 +118,12 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
                 if let seatNumberStepper = cell.viewWithTag(200) as? UIStepper {
                     seatNumberStepper.value = Double(orderItem.seatNumber)
                     seatNumberStepper.addTarget(self, action: Selector("updateSeatNumber:"), forControlEvents: .ValueChanged)
+                }
+            } else {
+                cell = tableView.dequeueReusableCellWithIdentifier("OnTheHouseCell", forIndexPath: indexPath) as! UITableViewCell
+                if let onTheHouseSwitch = cell.viewWithTag(100) as? UISwitch {
+                    onTheHouseSwitch.on = orderItem.onTheHouse
+                    onTheHouseSwitch.addTarget(self, action: Selector("toggleOnTheHouse:"), forControlEvents: .ValueChanged)
                 }
             }
         case 1:
@@ -139,7 +157,7 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
                 if succeeded {
                     self.reloadData()
                 } else {
-                    println(error?.localizedDescription)
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
             }
         }
@@ -148,7 +166,7 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return 3
         case 1:
             return orderItem.menuItemModifiers.count + 1
         case 2:

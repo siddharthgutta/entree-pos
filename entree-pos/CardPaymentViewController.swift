@@ -3,24 +3,143 @@ import UIKit
 
 class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
-    @IBOutlet var amountDueTableViewCell: UITableViewCell!
-    @IBOutlet var cardReaderStatusTableViewCell: UITableViewCell!
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        for orderItem in order.orderItems {
+            orderItem.order = nil
+        }
 
-    let numberFormatter = NSNumberFormatter.numberFormatterWithStyle(.CurrencyStyle)
-    var order: Order!
-    var reader: CFTReader
-    
-    // MARK: - Init
-    
-    required init!(coder aDecoder: NSCoder!) {
-        reader = CFTReader(reader: 0)
-        
-        super.init(coder: aDecoder)
-        
-        reader.delegate = self
+        if PFObject.saveAll(order.orderItems) {
+            order.deleteInBackgroundWithBlock {
+                (succeeded, error) in
+                
+                if succeeded {
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
+        } else {
+            let errorAlertController = UIAlertController(title: "Error",
+                message: "A problem occurred while executing this request. Please validate that you have a working internet connection and try again.",
+                preferredStyle: .Alert)
+            
+            let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            errorAlertController.addAction(okayAction)
+            
+            self.presentViewController(errorAlertController, animated: true, completion: nil)
+        }
     }
     
+    @IBAction func done(sender: UIBarButtonItem) {
+        completionHandler()
+    }
+    
+    @IBOutlet var cancelBarButtonItem: UIBarButtonItem!
+    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
+    
+    @IBOutlet var orderTableViewCell: UITableViewCell!
+    @IBOutlet var subtotalTableViewCell: UITableViewCell!
+    @IBOutlet var cardReaderStatusTableViewCell: UITableViewCell!
+    @IBOutlet var manualEntryTableViewCell: UITableViewCell!
+    @IBOutlet var printReceiptTableViewCell: UITableViewCell!
+
+    var currencyNumberFormatter: NSNumberFormatter {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        return formatter
+    }
+    
+    var cardAuthorizedAlertController: UIAlertController {
+        let alertController = UIAlertController(title: "Card Authorized",
+            message: "At this time, no charge has been made. You may charge the card on the order overview panel.",
+            preferredStyle: .Alert)
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .Default) {
+            (action) in
+            
+            self.configureViewWithCardAuthorized(true)
+        }
+        alertController.addAction(okayAction)
+
+        return alertController
+    }
+    
+    var order: Order!
+    let reader = CFTReader(reader: 0)
+    
+    var completionHandler: (() -> Void)!
+    
     // MARK: - CardPaymentViewController
+    
+    private func authorizeCard(card: CFTCard) {
+        let authorizeDictionary = [
+            "amount": NSDecimalNumber(double: order.subtotal)
+        ]
+        
+        let success: (CFTCharge!) -> () = {
+            (charge) in
+            
+            let payment = Payment()
+            payment.restaurant = Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!
+            payment.type = "Card"
+            
+            payment.cardFlightChargeToken = charge.token
+            payment.cardLastFour = card.last4
+            payment.cardName = card.name
+            
+            self.order.payment = payment
+            payment.order = self.order
+            
+            PFObject.saveAllInBackground([payment, self.order]) {
+                (succeeded, error) in
+                
+                if succeeded {
+                    self.presentViewController(self.cardAuthorizedAlertController, animated: true, completion: nil)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
+        }
+        
+        let failure: (NSError!) -> () = {
+            (error) in
+            
+            self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
+        }
+        
+        card.authorizeCardWithParameters(authorizeDictionary, success: success, failure: failure)
+    }
+    
+    private func beginManualEntry() {
+        /*
+        let paymentView = CFTPaymentView(frame: CGRect(x: 15, y: 150, width: 290, height: 45))
+        paymentView.delegate = self
+        paymentView.useFont(UIFont.systemFontOfSize(18))
+        paymentView.useKeyboardAppearance(.Dark)
+        
+        self.paymentView = [[CFTPaymentView alloc] initWithFrame:CGRectMake(15, 150, 290, 45)];
+        [self.paymentView setDelegate:self];
+        [self.paymentView useFont:[UIFont fontWithName:kDefaultFont size:17]];
+        [self.paymentView useFontColor:[UIColor blueColor]];
+        [self.paymentView useKeyboardAppearance:UIKeyboardAppearanceDark];
+        [self.view addSubview:self.paymentView];
+        */
+    }
+    
+    private func configureViewWithCardAuthorized(authorized: Bool) {
+        orderTableViewCell.detailTextLabel?.text = order.objectId!
+        subtotalTableViewCell.detailTextLabel?.text = currencyNumberFormatter.stringFromDouble(order.subtotal)
+        
+        cancelBarButtonItem.enabled = !authorized
+        doneBarButtonItem.enabled = authorized
+        
+        manualEntryTableViewCell.selectionStyle = authorized ? .None : .Default
+        manualEntryTableViewCell.textLabel?.textColor = authorized ? UIColor.grayColor() : UIColor.entreeBlueColor()
+        printReceiptTableViewCell.selectionStyle = authorized ? .Default : .None
+        printReceiptTableViewCell.textLabel?.textColor = authorized ? UIColor.entreeBlueColor() : UIColor.grayColor()
+    }
     
     private func updateCardReaderStatusLabelWithMessage(message: String, textColor: UIColor) {
         cardReaderStatusTableViewCell.textLabel?.text = message
@@ -29,20 +148,26 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     // MARK: - UIViewController
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        reader.delegate = self
+        reader.swipeHasTimeout(false)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        amountDueTableViewCell.detailTextLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: order.total()))
+        println("THIS IS FIRING")
+        
+        configureViewWithCardAuthorized(false)
     }
     
     // MARK: - CFTReaderDelegate
     
     func transactionResult(charge: CFTCharge!, withError error: NSError!) {
-        if charge != nil {
-            println(charge)
-        } else {
-            println(error.localizedDescription)
-        }
+        // This is a required method, but we don't need it in this context.
+        println("Transaction Result\nCharge: \(charge)\nError: \(error)")
     }
     
     func readerBatteryLow() {
@@ -50,35 +175,22 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     }
     
     func readerCardResponse(card: CFTCard!, withError error: NSError!) {
+        // TODO: The style of error checking here can probably be improved with the changes in Swift 2
+        
         if let card = card {
-            let authorizeDictionary = [
-                "amount": 0.0 // Disabled for testing. Should normally be `NSDecimalNumber(double: order.total())`.
-            ]
+            let authorizeCardAlertController = UIAlertController(title: "Authorize Card?", message: nil, preferredStyle: .Alert)
             
-            card.authorizeCardWithParameters(authorizeDictionary, success: { (charge: CFTCharge!) in
-                let payment = Payment()
-                payment.type = "Card"
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            authorizeCardAlertController.addAction(cancelAction)
+            
+            let authorizeAction = UIAlertAction(title: "Authorize", style: .Default) {
+                (action) in
                 
-                payment.cardFlightChargeToken = charge.token
-                payment.cardLastFour = card.last4
-                payment.cardName = card.name
-                
-                payment.order = self.order
-                
-                self.order.payment = payment
-                
-                PFObject.saveAllInBackground([payment, self.order]) { (success: Bool, error: NSError?)  in
-                    if success {
-                        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
-                    } else {
-                        // If this fails, we're kinda screwed...
-                    }
-                }
-            }) { (error: NSError!) in
-                self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
+                self.authorizeCard(card)
             }
+            authorizeCardAlertController.addAction(authorizeAction)
+            
+            presentViewController(authorizeCardAlertController, animated: true, completion: nil)
         } else {
             presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
         }
@@ -116,6 +228,18 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     func readerSwipeDidCancel() {
         updateCardReaderStatusLabelWithMessage("Swipe cancelled.", textColor: UIColor.redColor())
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath == NSIndexPath(forRow: 1, inSection: 1) {
+            beginManualEntry()
+        } else if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
+            ReceiptPrinterManager.sharedManager.printReceiptForOrder(order)
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
 }

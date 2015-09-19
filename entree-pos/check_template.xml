@@ -1,0 +1,38 @@
+<print>
+    
+    <center>
+        <text>{{restaurant}}</text>
+        <newline />
+        <text>{{location}}</text>
+        <newline />
+        <text>{{phone}}</text>
+        <newline />
+        <newline />
+    </center>
+    
+    <left>
+        <text>{{time}}</text>
+        <newline />
+        <text>{{table}}</text>
+        <newline />
+        <text>{{server}}</text>
+        <newline />
+    </left>
+    
+        <dashednewline />
+        <newline />
+        
+    {{items}}
+    
+    <right>
+        <newline />
+        <text>Amount Due: {{amount_due}}</text>
+        <newline />
+        <text>Tax: {{tax}}</text>
+        <newline />
+        <text>Subtotal: {{subtotal}}</text>
+        <newline />
+        <newline />
+    </right>
+    
+</print>

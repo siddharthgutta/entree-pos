@@ -29,7 +29,7 @@ class SignInViewController: UIViewController {
                 if let user = user {
                     self.performSegueWithIdentifier("SelectRestaurant", sender: nil)
                 } else {
-                    println(error)
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
             }
         }

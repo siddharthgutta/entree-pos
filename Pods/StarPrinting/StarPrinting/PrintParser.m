@@ -12,6 +12,7 @@
 
 typedef enum PrintFormatElementType
 {
+    PrintFormatElementTypeOpenDrawer,
     PrintFormatElementTypeText,
     PrintFormatElementTypeBold,
     PrintFormatElementTypeUnderline,
@@ -61,6 +62,8 @@ typedef enum PrintFormatElementType
     self.currentElementType = [self elementTypeForName:elementName];
         
     switch (elementType) {
+        case PrintFormatElementTypeOpenDrawer:
+            [_formatter add:kPrinterCMD_OpenDrawer];
         case PrintFormatElementTypeNewline:
             [_formatter newline];
             break;
@@ -158,6 +161,8 @@ typedef enum PrintFormatElementType
 - (NSArray *)elementNamesForFormatterType:(PrintFormatElementType)type
 {
     switch (type) {
+        case PrintFormatElementTypeOpenDrawer:
+            return @[@"opendrawer", @"od"];
         case PrintFormatElementTypeText:
             return @[@"text", @"t"];
             break;
@@ -205,7 +210,7 @@ typedef enum PrintFormatElementType
 
 - (PrintFormatElementType)elementTypeForName:(NSString *)name
 {
-    int elements[12] = { PrintFormatElementTypeBold,
+    int elements[13] = { PrintFormatElementTypeBold,
                         PrintFormatElementTypeTab,
                         PrintFormatElementTypeNewline,
                         PrintFormatElementTypeAlignCenter,
@@ -216,7 +221,8 @@ typedef enum PrintFormatElementType
                         PrintFormatElementTypeDashedline,
                         PrintFormatElementTypeLarge,
                         PrintFormatElementTypeInvertColor,
-                        PrintFormatElementTypeBarcode
+                        PrintFormatElementTypeBarcode,
+                        PrintFormatElementTypeOpenDrawer
     };
     
     PrintFormatElementType type = PrintFormatElementTypeUnknown;

@@ -1,7 +1,6 @@
 #include "Parse.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Parse" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Bolts" "${PODS_ROOT}/Headers/Public/CardFlight" "${PODS_ROOT}/Headers/Public/Parse" "${PODS_ROOT}/Headers/Public/ParseUI" "${PODS_ROOT}/Headers/Public/StarPrinting" "${PODS_ROOT}/Headers/Public/StarPrinting/StarIO" "${PODS_ROOT}/Headers/Public/StarPrinting/StarIO/starmicronics" "${PODS_ROOT}/Headers/Public/StarPrinting/StarIO/starmicronics/platform" "${PODS_ROOT}/Headers/Public/THPinViewController"
-LIBRARY_SEARCH_PATHS = ${PARSE_LIBRARY_SEARCH_PATHS}
 OTHER_LDFLAGS = ${PARSE_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}
 SKIP_INSTALL = YES

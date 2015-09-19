@@ -3,13 +3,15 @@ import UIKit
 
 class BadgeLabel: UILabel {
 
-    @IBInspectable var badgeColor: UIColor = UIColor.clearColor() {
+    @IBInspectable var badgeColor: UIColor {
         didSet {
             layer.backgroundColor = badgeColor.CGColor
         }
     }
     
     required init(coder aDecoder: NSCoder) {
+        badgeColor = UIColor.blueColor()
+        
         super.init(coder: aDecoder)
         
         layer.cornerRadius = 4

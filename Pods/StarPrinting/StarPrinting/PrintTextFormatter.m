@@ -50,7 +50,6 @@
 {
     [self add:@"\r\n-----------------------------------------\r\n"]; // Removed 7
 }
-}
 
 #pragma mark - Text Formatting
 

@@ -1,4 +1,4 @@
-
+    
 import UIKit
 
 class SettingsViewController: UITableViewController {
@@ -10,33 +10,13 @@ class SettingsViewController: UITableViewController {
     @IBOutlet var restaurantNameLabel: UILabel!
     @IBOutlet var restaurantLocationLabel: UILabel!
     
-    @IBOutlet var salesTaxRateLabel: UILabel!
-    @IBOutlet var alcoholTaxRateLabel: UILabel!
-    
     @IBOutlet var receiptPrinterNameLabel: UILabel!
-    @IBOutlet var receiptPrinterMACAddressLabel: UILabel!
     
-    enum TaxRateType: String {
-        case Sales = "Sales"
-        case Alcohol = "Alcohol"
-    }
+    @IBOutlet var versionLabel: UILabel!
     
     let signOutTableViewCellIndexPath        = NSIndexPath(forRow: 1, inSection: 0)
-    let salesTaxRateTableViewCellIndexPath   = NSIndexPath(forRow: 0, inSection: 1)
-    let alcoholTaxRateTableViewCellIndexPath = NSIndexPath(forRow: 1, inSection: 1)
-    let receiptPrinterTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 2)
+    let receiptPrinterTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 1)
     
-    let percentNumberFormatter: NSNumberFormatter
-    
-    // MARK: - Init
-    
-    required init!(coder aDecoder: NSCoder!) {
-        percentNumberFormatter = NSNumberFormatter()
-        percentNumberFormatter.numberStyle = .PercentStyle
-        percentNumberFormatter.maximumFractionDigits = 10
-        
-        super.init(coder: aDecoder)
-    }
     
     // MARK: - SettingsViewController
     
@@ -47,30 +27,22 @@ class SettingsViewController: UITableViewController {
                 self.restaurantNameLabel.text = restaurant?.name
                 self.restaurantLocationLabel.text = restaurant?.location
                 
-                self.salesTaxRateLabel.text = self.percentNumberFormatter.stringFromNumber(NSNumber(double: restaurant!.salesTaxRate))
-                self.alcoholTaxRateLabel.text = self.percentNumberFormatter.stringFromNumber(NSNumber(double: restaurant!.alcoholTaxRate))
-                
             } else {
                 let signInViewController = UIStoryboard(name: "SignIn", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! SignInViewController
                 self.presentViewController(signInViewController, animated: true, completion: nil)
             }
         }
         
-        if let address = ReceiptPrinterManager.sharedManager().receiptPrinterMACAddress {
-            
-            ReceiptPrinterManager.sharedManager().findPrinterWithMACAddress(address) { (printer: Printer?) in
-                
-                self.receiptPrinterNameLabel.text = printer?.name
-                self.receiptPrinterMACAddressLabel.text = printer?.macAddress
-                
-            }
-            
+        if let address = ReceiptPrinterManager.receiptPrinterMACAddress() {
+            self.receiptPrinterNameLabel.text = address
         } else {
-            
             receiptPrinterNameLabel.text = "Not set"
-            receiptPrinterMACAddressLabel.text = ""
-            
         }
+        
+        // Version number
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as! String) as! String
+        versionLabel.text = "\(version) (\(build))"
     }
     
     private func logOut() {
@@ -88,7 +60,10 @@ class SettingsViewController: UITableViewController {
         let searchingAlertController = UIAlertController(title: "Searching...", message: nil, preferredStyle: .Alert)
         
         presentViewController(searchingAlertController, animated: true) { () in
-            ReceiptPrinterManager.sharedManager().search { (printers: [Printer]) in
+            Printer.search { (results: [AnyObject]!) in
+                
+                let printers = results as! [Printer]
+                
                 let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -96,7 +71,7 @@ class SettingsViewController: UITableViewController {
                 
                 for printer in printers {
                     let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
-                        ReceiptPrinterManager.sharedManager().setReceiptPrinterMacAddress(printer.macAddress)
+                        ReceiptPrinterManager.setReceiptPrinterMACAddress(printer.macAddress)
                     }
                     alertController.addAction(printerAlertAction)
                 }
@@ -106,39 +81,6 @@ class SettingsViewController: UITableViewController {
                 }
             }
         }
-    }
-    
-    private func editTaxRateForType(type: TaxRateType) {
-        let editTaxRateAlertController = UIAlertController(title: "\(type.rawValue) Tax Rate", message: "Use decimal format (i.e. 0.0825 for 8.25%).", preferredStyle: .Alert)
-        
-        editTaxRateAlertController.addTextFieldWithConfigurationHandler { (textField: UITextField!) in
-            textField.keyboardType = .NumberPad
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        editTaxRateAlertController.addAction(cancelAction)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) in
-            let textField = editTaxRateAlertController.textFields?.first as! UITextField
-            let taxRate = textField.text.doubleValue
-
-            let restaurant = Restaurant.defaultRestaurantWithoutData()
-            
-            switch type {
-            case .Alcohol:
-                restaurant?.alcoholTaxRate = taxRate
-            case .Sales:
-                restaurant?.salesTaxRate = taxRate
-            }
-            
-            // This call is synchronous so the alert controller will only dismiss after it has been completed.
-            restaurant?.save()
-            
-            self.reloadData()
-        }
-        editTaxRateAlertController.addAction(saveAction)
-        
-        presentViewController(editTaxRateAlertController, animated: true, completion: nil)
     }
     
     // MARK: - UIViewController
@@ -155,14 +97,10 @@ class SettingsViewController: UITableViewController {
         switch indexPath {
         case signOutTableViewCellIndexPath:
             logOut()
-        case salesTaxRateTableViewCellIndexPath:
-            editTaxRateForType(.Sales)
-        case alcoholTaxRateTableViewCellIndexPath:
-            editTaxRateForType(.Alcohol)
         case receiptPrinterTableViewCellIndexPath:
             editReceiptPrinter()
         default:
-            println()
+            println("wat.")
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

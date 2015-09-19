@@ -3,97 +3,213 @@ import UIKit
 
 class OrderItemsViewController: PFQueryTableViewController {
     
-    @IBAction func closeTable(sender: UIBarButtonItem) {
-        let confirmationAlertController = UIAlertController(title: "Close Table?", message: "You will no longer be able to access this party's orders or payment methods (This final checkout process will take place on the Overview panel).", preferredStyle: .Alert)
-        
-        confirmationAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        confirmationAlertController.addAction(UIAlertAction(title: "Close Table?", style: .Destructive) { (action: UIAlertAction!) in
-            self.party.leftAt = NSDate()
-            self.party.table.currentParty = nil
+    @IBAction func closeTable() {
+        if objects!.isEmpty {
+            let confirmationAlertController = UIAlertController(title: "Close Table?", message: "You will no longer be able to place orders for this party (The final checkout process, including tip, will take place in the Orders panel).", preferredStyle: .Alert)
             
-            PFObject.saveAllInBackground([self.party, self.party.table]) { (succeeded: Bool, error: NSError?) in
-                if succeeded {
-                    self.dismiss()
-                } else {
-                    println(error?.localizedDescription)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            confirmationAlertController.addAction(cancelAction)
+            
+            let closeAction = UIAlertAction(title: "Close", style: .Destructive) { (action: UIAlertAction!) in
+                self.party.leftAt = NSDate()
+                self.party.table.currentParty = nil
+                
+                self.party.server.incrementKey("activePartyCount", byAmount: NSNumber(integer: -1))
+                
+                PFObject.saveAllInBackground([self.party, self.party.table, self.party.server]) { (success: Bool, error: NSError?) in
+                    if success {
+                        self.dismiss()
+                    } else {
+                        self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                    }
                 }
             }
-        })
+            confirmationAlertController.addAction(closeAction)
+            
+            presentViewController(confirmationAlertController, animated: true, completion: nil)
+        } else {
+            let unpaidItemsAlertController = UIAlertController(title: "Oops!", message: "You can not close this table without providing a method of payment for each item. First select the remaining items by tapping them, then press the green button in the toolbar to set the payment method.", preferredStyle: .Alert)
+            
+            let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            unpaidItemsAlertController.addAction(okayAction)
+            
+            presentViewController(unpaidItemsAlertController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func pay(sender: UIBarButtonItem) {
+        let selectPaymentTypeAlertController = UIAlertController(title: "Select Payment Type", message: nil, preferredStyle: .ActionSheet)
         
-        presentViewController(confirmationAlertController, animated: true, completion: nil)
+        let cardAction = UIAlertAction(title: "Card", style: .Default) { (action: UIAlertAction!) in
+            self.createOrderWithSelectedOrderItemsAndPerformSegueWithIdentifier("CardPayment")
+        }
+        selectPaymentTypeAlertController.addAction(cardAction)
+        
+        let cashAction = UIAlertAction(title: "Cash", style: .Default) { (action: UIAlertAction!) in
+            self.createOrderWithSelectedOrderItemsAndPerformSegueWithIdentifier("CashPayment")
+        }
+        selectPaymentTypeAlertController.addAction(cashAction)
+        
+        selectPaymentTypeAlertController.modalPresentationStyle = .Popover
+        
+        presentViewController(selectPaymentTypeAlertController, animated: true, completion: nil)
+
+        selectPaymentTypeAlertController.popoverPresentationController?.barButtonItem = sender
     }
     
     @IBAction func dismiss() {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func printOrderItems() {
-        println("0")
+    @IBAction func printCheck() {
+        let items = orderItemsForSelectedRows()
         
-        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
-            println("1")
-            
-            let orderItems = indexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
-            
-            if orderItems.isEmpty {
-                println("2")
-                
-                presentNoOrdersSelectedAlertController()
-            } else {
-                
-                println("3")
-                ReceiptPrinterManager.sharedManager().printOrderItems(orderItems)
-            }
+        if items.isEmpty {
+            presentNoItemsSelectedAlertController()
         } else {
-            presentNoOrdersSelectedAlertController()
+            ReceiptPrinterManager.sharedManager.printCheckForOrderItems(items, party: party)
+            
+            for item in items {
+                item.printedToCheck = true
+            }
+            
+            PFObject.saveAllInBackground(items) { (success: Bool, error: NSError?) in
+                if success {
+                    self.loadObjects()
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
         }
     }
     
-    @IBOutlet var timeSeatedLabel: UILabel!
+    @IBAction func printOrderItems() {
+        let items = orderItemsForSelectedRows()
+        
+        if items.isEmpty {
+            presentNoItemsSelectedAlertController()
+        } else {
+            ReceiptPrinterManager.sharedManager.printOrderItems(items, party: party, createdBy: nil, toGo: false)
+            
+            for item in items {
+                item.sentToKitchen = true
+            }
+            
+            PFObject.saveAllInBackground(items) { (success: Bool, error: NSError?) in
+                if success {
+                    self.loadObjects()
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
+        }
+    }
     
-    var orderItems: [OrderItem] { return objects! as! [OrderItem] }
-    var party: Party! 
+    @IBOutlet var seatedAtLabel: UILabel!
+    @IBOutlet var itemsSelectedLabel: UILabel!
+    @IBOutlet var amountDueLabel: UILabel!
+    @IBOutlet var taxLabel: UILabel!
+    @IBOutlet var subtotalLabel: UILabel!
     
-    let dateComponentsFormatter = NSDateComponentsFormatter()
-    let numberFormatter = NSNumberFormatter()
+    var party: Party!
+    
+    var currencyNumberFormatter: NSNumberFormatter {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        return formatter
+    }
+    var dateFormatter: NSDateFormatter {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        return formatter
+    }
+    
+    // MARK: - OrderItemsViewController
+    
+    func configureView() {
+        // Navigation item
+        var title = party.table.name
+        if !party.name.isEmpty {
+            title += " – \(party.name)"
+        }
+        navigationItem.title = title
+        
+        // Table header view
+        seatedAtLabel.text = "Seated at " + dateFormatter.stringFromDate(party.seatedAt)
+        
+        // Table footer view
+        let selectedOrderItems = orderItemsForSelectedRows()
+        
+        itemsSelectedLabel.text = "\(selectedOrderItems.count) Items Selected"
+        
+        let amountDue = selectedOrderItems.reduce(0) { (amountDue: Double, item: OrderItem) -> Double in
+            return amountDue + item.itemCost()
+        }
+        let tax = selectedOrderItems.reduce(0) { (tax: Double, item: OrderItem) -> Double in
+            return tax + item.applicableTax()
+        }
+        
+        amountDueLabel.text = "Amount Due: " + currencyNumberFormatter.stringFromDouble(amountDue)!
+        taxLabel.text = "Tax: " + currencyNumberFormatter.stringFromDouble(tax)!
+        subtotalLabel.text = "Subtotal: " + currencyNumberFormatter.stringFromDouble(amountDue + tax)!
+    }
+    
+    private func createOrderWithSelectedOrderItemsAndPerformSegueWithIdentifier(identifier: String) {
+        let selectedOrderItems = orderItemsForSelectedRows()
+        
+        let order = Order.createOrderWithType("Full Service", name: nil, party: party, orderItems: selectedOrderItems)
+        
+        let objectsToSave: [AnyObject] = selectedOrderItems + [order]
+        
+        PFObject.saveAllInBackground(objectsToSave) { (succeeded: Bool, error: NSError?) in
+            if succeeded {
+                self.performSegueWithIdentifier(identifier, sender: order)
+            } else {
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func orderItemsForSelectedRows() -> [OrderItem] {
+        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+            let orderItems = indexPaths.map {
+                (indexPath: NSIndexPath) -> OrderItem in
+                
+                return self.objectAtIndexPath(indexPath) as! OrderItem
+            }
+            return orderItems
+        } else {
+            return []
+        }
+    }
+    
+    private func presentNoItemsSelectedAlertController() {
+        let noItemsSelectedAlertController = UIAlertController(title: "No Items Selected", message: nil, preferredStyle: .Alert)
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        noItemsSelectedAlertController.addAction(okayAction)
+        
+        presentViewController(noItemsSelectedAlertController, animated: true, completion: nil)
+    }
 
-    // MARK: - Initializer
-    
-    required init(coder aDecoder: NSCoder) {
-        dateComponentsFormatter.unitsStyle = .Full
-        numberFormatter.numberStyle = .CurrencyStyle
-        
-        super.init(coder: aDecoder)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadObjects"), name: LOAD_OBJECTS_NOTIFICATION, object: nil)
-    }
-    
-    // MARK: - PartyViewController
-    
-    private func presentNoOrdersSelectedAlertController() {
-        let noOrdersSelectedAlertController = UIAlertController(title: "No Orders Selected", message: nil, preferredStyle: .Alert)
-        noOrdersSelectedAlertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-    }
-    
-    private func orderItemAtIndexPath(indexPath: NSIndexPath) -> OrderItem? {
-        return orderItems.filter { (orderItem: OrderItem) -> Bool in return orderItem.seatNumber == indexPath.section }[indexPath.row]
-    }
-    
     // MARK: - PFQueryTableViewController
+
+    override func objectsDidLoad(error: NSError?) {
+        super.objectsDidLoad(error)
+        
+        configureView()
+    }
     
     override func queryForTable() -> PFQuery {
         let query = OrderItem.query()!
         query.limit = 1000
         
         query.includeKey("menuItem")
+        query.includeKey("menuItem.menuCategory")
+        query.includeKey("menuItem.menuCategory.menu")
         query.includeKey("menuItem.printJobs")
         query.includeKey("menuItem.printJobs.printer")
         query.includeKey("menuItemModifiers")
-        query.includeKey("party")
-        query.includeKey("party.server")
-        query.includeKey("party.table")
-
-        query.orderByAscending("createdAt")
         
         query.whereKey("party", equalTo: party)
         
@@ -105,73 +221,91 @@ class OrderItemsViewController: PFQueryTableViewController {
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "Order":
-            if let navigationController = segue.destinationViewController as? UINavigationController,
-            let orderViewController = navigationController.viewControllers.first as? OrderViewController {
+        if segue.identifier == "OrderItemDetail" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let orderItemDetailViewController = navigationController.viewControllers.first as! OrderItemDetailViewController
+            
+            let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)!
+            orderItemDetailViewController.orderItem = objectAtIndexPath(indexPath) as! OrderItem
+        } else if segue.identifier == "CardPayment" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let cardPaymentViewController = navController.viewControllers.first as! CardPaymentViewController
+            cardPaymentViewController.order = sender as! Order
+            cardPaymentViewController.completionHandler = {
+                cardPaymentViewController.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                 
-                let selectedIndexPaths = tableView.indexPathsForSelectedRows() as! [NSIndexPath]
-                let selectedOrderItems = selectedIndexPaths.map { (indexPath: NSIndexPath) -> OrderItem in return self.orderItemAtIndexPath(indexPath)! }
-                
-                let order = Order()
-                order.orderItems = selectedOrderItems
-                order.party = party
-                
-                for orderItem in selectedOrderItems { orderItem.order = order }
-                
-                let objectsToSave: [AnyObject] = orderItems + [order]
-                PFObject.saveAll(objectsToSave)
-                
-                orderViewController.order = order
-                
+                NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
             }
-        default:
-            println()
+        } else if segue.identifier == "CashPayment" {
+            let navController = segue.destinationViewController as! UINavigationController
+            let cashPaymentViewController = navController.viewControllers.first as! CashPaymentViewController
+            cashPaymentViewController.order = sender as! Order
+            cashPaymentViewController.completionHandler = {
+                cashPaymentViewController.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+            }
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        var title = party.table.name
-        if !party.name.isEmpty {
-            title += " – \(party.name)"
-        }
-        navigationItem.title = title
+        configureView()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let unitFlags: NSCalendarUnit = .CalendarUnitHour | .CalendarUnitMinute
-        let dateComponents = NSCalendar.currentCalendar().components(unitFlags, fromDate: party.seatedAt, toDate: NSDate(), options: nil)
-        timeSeatedLabel.text = "Seated for " + dateComponentsFormatter.stringFromDateComponents(dateComponents)!
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadObjects"), name: LOAD_OBJECTS_NOTIFICATION, object: nil)
     }
     
     // MARK: - UITableViewDataSource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        var seatSeen = [Int: Bool]()
-        for orderItem in orderItems {
-            seatSeen[orderItem.seatNumber] = true
-        }
-        return seatSeen.keys.array.count
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let orderItem = objectAtIndexPath(indexPath) as! OrderItem
+        return !orderItem.sentToKitchen
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! OrderTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("OrderItemCell", forIndexPath: indexPath) as! UITableViewCell
+
+        let orderItem = objectAtIndexPath(indexPath) as! OrderItem
         
-        if let orderItem = orderItemAtIndexPath(indexPath) {
-            cell.menuItemNameLabel?.text = orderItem.menuItem.name
-            cell.notesLabel?.text = orderItem.notes
-            cell.priceLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: orderItem.totalCost()))
+        cell.textLabel?.text = orderItem.menuItem.name + (orderItem.seatNumber == 0 ? "" : " (Seat: \(orderItem.seatNumber))")
+        cell.detailTextLabel?.text = orderItem.menuItemModifiers.reduce("") {
+            (previous, modifier) in
+            return "\(previous)\(modifier.name); "
+        } + orderItem.notes
+        
+        cell.imageView?.image = nil
+        if orderItem.sentToKitchen {
+            cell.imageView?.image = UIImage(named: "Paper Airplane")
+        }
+        if orderItem.printedToCheck {
+            cell.imageView?.image = UIImage(named: "Printer")
         }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderItems.filter { (orderItem: OrderItem) -> Bool in return orderItem.seatNumber == section }.count
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            removeObjectAtIndexPath(indexPath)
+            configureView()
+        }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Table" : "Seat \(section)"
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        configureView()
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        configureView()
+    }
+    
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+        return "Remove"
     }
     
 }

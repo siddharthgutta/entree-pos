@@ -3,6 +3,10 @@ import UIKit
 
 class ServerOverviewViewController: PFQueryTableViewController {
 
+    @IBAction func printSummary(sender: UIButton) {
+        ReceiptPrinterManager.sharedManager.printDailySummaryForServer(server, date: date)
+    }
+    
     @IBAction func dismiss(sender: UIBarButtonItem) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -19,7 +23,7 @@ class ServerOverviewViewController: PFQueryTableViewController {
     
     var date = NSDate()
     let dateFormatter = NSDateFormatter()
-    var server: Employee?
+    var server: Employee!
     
     // MARK: - Initializer
     
@@ -45,36 +49,39 @@ class ServerOverviewViewController: PFQueryTableViewController {
     // MARK: - PFQueryTableViewController
     
     override func queryForTable() -> PFQuery {
-        let query = Party.query()!
-        query.cachePolicy = .CacheThenNetwork
-        query.limit = 1000
+        let query = Order.query()!
 
-        query.includeKey("table")
+        query.includeKey("payment")
         
-        query.whereKey("seatedAt", greaterThanOrEqualTo: NSCalendar.currentCalendar().startOfDayForDate(date))
-        query.whereKey("seatedAt", lessThan: NSCalendar.currentCalendar().endOfDayForDate(date))
+        query.whereKey("createdAt", greaterThanOrEqualTo: NSCalendar.currentCalendar().startOfDayForDate(date))
+        query.whereKey("createdAt", lessThan: NSCalendar.currentCalendar().endOfDayForDate(date))
         
-        query.whereKey("server", equalTo: server!)
+        query.whereKey("server", equalTo: server)
         
-        query.whereKeyExists("leftAt")
+        let innerQuery = Payment.query()!
+        innerQuery.whereKey("type", equalTo: "Card")
+        query.whereKey("payment", matchesQuery: innerQuery)
         
         return query
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! PFTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("OrderCell", forIndexPath: indexPath) as! PFTableViewCell
         
-        let party = object! as! Party
+        let order = object! as! Order
         
-        var name = party.table.name
-        if !party.name.isEmpty {
-            name = "\(party.name) Party, \(name)"
+        let prefix = order.payment!.charged ? "[Charged] " : ""
+        cell.textLabel?.text = "\(prefix)Order: \(order.objectId!)"
+        
+        if order.payment!.charged {
+            cell.textLabel?.textColor = UIColor.entreeGreenColor()
+        } else {
+            cell.textLabel?.textColor = UIColor.blackColor()
         }
-        cell.textLabel?.text = name
         
-        dateFormatter.dateStyle = .NoStyle
-        dateFormatter.timeStyle = .ShortStyle
-        cell.detailTextLabel?.text = "Arrived at " + dateFormatter.stringFromDate(party.arrivedAt) + ", Seated at " + dateFormatter.stringFromDate(party.seatedAt) + ", Left at " + dateFormatter.stringFromDate(party.leftAt)
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.timeStyle = .ShortStyle
+        cell.detailTextLabel?.text = timeFormatter.stringFromDate(order.createdAt!)
         
         return cell
     }
@@ -82,13 +89,9 @@ class ServerOverviewViewController: PFQueryTableViewController {
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-        case "Payments":
-            if let partyPaymentsViewController = segue.destinationViewController as? PartyPaymentsViewController {
-                partyPaymentsViewController.party = objectAtIndexPath(tableView.indexPathForCell(sender as! UITableViewCell)) as? Party
-            }
-        default:
-            println(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+        if segue.identifier == "CardCompletion" {
+            let cardPaymentOrderCompletionViewController = segue.destinationViewController as! CardPaymentOrderCompletionViewController
+            cardPaymentOrderCompletionViewController.order = sender as! Order
         }
     }
     
@@ -96,16 +99,19 @@ class ServerOverviewViewController: PFQueryTableViewController {
         super.viewWillAppear(animated)
         
         date = NSDate()
+        changeDayByAddingValue(0)
     }
 
     // MARK: - UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let alertController = UIAlertController(title: "Sorry!", message: "This function is temporarily disabled for demonstration purposes.", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
-        presentViewController(alertController, animated: true) { () in
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let order = objectAtIndexPath(indexPath) as! Order
+        
+        if order.payment!.type == "Card" {
+            performSegueWithIdentifier("CardCompletion", sender: order)
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 }

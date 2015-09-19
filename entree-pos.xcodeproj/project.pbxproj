@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4A027A1013A2B76C5A774994 /* libPods-entree-pos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F22F408B4DB5B0922D500 /* libPods-entree-pos.a */; };
+		8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */; };
+		8809E05B1BA7B10D00E466EE /* QuickService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8809E05A1BA7B10D00E466EE /* QuickService.storyboard */; };
+		8809E05E1BA7B38C00E466EE /* QuickServiceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */; };
+		8845F9CC1B8E7D5A003A82F8 /* check_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8845F9CB1B8E7D5A003A82F8 /* check_template.xml */; };
+		8864BFD51BA682320028BE20 /* cash_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8864BFD41BA682320028BE20 /* cash_receipt_template.xml */; };
+		886BA4B51BA9207200ECC22B /* CardPayment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886BA4B41BA9207200ECC22B /* CardPayment.storyboard */; };
+		886BA4B71BA9297D00ECC22B /* CashPayment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886BA4B61BA9297D00ECC22B /* CashPayment.storyboard */; };
+		886BA4BA1BA9458700ECC22B /* server_summary_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 886BA4B91BA9458700ECC22B /* server_summary_template.xml */; };
 		888BA1B21B6C3E5300D6C8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */; };
 		888BA1B31B6C3E5300D6C8D5 /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1811B6C3E5300D6C8D5 /* BadgeLabel.swift */; };
 		888BA1B51B6C3E5300D6C8D5 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1831B6C3E5300D6C8D5 /* BorderedButton.swift */; };
@@ -26,19 +34,15 @@
 		888BA1C41B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */; };
 		888BA1C51B6C3E5300D6C8D5 /* MenuItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */; };
 		888BA1C61B6C3E5300D6C8D5 /* MenusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */; };
-		888BA1C71B6C3E5300D6C8D5 /* open_cash_drawer.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */; };
 		888BA1C81B6C3E5300D6C8D5 /* order_item_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */; };
 		888BA1C91B6C3E5300D6C8D5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1981B6C3E5300D6C8D5 /* Order.swift */; };
 		888BA1CA1B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */; };
 		888BA1CB1B6C3E5300D6C8D5 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */; };
-		888BA1CC1B6C3E5300D6C8D5 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19B1B6C3E5300D6C8D5 /* OrderTableViewCell.swift */; };
 		888BA1CD1B6C3E5300D6C8D5 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19C1B6C3E5300D6C8D5 /* Party.swift */; };
-		888BA1CE1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19D1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift */; };
-		888BA1CF1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19E1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift */; };
 		888BA1D01B6C3E5300D6C8D5 /* OrderItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA19F1B6C3E5300D6C8D5 /* OrderItemsViewController.swift */; };
 		888BA1D11B6C3E5300D6C8D5 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A01B6C3E5300D6C8D5 /* Payment.swift */; };
 		888BA1D21B6C3E5300D6C8D5 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */; };
-		888BA1D31B6C3E5300D6C8D5 /* receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1A21B6C3E5300D6C8D5 /* receipt_template.xml */; };
+		888BA1D31B6C3E5300D6C8D5 /* card_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1A21B6C3E5300D6C8D5 /* card_receipt_template.xml */; };
 		888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */; };
 		888BA1D51B6C3E5300D6C8D5 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */; };
 		888BA1D61B6C3E5300D6C8D5 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */; };
@@ -58,13 +62,24 @@
 		88C188D51B6FF5A90092D1BE /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C188CF1B6FF5A90092D1BE /* Settings.storyboard */; };
 		88C188D61B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */; };
 		88C188D71B6FF5A90092D1BE /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C188D11B6FF5A90092D1BE /* SignIn.storyboard */; };
-		88C188DB1B702CDA0092D1BE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C188DA1B702CD90092D1BE /* OrderViewController.swift */; };
+		88D3EDA31B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EDA21B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift */; };
+		88E4CE171BA7D0DD0092B7D4 /* OrderItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E4CE161BA7D0DD0092B7D4 /* OrderItemDetail.storyboard */; };
+		88E4CE191BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4CE181BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift */; };
+		88E4CE1B1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4CE1A1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05568A27658A4512C6EA8E37 /* Pods-entree-pos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-pos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos.debug.xcconfig"; sourceTree = "<group>"; };
 		32C4B5E91B238E5B0062B854 /* entree-pos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-pos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		590F22F408B4DB5B0922D500 /* libPods-entree-pos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-pos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerTabsViewController.swift; path = "entree-pos/CustomerTabsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		8809E05A1BA7B10D00E466EE /* QuickService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuickService.storyboard; path = "entree-pos/QuickService.storyboard"; sourceTree = SOURCE_ROOT; };
+		8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceOrderViewController.swift; path = "entree-pos/QuickServiceOrderViewController.swift"; sourceTree = SOURCE_ROOT; };
+		8845F9CB1B8E7D5A003A82F8 /* check_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = check_template.xml; path = "entree-pos/check_template.xml"; sourceTree = SOURCE_ROOT; };
+		8864BFD41BA682320028BE20 /* cash_receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cash_receipt_template.xml; path = "entree-pos/cash_receipt_template.xml"; sourceTree = SOURCE_ROOT; };
+		886BA4B41BA9207200ECC22B /* CardPayment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CardPayment.storyboard; path = "entree-pos/CardPayment.storyboard"; sourceTree = SOURCE_ROOT; };
+		886BA4B61BA9297D00ECC22B /* CashPayment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CashPayment.storyboard; path = "entree-pos/CashPayment.storyboard"; sourceTree = SOURCE_ROOT; };
+		886BA4B91BA9458700ECC22B /* server_summary_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = server_summary_template.xml; path = "entree-pos/server_summary_template.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "entree-pos/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1811B6C3E5300D6C8D5 /* BadgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BadgeLabel.swift; path = "entree-pos/BadgeLabel.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1831B6C3E5300D6C8D5 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderedButton.swift; path = "entree-pos/BorderedButton.swift"; sourceTree = SOURCE_ROOT; };
@@ -85,19 +100,15 @@
 		888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemModifierListViewController.swift; path = "entree-pos/MenuItemModifierListViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemsViewController.swift; path = "entree-pos/MenuItemsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenusViewController.swift; path = "entree-pos/MenusViewController.swift"; sourceTree = SOURCE_ROOT; };
-		888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = open_cash_drawer.xml; path = "entree-pos/open_cash_drawer.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = order_item_template.xml; path = "entree-pos/order_item_template.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1981B6C3E5300D6C8D5 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = "entree-pos/Order.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItemDetailViewController.swift; path = "entree-pos/OrderItemDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19A1B6C3E5300D6C8D5 /* OrderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItem.swift; path = "entree-pos/OrderItem.swift"; sourceTree = SOURCE_ROOT; };
-		888BA19B1B6C3E5300D6C8D5 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderTableViewCell.swift; path = "entree-pos/OrderTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19C1B6C3E5300D6C8D5 /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Party.swift; path = "entree-pos/Party.swift"; sourceTree = SOURCE_ROOT; };
-		888BA19D1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartyOverviewViewController.swift; path = "entree-pos/PartyOverviewViewController.swift"; sourceTree = SOURCE_ROOT; };
-		888BA19E1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PartyPaymentsViewController.swift; path = "entree-pos/PartyPaymentsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA19F1B6C3E5300D6C8D5 /* OrderItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderItemsViewController.swift; path = "entree-pos/OrderItemsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A01B6C3E5300D6C8D5 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = "entree-pos/Payment.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintJob.swift; path = "entree-pos/PrintJob.swift"; sourceTree = SOURCE_ROOT; };
-		888BA1A21B6C3E5300D6C8D5 /* receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = receipt_template.xml; path = "entree-pos/receipt_template.xml"; sourceTree = SOURCE_ROOT; };
+		888BA1A21B6C3E5300D6C8D5 /* card_receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = card_receipt_template.xml; path = "entree-pos/card_receipt_template.xml"; sourceTree = SOURCE_ROOT; };
 		888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptPrinterManager.swift; path = "entree-pos/ReceiptPrinterManager.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = "entree-pos/Restaurant.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantMapView.swift; path = "entree-pos/RestaurantMapView.swift"; sourceTree = SOURCE_ROOT; };
@@ -117,7 +128,10 @@
 		88C188CF1B6FF5A90092D1BE /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = "entree-pos/Settings.storyboard"; sourceTree = SOURCE_ROOT; };
 		88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShadedImageCollectionViewCell.xib; path = "entree-pos/ShadedImageCollectionViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		88C188D11B6FF5A90092D1BE /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignIn.storyboard; path = "entree-pos/SignIn.storyboard"; sourceTree = SOURCE_ROOT; };
-		88C188DA1B702CD90092D1BE /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderViewController.swift; path = "entree-pos/OrderViewController.swift"; sourceTree = SOURCE_ROOT; };
+		88D3EDA21B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardPaymentOrderCompletionViewController.swift; path = "entree-pos/CardPaymentOrderCompletionViewController.swift"; sourceTree = SOURCE_ROOT; };
+		88E4CE161BA7D0DD0092B7D4 /* OrderItemDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = OrderItemDetail.storyboard; path = "entree-pos/OrderItemDetail.storyboard"; sourceTree = SOURCE_ROOT; };
+		88E4CE181BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceOrderItemDetailViewController.swift; path = "entree-pos/QuickServiceOrderItemDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		88E4CE1A1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceMenuItemModifierSelectionViewController.swift; path = "entree-pos/QuickServiceMenuItemModifierSelectionViewController.swift"; sourceTree = SOURCE_ROOT; };
 		8EDA5392F65E7A857F482C4A /* Pods-entree-pos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-pos.release.xcconfig"; path = "Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,26 +188,34 @@
 			path = "entree-ipad";
 			sourceTree = "<group>";
 		};
+		8809E05C1BA7B36C00E466EE /* Quick Service */ = {
+			isa = PBXGroup;
+			children = (
+				8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */,
+				88E4CE181BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift */,
+				88E4CE1A1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift */,
+			);
+			name = "Quick Service";
+			sourceTree = "<group>";
+		};
 		8849BAAB1B7674AE00DAF72E /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				888BA18D1B6C3E5300D6C8D5 /* MenuCategoriesViewController.swift */,
-				888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */,
-				888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */,
 				888BA1951B6C3E5300D6C8D5 /* MenusViewController.swift */,
+				888BA18D1B6C3E5300D6C8D5 /* MenuCategoriesViewController.swift */,
+				888BA1941B6C3E5300D6C8D5 /* MenuItemsViewController.swift */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
 		};
-		8849BAAC1B7674B300DAF72E /* Server */ = {
+		8849BAAC1B7674B300DAF72E /* Full Service */ = {
 			isa = PBXGroup;
 			children = (
-				888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */,
 				888BA19F1B6C3E5300D6C8D5 /* OrderItemsViewController.swift */,
-				888BA19D1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift */,
-				888BA19E1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift */,
+				888BA1991B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift */,
+				888BA1931B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift */,
 			);
-			name = Server;
+			name = "Full Service";
 			sourceTree = "<group>";
 		};
 		8849BAAD1B7674B600DAF72E /* Map */ = {
@@ -202,6 +224,7 @@
 				888BA1881B6C3E5300D6C8D5 /* EmployeeClockViewController.swift */,
 				888BA1A81B6C3E5300D6C8D5 /* ServerMapViewController.swift */,
 				888BA1A91B6C3E5300D6C8D5 /* ServerOverviewViewController.swift */,
+				88D3EDA21B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -211,7 +234,6 @@
 			children = (
 				888BA1851B6C3E5300D6C8D5 /* CardPaymentViewController.swift */,
 				888BA1861B6C3E5300D6C8D5 /* CashPaymentViewController.swift */,
-				88C188DA1B702CD90092D1BE /* OrderViewController.swift */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -219,22 +241,40 @@
 		8849BAAF1B7674F400DAF72E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */,
 				888BA1AE1B6C3E5300D6C8D5 /* SignInViewController.swift */,
+				888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		88658AFC1B79106D000446B0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				888BA1AA1B6C3E5300D6C8D5 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		88658AFD1B791072000446B0 /* Time Clock */ = {
+			isa = PBXGroup;
+			children = (
+				888BA1B11B6C3E5300D6C8D5 /* TimeClockViewController.swift */,
+			);
+			name = "Time Clock";
 			sourceTree = "<group>";
 		};
 		888BA1E31B6C3E6A00D6C8D5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8809E05C1BA7B36C00E466EE /* Quick Service */,
+				88F47F4F1BA798E500C563D9 /* Customer Tabs */,
 				8849BAAD1B7674B600DAF72E /* Map */,
 				8849BAAB1B7674AE00DAF72E /* Menu */,
 				8849BAAE1B7674C200DAF72E /* Payment */,
-				8849BAAC1B7674B300DAF72E /* Server */,
+				8849BAAC1B7674B300DAF72E /* Full Service */,
+				88658AFC1B79106D000446B0 /* Settings */,
+				88658AFD1B791072000446B0 /* Time Clock */,
 				8849BAAF1B7674F400DAF72E /* Login */,
-				888BA1AA1B6C3E5300D6C8D5 /* SettingsViewController.swift */,
-				888BA1B11B6C3E5300D6C8D5 /* TimeClockViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -245,7 +285,6 @@
 				888BA1811B6C3E5300D6C8D5 /* BadgeLabel.swift */,
 				888BA1831B6C3E5300D6C8D5 /* BorderedButton.swift */,
 				888BA18F1B6C3E5300D6C8D5 /* MenuCollectionViewCell.swift */,
-				888BA19B1B6C3E5300D6C8D5 /* OrderTableViewCell.swift */,
 				888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */,
 				888BA1AB1B6C3E5300D6C8D5 /* ShadedImageCollectionViewCell.swift */,
 			);
@@ -277,9 +316,9 @@
 			isa = PBXGroup;
 			children = (
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
-				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
 				888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */,
+				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -287,9 +326,13 @@
 		888BA1E71B6C409300D6C8D5 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				886BA4B41BA9207200ECC22B /* CardPayment.storyboard */,
+				886BA4B61BA9297D00ECC22B /* CashPayment.storyboard */,
 				88C188CC1B6FF5A90092D1BE /* LaunchScreen.xib */,
 				88C188CD1B6FF5A90092D1BE /* Main.storyboard */,
 				88C188CE1B6FF5A90092D1BE /* MenuCollectionViewCell.xib */,
+				8809E05A1BA7B10D00E466EE /* QuickService.storyboard */,
+				88E4CE161BA7D0DD0092B7D4 /* OrderItemDetail.storyboard */,
 				88C188CF1B6FF5A90092D1BE /* Settings.storyboard */,
 				88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */,
 				88C188D11B6FF5A90092D1BE /* SignIn.storyboard */,
@@ -310,11 +353,21 @@
 		888BA1F11B6C40D200D6C8D5 /* Printer Templates */ = {
 			isa = PBXGroup;
 			children = (
-				888BA1961B6C3E5300D6C8D5 /* open_cash_drawer.xml */,
 				888BA1971B6C3E5300D6C8D5 /* order_item_template.xml */,
-				888BA1A21B6C3E5300D6C8D5 /* receipt_template.xml */,
+				888BA1A21B6C3E5300D6C8D5 /* card_receipt_template.xml */,
+				8864BFD41BA682320028BE20 /* cash_receipt_template.xml */,
+				8845F9CB1B8E7D5A003A82F8 /* check_template.xml */,
+				886BA4B91BA9458700ECC22B /* server_summary_template.xml */,
 			);
 			name = "Printer Templates";
+			sourceTree = "<group>";
+		};
+		88F47F4F1BA798E500C563D9 /* Customer Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */,
+			);
+			name = "Customer Tabs";
 			sourceTree = "<group>";
 		};
 		EC2CF849EDDFD7B9C8DCD960 /* Frameworks */ = {
@@ -390,12 +443,18 @@
 				88C188D21B6FF5A90092D1BE /* LaunchScreen.xib in Resources */,
 				888BA1C81B6C3E5300D6C8D5 /* order_item_template.xml in Resources */,
 				88C188D51B6FF5A90092D1BE /* Settings.storyboard in Resources */,
-				888BA1D31B6C3E5300D6C8D5 /* receipt_template.xml in Resources */,
+				886BA4B71BA9297D00ECC22B /* CashPayment.storyboard in Resources */,
+				888BA1D31B6C3E5300D6C8D5 /* card_receipt_template.xml in Resources */,
+				8845F9CC1B8E7D5A003A82F8 /* check_template.xml in Resources */,
 				88C188D31B6FF5A90092D1BE /* Main.storyboard in Resources */,
 				88C188D71B6FF5A90092D1BE /* SignIn.storyboard in Resources */,
+				886BA4BA1BA9458700ECC22B /* server_summary_template.xml in Resources */,
+				8809E05B1BA7B10D00E466EE /* QuickService.storyboard in Resources */,
+				886BA4B51BA9207200ECC22B /* CardPayment.storyboard in Resources */,
 				88C188D61B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib in Resources */,
+				8864BFD51BA682320028BE20 /* cash_receipt_template.xml in Resources */,
 				888BA1BB1B6C3E5300D6C8D5 /* Images.xcassets in Resources */,
-				888BA1C71B6C3E5300D6C8D5 /* open_cash_drawer.xml in Resources */,
+				88E4CE171BA7D0DD0092B7D4 /* OrderItemDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,12 +501,13 @@
 				888BA1B61B6C3E5300D6C8D5 /* CardPaymentViewController.swift in Sources */,
 				888BA1B51B6C3E5300D6C8D5 /* BorderedButton.swift in Sources */,
 				888BA1D81B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift in Sources */,
+				88E4CE191BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift in Sources */,
 				888BA1D51B6C3E5300D6C8D5 /* Restaurant.swift in Sources */,
 				888BA1CD1B6C3E5300D6C8D5 /* Party.swift in Sources */,
 				888BA1E21B6C3E5300D6C8D5 /* TimeClockViewController.swift in Sources */,
 				888BA1BF1B6C3E5300D6C8D5 /* MenuCategory.swift in Sources */,
+				8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */,
 				888BA1C51B6C3E5300D6C8D5 /* MenuItemsViewController.swift in Sources */,
-				888BA1CF1B6C3E5300D6C8D5 /* PartyPaymentsViewController.swift in Sources */,
 				888BA1BD1B6C3E5300D6C8D5 /* Menu.swift in Sources */,
 				888BA1E11B6C3E5300D6C8D5 /* Table.swift in Sources */,
 				888BA1D21B6C3E5300D6C8D5 /* PrintJob.swift in Sources */,
@@ -456,11 +516,10 @@
 				888BA1B21B6C3E5300D6C8D5 /* AppDelegate.swift in Sources */,
 				888BA1C31B6C3E5300D6C8D5 /* MenuItemModifier.swift in Sources */,
 				888BA1C41B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift in Sources */,
-				88C188DB1B702CDA0092D1BE /* OrderViewController.swift in Sources */,
+				88D3EDA31B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift in Sources */,
 				888BA1DF1B6C3E5300D6C8D5 /* SignInViewController.swift in Sources */,
 				888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */,
 				888BA1DB1B6C3E5300D6C8D5 /* SettingsViewController.swift in Sources */,
-				888BA1CE1B6C3E5300D6C8D5 /* PartyOverviewViewController.swift in Sources */,
 				888BA1D91B6C3E5300D6C8D5 /* ServerMapViewController.swift in Sources */,
 				888BA1DC1B6C3E5300D6C8D5 /* ShadedImageCollectionViewCell.swift in Sources */,
 				888BA1CB1B6C3E5300D6C8D5 /* OrderItem.swift in Sources */,
@@ -468,6 +527,7 @@
 				888BA1CA1B6C3E5300D6C8D5 /* OrderItemDetailViewController.swift in Sources */,
 				888BA1B31B6C3E5300D6C8D5 /* BadgeLabel.swift in Sources */,
 				888BA1DE1B6C3E5300D6C8D5 /* Shift.swift in Sources */,
+				88E4CE1B1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift in Sources */,
 				888BA1D01B6C3E5300D6C8D5 /* OrderItemsViewController.swift in Sources */,
 				888BA1DA1B6C3E5300D6C8D5 /* ServerOverviewViewController.swift in Sources */,
 				888BA1C01B6C3E5300D6C8D5 /* MenuCollectionViewCell.swift in Sources */,
@@ -478,7 +538,7 @@
 				888BA1E01B6C3E5300D6C8D5 /* StarPrinter.swift in Sources */,
 				888BA1C21B6C3E5300D6C8D5 /* MenuItem.swift in Sources */,
 				888BA1BA1B6C3E5300D6C8D5 /* Extensions.swift in Sources */,
-				888BA1CC1B6C3E5300D6C8D5 /* OrderTableViewCell.swift in Sources */,
+				8809E05E1BA7B38C00E466EE /* QuickServiceOrderViewController.swift in Sources */,
 				888BA1C61B6C3E5300D6C8D5 /* MenusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,11 +642,12 @@
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jessetipton.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -602,10 +663,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jessetipton.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};

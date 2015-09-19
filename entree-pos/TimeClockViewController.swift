@@ -57,6 +57,9 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         
         if let restaurant = Restaurant.defaultRestaurantWithoutData() {
             query.whereKey("restaurant", equalTo: restaurant)
+        } else {
+            // This will keep the query from yielding anything if there is no default restaurant set
+            query.whereKeyExists("FAKE_KEY")
         }
         
         return query
@@ -65,14 +68,11 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     // MARK: - UIViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier! {
-            case "ServerMap":
-                if let navigationController = segue.destinationViewController as? UINavigationController,
-                let serverMapViewController = navigationController.viewControllers.first as? ServerMapViewController {
-                    serverMapViewController.employee = selectedEmployee
-                }
-        default:
-            fatalError(UNRECOGNIZED_SEGUE_IDENTIFIER_ERROR_MESSAGE)
+        if segue.identifier == "ServerMap" {
+            if let navigationController = segue.destinationViewController as? UINavigationController,
+            let serverMapViewController = navigationController.viewControllers.first as? ServerMapViewController {
+                serverMapViewController.employee = selectedEmployee
+            }
         }
     }
     
@@ -112,20 +112,41 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     }
     
     func pinViewControllerDidDismissAfterPinEntryWasSuccessful(pinViewController: THPinViewController!) {
-        if selectedEmployee?.currentShift != nil {
-            performSegueWithIdentifier("ServerMap", sender: nil)
+        if let currentShift = selectedEmployee?.currentShift {
+            
+            if selectedEmployee?.role == "Server" {
+                // Open restaurant map
+                performSegueWithIdentifier("ServerMap", sender: nil)
+            } else {
+                // Not a server. End the shift.
+                selectedEmployee?.currentShift = nil
+                currentShift.endedAt = NSDate()
+                
+                PFObject.saveAllInBackground([currentShift, selectedEmployee!]) { (success: Bool, error: NSError?) in
+                    if success {
+                        self.loadObjects()
+                    } else {
+                        self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                    }
+                }
+            }
+            
         } else {
-            let shift = Shift()
-            shift.employee = selectedEmployee!
-            shift.startedAt = NSDate()
+            let newShift = Shift()
+            newShift.employee = selectedEmployee!
+            newShift.startedAt = NSDate()
             
-            selectedEmployee?.currentShift = shift
+            selectedEmployee?.currentShift = newShift
             
-            PFObject.saveAllInBackground([shift, selectedEmployee!]) { (succeeded: Bool, error: NSError?) in
+            PFObject.saveAllInBackground([newShift, selectedEmployee!]) { (succeeded: Bool, error: NSError?) in
                 if succeeded {
-                    self.loadObjects()
+                    if self.selectedEmployee?.role == "Server" {
+                        self.performSegueWithIdentifier("ServerMap", sender: nil)
+                    } else {
+                        self.loadObjects()
+                    }
                 } else {
-                    fatalError(error!.description)
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
             }
         }
