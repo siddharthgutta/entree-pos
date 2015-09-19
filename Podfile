@@ -1,3 +1,4 @@
+inhibit_all_warnings!
 
 target 'entree-pos' do
 
