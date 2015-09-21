@@ -179,7 +179,7 @@
     
     for (OrderItem *item in orderItems) {
         NSString *price = [self.numberFormatter stringFromNumber:[NSNumber numberWithDouble:[item itemCost]]];
-        NSString *itemXML = [NSString stringWithFormat:@"<left><text>[%@] %@</text></left><newline />", item.menuItem.name, price];
+        NSString *itemXML = [NSString stringWithFormat:@"<left><text>[%@] %@</text></left><newline />", price, item.menuItem.name];
         [orderItemsXML appendString:itemXML];
         
         amountDue += [item itemCost];
