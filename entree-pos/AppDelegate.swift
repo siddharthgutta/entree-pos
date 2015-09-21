@@ -75,15 +75,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFObject.saveAll(menuItems)
         */
         /*
-        let printer = PFObject(withoutDataWithClassName: "StarPrinter", objectId: "4WpBXk11IV") //Old reliable tdLFRk4WQU
+        let printer = PFObject(withoutDataWithClassName: "StarPrinter", objectId: "tdLFRk4WQU") //Old reliable tdLFRk4WQU
         let query = PFQuery(className: "PrintJob")
         query.limit = 1000
-        let jobs = query.findObjects() as! [PFObject]
+        let jobs = try! query.findObjects()
         for job in jobs {
             job.setValue(printer, forKey: "printer")
         }
-        PFObject.saveAll(jobs)
+        PFObject.saveAllInBackground(jobs)
         */
+        
         return true
     }
 
