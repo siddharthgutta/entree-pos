@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MenusViewController: PFQueryCollectionViewController, UICollectionViewDelegateFlowLayout {
+class MenusViewController: PFQueryCollectionViewController {
     
     let numberOfCellsPerRow: CGFloat = 4
     let sectionEdgeInsets: CGFloat = 16

@@ -35,7 +35,6 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         
         let popover = pinViewController.popoverPresentationController!
         popover.backgroundColor = UIColor.entreeBlueColor()
-        popover.permittedArrowDirections = .Left | .Right
         popover.sourceRect = cell.contentView.bounds
         popover.sourceView = cell.contentView
     }
@@ -79,7 +78,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if let user = PFUser.currentUser() {
+        if let _ = PFUser.currentUser() {
             
         } else {
             let signInViewController = UIStoryboard(name: "SignIn", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! SignInViewController
@@ -178,7 +177,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
                     
                     cell.setNeedsDisplay()
                 } else {
-                    println(error)
+                    print(error!.localizedDescription)
                     
                     cell.imageView.backgroundColor = UIColor.darkGrayColor()
                 }

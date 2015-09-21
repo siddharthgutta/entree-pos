@@ -20,13 +20,13 @@ class SignInViewController: UIViewController {
         alertController.addAction(cancelAlertAction)
         
         let signInAlertAction = UIAlertAction(title: "Login", style: .Default) { (action: UIAlertAction!) in
-            let textFields = alertController.textFields! as! [UITextField]
+            let textFields = alertController.textFields! 
             
             let email = textFields.first!.text
             let password = textFields.last!.text
             
-            PFUser.logInWithUsernameInBackground(email, password: password) { (user: PFUser?, error: NSError?) in
-                if let user = user {
+            PFUser.logInWithUsernameInBackground(email!, password: password!) { (user: PFUser?, error: NSError?) in
+                if let _ = user {
                     self.performSegueWithIdentifier("SelectRestaurant", sender: nil)
                 } else {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)

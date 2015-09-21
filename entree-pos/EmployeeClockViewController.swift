@@ -13,7 +13,7 @@ class EmployeeClockViewController: UITableViewController {
     var switchServersTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 1)
     var clockOutTableViewCellIndexPath = NSIndexPath(forRow: 1, inSection: 1)
     
-    required init!(coder aDecoder: NSCoder!) {
+    required init!(coder aDecoder: NSCoder) {
         
         
         super.init(coder: aDecoder)
@@ -31,7 +31,7 @@ class EmployeeClockViewController: UITableViewController {
                 if succeeded {
                     self.switchServers()
                 } else {
-                    println(error)
+                    print(error)
                 }
             }
         }

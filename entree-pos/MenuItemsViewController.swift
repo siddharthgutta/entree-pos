@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MenuItemsViewController: PFQueryCollectionViewController, UICollectionViewDelegateFlowLayout {
+class MenuItemsViewController: PFQueryCollectionViewController {
 
     var menuCategory: MenuCategory!
     
@@ -81,7 +81,7 @@ class MenuItemsViewController: PFQueryCollectionViewController, UICollectionView
                 if succeeded {
                     self.performSegueWithIdentifier("OrderDetail", sender: orderItem)
                 } else {
-                    println(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 }
             }
         } else if let quickServiceOrderViewController = navigationController.viewControllers.first as? QuickServiceOrderViewController {

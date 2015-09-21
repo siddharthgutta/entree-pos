@@ -14,7 +14,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     
     // MARK: - Init
     
-    required init!(coder aDecoder: NSCoder!) {
+    required init!(coder aDecoder: NSCoder) {
         currencyNumberFormatter = NSNumberFormatter()
         currencyNumberFormatter.numberStyle = .CurrencyStyle
         
@@ -24,7 +24,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     // MARK: - CardPaymentOrderCompletionViewController
     
     private func charge() {        
-        let tip = tipTextField.text.doubleValue
+        let tip = tipTextField.text!.doubleValue
         self.order.tip = tip
         self.order.total = self.order.subtotal + tip
         
@@ -37,7 +37,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
         let chargeAction = UIAlertAction(title: "Charge", style: .Default) { (action: UIAlertAction!) in
             CFTCharge.captureChargeWithToken(self.order.payment!.cardFlightChargeToken!, andAmount: NSDecimalNumber(double: self.order.total), success: { (charge: CFTCharge!) in
                 self.order.payment!.charged = true
-                self.order.payment!.save()
+                try! self.order.payment!.save()
                 self.configureView()
                 
                 let chargedAlertController = UIAlertController(title: "Success", message: "Card was charged successfully.", preferredStyle: .Alert)

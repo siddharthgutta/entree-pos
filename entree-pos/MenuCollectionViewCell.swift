@@ -9,8 +9,8 @@ class MenuCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }

@@ -4,7 +4,7 @@ import UIKit
 class ServerOverviewViewController: PFQueryTableViewController {
 
     @IBAction func printSummary(sender: UIButton) {
-        ReceiptPrinterManager.sharedManager.printDailySummaryForServer(server, date: date)
+        PrintingManager.sharedManager().printSummaryForServer(server, date: date)
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
@@ -27,17 +27,17 @@ class ServerOverviewViewController: PFQueryTableViewController {
     
     // MARK: - Initializer
     
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         dateFormatter.dateStyle = .FullStyle
         dateFormatter.timeStyle = .ShortStyle
         
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     // MARK: - ServerOverviewViewController
     
     func changeDayByAddingValue(value: Int) {
-        date = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: value, toDate: date, options: nil)!
+        date = date.dateByAddingTimeInterval(86400 * Double(value))
         
         dateFormatter.dateStyle = .FullStyle
         dateFormatter.timeStyle = .NoStyle

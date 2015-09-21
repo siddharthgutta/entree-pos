@@ -67,7 +67,7 @@ class OrderItemsViewController: PFQueryTableViewController {
         if items.isEmpty {
             presentNoItemsSelectedAlertController()
         } else {
-            ReceiptPrinterManager.sharedManager.printCheckForOrderItems(items, party: party)
+            PrintingManager.sharedManager().printCheckForOrderItems(items, party: party)
             
             for item in items {
                 item.printedToCheck = true
@@ -89,7 +89,7 @@ class OrderItemsViewController: PFQueryTableViewController {
         if items.isEmpty {
             presentNoItemsSelectedAlertController()
         } else {
-            ReceiptPrinterManager.sharedManager.printOrderItems(items, party: party, createdBy: nil, toGo: false)
+            PrintingManager.sharedManager().printPrintJobsForOrderItems(items, party: party, server: party.server, toGo: false)
             
             for item in items {
                 item.sentToKitchen = true
@@ -171,7 +171,7 @@ class OrderItemsViewController: PFQueryTableViewController {
     }
     
     private func orderItemsForSelectedRows() -> [OrderItem] {
-        if let indexPaths = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+        if let indexPaths = tableView.indexPathsForSelectedRows {
             let orderItems = indexPaths.map {
                 (indexPath: NSIndexPath) -> OrderItem in
                 
@@ -268,7 +268,7 @@ class OrderItemsViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("OrderItemCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("OrderItemCell", forIndexPath: indexPath) 
 
         let orderItem = objectAtIndexPath(indexPath) as! OrderItem
         
@@ -304,7 +304,7 @@ class OrderItemsViewController: PFQueryTableViewController {
         configureView()
     }
     
-    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "Remove"
     }
     

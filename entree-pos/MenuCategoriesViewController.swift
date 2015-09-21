@@ -1,7 +1,7 @@
 
 import UIKit
 
-class MenuCategoriesViewController: PFQueryCollectionViewController, UICollectionViewDelegateFlowLayout {
+class MenuCategoriesViewController: PFQueryCollectionViewController {
     
     var menu: Menu!
     

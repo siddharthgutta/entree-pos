@@ -7,26 +7,15 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         for orderItem in order.orderItems {
             orderItem.order = nil
         }
+        PFObject.saveAllInBackground(order.orderItems)
         
-        if PFObject.saveAll(order.orderItems) {
-            PFObject.deleteAllInBackground([order, order.payment!]) {
-                (succeeded, error) in
-                
-                if succeeded {
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
-                }
+        PFObject.deleteAllInBackground([order, order.payment!]) {
+            (succeeded, error) in
+            if succeeded {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
             }
-        } else {
-            let errorAlertController = UIAlertController(title: "Error",
-                message: "A problem occurred while executing this request. Please validate that you have a working internet connection and try again.",
-                preferredStyle: .Alert)
-            
-            let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
-            errorAlertController.addAction(okayAction)
-            
-            self.presentViewController(errorAlertController, animated: true, completion: nil)
         }
     }
     
@@ -76,15 +65,14 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func printReceipt() {
-        ReceiptPrinterManager.sharedManager.printReceiptForOrder(order)
+        PrintingManager.sharedManager().printReceiptForOrder(order)
     }
     
     func updateChangeDue() {
         let numberFormatter = NSNumberFormatter()
-        if let amountPaid = numberFormatter.numberFromString(amountPaidTextField.text)?.doubleValue {
+        if let amountPaid = numberFormatter.numberFromString(amountPaidTextField.text!)?.doubleValue {
             let changeDue = round((amountPaid - order.subtotal) * 100) / 100
             
-            println("CHANGE DUE: \(changeDue)")
             changeDueLabel.text = currencyNumberFormatter.stringFromDouble(changeDue)
             
             order.payment!.cashAmountPaid = amountPaid
@@ -111,7 +99,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         order.payment = payment
         payment.order = order
         
-        PFObject.saveAll([payment, order])
+        try! PFObject.saveAll([payment, order])
         
         configureView()
     }

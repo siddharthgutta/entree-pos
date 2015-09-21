@@ -20,7 +20,7 @@ class RestaurantMapView: UIView {
     var delegate: RestaurantMapViewDelegate?
     
     func reloadData() {
-        for subview in subviews as! [UIView] {
+        for subview in subviews {
             subview.removeFromSuperview()
         }
         
@@ -34,8 +34,8 @@ class RestaurantMapView: UIView {
     }
     
     func subviewTapped(gestureRecognizer: UIGestureRecognizer) {
-        let index = find(subviews as! [UIView], gestureRecognizer.view!)!
-        delegate?.restaurantMapView(self, tappedTableAtIndex: index)
+        let index = subviews.indexOf(gestureRecognizer.view!)
+        delegate?.restaurantMapView(self, tappedTableAtIndex: index!)
     }
     
 }

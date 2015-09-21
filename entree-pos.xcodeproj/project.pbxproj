@@ -11,6 +11,7 @@
 		8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */; };
 		8809E05B1BA7B10D00E466EE /* QuickService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8809E05A1BA7B10D00E466EE /* QuickService.storyboard */; };
 		8809E05E1BA7B38C00E466EE /* QuickServiceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */; };
+		88276FC01BADF53700092516 /* PrintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88276FBF1BADF53700092516 /* PrintingManager.m */; settings = {ASSET_TAGS = (); }; };
 		8845F9CC1B8E7D5A003A82F8 /* check_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8845F9CB1B8E7D5A003A82F8 /* check_template.xml */; };
 		8864BFD51BA682320028BE20 /* cash_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8864BFD41BA682320028BE20 /* cash_receipt_template.xml */; };
 		886BA4B51BA9207200ECC22B /* CardPayment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886BA4B41BA9207200ECC22B /* CardPayment.storyboard */; };
@@ -43,7 +44,6 @@
 		888BA1D11B6C3E5300D6C8D5 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A01B6C3E5300D6C8D5 /* Payment.swift */; };
 		888BA1D21B6C3E5300D6C8D5 /* PrintJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */; };
 		888BA1D31B6C3E5300D6C8D5 /* card_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 888BA1A21B6C3E5300D6C8D5 /* card_receipt_template.xml */; };
-		888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */; };
 		888BA1D51B6C3E5300D6C8D5 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */; };
 		888BA1D61B6C3E5300D6C8D5 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */; };
 		888BA1D81B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */; };
@@ -75,6 +75,8 @@
 		8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerTabsViewController.swift; path = "entree-pos/CustomerTabsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		8809E05A1BA7B10D00E466EE /* QuickService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuickService.storyboard; path = "entree-pos/QuickService.storyboard"; sourceTree = SOURCE_ROOT; };
 		8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceOrderViewController.swift; path = "entree-pos/QuickServiceOrderViewController.swift"; sourceTree = SOURCE_ROOT; };
+		88276FBE1BADF53700092516 /* PrintingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrintingManager.h; path = "entree-pos/PrintingManager.h"; sourceTree = SOURCE_ROOT; };
+		88276FBF1BADF53700092516 /* PrintingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrintingManager.m; path = "entree-pos/PrintingManager.m"; sourceTree = SOURCE_ROOT; };
 		8845F9CB1B8E7D5A003A82F8 /* check_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = check_template.xml; path = "entree-pos/check_template.xml"; sourceTree = SOURCE_ROOT; };
 		8864BFD41BA682320028BE20 /* cash_receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cash_receipt_template.xml; path = "entree-pos/cash_receipt_template.xml"; sourceTree = SOURCE_ROOT; };
 		886BA4B41BA9207200ECC22B /* CardPayment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CardPayment.storyboard; path = "entree-pos/CardPayment.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -109,7 +111,6 @@
 		888BA1A01B6C3E5300D6C8D5 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = "entree-pos/Payment.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A11B6C3E5300D6C8D5 /* PrintJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintJob.swift; path = "entree-pos/PrintJob.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A21B6C3E5300D6C8D5 /* card_receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = card_receipt_template.xml; path = "entree-pos/card_receipt_template.xml"; sourceTree = SOURCE_ROOT; };
-		888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptPrinterManager.swift; path = "entree-pos/ReceiptPrinterManager.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A41B6C3E5300D6C8D5 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Restaurant.swift; path = "entree-pos/Restaurant.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A51B6C3E5300D6C8D5 /* RestaurantMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RestaurantMapView.swift; path = "entree-pos/RestaurantMapView.swift"; sourceTree = SOURCE_ROOT; };
 		888BA1A71B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectRestaurantViewController.swift; path = "entree-pos/SelectRestaurantViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -317,8 +318,9 @@
 			children = (
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
-				888BA1A31B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift */,
 				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
+				88276FBE1BADF53700092516 /* PrintingManager.h */,
+				88276FBF1BADF53700092516 /* PrintingManager.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -406,6 +408,7 @@
 		32C4B5E11B238E5B0062B854 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Jesse Tipton";
@@ -508,6 +511,7 @@
 				888BA1BF1B6C3E5300D6C8D5 /* MenuCategory.swift in Sources */,
 				8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */,
 				888BA1C51B6C3E5300D6C8D5 /* MenuItemsViewController.swift in Sources */,
+				88276FC01BADF53700092516 /* PrintingManager.m in Sources */,
 				888BA1BD1B6C3E5300D6C8D5 /* Menu.swift in Sources */,
 				888BA1E11B6C3E5300D6C8D5 /* Table.swift in Sources */,
 				888BA1D21B6C3E5300D6C8D5 /* PrintJob.swift in Sources */,
@@ -518,7 +522,6 @@
 				888BA1C41B6C3E5300D6C8D5 /* MenuItemModifierListViewController.swift in Sources */,
 				88D3EDA31B8B979A001894EC /* CardPaymentOrderCompletionViewController.swift in Sources */,
 				888BA1DF1B6C3E5300D6C8D5 /* SignInViewController.swift in Sources */,
-				888BA1D41B6C3E5300D6C8D5 /* ReceiptPrinterManager.swift in Sources */,
 				888BA1DB1B6C3E5300D6C8D5 /* SettingsViewController.swift in Sources */,
 				888BA1D91B6C3E5300D6C8D5 /* ServerMapViewController.swift in Sources */,
 				888BA1DC1B6C3E5300D6C8D5 /* ShadedImageCollectionViewCell.swift in Sources */,

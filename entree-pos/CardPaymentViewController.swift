@@ -7,26 +7,16 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
         for orderItem in order.orderItems {
             orderItem.order = nil
         }
-
-        if PFObject.saveAll(order.orderItems) {
-            order.deleteInBackgroundWithBlock {
-                (succeeded, error) in
-                
-                if succeeded {
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
-                }
+        
+        PFObject.saveAllInBackground(order.orderItems)
+        
+        order.deleteInBackgroundWithBlock {
+            (succeeded, error) in
+            if succeeded {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
             }
-        } else {
-            let errorAlertController = UIAlertController(title: "Error",
-                message: "A problem occurred while executing this request. Please validate that you have a working internet connection and try again.",
-                preferredStyle: .Alert)
-            
-            let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
-            errorAlertController.addAction(okayAction)
-            
-            self.presentViewController(errorAlertController, animated: true, completion: nil)
         }
     }
     
@@ -158,8 +148,6 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        println("THIS IS FIRING")
-        
         configureViewWithCardAuthorized(false)
     }
     
@@ -167,7 +155,6 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     func transactionResult(charge: CFTCharge!, withError error: NSError!) {
         // This is a required method, but we don't need it in this context.
-        println("Transaction Result\nCharge: \(charge)\nError: \(error)")
     }
     
     func readerBatteryLow() {
@@ -236,7 +223,7 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
         if indexPath == NSIndexPath(forRow: 1, inSection: 1) {
             beginManualEntry()
         } else if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
-            ReceiptPrinterManager.sharedManager.printReceiptForOrder(order)
+            PrintingManager.sharedManager().printReceiptForOrder(order)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

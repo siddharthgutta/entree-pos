@@ -12,7 +12,7 @@ class BadgeLabel: UILabel {
     required init(coder aDecoder: NSCoder) {
         badgeColor = UIColor.blueColor()
         
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         
         layer.cornerRadius = 4
         

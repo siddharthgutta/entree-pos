@@ -16,9 +16,9 @@ class CustomerTabsViewController: PFQueryTableViewController {
         
         let addAction = UIAlertAction(title: "Add", style: .Default) {
             (action) in
-            let textField = newCustomerTabAlertController.textFields!.first as! UITextField
+            let textField = newCustomerTabAlertController.textFields!.first!
             
-            self.addOrderWithName(textField.text)
+            self.addOrderWithName(textField.text!)
         }
         newCustomerTabAlertController.addAction(addAction)
         

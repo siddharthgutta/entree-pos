@@ -12,7 +12,7 @@ import UIKit
     required init(coder aDecoder: NSCoder) {
         borderColor = UIColor.clearColor()
         
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         
         layer.borderWidth = 1
         layer.cornerRadius = 4

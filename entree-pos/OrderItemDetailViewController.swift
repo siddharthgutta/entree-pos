@@ -108,10 +108,10 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                cell = tableView.dequeueReusableCellWithIdentifier("MenuItemCell", forIndexPath: indexPath) as! UITableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("MenuItemCell", forIndexPath: indexPath) 
                 cell.textLabel?.text = orderItem.menuItem.name
             } else if indexPath.row == 1 {
-                cell = tableView.dequeueReusableCellWithIdentifier("SeatNumberCell", forIndexPath: indexPath) as! UITableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("SeatNumberCell", forIndexPath: indexPath) 
                 if let seatNumberLabel = cell.viewWithTag(100) as? UILabel {
                     seatNumberLabel.text = orderItem.seatNumber == 0 ? "Seat: None" : "Seat: \(orderItem.seatNumber)"
                 }
@@ -120,7 +120,7 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
                     seatNumberStepper.addTarget(self, action: Selector("updateSeatNumber:"), forControlEvents: .ValueChanged)
                 }
             } else {
-                cell = tableView.dequeueReusableCellWithIdentifier("OnTheHouseCell", forIndexPath: indexPath) as! UITableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("OnTheHouseCell", forIndexPath: indexPath) 
                 if let onTheHouseSwitch = cell.viewWithTag(100) as? UISwitch {
                     onTheHouseSwitch.on = orderItem.onTheHouse
                     onTheHouseSwitch.addTarget(self, action: Selector("toggleOnTheHouse:"), forControlEvents: .ValueChanged)
@@ -128,16 +128,16 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
             }
         case 1:
             if indexPath.row == orderItem.menuItemModifiers.count {
-                cell = tableView.dequeueReusableCellWithIdentifier("AddModifierCell", forIndexPath: indexPath) as! UITableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("AddModifierCell", forIndexPath: indexPath) 
                 cell.textLabel?.text = "Add Modifier"
                 cell.textLabel?.textColor = UIColor.entreeBlueColor()
             } else {
-                cell = tableView.dequeueReusableCellWithIdentifier("MenuItemModifierCell", forIndexPath: indexPath) as! UITableViewCell
+                cell = tableView.dequeueReusableCellWithIdentifier("MenuItemModifierCell", forIndexPath: indexPath) 
                 cell.textLabel?.text = orderItem.menuItemModifiers[indexPath.row].name
                 cell.detailTextLabel?.text = numberFormatter.stringFromNumber(NSNumber(double: orderItem.menuItemModifiers[indexPath.row].price))
             }
         case 2:
-            cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) as! UITableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("NotesCell", forIndexPath: indexPath) 
             if let notesTextView = cell.viewWithTag(100) as? UITextView {
                 notesTextView.text = orderItem.notes
                 notesTextView.delegate = self
@@ -176,7 +176,7 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
-    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String! {
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         return "Remove"
     }
     

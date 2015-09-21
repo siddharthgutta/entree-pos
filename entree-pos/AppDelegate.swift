@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(PARSE_APPLICATION_ID, clientKey: PARSE_CLIENT_KEY)
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions) { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                println("Parse Analytics: 👍")
+                print("Parse Analytics: 👍")
             } else {
-                println("Parse Analytics: 👎\nError: \(error)")
+                print("Parse Analytics: 👎\nError: \(error)")
             }
         }
         
@@ -49,9 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let restaurant = Restaurant.synchronouslyFetchDefaultRestaurant() {
             CFTSessionManager.sharedInstance().setApiToken(CARDFLIGHT_PRODUCTION_API_KEY, accountToken: restaurant.cardFlightAccountToken)
-            println("CardFlight: 👍")
+            print("CardFlight: 👍")
         } else {
-            println("CardFlight: 👎")
+            print("CardFlight: 👎")
         }
         
         // UIAppearance

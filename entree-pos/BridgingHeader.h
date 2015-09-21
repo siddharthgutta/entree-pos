@@ -6,5 +6,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import <CardFlight/CardFlight.h>
-#import <StarPrinting/StarPrinting.h>
 #import <THPinViewController/THPinViewController.h>
+
+#import <StarPrinting/Printer.h>
+#import "PrintingManager.h"

@@ -12,11 +12,11 @@ class ShadedImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        overlayView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        textLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        detailTextLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        badgeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
 }

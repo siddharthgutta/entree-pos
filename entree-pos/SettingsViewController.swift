@@ -33,7 +33,7 @@ class SettingsViewController: UITableViewController {
             }
         }
         
-        if let address = ReceiptPrinterManager.receiptPrinterMACAddress() {
+        if let address = PrintingManager.receiptPrinterMACAddress() {
             self.receiptPrinterNameLabel.text = address
         } else {
             receiptPrinterNameLabel.text = "Not set"
@@ -41,7 +41,7 @@ class SettingsViewController: UITableViewController {
         
         // Version number
         let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-        let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as! String) as! String
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
         versionLabel.text = "\(version) (\(build))"
     }
     
@@ -60,9 +60,10 @@ class SettingsViewController: UITableViewController {
         let searchingAlertController = UIAlertController(title: "Searching...", message: nil, preferredStyle: .Alert)
         
         presentViewController(searchingAlertController, animated: true) { () in
-            Printer.search { (results: [AnyObject]!) in
+            PrintingManager.sharedManager().searchForPrintersWithCompletion {
+                (results) in
                 
-                let printers = results as! [Printer]
+                let printers = results as [Printer]
                 
                 let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
                 
@@ -71,7 +72,7 @@ class SettingsViewController: UITableViewController {
                 
                 for printer in printers {
                     let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
-                        ReceiptPrinterManager.setReceiptPrinterMACAddress(printer.macAddress)
+                        PrintingManager.setReceiptPrinterMACAddress(printer.macAddress)
                     }
                     alertController.addAction(printerAlertAction)
                 }
@@ -100,7 +101,7 @@ class SettingsViewController: UITableViewController {
         case receiptPrinterTableViewCellIndexPath:
             editReceiptPrinter()
         default:
-            println("wat.")
+            print("wat.")
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

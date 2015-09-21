@@ -4,8 +4,7 @@ import UIKit
 extension NSCalendar {
     
     func endOfDayForDate(date: NSDate) -> NSDate {
-        let nextDay = NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: 1, toDate: date, options: nil)!
-        return NSCalendar.currentCalendar().startOfDayForDate(nextDay)
+        return NSCalendar.currentCalendar().startOfDayForDate(NSDate().dateByAddingTimeInterval(86400))
     }
     
 }
@@ -73,8 +72,8 @@ extension UIImage {
         let bounds = CGRectMake(0, 0, size.width, size.height)
         UIRectFill(bounds)
         
-        drawInRect(bounds, blendMode: kCGBlendModeOverlay, alpha: 1)
-        drawInRect(bounds, blendMode: kCGBlendModeDestinationIn, alpha: 1)
+        drawInRect(bounds, blendMode: .Overlay, alpha: 1)
+        drawInRect(bounds, blendMode: .DestinationIn, alpha: 1)
 
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

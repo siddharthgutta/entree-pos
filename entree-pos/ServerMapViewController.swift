@@ -64,8 +64,8 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         query.includeKey("currentParty.table")
         
         query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantWithoutData()!)
-        
-        query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]?, error: NSError?) in
+
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             if let tables = objects as? [Table] {
                 self.tables = tables
                 
@@ -73,7 +73,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                 
                 completion?()
             } else {
-                println(error?.localizedDescription)
+                print(error?.localizedDescription)
             }
         }
     }
@@ -102,7 +102,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             let customerTabsViewController = navController.viewControllers.first as! CustomerTabsViewController
             customerTabsViewController.server = employee
         default:
-            println("Unrecognized segue identifier")
+            print("Unrecognized segue identifier")
         }
     }
     
@@ -203,11 +203,11 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             addPartyAlertController.addAction(UIAlertAction(title: "Add", style: .Default) { (action: UIAlertAction!) in
                 let party = Party()
                 party.arrivedAt = NSDate()
-                party.name = (addPartyAlertController.textFields?.first as! UITextField).text
+                party.name = (addPartyAlertController.textFields?.first!.text)!
                 party.restaurant = Restaurant.defaultRestaurantWithoutData()!
                 party.seatedAt = NSDate()
                 party.server = self.employee
-                party.size = (addPartyAlertController.textFields?.last as! UITextField).text.intValue
+                party.size = (addPartyAlertController.textFields?.last)!.text!.intValue
                 party.table = self.tables[index]
                 
                 self.tables[index].currentParty = party
@@ -218,7 +218,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                     if succeeded {
                         self.loadTablesWithCompletion(nil)
                     } else {
-                        println(error?.localizedDescription)
+                        print(error?.localizedDescription)
                     }
                 }
             })

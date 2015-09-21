@@ -1,4 +1,10 @@
 
+
+enum RestaurantError: ErrorType {
+    case NoDefaultRestaurant
+    case RestaurantNotFound
+}
+
 class Restaurant: PFObject, PFSubclassing {
     
     @NSManaged var alcoholTaxRate: Double
@@ -9,18 +15,16 @@ class Restaurant: PFObject, PFSubclassing {
     @NSManaged var salesTaxRate: Double
     
     static func defaultRestaurantFromLocalDatastoreFetchIfNil() -> Restaurant? {
-        if let restaurantID = Restaurant.defaultRestaurantObjectID() {
-            let query = Restaurant.query()!
-            
-            query.fromLocalDatastore()
-            
-            if let restaurant = query.getObjectWithId(restaurantID) as? Restaurant {
-                return restaurant
-            } else {
-                return Restaurant.synchronouslyFetchDefaultRestaurant()
-            }
-        } else {
+        guard let objectID = Restaurant.defaultRestaurantObjectID() else {
             return nil
+        }
+        
+        do {
+            let restaurant = try restaurantQueryFromLocalDatastore(false).getObjectWithId(objectID) as! Restaurant
+            return restaurant
+        } catch {
+            let restaurant = Restaurant.synchronouslyFetchDefaultRestaurant()
+            return restaurant
         }
     }
     
@@ -36,14 +40,23 @@ class Restaurant: PFObject, PFSubclassing {
         }
     }
     
+    static func restaurantQueryFromLocalDatastore(fromLocalDatastore: Bool) -> PFQuery {
+        let query = Restaurant.query()!
+        
+        if fromLocalDatastore {
+            query.fromLocalDatastore()
+        }
+        
+        return query
+    }
+    
     static func asynchronouslyFetchDefaultRestaurantWithCompletion(completion: (Bool, Restaurant?) -> Void) {
         if let objectID = defaultRestaurantObjectID() {
             let query = Restaurant.query()!
             
             query.getObjectInBackgroundWithId(objectID) { (object: PFObject?, error: NSError?) in
                 if let restaurant = object as? Restaurant {
-                    restaurant.pin()
-                    
+                    try! restaurant.pin()
                     completion(true, restaurant)
                 } else {
                     completion(false, nil)
@@ -62,8 +75,8 @@ class Restaurant: PFObject, PFSubclassing {
         if let objectID = defaultRestaurantObjectID() {
             let query = Restaurant.query()!
             
-            if let restaurant = query.getObjectWithId(objectID) as? Restaurant {
-                restaurant.pin()
+            if let restaurant = try! query.getObjectWithId(objectID) as? Restaurant {
+                try! restaurant.pin()
                 
                 return restaurant
             } else {

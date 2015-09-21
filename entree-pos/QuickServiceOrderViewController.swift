@@ -4,13 +4,13 @@ import UIKit
 class QuickServiceOrderViewController: PFQueryTableViewController {
     
     @IBAction func sendToKitchen(sender: UIBarButtonItem) {
-        ReceiptPrinterManager.sharedManager.printOrderItems(objects as! [OrderItem], party: nil, createdBy: order.server, toGo: false)
+        PrintingManager.sharedManager().printPrintJobsForOrderItems(objects as! [OrderItem], party: nil, server: order.server, toGo: false)
         
         for orderItem in objects as! [OrderItem] {
             orderItem.sentToKitchen = true
         }
         
-        PFObject.saveAll(objects)
+        try! PFObject.saveAll(objects)
         
         loadObjects()
     }
@@ -75,7 +75,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
     // MARK: - QuickServiceOrderViewController
     
     func cancel(sender: UIBarButtonItem) {
-        var objectsToDelete: [AnyObject] = [order] + order.orderItems
+        let objectsToDelete: [AnyObject] = [order] + order.orderItems
         PFObject.deleteAllInBackground(objectsToDelete) {
             (succeeded, error) in
             if succeeded {
@@ -172,7 +172,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
                 index++
             }
             
-            order.save()
+            try! order.save()
             
             removeObjectAtIndexPath(indexPath)
             
