@@ -19,7 +19,7 @@ class ServerOverviewViewController: PFQueryTableViewController {
         changeDayByAddingValue(-1)
     }
     
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     var date = NSDate()
     let dateFormatter = NSDateFormatter()

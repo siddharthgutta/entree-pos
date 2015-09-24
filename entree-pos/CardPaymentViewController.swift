@@ -30,14 +30,14 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
         completionHandler()
     }
     
-    @IBOutlet var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var doneBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet var orderTableViewCell: UITableViewCell!
-    @IBOutlet var subtotalTableViewCell: UITableViewCell!
-    @IBOutlet var cardReaderStatusTableViewCell: UITableViewCell!
-    @IBOutlet var manualEntryTableViewCell: UITableViewCell!
-    @IBOutlet var printReceiptTableViewCell: UITableViewCell!
+    @IBOutlet weak var orderTableViewCell: UITableViewCell!
+    @IBOutlet weak var subtotalTableViewCell: UITableViewCell!
+    @IBOutlet weak var cardReaderStatusTableViewCell: UITableViewCell!
+    @IBOutlet weak var manualEntryTableViewCell: UITableViewCell!
+    @IBOutlet weak var printReceiptTableViewCell: UITableViewCell!
 
     var currencyNumberFormatter: NSNumberFormatter {
         let formatter = NSNumberFormatter()

@@ -22,12 +22,12 @@ class QuickServiceOrderItemDetailViewController: UITableViewController {
         }
     }
     
-    @IBOutlet var menuItemNameLabel: UILabel!
-    @IBOutlet var seatNumberLabel: UILabel!
-    @IBOutlet var seatNumberStepper: UIStepper!
-    @IBOutlet var onTheHouseSwitch: UISwitch!
-    @IBOutlet var menuItemModifiersLabel: UILabel!
-    @IBOutlet var notesTextView: UITextView!
+    @IBOutlet weak var menuItemNameLabel: UILabel!
+    @IBOutlet weak var seatNumberLabel: UILabel!
+    @IBOutlet weak var seatNumberStepper: UIStepper!
+    @IBOutlet weak var onTheHouseSwitch: UISwitch!
+    @IBOutlet weak var menuItemModifiersLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
     
     var orderItem: OrderItem!
     

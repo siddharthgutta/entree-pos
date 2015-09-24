@@ -59,10 +59,10 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
         paymentTypeAlertController.popoverPresentationController?.barButtonItem = sender
     }
     
-    @IBOutlet var itemsCountLabel: UILabel!
-    @IBOutlet var amountDueLabel: UILabel!
-    @IBOutlet var taxLabel: UILabel!
-    @IBOutlet var subtotalLabel: UILabel!
+    @IBOutlet weak var itemsCountLabel: UILabel!
+    @IBOutlet weak var amountDueLabel: UILabel!
+    @IBOutlet weak var taxLabel: UILabel!
+    @IBOutlet weak var subtotalLabel: UILabel!
     
     var order: Order!
     

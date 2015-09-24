@@ -105,11 +105,11 @@ class OrderItemsViewController: PFQueryTableViewController {
         }
     }
     
-    @IBOutlet var seatedAtLabel: UILabel!
-    @IBOutlet var itemsSelectedLabel: UILabel!
-    @IBOutlet var amountDueLabel: UILabel!
-    @IBOutlet var taxLabel: UILabel!
-    @IBOutlet var subtotalLabel: UILabel!
+    @IBOutlet weak var seatedAtLabel: UILabel!
+    @IBOutlet weak var itemsSelectedLabel: UILabel!
+    @IBOutlet weak var amountDueLabel: UILabel!
+    @IBOutlet weak var taxLabel: UILabel!
+    @IBOutlet weak var subtotalLabel: UILabel!
     
     var party: Party!
     

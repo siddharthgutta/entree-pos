@@ -29,7 +29,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
         }
     }
     
-    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let restaurantMapView = RestaurantMapView()
     

@@ -3,11 +3,11 @@ import UIKit
 
 class CardPaymentOrderCompletionViewController: UITableViewController {
 
-    @IBOutlet var orderIDLabel: UILabel!
-    @IBOutlet var subtotalLabel: UILabel!
-    @IBOutlet var tipTextField: UITextField!
+    @IBOutlet weak var orderIDLabel: UILabel!
+    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var tipTextField: UITextField!
     
-    @IBOutlet var chargeCell: UITableViewCell!
+    @IBOutlet weak var chargeCell: UITableViewCell!
     
     var order: Order!
     let currencyNumberFormatter: NSNumberFormatter

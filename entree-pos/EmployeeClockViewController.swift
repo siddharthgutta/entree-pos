@@ -3,7 +3,7 @@ import UIKit
 
 class EmployeeClockViewController: UITableViewController {
     
-    @IBOutlet var currentShiftTimerLabel: UILabel!
+    @IBOutlet weak var currentShiftTimerLabel: UILabel!
 
     var employee: Employee?
     var timer: NSTimer?

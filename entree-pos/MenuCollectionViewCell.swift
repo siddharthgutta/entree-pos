@@ -3,8 +3,8 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var textLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

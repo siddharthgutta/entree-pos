@@ -9,7 +9,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         presentViewController(settingsViewController, animated: true, completion: nil)
     }
     
-    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     let numberOfCellsPerRow: CGFloat = 5
     let sectionEdgeInsets: CGFloat = 16

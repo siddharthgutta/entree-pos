@@ -7,12 +7,12 @@ class SettingsViewController: UITableViewController {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBOutlet var restaurantNameLabel: UILabel!
-    @IBOutlet var restaurantLocationLabel: UILabel!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var restaurantLocationLabel: UILabel!
     
-    @IBOutlet var receiptPrinterNameLabel: UILabel!
+    @IBOutlet weak var receiptPrinterNameLabel: UILabel!
     
-    @IBOutlet var versionLabel: UILabel!
+    @IBOutlet weak var versionLabel: UILabel!
     
     let signOutTableViewCellIndexPath        = NSIndexPath(forRow: 1, inSection: 0)
     let receiptPrinterTableViewCellIndexPath = NSIndexPath(forRow: 0, inSection: 1)

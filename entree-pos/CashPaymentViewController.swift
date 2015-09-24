@@ -42,14 +42,14 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet var doneBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var doneBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet var orderTableViewCell: UITableViewCell!
-    @IBOutlet var subtotalTableViewCell: UITableViewCell!
+    @IBOutlet weak var orderTableViewCell: UITableViewCell!
+    @IBOutlet weak var subtotalTableViewCell: UITableViewCell!
 
-    @IBOutlet var amountPaidTextField: UITextField!
-    @IBOutlet var changeDueLabel: UILabel!
+    @IBOutlet weak var amountPaidTextField: UITextField!
+    @IBOutlet weak var changeDueLabel: UILabel!
     
     var currencyNumberFormatter: NSNumberFormatter {
         let formatter = NSNumberFormatter()
