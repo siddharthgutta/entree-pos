@@ -10,13 +10,16 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     @IBOutlet weak var chargeCell: UITableViewCell!
     
     var order: Order!
-    let currencyNumberFormatter: NSNumberFormatter
+    var numberFormatter: NSNumberFormatter {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        return formatter
+    }
     
     // MARK: - Init
     
     required init!(coder aDecoder: NSCoder) {
-        currencyNumberFormatter = NSNumberFormatter()
-        currencyNumberFormatter.numberStyle = .CurrencyStyle
+        
         
         super.init(coder: aDecoder)
     }
