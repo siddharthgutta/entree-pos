@@ -3,18 +3,6 @@ import UIKit
 
 class QuickServiceOrderViewController: PFQueryTableViewController {
     
-    @IBAction func sendToKitchen(sender: UIBarButtonItem) {
-        PrintingManager.sharedManager().printPrintJobsForOrderItems(objects as! [OrderItem], party: nil, server: order.server, toGo: false)
-        
-        for orderItem in objects as! [OrderItem] {
-            orderItem.sentToKitchen = true
-        }
-        
-        try! PFObject.saveAll(objects)
-        
-        loadObjects()
-    }
-    
     @IBAction func pay(sender: UIBarButtonItem) {
         let paymentTypeAlertController = UIAlertController(title: "Payment Type", message: nil, preferredStyle: .ActionSheet)
         
@@ -26,6 +14,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
             cardPaymentViewController.completionHandler = {
                 self.dismissViewControllerAnimated(true) {
                     () in
+                    self.sendToKitchen()
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 }
@@ -44,6 +33,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
             cashPaymentViewController.completionHandler = {
                 self.dismissViewControllerAnimated(true) {
                     () in
+                    self.sendToKitchen()
                     self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 }
@@ -97,6 +87,19 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
     
     func dismiss(sender: UIBarButtonItem) {
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func sendToKitchen() {
+        PrintingManager.sharedManager().printPrintJobsForOrderItems(objects as! [OrderItem], party: nil, server: order.server, toGo: false)
+        
+        for orderItem in objects as! [OrderItem] {
+            orderItem.sentToKitchen = true
+        }
+        
+        PFObject.saveAllInBackground(objects) {
+            (success, error) in
+            self.loadObjects()
+        }
     }
     
     // MARK: - PFQueryTableViewController
