@@ -4,19 +4,25 @@ import UIKit
 class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        for orderItem in order.orderItems {
-            orderItem.order = nil
-        }
-        PFObject.saveAllInBackground(order.orderItems)
-        
-        PFObject.deleteAllInBackground([order, order.payment!]) {
-            (succeeded, error) in
-            if succeeded {
-                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-            } else {
-                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+        // Only delete the order if the party is not nil
+        if let _ = order.party {
+            for orderItem in order.orderItems {
+                orderItem.order = nil
             }
+            PFObject.saveAllInBackground(order.orderItems)
+            
+            PFObject.deleteAllInBackground([order, order.payment!]) {
+                (succeeded, error) in
+                if succeeded {
+                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
+        } else {
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
         }
+
     }
     
     @IBAction func done() {
