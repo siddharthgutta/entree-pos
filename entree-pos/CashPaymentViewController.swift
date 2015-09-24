@@ -29,7 +29,11 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         order.payment!.saveInBackground()
         
         if order.payment!.cashAmountPaid >= order.subtotal {
-            completionHandler()
+            order.payment?.charged = true
+            order.payment?.saveInBackgroundWithBlock {
+                (success, error) in
+                self.completionHandler()
+            }
         } else {
             let errorAlertController = UIAlertController(title: "Oops!",
                 message: "Please specify the cash amount paid before attempting to close the sale.",
@@ -110,11 +114,11 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         let payment = Payment()
         payment.restaurant = Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!
         payment.type = "Cash"
-        payment.charged = true
         
         order.payment = payment
         payment.order = order
         
+        // Synchronous and dangerous
         try! PFObject.saveAll([payment, order])
         
         configureView()
