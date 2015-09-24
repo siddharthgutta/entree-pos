@@ -52,7 +52,8 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     }
     
     private func refund() {
-        CFTCharge.refundChargeWithToken(order.payment!.cardFlightChargeToken, andAmount: nil, success: { (charge: CFTCharge!) in
+        CFTCharge.refundChargeWithToken(order.payment!.cardFlightChargeToken, andAmount: nil, success: {
+            (charge) in
             let refundAlertController = UIAlertController(title: "Success", message: "This charge has been successfully refunded.", preferredStyle: .Alert)
             
             let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
@@ -71,7 +72,8 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
             }
-        }) { (error: NSError!) in
+        }) {
+            (error) in
             self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
         }
     }
