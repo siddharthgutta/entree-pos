@@ -72,21 +72,33 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     
     private func printReceipt() {
         PrintingManager.sharedManager().printReceiptForOrder(order)
+        
         let receiptSentAlertController = UIAlertController(title: "Receipt Sent!", message: "The receipt has been sent to the printer.", preferredStyle: .Alert)
+        
         let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
         receiptSentAlertController.addAction(okayAction)
+        
         presentViewController(receiptSentAlertController, animated: true, completion: nil)
     }
     
     func updateChangeDue() {
         let numberFormatter = NSNumberFormatter()
+        
         if let amountPaid = numberFormatter.numberFromString(amountPaidTextField.text!)?.doubleValue {
-            let changeDue = round((amountPaid - order.subtotal) * 100) / 100
+            var changeDue = round((amountPaid - order.subtotal) * 100) / 100
             
-            changeDueLabel.text = currencyNumberFormatter.stringFromDouble(changeDue)
+            if changeDue == -0 {
+                changeDue = 0
+            }
             
-            order.payment!.cashAmountPaid = amountPaid
-            order.payment!.changeGiven = amountPaid - order.subtotal
+            if changeDue >= 0 {
+                changeDueLabel.text = currencyNumberFormatter.stringFromDouble(changeDue)
+            } else {
+                changeDueLabel.text = "Insufficient amount paid"
+            }
+            
+            order.payment?.cashAmountPaid = amountPaid
+            order.payment?.changeGiven = amountPaid - order.subtotal
         }
     }
     
