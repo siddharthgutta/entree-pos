@@ -98,7 +98,6 @@ class ServerOverviewViewController: PFQueryTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        date = NSDate()
         changeDayByAddingValue(0)
     }
 
