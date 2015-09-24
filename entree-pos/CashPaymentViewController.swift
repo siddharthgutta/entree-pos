@@ -66,8 +66,12 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         orderTableViewCell.detailTextLabel?.text = order.objectId!
         subtotalTableViewCell.detailTextLabel?.text = currencyNumberFormatter.stringFromDouble(order.subtotal)
         
-        amountPaidTextField.text = ""
-        changeDueLabel.text = "$0.00"
+        if let payment = order.payment {
+            amountPaidTextField.text = currencyNumberFormatter.stringFromDouble(payment.cashAmountPaid)
+            changeDueLabel.text = currencyNumberFormatter.stringFromDouble(round(payment.changeGiven * 100) / 100)
+        } else {
+            fatalError("Order does not have a payment")
+        }
     }
     
     private func printReceipt() {
@@ -85,21 +89,11 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         let numberFormatter = NSNumberFormatter()
         
         if let amountPaid = numberFormatter.numberFromString(amountPaidTextField.text!)?.doubleValue {
-            var changeDue = round((amountPaid - order.subtotal) * 100) / 100
-            
-            if changeDue == -0 {
-                changeDue = 0
-            }
-            
-            if changeDue >= 0 {
-                changeDueLabel.text = currencyNumberFormatter.stringFromDouble(changeDue)
-            } else {
-                changeDueLabel.text = "Insufficient amount paid"
-            }
-            
             order.payment?.cashAmountPaid = amountPaid
             order.payment?.changeGiven = amountPaid - order.subtotal
         }
+        
+        configureView()
     }
     
     // MARK: - UIViewController
