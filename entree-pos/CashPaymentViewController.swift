@@ -26,13 +26,15 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        order.payment!.saveInBackground()
-        
-        if order.payment!.cashAmountPaid >= order.subtotal {
+        if order.payment?.changeGiven >= 0 {
             order.payment?.charged = true
             order.payment?.saveInBackgroundWithBlock {
                 (success, error) in
-                self.completionHandler()
+                if success {
+                    self.completionHandler()
+                } else {
+                    print(error)
+                }
             }
         } else {
             let errorAlertController = UIAlertController(title: "Oops!",
@@ -71,8 +73,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         subtotalTableViewCell.detailTextLabel?.text = currencyNumberFormatter.stringFromDouble(order.subtotal)
         
         if let payment = order.payment {
-            amountPaidTextField.text = currencyNumberFormatter.stringFromDouble(payment.cashAmountPaid)
-            changeDueLabel.text = currencyNumberFormatter.stringFromDouble(round(payment.changeGiven * 100) / 100)
+            changeDueLabel.text = currencyNumberFormatter.stringFromDouble(payment.changeGiven)
         } else {
             fatalError("Order does not have a payment")
         }
@@ -94,7 +95,12 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         
         if let amountPaid = numberFormatter.numberFromString(amountPaidTextField.text!)?.doubleValue {
             order.payment?.cashAmountPaid = amountPaid
-            order.payment?.changeGiven = amountPaid - order.subtotal
+            var changeGiven = round((amountPaid - order.subtotal) * 100) / 100
+            // Weird but necessary check for -0
+            if changeGiven == -0 {
+                changeGiven = 0
+            }
+            order.payment?.changeGiven = changeGiven
         }
         
         configureView()
@@ -131,10 +137,8 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if order.payment!.cashAmountPaid >= order.subtotal {
+        if order.payment?.changeGiven >= 0 {
             if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
-                order.payment!.saveInBackground()
-                
                 printReceipt()
             }
         } else {
