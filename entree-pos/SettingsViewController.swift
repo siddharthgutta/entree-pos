@@ -73,6 +73,7 @@ class SettingsViewController: UITableViewController {
                 for printer in printers {
                     let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
                         PrintingManager.setReceiptPrinterMACAddress(printer.macAddress)
+                        self.reloadData()
                     }
                     alertController.addAction(printerAlertAction)
                 }
