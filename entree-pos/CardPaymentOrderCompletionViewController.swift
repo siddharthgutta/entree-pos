@@ -118,7 +118,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     private func configureView() {
         orderIDLabel.text = order.objectId!
         
-        subtotalLabel.text = currencyNumberFormatter.stringFromNumber(NSNumber(double: order.subtotal))
+        subtotalLabel.text = numberFormatter.stringFromDouble(order.subtotal)
         
         tipTextField.text = "\(order.tip)"
         
