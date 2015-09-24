@@ -18,9 +18,6 @@ class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
     }
     
     @IBAction func save(sender: UIBarButtonItem) {
-        let seatNumber = orderItem.seatNumber
-        orderItem.seatNumber = seatNumber
-        
         orderItem.saveInBackgroundWithBlock {
             (succeeded, error) in
             
