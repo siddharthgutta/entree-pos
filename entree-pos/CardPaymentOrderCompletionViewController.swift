@@ -31,17 +31,19 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
         
         let chargeAction = UIAlertAction(title: "Charge", style: .Default) { (action: UIAlertAction!) in
             CFTCharge.captureChargeWithToken(self.order.payment!.cardFlightChargeToken!, andAmount: NSDecimalNumber(double: self.order.total), success: { (charge: CFTCharge!) in
-                self.order.payment!.charged = true
-                try! self.order.payment!.save()
-                self.configureView()
-                
-                let chargedAlertController = UIAlertController(title: "Success", message: "Card was charged successfully.", preferredStyle: .Alert)
-                
-                let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
-                chargedAlertController.addAction(okayAction)
-                
-                self.presentViewController(chargedAlertController, animated: true, completion: nil)
-
+                self.order.payment?.charged = true
+                self.order.payment?.saveInBackgroundWithBlock {
+                    (success, error) in
+                    
+                    self.configureView()
+                    
+                    let chargedAlertController = UIAlertController(title: "Success", message: "Card was charged successfully.", preferredStyle: .Alert)
+                    
+                    let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    chargedAlertController.addAction(okayAction)
+                    
+                    self.presentViewController(chargedAlertController, animated: true, completion: nil)
+                }
             }, failure: { (error: NSError!) in
                 self.presentViewController(UIAlertController.alertControllerForError(error), animated: true, completion: nil)
             })
