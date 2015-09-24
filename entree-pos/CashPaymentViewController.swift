@@ -118,8 +118,12 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         order.payment = payment
         payment.order = order
         
-        // Synchronous and dangerous
-        try! PFObject.saveAll([payment, order])
+        // FIXME: This has error handling now (kinda), but still could be safer and asynchronous if possible
+        do {
+            try PFObject.saveAll([payment, order])
+        } catch {
+            print(error)
+        }
         
         configureView()
     }
