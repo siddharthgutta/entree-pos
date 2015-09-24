@@ -57,34 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // UIAppearance
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         
-        /*
-        var i = 0
-        let query = PFQuery(className: "MenuItem")
-        query.limit = 1000
-        let menuItems = query.findObjects() as! [PFObject]
-        let printer = PFObject(withoutDataWithClassName: "StarPrinter", objectId: "4WpBXk11IV") //Maple
-        for menuItem in menuItems {
-            let printJob = PFObject(className: "PrintJob")
-            printJob.setValue(printer, forKey: "printer")
-            printJob.setValue("", forKey: "text")
-            printJob.save()
-            menuItem.setValue([printJob], forKey: "printJobs")
-            println("COMPLETED: \(i)/\(menuItems.count)")
-            i++
-        }
-        PFObject.saveAll(menuItems)
-        */
-        /*
-        let printer = PFObject(withoutDataWithClassName: "StarPrinter", objectId: "tdLFRk4WQU") //Old reliable tdLFRk4WQU
-        let query = PFQuery(className: "PrintJob")
-        query.limit = 1000
-        let jobs = try! query.findObjects()
-        for job in jobs {
-            job.setValue(printer, forKey: "printer")
-        }
-        PFObject.saveAllInBackground(jobs)
-        */
-        
         return true
     }
 
