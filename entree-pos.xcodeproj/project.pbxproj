@@ -319,8 +319,7 @@
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
 				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
-				88276FBE1BADF53700092516 /* PrintingManager.h */,
-				88276FBF1BADF53700092516 /* PrintingManager.m */,
+				88B2B9A01BB3A16900AC0961 /* Printing */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -362,6 +361,15 @@
 				886BA4B91BA9458700ECC22B /* server_summary_template.xml */,
 			);
 			name = "Printer Templates";
+			sourceTree = "<group>";
+		};
+		88B2B9A01BB3A16900AC0961 /* Printing */ = {
+			isa = PBXGroup;
+			children = (
+				88276FBE1BADF53700092516 /* PrintingManager.h */,
+				88276FBF1BADF53700092516 /* PrintingManager.m */,
+			);
+			name = Printing;
 			sourceTree = "<group>";
 		};
 		88F47F4F1BA798E500C563D9 /* Customer Tabs */ = {
