@@ -16,14 +16,6 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
         return formatter
     }
     
-    // MARK: - Init
-    
-    required init!(coder aDecoder: NSCoder) {
-        
-        
-        super.init(coder: aDecoder)
-    }
-    
     // MARK: - CardPaymentOrderCompletionViewController
     
     private func charge() {        
