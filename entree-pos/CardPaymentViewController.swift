@@ -230,6 +230,13 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
             beginManualEntry()
         } else if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
             PrintingManager.sharedManager().printReceiptForOrder(order)
+            
+            let receiptSentAlertController = UIAlertController(title: "Receipt Sent!", message: "The receipt has been sent to the printer.", preferredStyle: .Alert)
+            
+            let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            receiptSentAlertController.addAction(okayAction)
+            
+            presentViewController(receiptSentAlertController, animated: true, completion: nil)
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
