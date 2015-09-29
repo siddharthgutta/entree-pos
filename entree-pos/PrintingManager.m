@@ -137,7 +137,7 @@
             NSString *itemNameString = printJob.text.length == 0 ? printJob.text : orderItem.menuItem.name;
             NSString *itemNameXML = [NSString stringWithFormat:@"<text><left><large>%@</large></left></text><newline />", itemNameString];
             
-            NSString *seatXML = orderItem.seatNumber == 0 ? @"" : [NSString stringWithFormat:@"<tab /><text><large>SEAT: %ld</large></text><newline />", orderItem.seatNumber];
+            NSString *seatXML = orderItem.seatNumber == 0 ? @"" : [NSString stringWithFormat:@"<tab /><text><large>SEAT: %ld</large></text><newline />", (long) orderItem.seatNumber];
             
             NSMutableString *modifiersXML = [NSMutableString string];
             if (orderItem.menuItemModifiers.count > 0) {
