@@ -182,7 +182,7 @@
 				888BA1E51B6C3E7500D6C8D5 /* Model */,
 				888BA1E41B6C3E7400D6C8D5 /* Views */,
 				888BA1E31B6C3E6A00D6C8D5 /* View Controllers */,
-				888BA1E71B6C409300D6C8D5 /* Interfaces */,
+				888BA1E71B6C409300D6C8D5 /* Storyboards */,
 				888BA1F01B6C40B500D6C8D5 /* Supporting Files */,
 			);
 			name = "entree-pos";
@@ -324,7 +324,7 @@
 			name = Application;
 			sourceTree = "<group>";
 		};
-		888BA1E71B6C409300D6C8D5 /* Interfaces */ = {
+		888BA1E71B6C409300D6C8D5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				886BA4B41BA9207200ECC22B /* CardPayment.storyboard */,
@@ -338,7 +338,7 @@
 				88C188D01B6FF5A90092D1BE /* ShadedImageCollectionViewCell.xib */,
 				88C188D11B6FF5A90092D1BE /* SignIn.storyboard */,
 			);
-			name = Interfaces;
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		888BA1F01B6C40B500D6C8D5 /* Supporting Files */ = {
