@@ -201,16 +201,14 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
             
             addPartyAlertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
             addPartyAlertController.addAction(UIAlertAction(title: "Add", style: .Default) { (action: UIAlertAction!) in
-                let party = Party()
-                party.arrivedAt = NSDate()
-                party.name = (addPartyAlertController.textFields?.first!.text)!
-                party.restaurant = Restaurant.defaultRestaurantWithoutData()!
-                party.seatedAt = NSDate()
-                party.server = self.employee
-                party.size = (addPartyAlertController.textFields?.last)!.text!.intValue
-                party.table = self.tables[index]
                 
-                self.tables[index].currentParty = party
+                let table = self.tables[index]
+                let name = addPartyAlertController.textFields?.first?.text
+                let size = addPartyAlertController.textFields?.last?.text?.intValue ?? 0
+                
+                let party = Party.partyWithServer(self.employee, table: table, name: name, size: size, customerTab: false)
+     
+                table.currentParty = party
                 
                 self.employee.incrementKey("activePartyCount")
                 
@@ -218,7 +216,7 @@ class ServerMapViewController: UIViewController, RestaurantMapViewDataSource, Re
                     if succeeded {
                         self.loadTablesWithCompletion(nil)
                     } else {
-                        print(error?.localizedDescription)
+                        print(error)
                     }
                 }
             })

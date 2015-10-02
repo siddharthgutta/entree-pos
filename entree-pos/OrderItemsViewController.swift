@@ -11,12 +11,20 @@ class OrderItemsViewController: PFQueryTableViewController {
             confirmationAlertController.addAction(cancelAction)
             
             let closeAction = UIAlertAction(title: "Close", style: .Destructive) { (action: UIAlertAction!) in
+                var objectsToSave = [AnyObject]()
+                
                 self.party.leftAt = NSDate()
-                self.party.table.currentParty = nil
+                objectsToSave.append(self.party)
                 
                 self.party.server.incrementKey("activePartyCount", byAmount: NSNumber(integer: -1))
+                objectsToSave.append(self.party.server)
                 
-                PFObject.saveAllInBackground([self.party, self.party.table, self.party.server]) { (success: Bool, error: NSError?) in
+                if let table = self.party.table {
+                    table.currentParty = nil
+                    objectsToSave.append(table)
+                }
+                
+                PFObject.saveAllInBackground(objectsToSave) { success, error in
                     if success {
                         self.dismiss()
                     } else {
@@ -58,7 +66,9 @@ class OrderItemsViewController: PFQueryTableViewController {
     }
     
     @IBAction func dismiss() {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.dismissViewControllerAnimated(true) { () in
+            NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+        }
     }
     
     @IBAction func printCheck() {
@@ -127,17 +137,20 @@ class OrderItemsViewController: PFQueryTableViewController {
     // MARK: - OrderItemsViewController
     
     func configureView() {
-        // Navigation item
-        var title = party.table.name
-        if !party.name.isEmpty {
-            title += " – \(party.name)"
+        // Navigation Title
+        navigationItem.title = party.customerTab ? party.name : party.table?.name
+        
+        // Table Header View
+        if let seatedAt = party.seatedAt {
+            seatedAtLabel.text = "Seated at " + dateFormatter.stringFromDate(seatedAt)
+        } else {
+            let now = NSDate()
+            party.seatedAt = now
+            party.saveEventually()
+            seatedAtLabel.text = "Seated at " + dateFormatter.stringFromDate(now)
         }
-        navigationItem.title = title
         
-        // Table header view
-        seatedAtLabel.text = "Seated at " + dateFormatter.stringFromDate(party.seatedAt)
-        
-        // Table footer view
+        // Table Footer View
         let selectedOrderItems = orderItemsForSelectedRows()
         
         itemsSelectedLabel.text = "\(selectedOrderItems.count) Items Selected"

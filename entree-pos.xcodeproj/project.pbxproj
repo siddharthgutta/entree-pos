@@ -11,6 +11,7 @@
 		8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */; };
 		8809E05B1BA7B10D00E466EE /* QuickService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8809E05A1BA7B10D00E466EE /* QuickService.storyboard */; };
 		8809E05E1BA7B38C00E466EE /* QuickServiceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */; };
+		882401DA1BBC299E00952C6E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882401D91BBC299E00952C6E /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
 		88276FC01BADF53700092516 /* PrintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88276FBF1BADF53700092516 /* PrintingManager.m */; settings = {ASSET_TAGS = (); }; };
 		8845F9CC1B8E7D5A003A82F8 /* check_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8845F9CB1B8E7D5A003A82F8 /* check_template.xml */; };
 		8864BFD51BA682320028BE20 /* cash_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8864BFD41BA682320028BE20 /* cash_receipt_template.xml */; };
@@ -75,6 +76,7 @@
 		8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerTabsViewController.swift; path = "entree-pos/CustomerTabsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		8809E05A1BA7B10D00E466EE /* QuickService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuickService.storyboard; path = "entree-pos/QuickService.storyboard"; sourceTree = SOURCE_ROOT; };
 		8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceOrderViewController.swift; path = "entree-pos/QuickServiceOrderViewController.swift"; sourceTree = SOURCE_ROOT; };
+		882401D91BBC299E00952C6E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "entree-pos/Reachability.swift"; sourceTree = SOURCE_ROOT; };
 		88276FBE1BADF53700092516 /* PrintingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrintingManager.h; path = "entree-pos/PrintingManager.h"; sourceTree = SOURCE_ROOT; };
 		88276FBF1BADF53700092516 /* PrintingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrintingManager.m; path = "entree-pos/PrintingManager.m"; sourceTree = SOURCE_ROOT; };
 		8845F9CB1B8E7D5A003A82F8 /* check_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = check_template.xml; path = "entree-pos/check_template.xml"; sourceTree = SOURCE_ROOT; };
@@ -318,6 +320,7 @@
 			children = (
 				888BA1801B6C3E5300D6C8D5 /* AppDelegate.swift */,
 				888BA1891B6C3E5300D6C8D5 /* Extensions.swift */,
+				882401D91BBC299E00952C6E /* Reachability.swift */,
 				888BA1841B6C3E5300D6C8D5 /* BridgingHeader.h */,
 				88B2B9A01BB3A16900AC0961 /* Printing */,
 			);
@@ -513,6 +516,7 @@
 				888BA1B51B6C3E5300D6C8D5 /* BorderedButton.swift in Sources */,
 				888BA1D81B6C3E5300D6C8D5 /* SelectRestaurantViewController.swift in Sources */,
 				88E4CE191BA7D3B30092B7D4 /* QuickServiceOrderItemDetailViewController.swift in Sources */,
+				882401DA1BBC299E00952C6E /* Reachability.swift in Sources */,
 				888BA1D51B6C3E5300D6C8D5 /* Restaurant.swift in Sources */,
 				888BA1CD1B6C3E5300D6C8D5 /* Party.swift in Sources */,
 				888BA1E21B6C3E5300D6C8D5 /* TimeClockViewController.swift in Sources */,
@@ -594,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -633,7 +637,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

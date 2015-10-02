@@ -18,7 +18,14 @@ class CustomerTabsViewController: PFQueryTableViewController {
             (action) in
             let textField = newCustomerTabAlertController.textFields!.first!
             
-            self.addOrderWithName(textField.text!)
+            let party = Party.partyWithServer(self.server, table: nil, name: textField.text, size: 1, customerTab: true)
+            party.saveInBackgroundWithBlock { successful, error in
+                if successful {
+                    self.loadObjects()
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
         }
         newCustomerTabAlertController.addAction(addAction)
         
@@ -27,42 +34,15 @@ class CustomerTabsViewController: PFQueryTableViewController {
     
     var server: Employee!
     
-    // MARK: - CustomerTabsViewController
-    
-    private func addOrderWithName(name: String) {
-        let order = Order()
-        
-        order.installation = PFInstallation.currentInstallation()
-        order.name = name
-        order.restaurant = Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!
-        order.type = "Customer Tab"
-        
-        order.orderItems = []
-        
-        order.server = server
-        
-        order.saveInBackgroundWithBlock {
-            (succeeded, error) in
-            
-            if succeeded {
-                self.loadObjects()
-            } else {
-                self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
-            }
-        }
-        
-    }
-    
     // MARK: - PFQueryTableViewController
     
     override func queryForTable() -> PFQuery {
-        let query = Order.query()!
+        let query = Party.query()!
         query.limit = 1000
         
         query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!)
-        query.whereKey("server", equalTo: server)
-        query.whereKey("type", equalTo: "Customer Tab")
-        query.whereKeyDoesNotExist("payment")
+        query.whereKey("customerTab", equalTo: true)
+        query.whereKeyDoesNotExist("leftAt")
         
         return query
     }
@@ -70,14 +50,24 @@ class CustomerTabsViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomerTabCell", forIndexPath: indexPath) as! PFTableViewCell
         
-        let order = object as! Order
+        let party = object as! Party
         
-        cell.textLabel?.text = order.name
+        cell.textLabel?.text = party.name
         
         return cell
     }
     
     // MARK: - UIViewController
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Party" {
+            if let splitViewController = segue.destinationViewController as? UISplitViewController,
+                let navigationController = splitViewController.viewControllers.first as? UINavigationController,
+                let orderItemsViewController = navigationController.viewControllers.first as? OrderItemsViewController {
+                    orderItemsViewController.party = sender as! Party
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,17 +83,20 @@ class CustomerTabsViewController: PFQueryTableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            removeObjectAtIndexPath(indexPath)
+            let party = objectAtIndexPath(indexPath) as! Party
+            party.leftAt = NSDate()
+            party.saveInBackgroundWithBlock { successful, error in
+                if successful {
+                    self.loadObjects()
+                } else {
+                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
+                }
+            }
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let quickServiceSplitViewController = UIStoryboard(name: "QuickService", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UISplitViewController
-        let navController = quickServiceSplitViewController.viewControllers.first as! UINavigationController
-        let quickServiceOrderViewController = navController.viewControllers.first as! QuickServiceOrderViewController
-        quickServiceOrderViewController.order = objectAtIndexPath(indexPath) as! Order
-        
-        presentViewController(quickServiceSplitViewController, animated: true, completion: nil)
+        performSegueWithIdentifier("Party", sender: objectAtIndexPath(indexPath))
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

@@ -217,6 +217,12 @@
     
     Restaurant *restaurant = [Restaurant defaultRestaurantFromLocalDatastoreFetchIfNil];
     
+    NSMutableString *orderItemsXML = [NSMutableString string];
+    for (OrderItem *orderItem in order.orderItems) {
+        NSString *orderItemXML = [NSString stringWithFormat:@"<text>[%@] %@</text><newline />", [self.numberFormatter stringFromNumber:@(orderItem.itemCost)], orderItem.menuItem.name];
+        [orderItemsXML appendString:orderItemXML];
+    }
+    
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:@{@"{{copy}}": @"Customer Copy",
                                                                                       @"{{restaurant}}": restaurant.name,
                                                                                       @"{{location}}": restaurant.location,
@@ -225,7 +231,8 @@
                                                                                       @"{{server}}": order.server.name,
                                                                                       @"{{order_id}}": order.objectId,
                                                                                       @"{{payment_id}}": order.payment.objectId,
-                                                                                      @"{{subtotal}}": [self.numberFormatter stringFromNumber:[NSNumber numberWithDouble:order.subtotal]]}];
+                                                                                      @"{{order_items}}": orderItemsXML,
+                                                                                      @"{{subtotal}}": [self.numberFormatter stringFromNumber:@(order.subtotal)]}];
     
     if (cardPayment) {
         dictionary[@"{{last_four}}"] = order.payment.cardLastFour;

@@ -30,6 +30,12 @@
         <newline />
         <text>Payment ID: {{payment_id}}</text>
         <newline />
+        <dashednewline />
+        <newline />
+        
+        {{order_items}}
+        
+        <newline />
         <newline />
 
         <text>Subtotal: {{subtotal}}</text>
