@@ -33,9 +33,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
         let chargeAction = UIAlertAction(title: "Charge", style: .Default) { (action: UIAlertAction!) in
             CFTCharge.captureChargeWithToken(self.order.payment!.cardFlightChargeToken!, andAmount: NSDecimalNumber(double: self.order.total), success: { (charge: CFTCharge!) in
                 self.order.payment?.charged = true
-                self.order.payment?.saveInBackgroundWithBlock {
-                    (success, error) in
-                    
+                PFObject.saveAllInBackground([self.order, self.order.payment!]) { success, error in
                     self.configureView()
                     
                     let chargedAlertController = UIAlertController(title: "Success", message: "Card was charged successfully.", preferredStyle: .Alert)

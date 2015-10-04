@@ -88,7 +88,11 @@ class ServerOverviewViewController: PFQueryTableViewController {
             cell.textLabel?.textColor = .blackColor()
         }
         
-
+        if order.payment!.type == "Card" {
+            cell.accessoryType = .DisclosureIndicator
+        } else {
+            cell.accessoryType = .None
+        }
         
         let timeFormatter = NSDateFormatter()
         timeFormatter.timeStyle = .ShortStyle

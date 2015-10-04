@@ -4,7 +4,7 @@ import UIKit
 extension NSCalendar {
     
     func endOfDayForDate(date: NSDate) -> NSDate {
-        return NSCalendar.currentCalendar().startOfDayForDate(NSDate().dateByAddingTimeInterval(86400))
+        return NSCalendar.currentCalendar().startOfDayForDate(date.dateByAddingTimeInterval(86400))
     }
     
 }

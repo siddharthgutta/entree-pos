@@ -87,7 +87,9 @@ class CustomerTabsViewController: PFQueryTableViewController {
             party.leftAt = NSDate()
             party.saveInBackgroundWithBlock { successful, error in
                 if successful {
-                    self.loadObjects()
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.loadObjects()
+                    })
                 } else {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
