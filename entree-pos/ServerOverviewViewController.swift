@@ -111,7 +111,7 @@ class ServerOverviewViewController: PFQueryTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let order = objectAtIndexPath(indexPath) as! Order
         
-        if order.payment!.type == "Card" {
+        if order.payment?.type == "Card" {
             performSegueWithIdentifier("CardCompletion", sender: order)
         }
         
