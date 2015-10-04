@@ -35,6 +35,7 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
         
         let popover = pinViewController.popoverPresentationController!
         popover.backgroundColor = UIColor.entreeBlueColor()
+        popover.permittedArrowDirections = [.Left, .Right]
         popover.sourceRect = cell.contentView.bounds
         popover.sourceView = cell.contentView
     }
