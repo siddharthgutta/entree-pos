@@ -77,7 +77,7 @@ class OrderItemsViewController: PFQueryTableViewController {
         if items.isEmpty {
             presentNoItemsSelectedAlertController()
         } else {
-            PrintingManager.sharedManager().printCheckForOrderItems(items, party: party)
+            PrintingManager.sharedManager().printCheckForOrderItems(items, party: party, fromViewController: self)
             
             for item in items {
                 item.printedToCheck = true
@@ -99,7 +99,7 @@ class OrderItemsViewController: PFQueryTableViewController {
         if items.isEmpty {
             presentNoItemsSelectedAlertController()
         } else {
-            PrintingManager.sharedManager().printPrintJobsForOrderItems(items, party: party, server: party.server, toGo: false)
+            PrintingManager.sharedManager().printPrintJobsForOrderItems(items, party: party, server: party.server, toGo: false, fromViewController: self)
             
             for item in items {
                 item.sentToKitchen = true

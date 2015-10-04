@@ -187,7 +187,8 @@ class TimeClockViewController: PFQueryCollectionViewController, THPinViewControl
             cell.imageView.backgroundColor = UIColor.darkGrayColor()
         }
         
-        cell.textLabel.text = employee.name
+        let adminText = employee.administrator ? " (Admin)" : ""
+        cell.textLabel.text = "\(employee.name)\(adminText)"
         
         cell.detailTextLabel.text = employee.role == "Server" ? "\(employee.activePartyCount) active tables" : employee.role
         

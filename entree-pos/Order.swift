@@ -53,6 +53,10 @@ class Order: PFObject, PFSubclassing {
         }
         order.subtotal = order.amountDue + order.tax
         
+        if type == "Cash" {
+            order.total = order.subtotal
+        }
+        
         return order
     }
     

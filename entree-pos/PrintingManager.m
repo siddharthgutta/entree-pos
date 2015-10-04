@@ -58,10 +58,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:address forKey:kReceiptPrinterMACAddressKey];
 }
 
-- (void)presentAlertControllerForPrintErrorWithMessage:(NSString *)message {
+- (void)presentAlertControllerForPrintErrorWithMessage:(NSString *)message fromViewController:(UIViewController *)viewController {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Printing Error" message:message preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
-    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alertController animated:YES completion:nil];
+    [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Printer Communication
@@ -93,7 +93,7 @@
                     [printer print:printData];
                 } else{
                     NSString *message = [NSString stringWithFormat:@"Failed to connect to printer with MAC address %@.", address];
-                    [self presentAlertControllerForPrintErrorWithMessage:message];
+                    [self presentAlertControllerForPrintErrorWithMessage:message fromViewController:nil];
                 }
             }];
         }
@@ -102,8 +102,12 @@
 
 #pragma mark - Send To Kitchen
 
-- (void)printPrintJobsForOrderItems:(NSArray *)orderItems party:(Party *)party server:(Employee *)server toGo:(BOOL)toGo {
+- (void)printPrintJobsForOrderItems:(NSArray *)orderItems party:(Party *)party server:(Employee *)server toGo:(BOOL)toGo fromViewController:(UIViewController *)viewController {
     // This is wildly complex and should be simplified if at all possible
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Kitchen printer not found on network." preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
+    [viewController presentViewController:alertController animated:true completion:nil];
     
     NSMutableArray *printJobs = [NSMutableArray array];
     NSMutableDictionary *printJobObjectIDToOrderItemMap = [NSMutableDictionary dictionary];
@@ -163,10 +167,10 @@
 
 #pragma mark - Print Check
 
-- (void)printCheckForOrderItems:(NSArray *)orderItems party:(Party *)party {
+- (void)printCheckForOrderItems:(NSArray *)orderItems party:(Party *)party fromViewController:(UIViewController *)viewController {
     NSString *address = [PrintingManager receiptPrinterMACAddress];
     if (!address) {
-        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings."];
+        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings." fromViewController:viewController];
         return;
     }
     
@@ -206,10 +210,10 @@
 
 #pragma mark - Print Receipt
 
-- (void)printReceiptForOrder:(Order *)order {
+- (void)printReceiptForOrder:(Order *)order fromViewController:(UIViewController *)viewController {
     NSString *address = [PrintingManager receiptPrinterMACAddress];
     if (!address) {
-        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings."];
+        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings." fromViewController:viewController];
         return;
     }
     
@@ -255,10 +259,10 @@
 
 #pragma mark - Print Server Summary
 
-- (void)printSummaryForServer:(Employee *)server date:(NSDate *)date {
+- (void)printSummaryForServer:(Employee *)server date:(NSDate *)date fromViewController:(UIViewController *)viewController {
     NSString *address = [PrintingManager receiptPrinterMACAddress];
     if (!address) {
-        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings."];
+        [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings." fromViewController:viewController];
         return;
     }
     

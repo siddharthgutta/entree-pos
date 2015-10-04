@@ -229,7 +229,7 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
         if indexPath == NSIndexPath(forRow: 1, inSection: 1) {
             beginManualEntry()
         } else if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
-            PrintingManager.sharedManager().printReceiptForOrder(order)
+            PrintingManager.sharedManager().printReceiptForOrder(order, fromViewController: self)
             
             let receiptSentAlertController = UIAlertController(title: "Receipt Sent!", message: "The receipt has been sent to the printer.", preferredStyle: .Alert)
             

@@ -80,7 +80,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func printReceipt() {
-        PrintingManager.sharedManager().printReceiptForOrder(order)
+        PrintingManager.sharedManager().printReceiptForOrder(order, fromViewController: self)
         
         let receiptSentAlertController = UIAlertController(title: "Receipt Sent!", message: "The receipt has been sent to the printer.", preferredStyle: .Alert)
         

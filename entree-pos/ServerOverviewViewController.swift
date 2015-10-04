@@ -4,7 +4,7 @@ import UIKit
 class ServerOverviewViewController: PFQueryTableViewController {
 
     @IBAction func printSummary(sender: UIButton) {
-        PrintingManager.sharedManager().printSummaryForServer(server, date: date)
+        PrintingManager.sharedManager().printSummaryForServer(server, date: date, fromViewController: self)
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
@@ -32,6 +32,8 @@ class ServerOverviewViewController: PFQueryTableViewController {
         dateFormatter.timeStyle = .ShortStyle
         
         super.init(coder: aDecoder)!
+        
+        objectsPerPage = 1000
     }
     
     // MARK: - ServerOverviewViewController
@@ -71,10 +73,22 @@ class ServerOverviewViewController: PFQueryTableViewController {
         
         let order = object! as! Order
         
-        let prefix = order.payment!.charged ? " (Charged)" : ""
+        var employeeText = ""
+        if server.administrator {
+            employeeText = ", \(order.server.name)"
+        }
+        let prefix = order.payment!.charged && order.payment!.type == "Card" ? " (Charged)" : ""
         let numberFormatter = NSNumberFormatter()
         numberFormatter.numberStyle = .CurrencyStyle
-        cell.textLabel?.text = "\(numberFormatter.stringFromDouble(order.total)!), \(order.payment!.type)\(prefix), Order ID: \(order.objectId!)"
+        cell.textLabel?.text = "\(numberFormatter.stringFromDouble(order.total)!), \(order.payment!.type)\(prefix), Order ID: \(order.objectId!)\(employeeText)"
+        
+        if order.payment!.charged && order.payment!.type == "Card" {
+            cell.textLabel?.textColor = .entreeGreenColor()
+        } else {
+            cell.textLabel?.textColor = .blackColor()
+        }
+        
+
         
         let timeFormatter = NSDateFormatter()
         timeFormatter.timeStyle = .ShortStyle

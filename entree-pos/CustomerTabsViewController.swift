@@ -101,4 +101,8 @@ class CustomerTabsViewController: PFQueryTableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        return "Close"
+    }
+    
 }
