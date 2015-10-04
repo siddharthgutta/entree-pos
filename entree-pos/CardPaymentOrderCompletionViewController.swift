@@ -4,6 +4,7 @@ import UIKit
 class CardPaymentOrderCompletionViewController: UITableViewController {
 
     @IBOutlet weak var orderIDLabel: UILabel!
+    @IBOutlet weak var employeeLabel: UILabel!
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var tipTextField: UITextField!
     
@@ -113,6 +114,7 @@ class CardPaymentOrderCompletionViewController: UITableViewController {
     
     private func configureView() {
         orderIDLabel.text = order.objectId!
+        employeeLabel.text = order.server.name
         
         subtotalLabel.text = numberFormatter.stringFromDouble(order.subtotal)
         

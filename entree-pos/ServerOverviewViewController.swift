@@ -52,6 +52,7 @@ class ServerOverviewViewController: PFQueryTableViewController {
         let query = Order.query()!
 
         query.includeKey("payment")
+        query.whereKeyExists("payment")
         
         query.whereKey("createdAt", greaterThanOrEqualTo: NSCalendar.currentCalendar().startOfDayForDate(date))
         query.whereKey("createdAt", lessThan: NSCalendar.currentCalendar().endOfDayForDate(date))
@@ -62,11 +63,6 @@ class ServerOverviewViewController: PFQueryTableViewController {
             query.whereKey("server", equalTo: server)
         }
         
-        
-        let innerQuery = Payment.query()!
-        innerQuery.whereKey("type", equalTo: "Card")
-        query.whereKey("payment", matchesQuery: innerQuery)
-        
         return query
     }
     
@@ -75,14 +71,10 @@ class ServerOverviewViewController: PFQueryTableViewController {
         
         let order = object! as! Order
         
-        let prefix = order.payment!.charged ? "[Charged] " : ""
-        cell.textLabel?.text = "\(prefix)Order: \(order.objectId!)"
-        
-        if order.payment!.charged {
-            cell.textLabel?.textColor = UIColor.entreeGreenColor()
-        } else {
-            cell.textLabel?.textColor = UIColor.blackColor()
-        }
+        let prefix = order.payment!.charged ? " (Charged)" : ""
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = .CurrencyStyle
+        cell.textLabel?.text = "\(numberFormatter.stringFromDouble(order.total)!), \(order.payment!.type)\(prefix), Order ID: \(order.objectId!)"
         
         let timeFormatter = NSDateFormatter()
         timeFormatter.timeStyle = .ShortStyle
