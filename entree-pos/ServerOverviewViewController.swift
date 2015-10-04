@@ -56,7 +56,12 @@ class ServerOverviewViewController: PFQueryTableViewController {
         query.whereKey("createdAt", greaterThanOrEqualTo: NSCalendar.currentCalendar().startOfDayForDate(date))
         query.whereKey("createdAt", lessThan: NSCalendar.currentCalendar().endOfDayForDate(date))
         
-        query.whereKey("server", equalTo: server)
+        if server.administrator == true {
+            query.whereKey("restaurant", equalTo: Restaurant.defaultRestaurantFromLocalDatastoreFetchIfNil()!)
+        } else {
+            query.whereKey("server", equalTo: server)
+        }
+        
         
         let innerQuery = Payment.query()!
         innerQuery.whereKey("type", equalTo: "Card")
