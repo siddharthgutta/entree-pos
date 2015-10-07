@@ -271,15 +271,17 @@
     
     [query includeKey:@"payment"];
     
-    [query whereKey:@"createdAt" equalTo:[[NSCalendar currentCalendar] startOfDayForDate:date]];
-    [query whereKey:@"createdAt" equalTo:[[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:[[NSCalendar currentCalendar] startOfDayForDate:date] options:0]];
+    [query whereKey:@"createdAt" greaterThanOrEqualTo:[[NSCalendar currentCalendar] startOfDayForDate:date]];
+    [query whereKey:@"createdAt" lessThan:[[NSCalendar currentCalendar] startOfDayForDate:[date dateByAddingTimeInterval:86400]]];
     [query whereKey:@"server" equalTo:server];
     
     [query whereKeyExists:@"payment"];
     
+    /*
     PFQuery *innerQuery = [Payment query];
-    [innerQuery whereKey:@"charged" equalTo:@YES];
+    [innerQuery whereKey:@"chargedAt" equalTo:@YES];
     [query whereKey:@"payment" matchesQuery:innerQuery];
+     */
     
     NSArray *orders = [query findObjects]; // This is a synchronous request, should be avoided if possible
     
