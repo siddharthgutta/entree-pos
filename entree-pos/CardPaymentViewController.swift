@@ -9,21 +9,12 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
             for orderItem in order.orderItems {
                 orderItem.order = nil
             }
-            
             PFObject.saveAllInBackground(order.orderItems)
             
-            order.deleteInBackgroundWithBlock {
-                (succeeded, error) in
-                if succeeded {
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
-                }
-            }
-        } else {
-            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            order.deleteInBackground()
         }
-
+        
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func done(sender: UIBarButtonItem) {
