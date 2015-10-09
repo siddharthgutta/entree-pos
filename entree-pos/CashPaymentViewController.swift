@@ -29,13 +29,8 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
         if order.payment?.changeGiven >= 0 {
             updateChangeDue()
             order.payment?.charged = true
-            order.payment?.saveInBackgroundWithBlock { success, error in
-                if success {
-                    self.completionHandler()
-                } else {
-                    print(error)
-                }
-            }
+            order.payment?.saveInBackground()
+            self.completionHandler()
         } else {
             let errorAlertController = UIAlertController(title: "Oops!",
                 message: "Please specify the cash amount paid before attempting to close the sale.",
@@ -101,6 +96,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
                 changeGiven = 0
             }
             order.payment?.changeGiven = changeGiven
+            order.payment?.saveInBackground()
         }
         
         configureView()
