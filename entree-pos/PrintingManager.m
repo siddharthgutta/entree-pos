@@ -277,12 +277,6 @@
     
     [query whereKeyExists:@"payment"];
     
-    /*
-    PFQuery *innerQuery = [Payment query];
-    [innerQuery whereKey:@"chargedAt" equalTo:@YES];
-    [query whereKey:@"payment" matchesQuery:innerQuery];
-     */
-    
     NSArray *orders = [query findObjects]; // This is a synchronous request, should be avoided if possible
     
     NSMutableString *ordersXML = [NSMutableString string];
