@@ -25,9 +25,17 @@ class RestaurantMapView: UIView {
         }
         
         if let numberOfTables = dataSource?.numberOfTablesForRestaurantMapView(self) {
-            for index in 0..<numberOfTables {
-                if let imageView = dataSource?.restaurantMapView(self, imageViewForTableAtIndex: index) {
-                    addSubview(imageView)
+            if numberOfTables == 0 {
+                let imageView = UIImageView(image: UIImage(named: "Watermark"))
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                addSubview(imageView)
+                addConstraint(NSLayoutConstraint(item: imageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0))
+                addConstraint(NSLayoutConstraint(item: imageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
+            } else {
+                for index in 0..<numberOfTables {
+                    if let imageView = dataSource?.restaurantMapView(self, imageViewForTableAtIndex: index) {
+                        addSubview(imageView)
+                    }
                 }
             }
         }
