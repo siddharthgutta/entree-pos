@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wxl-fa-HnW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wxl-fa-HnW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -161,6 +161,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Order Item" id="Nsc-8l-es9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GV6-KV-sUj">
+                            <connections>
+                                <action selector="cancel:" destination="Ciw-dt-sW3" id="kcJ-1a-Flt"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="K5I-pm-QcU">
                             <connections>
                                 <action selector="save:" destination="Ciw-dt-sW3" id="rBg-Nq-69P"/>

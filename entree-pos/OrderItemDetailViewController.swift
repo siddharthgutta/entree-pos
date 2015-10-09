@@ -4,9 +4,7 @@ import UIKit
 class OrderItemDetailViewController: UITableViewController, UITextViewDelegate {
 
     @IBAction func delete() {
-        orderItem.deleteInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) in
-            
+        orderItem.deleteInBackgroundWithBlock { succeeded, error in
             if succeeded {
                 NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
                 

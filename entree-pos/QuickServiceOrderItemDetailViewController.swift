@@ -3,6 +3,30 @@ import UIKit
 
 class QuickServiceOrderItemDetailViewController: UITableViewController {
     
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        if let order = orderItem?.order {
+            var index = 0
+            for item in order.orderItems {
+                if orderItem.objectId == item.objectId {
+                    order.orderItems.removeAtIndex(index)
+                }
+                index++
+            }
+            
+            do {
+                let _ = try order.save() // Probably improper use of throws on Parse's part
+            } catch {
+                print("Error saving order: \(error)")
+            }
+        }
+
+        orderItem.deleteInBackground()
+        
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_OBJECTS_NOTIFICATION, object: nil)
+    }
+    
     @IBAction func save(sender: UIBarButtonItem) {
         orderItem.seatNumber = Int(seatNumberStepper.value)
         orderItem.onTheHouse = onTheHouseSwitch.on
