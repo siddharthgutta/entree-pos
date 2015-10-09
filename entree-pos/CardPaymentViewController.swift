@@ -4,6 +4,8 @@ import UIKit
 class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     @IBAction func cancel(sender: UIBarButtonItem) {
+        reader = nil // Set CFTReader to nil to avoid a CardFlight crash bug
+        
         // Only delete the order if the party is not nil
         if let _ = order.party {
             for orderItem in order.orderItems {
@@ -52,7 +54,7 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     }
     
     var order: Order!
-    let reader = CFTReader(reader: 0)
+    var reader: CFTReader!
     
     var completionHandler: (() -> Void)!
     
@@ -135,15 +137,12 @@ class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     // MARK: - UIViewController
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        reader.delegate = self
-        reader.swipeHasTimeout(false)
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        reader = CFTReader(reader: 0)
+        reader.delegate = self
+        reader.swipeHasTimeout(false)
         
         configureViewWithCardAuthorized(false)
     }
