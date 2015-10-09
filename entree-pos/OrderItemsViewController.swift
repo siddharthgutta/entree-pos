@@ -298,6 +298,8 @@ class OrderItemsViewController: PFQueryTableViewController {
         if orderItem.printedToCheck {
             cell.imageView?.image = UIImage(named: "Printer")
         }
+
+        cell.tintColor = orderItem.onTheHouse ? .entreeRedColor() : .entreeBlueColor()
         
         return cell
     }
