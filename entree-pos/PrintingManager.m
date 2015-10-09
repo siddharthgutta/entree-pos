@@ -285,7 +285,7 @@
         NSString *orderID = order.objectId;
         NSString *paymentType = order.payment.type;
         NSString *subtotal = [self.numberFormatter stringFromNumber:@(order.subtotal)];
-        NSString *tip = [self.numberFormatter stringFromNumber:@(order.tip)];
+        NSString *tip = [paymentType isEqualToString:@"Card"] ? [NSString stringWithFormat:@"<tab><text>Tip: %@</text><newline />", [self.numberFormatter stringFromNumber:@(order.tip)]] : @"";
         
         if ([paymentType isEqualToString:@"Card"]) {
             cardTotal += order.total;
@@ -294,7 +294,7 @@
         }
         tips += order.tip;
         
-        NSString *orderXML = [NSString stringWithFormat:@"<text>Order ID: %@</text><newline /><tab><text>Payment Type: %@</text><newline /><tab><text>Subtotal: %@</text><newline /><tab><text>Tip: %@</text><newline /><newline />", orderID, paymentType, subtotal, tip];
+        NSString *orderXML = [NSString stringWithFormat:@"<text>Order ID: %@</text><newline /><tab><text>Payment Type: %@</text><newline /><tab><text>Subtotal: %@</text><newline />%@<newline />", orderID, paymentType, subtotal, tip];
         [ordersXML appendString:orderXML];
     }
     
