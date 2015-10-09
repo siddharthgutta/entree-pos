@@ -105,10 +105,6 @@
 - (void)printPrintJobsForOrderItems:(NSArray *)orderItems party:(Party *)party server:(Employee *)server toGo:(BOOL)toGo fromViewController:(UIViewController *)viewController {
     // This is wildly complex and should be simplified if at all possible
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"Kitchen printer not found on network." preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
-    [viewController presentViewController:alertController animated:true completion:nil];
-    
     NSMutableArray *printJobs = [NSMutableArray array];
     NSMutableDictionary *printJobObjectIDToOrderItemMap = [NSMutableDictionary dictionary];
     NSMutableDictionary *printerMACAddressToPrintJobsMap = [NSMutableDictionary dictionary];
