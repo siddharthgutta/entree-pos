@@ -85,11 +85,10 @@ class CustomerTabsViewController: PFQueryTableViewController {
         if editingStyle == .Delete {
             let party = objectAtIndexPath(indexPath) as! Party
             party.leftAt = NSDate()
-            party.saveInBackgroundWithBlock { successful, error in
-                if successful {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.loadObjects()
-                    })
+            party.saveInBackgroundWithBlock { saved, error in
+                if saved {
+                    self.tableView.reloadData() // This call is a workaround for a UIKit bug that breaks transitions and UITableView reloading (Do explore) 
+                    self.loadObjects()
                 } else {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
                 }
