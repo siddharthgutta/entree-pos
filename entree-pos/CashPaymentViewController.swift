@@ -27,9 +27,9 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func done() {
         if order.payment?.changeGiven >= 0 {
+            updateChangeDue()
             order.payment?.charged = true
-            order.payment?.saveInBackgroundWithBlock {
-                (success, error) in
+            order.payment?.saveInBackgroundWithBlock { success, error in
                 if success {
                     self.completionHandler()
                 } else {
@@ -139,6 +139,7 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if order.payment?.changeGiven >= 0 {
             if indexPath == NSIndexPath(forRow: 0, inSection: 2) {
+                updateChangeDue()
                 printReceipt()
             }
         } else {
