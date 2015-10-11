@@ -213,7 +213,7 @@
         return;
     }
     
-    BOOL cardPayment = order.payment.cardFlightChargeToken == nil;
+    BOOL isCardPayment = [order.payment.type isEqualToString:@"Card"];
     
     Restaurant *restaurant = [Restaurant defaultRestaurantFromLocalDatastoreFetchIfNil];
     
@@ -234,7 +234,7 @@
                                                                                       @"{{order_items}}": orderItemsXML,
                                                                                       @"{{subtotal}}": [self.numberFormatter stringFromNumber:@(order.subtotal)]}];
     
-    if (cardPayment) {
+    if (isCardPayment) {
         dictionary[@"{{last_four}}"] = order.payment.cardLastFour;
         dictionary[@"{{cardholder}}"] = order.payment.cardName;
     } else {
@@ -246,7 +246,7 @@
     PrintData *printData = [[PrintData alloc] initWithDictionary:dictionary atFilePath:filePath];
     [self sendPrintData:printData toPrinterWithMACAddress:address];
     
-    if (cardPayment) {
+    if (isCardPayment) {
         dictionary[@"{{copy}}"] = @"Merchant Copy";
         PrintData *printData = [[PrintData alloc] initWithDictionary:dictionary atFilePath:filePath];
         [self sendPrintData:printData toPrinterWithMACAddress:address];
