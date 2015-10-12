@@ -4,6 +4,8 @@ import UIKit
 class CardPaymentViewController: UITableViewController, CFTReaderDelegate {
     
     @IBAction func cancel(sender: UIBarButtonItem) {
+        
+        reader.cancelTransaction()
         reader = nil // Set CFTReader to nil to avoid a CardFlight crash bug
         
         // Only delete the order if the party is not nil

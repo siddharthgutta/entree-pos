@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 print("Parse Analytics: 👎\nError: \(error)")
             }
+            BITHockeyManager.sharedHockeyManager().configureWithIdentifier("399ffede8586a6ffe6624efc83173269")
+            // Do some additional configuration if needed here
+            BITHockeyManager.sharedHockeyManager().startManager()
+            BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
+
         }
         
         Employee.registerSubclass()

@@ -403,6 +403,8 @@
 				32C4B5E61B238E5B0062B854 /* Frameworks */,
 				32C4B5E71B238E5B0062B854 /* Resources */,
 				346436DB8F0B64248828D882 /* Copy Pods Resources */,
+				3513F0521BCA2DC30017CAA4 /* ShellScript */,
+				569E56A524134B7263B8029A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -426,7 +428,7 @@
 				TargetAttributes = {
 					32C4B5E81B238E5B0062B854 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = EDLTE65NWH;
+						DevelopmentTeam = CN656XHD6W;
 					};
 				};
 			};
@@ -488,6 +490,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3513F0521BCA2DC30017CAA4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi\n";
+		};
+		569E56A524134B7263B8029A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D8C6817BEF43A27E55C6E21A /* Check Pods Manifest.lock */ = {
@@ -658,7 +688,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "entree.$(PRODUCT_NAME:rfc1034identifier)";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-pos1";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";
@@ -680,7 +711,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "entree.$(PRODUCT_NAME:rfc1034identifier)";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-pos1";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";

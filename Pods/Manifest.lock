@@ -3,6 +3,9 @@ PODS:
   - CardFlight (2.0.6):
     - CardFlight/AudioJack (= 2.0.6)
   - CardFlight/AudioJack (2.0.6)
+  - HockeySDK (3.8.2):
+    - HockeySDK/AllFeaturesLib (= 3.8.2)
+  - HockeySDK/AllFeaturesLib (3.8.2)
   - Parse (1.8.5):
     - Bolts/Tasks (>= 1.2.2)
   - ParseUI (1.1.6):
@@ -13,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - CardFlight
+  - HockeySDK (~> 3.8.2)
   - Parse
   - ParseUI
   - StarPrinting
@@ -21,9 +25,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 805a4a87413e49d4a0c2b7d469084cbc46b09342
   CardFlight: eae95b7f9bbbf190f7de64cd5b29f95e1f515e83
+  HockeySDK: 9f4ac41263acf9d8a4d59491a7f17af16529b935
   Parse: 17ad8e0677ed682f7f00503860fcda0f4eb74168
   ParseUI: 8a22e448c03f825203d8c379c80523517f68baa3
   StarPrinting: c25ea4b3e4314c7cc647a7a8bff260fe755e69f3
   THPinViewController: 6ea25443b2205bdfaaf5a6db8b05403dfbe0bdec
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

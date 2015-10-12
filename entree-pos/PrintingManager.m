@@ -185,6 +185,8 @@
         amountDue += [item itemCost];
         tax += [item applicableTax];
     }
+    
+    BOOL isCustomerTab = [party.table isEqual: nil];
 
     double subtotal = amountDue + tax;
     
@@ -192,17 +194,22 @@
                                                                                       @"{{location}}": restaurant.location,
                                                                                       @"{{phone}}": restaurant.phone,
                                                                                       @"{{time}}": [self.dateFormatter stringFromDate:[NSDate date]],
-                                                                                      @"{{table}}": party.table.name,
-                                                                                      @"{{server}}": party.server.name,
+                                                                                      @"{{server}}": party.   server.name,
                                                                                       @"{{items}}": orderItemsXML,
                                                                                       @"{{amount_due}}": [self.numberFormatter stringFromNumber:@(amountDue)],
                                                                                       @"{{tax}}": [self.numberFormatter stringFromNumber:@(tax)],
                                                                                       @"{{subtotal}}": [self.numberFormatter stringFromNumber:@(subtotal)]}];
-    
+    if (isCustomerTab) {
+        dictionary[@"{{table}}"] = party.table.name;
+    }  else {
+        dictionary[@"{{table}}"] = party.name;
+            }
+
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"check_template" ofType:@"xml"];
     PrintData *printData = [[PrintData alloc] initWithDictionary:dictionary atFilePath:filePath];
     [self sendPrintData:printData toPrinterWithMACAddress:address];
-}
+        
+        }
 
 #pragma mark - Print Receipt
 

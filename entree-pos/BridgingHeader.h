@@ -10,3 +10,4 @@
 
 #import <StarPrinting/Printer.h>
 #import "PrintingManager.h"
+#import <HockeySDK/HockeySDK.h>

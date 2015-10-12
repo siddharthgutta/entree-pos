@@ -7,5 +7,6 @@ pod 'ParseUI'
 pod 'CardFlight'
 pod 'StarPrinting'
 pod 'THPinViewController'
+pod 'HockeySDK', '~> 3.8.2'
 
 end
