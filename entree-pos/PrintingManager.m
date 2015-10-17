@@ -168,6 +168,7 @@
     if (!address) {
         [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings." fromViewController:viewController];
         return;
+        
     }
     
     Restaurant *restaurant = [Restaurant defaultRestaurantFromLocalDatastoreFetchIfNil];
@@ -218,6 +219,7 @@
     if (!address) {
         [self presentAlertControllerForPrintErrorWithMessage:@"No receipt printer set. Please configure this in settings." fromViewController:viewController];
         return;
+
     }
     
     BOOL isCardPayment = [order.payment.type isEqualToString:@"Card"];

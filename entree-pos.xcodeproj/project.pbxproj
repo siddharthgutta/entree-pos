@@ -424,11 +424,11 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Jesse Tipton";
+				ORGANIZATIONNAME = "Siddharth Gutta ";
 				TargetAttributes = {
 					32C4B5E81B238E5B0062B854 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = CN656XHD6W;
+						DevelopmentTeam = ST24KEDF2P;
 					};
 				};
 			};
@@ -689,7 +689,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-pos1";
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-posapp";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";
@@ -712,7 +712,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-pos1";
+				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-posapp";
 				PRODUCT_NAME = "entree-pos";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "entree-pos/BridgingHeader.h";
