@@ -65,10 +65,9 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
     // MARK: - QuickServiceOrderViewController
     
     func cancel(sender: UIBarButtonItem) {
-        let objectsToDelete: [AnyObject] = [order] + order.orderItems
-        PFObject.deleteAllInBackground(objectsToDelete) {
-            (succeeded, error) in
-            if succeeded {
+        let objectsToDelete: [PFObject] = [order] + order.orderItems
+        PFObject.deleteAllInBackground(objectsToDelete) { successful, error in
+            if successful {
                 self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
             } else {
                 self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
@@ -96,8 +95,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
             orderItem.sentToKitchen = true
         }
         
-        PFObject.saveAllInBackground(objects) {
-            (success, error) in
+        PFObject.saveAllInBackground(objects as? [PFObject]) { successful, error in
             self.loadObjects()
         }
     }

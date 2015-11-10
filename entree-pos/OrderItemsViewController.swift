@@ -11,7 +11,7 @@ class OrderItemsViewController: PFQueryTableViewController {
             confirmationAlertController.addAction(cancelAction)
             
             let closeAction = UIAlertAction(title: "Close", style: .Destructive) { (action: UIAlertAction!) in
-                var objectsToSave = [AnyObject]()
+                var objectsToSave = [PFObject]()
                 
                 self.party.leftAt = NSDate()
                 objectsToSave.append(self.party)
@@ -24,8 +24,8 @@ class OrderItemsViewController: PFQueryTableViewController {
                     objectsToSave.append(table)
                 }
                 
-                PFObject.saveAllInBackground(objectsToSave) { success, error in
-                    if success {
+                PFObject.saveAllInBackground(objectsToSave) { successful, error in
+                    if successful {
                         self.dismiss()
                     } else {
                         self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
@@ -83,8 +83,8 @@ class OrderItemsViewController: PFQueryTableViewController {
                 item.printedToCheck = true
             }
             
-            PFObject.saveAllInBackground(items) { (success: Bool, error: NSError?) in
-                if success {
+            PFObject.saveAllInBackground(items) { successful, error in
+                if successful {
                     self.loadObjects()
                 } else {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
@@ -105,8 +105,8 @@ class OrderItemsViewController: PFQueryTableViewController {
                 item.sentToKitchen = true
             }
             
-            PFObject.saveAllInBackground(items) { (success: Bool, error: NSError?) in
-                if success {
+            PFObject.saveAllInBackground(items) { successful, error in
+                if successful {
                     self.loadObjects()
                 } else {
                     self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
@@ -172,10 +172,10 @@ class OrderItemsViewController: PFQueryTableViewController {
         
         let order = Order.createOrderWithType("Full Service", name: nil, party: party, orderItems: selectedOrderItems)
         
-        let objectsToSave: [AnyObject] = selectedOrderItems + [order]
+        let objectsToSave: [PFObject] = [order] + selectedOrderItems
         
-        PFObject.saveAllInBackground(objectsToSave) { (succeeded: Bool, error: NSError?) in
-            if succeeded {
+        PFObject.saveAllInBackground(objectsToSave) { successful, error in
+            if successful {
                 self.performSegueWithIdentifier(identifier, sender: order)
             } else {
                 self.presentViewController(UIAlertController.alertControllerForError(error!), animated: true, completion: nil)
