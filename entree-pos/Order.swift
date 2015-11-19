@@ -1,5 +1,5 @@
 
-class Order: PFObject, PFSubclassing {
+public class Order: PFObject, PFSubclassing {
 
     @NSManaged var restaurant: Restaurant
     @NSManaged var type: String // "Full Service", "Quick Service", "Customer Tab", or "To Go"
@@ -60,7 +60,7 @@ class Order: PFObject, PFSubclassing {
         return order
     }
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "Order"
     }
     

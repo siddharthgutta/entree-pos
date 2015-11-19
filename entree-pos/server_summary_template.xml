@@ -1,23 +1,10 @@
 <print>
-
-<text>{{name}}</text>
-<newline />
-<text>{{date}}</text>
-<newline />
-
-<dashednewline />
-<newline />
-
+{{name}}
+{{date}}
+------------------------------------------
 {{orders}}
-
-<dashednewline />
-<newline />
-
-<text><large>Card: {{card}}</large></text>
-<newline />
-<text><large>Cash: {{cash}}</large></text>
-<newline />
-<text><large>Tips: {{tips}}</large></text>
-<newline />
-
+------------------------------------------
+<large>Card: {{card}}</large>
+<large>Cash: {{cash}}</large>
+<large>Tips: {{tips}}</large>
 </print>

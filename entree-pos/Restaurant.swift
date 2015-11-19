@@ -5,7 +5,7 @@ enum RestaurantError: ErrorType {
     case RestaurantNotFound
 }
 
-class Restaurant: PFObject, PFSubclassing {
+public class Restaurant: PFObject, PFSubclassing {
     
     @NSManaged var alcoholTaxRate: Double
     @NSManaged var cardFlightAccountToken: String
@@ -87,7 +87,7 @@ class Restaurant: PFObject, PFSubclassing {
         }
     }
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "Restaurant"
     }
     

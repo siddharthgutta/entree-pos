@@ -8,6 +8,4 @@
 #import <CardFlight/CardFlight.h>
 #import <THPinViewController/THPinViewController.h>
 
-#import <StarPrinting/Printer.h>
-#import "PrintingManager.h"
 #import <HockeySDK/HockeySDK.h>

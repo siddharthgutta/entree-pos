@@ -1,5 +1,5 @@
 
-class OrderItem: PFObject, PFSubclassing {
+public class OrderItem: PFObject, PFSubclassing {
     
     @NSManaged var order: Order?
     @NSManaged var party: Party?
@@ -44,7 +44,7 @@ class OrderItem: PFObject, PFSubclassing {
         return itemCost() + applicableTax()
     }
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "OrderItem"
     }
     

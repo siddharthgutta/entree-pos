@@ -1,12 +1,12 @@
 
-class Party: PFObject, PFSubclassing {
+public class Party: PFObject, PFSubclassing {
     
     @NSManaged var restaurant: Restaurant
     @NSManaged var arrivedAt: NSDate
     @NSManaged var leftAt: NSDate?
     @NSManaged var seatedAt: NSDate?
     
-    @NSManaged var server: Employee
+    @NSManaged public var server: Employee
     @NSManaged var table: Table?
     @NSManaged var name: String?
     @NSManaged var size: Int // 0 for null
@@ -27,7 +27,7 @@ class Party: PFObject, PFSubclassing {
         return party
     }
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "Party"
     }
     

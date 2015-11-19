@@ -1,1 +1,0 @@
-../../../StarPrinting/StarPrinting/PrintTextFormatter.h

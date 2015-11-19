@@ -1,5 +1,5 @@
 
-class Table: PFObject, PFSubclassing {
+public class Table: PFObject, PFSubclassing {
     
     @NSManaged var capacity: Int
     @NSManaged var currentParty: Party?
@@ -10,7 +10,7 @@ class Table: PFObject, PFSubclassing {
     @NSManaged var x: CGFloat
     @NSManaged var y: CGFloat
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "Table"
     }
     

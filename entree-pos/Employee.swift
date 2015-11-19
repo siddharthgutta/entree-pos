@@ -1,5 +1,5 @@
 
-class Employee: PFObject, PFSubclassing {
+public class Employee: PFObject, PFSubclassing {
     
     @NSManaged var activePartyCount: Int
     @NSManaged var avatarFile: PFFile?
@@ -11,7 +11,7 @@ class Employee: PFObject, PFSubclassing {
     @NSManaged var restaurant: Restaurant
     @NSManaged var role: String
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "Employee"
     }
     

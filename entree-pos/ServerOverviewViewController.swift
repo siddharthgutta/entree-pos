@@ -4,7 +4,7 @@ import UIKit
 class ServerOverviewViewController: PFQueryTableViewController {
 
     @IBAction func printSummary(sender: UIButton) {
-        PrintingManager.sharedManager().printSummaryForServer(server, date: date, fromViewController: self)
+        try! PrintingManager.printDailySummaryForServer(server, date: date)
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {

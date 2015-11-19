@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B15ADBFEEBBA580D1E9D5BA6A85C45F0F18C5AF8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "398FC80C1C99158768F03FBDE34AA35D168344F8" : 0,
+    "B15ADBFEEBBA580D1E9D5BA6A85C45F0F18C5AF8" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E8EF5DF9-DDDD-4B60-8367-C22DCA32EF21",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "398FC80C1C99158768F03FBDE34AA35D168344F8" : "StarKit\/",
+    "B15ADBFEEBBA580D1E9D5BA6A85C45F0F18C5AF8" : "entree-pos"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "entree-pos",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "entree-pos.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jessetipton\/StarKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "398FC80C1C99158768F03FBDE34AA35D168344F8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jessetipton\/entree-ipad.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B15ADBFEEBBA580D1E9D5BA6A85C45F0F18C5AF8"
+    }
+  ]
+}

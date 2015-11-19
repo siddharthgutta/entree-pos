@@ -1,19 +1,10 @@
 <print>
-    
-    <text><center><large>{{location}}</large></center></text>
-    <newline /><newline />
-    
-    <text><left>{{time}}</left></text>
-    <newline />
-    
-    <text><left><bold>{{table}}</bold></left></text>
-    <newline />
-    <text><left>SERVER: {{server}}</left></text>
-    
-    <newline />
-    <dashednewline />
-    <newline/>
-    
-    {{menu_items}}
-    
+<center />
+<large>{{location}}</large>
+<left />
+{{time}}
+<bold>{{table}}</bold>
+SERVER: {{server}}
+------------------------------------------
+{{menu_items}}
 </print>

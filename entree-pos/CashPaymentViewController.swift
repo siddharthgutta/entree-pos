@@ -75,7 +75,15 @@ class CashPaymentViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func printReceipt() {
-        PrintingManager.sharedManager().printReceiptForOrder(order, fromViewController: self)
+        do {
+            try PrintingManager.printReceiptForOrder(order)
+        } catch PrintingManagerError.NoReceiptPrinter {
+            let noReceiptPrinterAlertController = UIAlertController(title: "No Receipt Printer", message: "Please set your receipt printer in the settings panel.", preferredStyle: .Alert)
+            noReceiptPrinterAlertController.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
+            presentViewController(noReceiptPrinterAlertController, animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
         
         let receiptSentAlertController = UIAlertController(title: "Receipt Sent!", message: "The receipt has been sent to the printer.", preferredStyle: .Alert)
         
