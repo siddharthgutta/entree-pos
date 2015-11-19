@@ -1,5 +1,6 @@
     
 import UIKit
+import StarKit
 
 class SettingsViewController: UITableViewController {
     
@@ -33,7 +34,7 @@ class SettingsViewController: UITableViewController {
             }
         }
         
-        if let address = PrintingManager.receiptPrinterMACAddress() {
+        if let address = PrintingManager.receiptPrinterMACAddress {
             self.receiptPrinterNameLabel.text = address
         } else {
             receiptPrinterNameLabel.text = "Not set"
@@ -60,11 +61,7 @@ class SettingsViewController: UITableViewController {
         let searchingAlertController = UIAlertController(title: "Searching...", message: nil, preferredStyle: .Alert)
         
         presentViewController(searchingAlertController, animated: true) { () in
-            PrintingManager.sharedManager().searchForPrintersWithCompletion {
-                (results) in
-                
-                let printers = results as [Printer]
-                
+            Printer.searchForLANPrintersWithCompletionHandler { printers in
                 let alertController = UIAlertController(title: "Select Receipt Printer", message: nil, preferredStyle: .Alert)
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -72,7 +69,7 @@ class SettingsViewController: UITableViewController {
                 
                 for printer in printers {
                     let printerAlertAction = UIAlertAction(title: printer.name, style: .Default) { (action: UIAlertAction!) in
-                        PrintingManager.setReceiptPrinterMACAddress(printer.macAddress)
+                        PrintingManager.receiptPrinterMACAddress = printer.macAddress
                         self.reloadData()
                     }
                     alertController.addAction(printerAlertAction)

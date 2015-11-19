@@ -89,7 +89,7 @@ class QuickServiceOrderViewController: PFQueryTableViewController {
     }
     
     func sendToKitchen() {
-        PrintingManager.sharedManager().printPrintJobsForOrderItems(objects as! [OrderItem], party: nil, server: order.server, toGo: false, fromViewController: self)
+        PrintingManager.printOrderItems(objects as! [OrderItem], party: nil, server: order.server, toGo: false)
         
         for orderItem in objects as! [OrderItem] {
             orderItem.sentToKitchen = true

@@ -1,1 +1,0 @@
-../../../../StarPrinting/StarIO.framework/Headers/SMPort.h

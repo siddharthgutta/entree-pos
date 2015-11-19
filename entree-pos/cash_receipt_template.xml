@@ -1,43 +1,19 @@
 <print>
-    
-    <od>
-    
-    <center>
-        <text>{{restaurant}}</text>
-        <newline />
-        <text>{{location}}</text>
-        <newline />
-        <text>{{phone}}</text>
-        <newline />
-        <newline />
-        
-        <left>
-            <text>{{time}}</text>
-            <newline />
-            <text>{{server}}</text>
-            <newline />
-            
-            <dashednewline />
-            <newline />
-            
-            <text>Amount Due: {{subtotal}}</text>
-            <newline />
-            <text>Cash Amount Paid: {{cash_amount_paid}}</text>
-            <newline />
-            <text>Change Given: {{change_given}}</text>
-            <newline />
-            <newline />
-            
-            <text>Order ID: {{order_id}}</text>
-            <newline />
-            <text>Payment ID: {{payment_id}}</text>
-            <newline />
-            <dashednewline />
-            <newline />
-            
-            {{order_items}}
-            
-            <newline />
-            <newline />
-
+<opendrawer2 />
+<center />
+{{restaurant}}
+{{location}}
+{{phone}}
+------------------------------------------
+<left />
+{{time}}
+{{server}}
+------------------------------------------
+Amount Due: {{subtotal}}
+Cash Amount Paid: {{cash_amount_paid}}
+Change Given: {{change_given}}
+Order ID: {{order_id}}
+Payment ID: {{payment_id}}
+------------------------------------------
+{{order_items}}
 </print>

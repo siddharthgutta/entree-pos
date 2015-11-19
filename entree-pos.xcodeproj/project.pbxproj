@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4A027A1013A2B76C5A774994 /* libPods-entree-pos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F22F408B4DB5B0922D500 /* libPods-entree-pos.a */; };
+		88065B061BF99BF900223EBD /* StarKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88065B031BF99BEE00223EBD /* StarKit.framework */; };
+		88065B071BF99BF900223EBD /* StarKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 88065B031BF99BEE00223EBD /* StarKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		88065B0D1BF99F2C00223EBD /* PrintingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88065B0C1BF99F2C00223EBD /* PrintingManager.swift */; };
 		8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */; };
 		8809E05B1BA7B10D00E466EE /* QuickService.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8809E05A1BA7B10D00E466EE /* QuickService.storyboard */; };
 		8809E05E1BA7B38C00E466EE /* QuickServiceOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */; };
-		882401DA1BBC299E00952C6E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882401D91BBC299E00952C6E /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
-		88276FC01BADF53700092516 /* PrintingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88276FBF1BADF53700092516 /* PrintingManager.m */; settings = {ASSET_TAGS = (); }; };
+		882401DA1BBC299E00952C6E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882401D91BBC299E00952C6E /* Reachability.swift */; };
 		8845F9CC1B8E7D5A003A82F8 /* check_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8845F9CB1B8E7D5A003A82F8 /* check_template.xml */; };
 		8864BFD51BA682320028BE20 /* cash_receipt_template.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8864BFD41BA682320028BE20 /* cash_receipt_template.xml */; };
 		886BA4B51BA9207200ECC22B /* CardPayment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886BA4B41BA9207200ECC22B /* CardPayment.storyboard */; };
@@ -69,16 +71,54 @@
 		88E4CE1B1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E4CE1A1BA7D95A0092B7D4 /* QuickServiceMenuItemModifierSelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		88065B021BF99BEE00223EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 883271E61BE7C9ED0005A988;
+			remoteInfo = StarKit;
+		};
+		88065B041BF99BEE00223EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88BCE14F1BF4F7020035AC73;
+			remoteInfo = StarKitTests;
+		};
+		88065B081BF99BF900223EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 883271E51BE7C9ED0005A988;
+			remoteInfo = StarKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88065B0A1BF99BF900223EBD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				88065B071BF99BF900223EBD /* StarKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		05568A27658A4512C6EA8E37 /* Pods-entree-pos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-entree-pos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-entree-pos/Pods-entree-pos.debug.xcconfig"; sourceTree = "<group>"; };
 		32C4B5E91B238E5B0062B854 /* entree-pos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "entree-pos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		590F22F408B4DB5B0922D500 /* libPods-entree-pos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-entree-pos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = StarKit.xcodeproj; path = ../StarKit/StarKit/StarKit.xcodeproj; sourceTree = "<group>"; };
+		88065B0C1BF99F2C00223EBD /* PrintingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrintingManager.swift; path = "entree-pos/PrintingManager.swift"; sourceTree = SOURCE_ROOT; };
 		8809E0561BA79D8C00E466EE /* CustomerTabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerTabsViewController.swift; path = "entree-pos/CustomerTabsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		8809E05A1BA7B10D00E466EE /* QuickService.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = QuickService.storyboard; path = "entree-pos/QuickService.storyboard"; sourceTree = SOURCE_ROOT; };
 		8809E05D1BA7B38C00E466EE /* QuickServiceOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuickServiceOrderViewController.swift; path = "entree-pos/QuickServiceOrderViewController.swift"; sourceTree = SOURCE_ROOT; };
 		882401D91BBC299E00952C6E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = "entree-pos/Reachability.swift"; sourceTree = SOURCE_ROOT; };
-		88276FBE1BADF53700092516 /* PrintingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrintingManager.h; path = "entree-pos/PrintingManager.h"; sourceTree = SOURCE_ROOT; };
-		88276FBF1BADF53700092516 /* PrintingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrintingManager.m; path = "entree-pos/PrintingManager.m"; sourceTree = SOURCE_ROOT; };
 		8845F9CB1B8E7D5A003A82F8 /* check_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = check_template.xml; path = "entree-pos/check_template.xml"; sourceTree = SOURCE_ROOT; };
 		8864BFD41BA682320028BE20 /* cash_receipt_template.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = cash_receipt_template.xml; path = "entree-pos/cash_receipt_template.xml"; sourceTree = SOURCE_ROOT; };
 		886BA4B41BA9207200ECC22B /* CardPayment.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CardPayment.storyboard; path = "entree-pos/CardPayment.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -144,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A027A1013A2B76C5A774994 /* libPods-entree-pos.a in Frameworks */,
+				88065B061BF99BF900223EBD /* StarKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +207,7 @@
 				32C4B5EA1B238E5B0062B854 /* Products */,
 				24232AD0F5E3053EEA1C9450 /* Pods */,
 				EC2CF849EDDFD7B9C8DCD960 /* Frameworks */,
+				88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +231,15 @@
 			);
 			name = "entree-pos";
 			path = "entree-ipad";
+			sourceTree = "<group>";
+		};
+		88065AFE1BF99BED00223EBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88065B031BF99BEE00223EBD /* StarKit.framework */,
+				88065B051BF99BEE00223EBD /* StarKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8809E05C1BA7B36C00E466EE /* Quick Service */ = {
@@ -369,8 +420,7 @@
 		88B2B9A01BB3A16900AC0961 /* Printing */ = {
 			isa = PBXGroup;
 			children = (
-				88276FBE1BADF53700092516 /* PrintingManager.h */,
-				88276FBF1BADF53700092516 /* PrintingManager.m */,
+				88065B0C1BF99F2C00223EBD /* PrintingManager.swift */,
 			);
 			name = Printing;
 			sourceTree = "<group>";
@@ -405,10 +455,12 @@
 				346436DB8F0B64248828D882 /* Copy Pods Resources */,
 				3513F0521BCA2DC30017CAA4 /* ShellScript */,
 				569E56A524134B7263B8029A /* Embed Pods Frameworks */,
+				88065B0A1BF99BF900223EBD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				88065B091BF99BF900223EBD /* PBXTargetDependency */,
 			);
 			name = "entree-pos";
 			productName = "entree-ipad";
@@ -422,7 +474,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Siddharth Gutta ";
 				TargetAttributes = {
@@ -443,12 +495,35 @@
 			mainGroup = 32C4B5E01B238E5B0062B854;
 			productRefGroup = 32C4B5EA1B238E5B0062B854 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 88065AFE1BF99BED00223EBD /* Products */;
+					ProjectRef = 88065AFD1BF99BED00223EBD /* StarKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				32C4B5E81B238E5B0062B854 /* entree-pos */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		88065B031BF99BEE00223EBD /* StarKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = StarKit.framework;
+			remoteRef = 88065B021BF99BEE00223EBD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		88065B051BF99BEE00223EBD /* StarKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = StarKitTests.xctest;
+			remoteRef = 88065B041BF99BEE00223EBD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		32C4B5E71B238E5B0062B854 /* Resources */ = {
@@ -553,7 +628,6 @@
 				888BA1BF1B6C3E5300D6C8D5 /* MenuCategory.swift in Sources */,
 				8809E0571BA79D8C00E466EE /* CustomerTabsViewController.swift in Sources */,
 				888BA1C51B6C3E5300D6C8D5 /* MenuItemsViewController.swift in Sources */,
-				88276FC01BADF53700092516 /* PrintingManager.m in Sources */,
 				888BA1BD1B6C3E5300D6C8D5 /* Menu.swift in Sources */,
 				888BA1E11B6C3E5300D6C8D5 /* Table.swift in Sources */,
 				888BA1D21B6C3E5300D6C8D5 /* PrintJob.swift in Sources */,
@@ -576,6 +650,7 @@
 				888BA1D01B6C3E5300D6C8D5 /* OrderItemsViewController.swift in Sources */,
 				888BA1DA1B6C3E5300D6C8D5 /* ServerOverviewViewController.swift in Sources */,
 				888BA1C01B6C3E5300D6C8D5 /* MenuCollectionViewCell.swift in Sources */,
+				88065B0D1BF99F2C00223EBD /* PrintingManager.swift in Sources */,
 				888BA1D61B6C3E5300D6C8D5 /* RestaurantMapView.swift in Sources */,
 				888BA1BE1B6C3E5300D6C8D5 /* MenuCategoriesViewController.swift in Sources */,
 				888BA1B71B6C3E5300D6C8D5 /* CashPaymentViewController.swift in Sources */,
@@ -589,6 +664,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88065B091BF99BF900223EBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = StarKit;
+			targetProxy = 88065B081BF99BF900223EBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		32C4B6061B238E5B0062B854 /* Debug */ = {
@@ -684,10 +767,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-posapp";
 				PRODUCT_NAME = "entree-pos";
@@ -707,10 +792,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/entree-pos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULE_NAME = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "entree.entree-posapp";
 				PRODUCT_NAME = "entree-pos";

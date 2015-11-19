@@ -1,5 +1,5 @@
 
-class MenuItem: PFObject, PFSubclassing {
+public class MenuItem: PFObject, PFSubclassing {
     
     @NSManaged var alcoholic: Bool
     @NSManaged var colorIndex: Int
@@ -8,7 +8,7 @@ class MenuItem: PFObject, PFSubclassing {
     @NSManaged var price: Double
     @NSManaged var printJobs: [PrintJob]
     
-    static func parseClassName() -> String {
+    public static func parseClassName() -> String {
         return "MenuItem"
     }
     
